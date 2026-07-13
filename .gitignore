@@ -1,0 +1,44 @@
+# --- ЗАВИСИМОСТИ (Библиотеки) ---
+node_modules/
+/pnpm-lock.yaml
+/package-lock.json
+/yarn.lock
+
+# --- СБОРКА И СИСТЕМНЫЕ ПАПКИ NEXT.JS ---
+.next/
+out/
+build/
+dist/
+.vercel/
+
+# --- ПЕРЕМЕННЫЕ ОКРУЖЕНИЯ (Секреты) ---
+# Игнорируем абсолютно все файлы .env
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.development
+.env.production
+
+# --- СЕО И ТЕСТЫ (Next-sitemap & Playwright) ---
+# Игнорируем автоматически сгенерированные карты сайта (они собираются на сервере при деплое)
+public/sitemap*.xml
+public/robots.txt
+
+# Логи и отчеты тестов Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# --- СИСТЕМНЫЙ КЭШ И ЛОГИ ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.prettiercache
+
+# Системные файлы операционных систем
+.DS_Store
+Thumbs.db
