@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 const HomePage = () => {
   return (
     /** Сюда мы импортируем все компоненты главной страницы*/
-    <h1>Привет! здесь будет Фйсберг Маркет</h1>
+    <h1>Привет! здесь будет Aйсберг Маркет</h1>
   );
 };
+
+export default HomePage;

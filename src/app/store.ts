@@ -1,7 +1,9 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import testReducer from '@/features/test/model/testSlice';
 
 const rootReducer = combineReducers({
   // Сюда в будущем добавятся редюсеры
+  test: testReducer,
 });
 
 export const makeStore = () => {
@@ -18,4 +20,4 @@ export const makeStore = () => {
 // ОБЯЗАТЕЛЬНО: экспортируем тип AppStore
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppDispatch = AppStore["dispatch"];
+export type AppDispatch = AppStore['dispatch'];
