@@ -1,25 +1,29 @@
+'use client';
+
 import styles from './Header.module.css';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/images/logo.png';
 import Image from 'next/image';
 import { FaRegStar } from 'react-icons/fa';
+import { cn } from '@/shared/lib/classNames';
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
+  if (!ready) return <header className={styles.header} />;
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.leftGroup}>
           <Link href="/">
-            <span className={t('header.companyName')}></span>
+            <span className={styles.textLogo}>{t('header.companyName')}</span>
           </Link>
           <Image src={logo} alt="logo" className={styles.logoImg} />
+          <p className={cn(styles.text, styles.sitySize)}>{t('header.city')}</p>
         </div>
-        <p className={styles.text}>{t('header.city')}</p>
-        <div className="right-group">
+        <div className={styles.rightGroup}>
           <FaRegStar className={styles.starIcon} />
-          <p className={styles.text}>{t('header.favorites')}</p>
+          <p className={cn(styles.text, styles.prevSize)}>{t('header.favorites')}</p>
         </div>
       </div>
     </header>

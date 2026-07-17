@@ -4,18 +4,13 @@ import ruTransl from './ru';
 
 i18n.use(initReactI18next).init({
   resources: {
-    ru: {
-      translation: ruTransl,
-    },
+    ru: ruTransl, // ИСПРАВЛЕНО: передаем объект напрямую, без ручного дублирования "translation:"
   },
-  lng: 'ru', // Жестко фиксируем русский язык для поисковика
+  lng: 'ru',
   fallbackLng: 'ru',
-
-  // проверка режима разработки в Next.js (включает логи в консоли)
   debug: process.env.NODE_ENV === 'development',
-
   interpolation: {
-    escapeValue: false, // React сам защищает от XSS атак
+    escapeValue: false,
   },
 });
 

@@ -9,16 +9,6 @@
   font-weight: 400;
   src: url('../assets/fonts/podkova-v33-cyrillic_cyrillic-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* pt-sans-narrow-regular - cyrillic */
-/* хэдер, футер, кн найти, кнопки применить фильтры*/
-/**/
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'PT Sans Narrow';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fonts/pt-sans-narrow-v19-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
 
 /* dela-gothic-one-regular - cyrillic */
 /* главн стран заголовки, рез поиска загол*/
@@ -59,6 +49,17 @@
   font-style: normal;
   font-weight: 400;
   src: url('../assets/fonts/pt-sans-caption-v20-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* pt-sans-narrow-regular - cyrillic */
+/* хэдер, футер, кн найти, кнопки применить фильтры*/
+/**/
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/pt-sans-narrow-v19-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 :root {

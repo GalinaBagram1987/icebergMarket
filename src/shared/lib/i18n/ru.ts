@@ -1,7 +1,7 @@
 const ruTransl = {
   translation: {
     header: {
-      companyName: 'Айсберг<br />Маркет',
+      companyName: 'Айсберг\nМаркет',
       city: 'Сочи',
       favorites: 'Избранное',
     },
