@@ -3,26 +3,40 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Header } from '@/widgets/Header/ui/Header';
 import { AppProviders } from './providers';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations } from 'next-intl/server';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: 'Айсберг Маркет',
-  description: 'Доска объявлений Сочи',
-  icons: {
-    icon: '/images/favicon.png',
-  },
+export const generateMetadata = async () => {
+  const t = await getTranslations('icebergMarket.header');
+
+  return {
+    title: t('companyName').replace('\n', ' '),
+    description: `Доска объявлений в городе ${t('city')}`,
+    icons: {
+      icon: '/images/favicon.png',
+    },
+  };
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  // Получаем тексты на сервере
+  const messages = await getMessages();
+
   return (
     <html lang="ru">
       <body>
-        <AppProviders>
-          <Header />
-          {children}
-          {/* <Footer /> */}
-        </AppProviders>
+        {/*  Оборачиваем в провайдер текстов, чтобы клиентские компоненты тоже имели к ним доступ */}
+        <NextIntlClientProvider messages={messages}>
+          <AppProviders>
+            <Header />
+            {children}
+            {/* <Footer /> */}
+          </AppProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
