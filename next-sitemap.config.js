@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+const config = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   generateRobotsTxt: true, // генерировать robots.txt
   sitemapSize: 5000, // лимит URL в одном файле (для больших сайтов)
@@ -28,3 +28,5 @@ module.exports = {
     return config;
   },
 };
+
+export default config;

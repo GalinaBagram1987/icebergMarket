@@ -1,15 +1,17 @@
 {
+  "name": "iceberg-market",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
     "@tanstack/react-query": "^5.101.2",
     "axios": "^1.18.1",
     "clsx": "^2.1.1",
-    "i18next": "^26.3.6",
     "next": "^16.2.10",
-    "next-i18next": "^16.0.7",
+    "next-intl": "^4.13.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-i18next": "^17.0.9",
     "react-icons": "^5.7.0",
     "react-redux": "^9.3.0"
   },

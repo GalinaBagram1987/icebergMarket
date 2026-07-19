@@ -1,16 +1,13 @@
-'use client';
-
 import styles from './Header.module.css';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 import logo from '@/assets/images/logo.png';
 import Image from 'next/image';
 import { FaRegStar } from 'react-icons/fa';
 import { cn } from '@/shared/lib/classNames';
+import { getTranslations } from 'next-intl/server';
 
-export const Header = () => {
-  const { t, ready } = useTranslation();
-  if (!ready) return <header className={styles.header} />;
+export const Header = async () => {
+  const t = await getTranslations('icebergMarket');
   return (
     <header className={styles.header}>
       <div className={styles.container}>
