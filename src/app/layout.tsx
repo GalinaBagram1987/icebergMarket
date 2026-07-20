@@ -1,7 +1,8 @@
 // Корневой лайаут (html, body) — ЖИВЕТ ТУТ
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Header } from '@/widgets/Header/ui/Header';
+import { Header } from '@/widgets/Header';
+import { Footer } from '@/widgets/Footer';
 import { AppProviders } from './providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
@@ -31,7 +32,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <AppProviders>
             <Header />
             {children}
-            {/* <Footer /> */}
+            <Footer />
           </AppProviders>
         </NextIntlClientProvider>
       </body>

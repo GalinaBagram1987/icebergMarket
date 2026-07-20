@@ -40,6 +40,11 @@
   align-items: center;
 }
 
+/*.rightGroup:hover {
+  background-color: var(--accent-light);
+}
+  */
+
 .text {
   font-family: var(--font-header-footer);
   font-weight: 400;
