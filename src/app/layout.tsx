@@ -7,6 +7,12 @@ import { AppProviders } from './providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import './globals.css';
+import type { Viewport } from 'next';
+
+export const viewport: Viewport = {
+  width: 1440,
+  initialScale: 1,
+};
 
 export const generateMetadata = async () => {
   const t = await getTranslations('icebergMarket.header');

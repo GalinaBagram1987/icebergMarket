@@ -4,15 +4,15 @@
   background-color: var(--bg-secondary);
 }
 
-.container {
-  width: 100%;
+.headerRow {
+  /* width: 100%; */
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding-left: 80px;
-  padding-right: 329px;
+  padding-right: 249px;
 }
 
 .textLogo {
@@ -26,6 +26,10 @@
 .logoImg {
   width: 54px;
   height: 50px;
+  /* Заставляет картинку вписаться ровно в 54х50px без невидимых полей */
+  object-fit: contain;
+  /* Защита от растягивания во флекс-контейнере */
+  flex-shrink: 0;
 }
 
 .leftGroup {

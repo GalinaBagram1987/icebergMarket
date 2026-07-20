@@ -4,12 +4,10 @@
   background-color: var(--bg-secondary);
 }
 
-.container {
-  width: 100%;
-  height: 50px;
+.footerRow {
+  height: 70px;
   display: flex;
   align-items: center;
-  margin: 0 auto;
   padding-left: 271px;
   padding-right: 20px;
 }
@@ -17,19 +15,22 @@
 .firstItem {
   margin-right: 78px;
   text-decoration: none;
+  line-height: 1;
 }
 
 .groupItem {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 43px;
-  margin-right: 126px;
   text-decoration: none;
+  white-space: pre-line; /*перенос на другую строку*/
+  text-align: center;
+  margin-right: 126px;
+  line-height: 1;
 }
 
 .firstItem:hover,
-.groupItem:hover {
+.groupItem a:hover {
   text-decoration: underline;
   color: var(--text-white);
 }
@@ -46,4 +47,5 @@
   color: var(--text-white);
   font-weight: 400;
   font-size: 14px;
+  margin-left: auto;
 }
