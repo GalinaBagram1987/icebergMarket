@@ -19,10 +19,9 @@ export const Header = async () => {
             <Image src={logo} alt="logo" className={styles.logoImg} />
             <p className={cn(styles.text, styles.sitySize)}>{t('header.city')}</p>
           </div>
-          <div className={styles.rightGroup}>
-            <FaRegStar className={styles.starIcon} />
-            <p className={cn(styles.text, styles.prevSize)}>{t('header.favorites')}</p>
-          </div>
+          <button type="button" className={cn(styles.btnPrevios, styles.text, styles.prevSize)}>
+            <FaRegStar className={styles.starIcon} /> {t('header.favorites')}
+          </button>
         </div>
       </div>
     </header>
