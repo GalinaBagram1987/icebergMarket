@@ -1,5 +1,6 @@
 // Главная страница поисковика — ЖИВЕТ ТУТ
 import { Metadata } from 'next';
+import { SearchMain } from '@/widgets/SearchMainPage';
 // import Link from 'next/link';
 
 // Переопределяем метатеги конкретно для Главной страницы
@@ -10,8 +11,10 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
   return (
-    /** Сюда мы импортируем все компоненты главной страницы*/
-    <h1>Привет! здесь будет Aйсберг Маркет</h1>
+    <main className="container">
+      <SearchMain />
+      <h1 style={{ marginTop: '20px', marginBottom: '20px' }}>Привет! здесь будет Aйсберг Маркет</h1>
+    </main>
   );
 };
 
