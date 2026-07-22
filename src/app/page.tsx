@@ -1,6 +1,7 @@
 // Главная страница поисковика — ЖИВЕТ ТУТ
 import { Metadata } from 'next';
 import { SearchMain } from '@/widgets/SearchMainPage';
+import { CookieConsent } from '@/features/CookieConsent';
 
 // Переопределяем метатеги конкретно для Главной страницы
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ const HomePage = () => {
   return (
     <main className="container">
       <SearchMain />
+      <CookieConsent />
       <h1 style={{ marginTop: '20px', marginBottom: '20px' }}>Привет! здесь будет Aйсберг Маркет</h1>
     </main>
   );

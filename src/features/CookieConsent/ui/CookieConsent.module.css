@@ -1,0 +1,41 @@
+.cookieConsent {
+  width: 326px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--bg-search-field);
+  border: 1px solid var(--bg-border-cookie);
+  border-radius: var(--radius-md);
+  padding-left: 29px;
+  padding-right: 12px;
+  /*временные маргины*/
+  margin: 20px;
+}
+
+.cookieText {
+  margin: 0;
+  font-family: var(--font-price);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-black);
+}
+
+.privasyLink {
+  color: var(--text-main);
+}
+
+.buttonConsent {
+  width: 51px;
+  height: 29px;
+  background-color: var(--bg-inter);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-header-footer);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-white);
+}
