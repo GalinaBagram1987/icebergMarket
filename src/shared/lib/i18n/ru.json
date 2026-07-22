@@ -13,7 +13,10 @@
       "copywriting": "\u00A9 2026 Айсберг Маркет \u2022 Сочи, Россия"
     },
     "mainPage": {
-      "searchButton": "Найти"
+      "searchButton": "Найти",
+      "ok": "OK",
+      "cookieText": "Сайт использует файлы cookie.\nПодробнее",
+      "cookieLink": " здесь"
     }
   }
 }

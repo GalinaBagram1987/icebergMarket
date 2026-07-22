@@ -1,7 +1,6 @@
 'use client';
 
 import styles from './SearchMainPage.module.css';
-// import { cn } from '@/shared/lib/classNames';
 import { useTranslations } from 'next-intl';
 
 export const SearchMain = async () => {

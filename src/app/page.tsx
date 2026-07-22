@@ -1,7 +1,6 @@
 // Главная страница поисковика — ЖИВЕТ ТУТ
 import { Metadata } from 'next';
 import { SearchMain } from '@/widgets/SearchMainPage';
-// import Link from 'next/link';
 
 // Переопределяем метатеги конкретно для Главной страницы
 export const metadata: Metadata = {

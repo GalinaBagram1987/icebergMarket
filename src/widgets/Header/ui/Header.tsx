@@ -3,7 +3,7 @@ import Link from 'next/link';
 import logo from '@/assets/images/logo.png';
 import Image from 'next/image';
 import { FaRegStar } from 'react-icons/fa';
-import { cn } from '@/shared/lib/classNames';
+import { cn } from '@/shared/lib';
 import { getTranslations } from 'next-intl/server';
 
 export const Header = async () => {

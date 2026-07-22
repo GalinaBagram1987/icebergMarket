@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import styles from './Footer.module.css';
-import { cn } from '@/shared/lib/classNames';
+import { cn } from '@/shared/lib';
 
 export const Footer = async () => {
   const t = await getTranslations('icebergMarket');
