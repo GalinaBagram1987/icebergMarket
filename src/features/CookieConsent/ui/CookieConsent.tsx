@@ -34,6 +34,9 @@ export const CookieConsent = () => {
     // Скрываем баннер с экрана
     setIsVisible(false);
   };
+
+  if (!isVisible) return null;
+
   return (
     <div className={styles.cookieConsent}>
       <p className={styles.cookieText}>

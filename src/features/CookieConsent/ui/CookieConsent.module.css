@@ -4,31 +4,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   background-color: var(--bg-search-field);
   border: 1px solid var(--bg-border-cookie);
   border-radius: var(--radius-md);
   padding-left: 29px;
   padding-right: 12px;
-  /*временные маргины*/
-  margin: 20px;
+  /*расположение на странице*/
+  position: fixed;
+  right: 4px;
+  /*по центру по вертикали*/
+  top: 50%; /* Спускаем верх на пол экрана */
+  transform: translateY(-50%); /* Сдвигаем сам блок обратно вверх на 50% его собственной высоты */
+  z-index: 9999; /*Поверх всего*/
 }
-
 .cookieText {
   margin: 0;
   font-family: var(--font-price);
   font-size: 14px;
   font-weight: 400;
   color: var(--text-black);
+  line-height: 1.1;
 }
 
 .privasyLink {
   color: var(--text-main);
+  line-height: 1.1;
 }
 
 .buttonConsent {
-  width: 51px;
+  width: auto;
   height: 29px;
+  padding-left: 17px;
+  padding-right: 17px;
   background-color: var(--bg-inter);
   border-radius: var(--radius-md);
   display: flex;
@@ -38,4 +46,5 @@
   font-size: 20px;
   font-weight: 400;
   color: var(--text-white);
+  cursor: pointer;
 }

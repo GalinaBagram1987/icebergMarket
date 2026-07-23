@@ -1,9 +1,7 @@
-'use client';
-
 import styles from './SearchMainPage.module.css';
 import { useTranslations } from 'next-intl';
 
-export const SearchMain = async () => {
+export const SearchMain = () => {
   const t = useTranslations('icebergMarket'); // Хук для клиента
   return (
     <form action="/search" method="GET" className={styles.searchForm}>
