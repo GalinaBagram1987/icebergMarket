@@ -1,0 +1,1 @@
+export { apiWithInterceptors } from './axiosInstance';
