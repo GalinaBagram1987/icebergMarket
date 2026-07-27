@@ -15,7 +15,7 @@ export const Footer = async () => {
           </Link>
 
           <div className={styles.groupItem}>
-            <Link href="#" className={styles.textBase}>
+            <Link href="/privacy" className={styles.textBase}>
               {t('footer.privacyPolitic')}
             </Link>
             <Link href="#" className={styles.textBase}>

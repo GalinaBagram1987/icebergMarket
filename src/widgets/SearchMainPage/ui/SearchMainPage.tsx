@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './SearchMainPage.module.css';
 import { useTranslations } from 'next-intl';
 
