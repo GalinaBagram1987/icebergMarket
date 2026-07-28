@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { PrivacyPolicy } from '@/pages/privacy';
+import PrivacyView from '@/views/privacy';
 
 // Переопределяем метатеги конкретно для Политики конфиденциальности
 export const metadata: Metadata = {
@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description: 'Политика конфиденциальности Айсберг Маркет.',
 };
 
-const PrivacyPage = async () => {
-  return <PrivacyPolicy />;
+const Privacy = async () => {
+  return <PrivacyView />;
 };
 
-export default PrivacyPage;
+export default Privacy;

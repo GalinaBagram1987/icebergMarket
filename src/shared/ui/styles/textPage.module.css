@@ -14,7 +14,7 @@
 
 .line {
   width: 100%;
-  background-color: var(--bg-border-cookie);
+  color: var(--bg-border-cookie);
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -30,10 +30,19 @@
   width: 54px;
   height: 243px;
   margin-top: 35px;
+  background-color: var(--bg-search-field);
+  flex-shrink: 0; /*запрещаю сжиматься*/
+}
+
+.pageWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
 }
 
 .textContainer {
-  margin: 35px 336px 53px 54 px;
+  flex-grow: 1;
+  margin: 35px 336px 53px 0px;
   padding: 27px 43px 298px 41px;
   background-color: var(--text-white);
 }
