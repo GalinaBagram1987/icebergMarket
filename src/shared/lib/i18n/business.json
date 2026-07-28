@@ -1,10 +1,8 @@
 {
-  "business": {
-    "titleOne": "",
-    "titleTwo": "",
-    "textOne": "",
-    "textTwo": "",
-    "textThree": "",
-    "textFour": ""
-  }
+  "titleOne": "Здесь будут условия для бизнеса",
+  "titleTwo": "",
+  "textOne": "",
+  "textTwo": "",
+  "textThree": "",
+  "textFour": ""
 }

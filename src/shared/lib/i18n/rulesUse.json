@@ -1,10 +1,8 @@
 {
-  "rulesUse": {
-    "titleOne": "",
-    "titleTwo": "",
-    "textOne": "",
-    "textTwo": "",
-    "textThree": "",
-    "textFour": ""
-  }
+  "titleOne": "Здесь будут правила использования",
+  "titleTwo": "",
+  "textOne": "",
+  "textTwo": "",
+  "textThree": "",
+  "textFour": ""
 }

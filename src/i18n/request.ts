@@ -17,10 +17,10 @@ export default getRequestConfig(async () => {
     messages: {
       ...mainMessages.default,
       // т.к. внутри ваших JSON-файлов уже есть обертки, просто разворачиваем их в общий корень через оператор ...
-      ...privacyMessages.default,
-      ...businessMessages.default,
-      ...rulesUseMessages.default,
-      ...rulesSiteMessages.default,
+      privacy: privacyMessages.default,
+      business: businessMessages.default,
+      rulesUse: rulesUseMessages.default,
+      rulesSite: rulesSiteMessages.default,
     },
   };
 });

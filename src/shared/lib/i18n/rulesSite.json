@@ -1,10 +1,8 @@
 {
-  "rulesSite": {
-    "titleOne": "",
-    "titleTwo": "",
-    "textOne": "",
-    "textTwo": "",
-    "textThree": "",
-    "textFour": ""
-  }
+  "titleOne": "Здесь правила сайта",
+  "titleTwo": "",
+  "textOne": "",
+  "textTwo": "",
+  "textThree": "",
+  "textFour": ""
 }
