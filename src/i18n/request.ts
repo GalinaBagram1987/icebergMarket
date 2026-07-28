@@ -3,9 +3,24 @@ import { getRequestConfig } from 'next-intl/server';
 export default getRequestConfig(async () => {
   const locale = 'ru';
 
+  // Загружаем все файлы параллельно
+  const [mainMessages, privacyMessages, businessMessages, rulesUseMessages, rulesSiteMessages] = await Promise.all([
+    import('@/shared/lib/i18n/ru.json'),
+    import('@/shared/lib/i18n/privacy.json'),
+    import('@/shared/lib/i18n/business.json'),
+    import('@/shared/lib/i18n/rulesUse.json'),
+    import('@/shared/lib/i18n/rulesSite.json'),
+  ]);
+
   return {
     locale,
-    // Просто указываем путь до вашего FSD-слоя!
-    messages: (await import('@/shared/lib/i18n/ru.json')).default,
+    messages: {
+      ...mainMessages.default,
+      // т.к. внутри ваших JSON-файлов уже есть обертки, просто разворачиваем их в общий корень через оператор ...
+      ...privacyMessages.default,
+      ...businessMessages.default,
+      ...rulesUseMessages.default,
+      ...rulesSiteMessages.default,
+    },
   };
 });
