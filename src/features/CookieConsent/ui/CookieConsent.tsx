@@ -22,7 +22,9 @@ export const CookieConsent = () => {
       <p className={styles.cookieText}>
         {t('mainPage.cookieText')}
         <span className={styles.privasyLink}>
-          <Link href="#">{t('mainPage.cookieLink')}</Link>
+          <Link href="/privacy" target="_blank">
+            {t('mainPage.cookieLink')}
+          </Link>
         </span>
       </p>
       <button className={styles.buttonConsent} onClick={acceptCookieConsent}>
