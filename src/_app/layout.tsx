@@ -1,6 +1,7 @@
-// Корневой лайаут (html, body) — ЖИВЕТ ТУТ
+/**
+ * Корневой лайаут (html, body) — ЖИВЕТ ТУТ
+ */
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
 import { AppProviders } from './providers';

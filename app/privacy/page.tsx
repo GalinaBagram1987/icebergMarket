@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
-import PrivacyView from '@/views/privacy';
+import PrivacyView from '@/_pages/privacy';
 
-// Переопределяем метатеги конкретно для Политики конфиденциальности
+/**
+ * Страница Политика конфиденциальности
+ * переопределяем метатеги именно под эту страницу
+ */
+
 export const metadata: Metadata = {
   title: 'Политика конфиденциальности Айсберг Маркет',
   description: 'Политика конфиденциальности Айсберг Маркет.',
