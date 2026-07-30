@@ -4,6 +4,12 @@ import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore, AppStore } from '@/_app/store';
 
+/**
+ * Редакс провайдер
+ * @param param0
+ * @returns
+ */
+
 export const ReduxProvider = ({ children }: { children: React.ReactNode }) => {
   const storeRef = useRef<AppStore | null>(null);
 

@@ -1,3 +1,3 @@
-import { PrivacyView } from './ui/privacyView';
+import { PrivacyPage } from './ui/privacyPage';
 
-export default PrivacyView;
+export default PrivacyPage;

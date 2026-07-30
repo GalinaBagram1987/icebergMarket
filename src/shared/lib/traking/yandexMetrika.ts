@@ -48,37 +48,37 @@ const loadYandexMetrika = (): void => {
   console.log('Загушен счетчик-заглушка с номером 1234567890');
 
   // <!-- Yandex.Metrika counter -->
-  window.ym =
-    window.ym ||
-    function (...args: unknown[]): void {
-      window.ym!.a = window.ym!.a || [];
-      window.ym!.a.push(args);
-    };
+  // window.ym =
+  //   window.ym ||
+  //   function (...args: unknown[]): void {
+  //     window.ym!.a = window.ym!.a || [];
+  //     window.ym!.a.push(args);
+  //   };
 
-  window.ym.l = Date.now();
+  // window.ym.l = Date.now();
 
-  const script = document.createElement('script');
+  // const script = document.createElement('script');
 
-  script.async = true;
-  script.src = METRIKA_SRC;
+  // script.async = true;
+  // script.src = METRIKA_SRC;
 
-  script.onerror = () => {
-    isYandexMetrikaLoading = false;
-    console.error('Ошибка загрузки Яндекс.Метрики');
-  };
+  // script.onerror = () => {
+  //   isYandexMetrikaLoading = false;
+  //   console.error('Ошибка загрузки Яндекс.Метрики');
+  // };
 
-  document.head.appendChild(script);
+  // document.head.appendChild(script);
 
-  window.ym(COUNTER_ID, 'init', {
-    ssr: true,
-    webvisor: true,
-    clickmap: true,
-    ecommerce: 'dataLayer',
-    referrer: document.referrer,
-    url: location.href,
-    accurateTrackBounce: true,
-    trackLinks: true,
-  });
+  // window.ym(COUNTER_ID, 'init', {
+  //   ssr: true,
+  //   webvisor: true,
+  //   clickmap: true,
+  //   ecommerce: 'dataLayer',
+  //   referrer: document.referrer,
+  //   url: location.href,
+  //   accurateTrackBounce: true,
+  //   trackLinks: true,
+  // });
 };
 
 export default loadYandexMetrika;

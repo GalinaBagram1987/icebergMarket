@@ -1,3 +1,3 @@
-import { ForBusines } from './ui/forBusinessView';
+import { ForBusinessPage } from './ui/ForBusinessPage';
 
-export default ForBusines;
+export default ForBusinessPage;

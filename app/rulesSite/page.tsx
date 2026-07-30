@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import RulesSite from '@/_pages/rulesSite';
+import RulesSitePage from '@/_pages/rulesSite';
 
 /**
  * Страница Правила сайта
@@ -7,12 +7,12 @@ import RulesSite from '@/_pages/rulesSite';
  */
 
 export const metadata: Metadata = {
-  title: 'Политика конфиденциальности Айсберг Маркет',
-  description: 'Политика конфиденциальности Айсберг Маркет.',
+  title: 'Правила сайта Айсберг Маркет',
+  description: 'Правила сайта Айсберг Маркет.',
 };
 
 const RulesSite = async () => {
-  return <RulesSite />;
+  return <RulesSitePage />;
 };
 
 export default RulesSite;

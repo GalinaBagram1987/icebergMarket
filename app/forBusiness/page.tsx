@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ForBusines from '@/_pages/forBusiness';
+import ForBusinessPage from '@/_pages/forBusiness';
 
 /**
  * Страница для бизнеса
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: 'Информация для бизнеса от Айсберг Маркет.',
 };
 
-const Privacy = async () => {
-  return <ForBusines />;
+const ForBusiness = async () => {
+  return <ForBusinessPage />;
 };
+
+export default ForBusiness;

@@ -1,3 +1,3 @@
-import { RulesUse } from './ui/rulesUseView';
+import { RulesUsePage } from './ui/rulesUsePage';
 
-export default RulesUse;
+export default RulesUsePage;

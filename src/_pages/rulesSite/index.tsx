@@ -1,3 +1,3 @@
-import { RulesSite } from './ui/rulesSiteView';
+import { RulesSitePage } from './ui/rulesSitePage';
 
-export default RulesSite;
+export default RulesSitePage;

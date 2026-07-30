@@ -1,8 +1,8 @@
 import styles from '@/shared/ui/styles/textPage.module.css';
 import { getTranslations } from 'next-intl/server';
 
-export const PrivacyView = async () => {
-  const t = await getTranslations('privacy');
+export const ForBusinessPage = async () => {
+  const t = await getTranslations('forBusiness');
 
   return (
     <main className="container">
