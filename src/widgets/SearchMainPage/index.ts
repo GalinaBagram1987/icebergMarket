@@ -1,3 +1,3 @@
-import { SearchMain } from './ui/SearchMainPage';
+import SearchMain from './ui/SearchMainPage';
 
 export { SearchMain };

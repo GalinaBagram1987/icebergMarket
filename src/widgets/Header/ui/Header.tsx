@@ -6,6 +6,11 @@ import { FaRegStar } from 'react-icons/fa';
 import { cn } from '@/shared/lib';
 import { getTranslations } from 'next-intl/server';
 
+/**
+ * Шапка сайта.
+ * Компонент Избранное
+ */
+
 export const Header = async () => {
   const t = await getTranslations('icebergMarket');
   return (

@@ -11,12 +11,13 @@ export default getRequestConfig(async () => {
   const locale = 'ru';
 
   // Загружаем все файлы параллельно
-  const [mainMessages, privacyMessages, businessMessages, rulesUseMessages, rulesSiteMessages] = await Promise.all([
+  const [mainMessages, privacyMessages, businessMessages, rulesUseMessages, rulesSiteMessages, contactsMessages] = await Promise.all([
     import('@/shared/lib/i18n/ru.json'),
     import('@/shared/lib/i18n/privacy.json'),
     import('@/shared/lib/i18n/business.json'),
     import('@/shared/lib/i18n/rulesUse.json'),
     import('@/shared/lib/i18n/rulesSite.json'),
+    import('@/shared/lib/i18n/contacts.json'),
   ]);
 
   return {
@@ -28,6 +29,7 @@ export default getRequestConfig(async () => {
       business: businessMessages.default,
       rulesUse: rulesUseMessages.default,
       rulesSite: rulesSiteMessages.default,
+      contacts: contactsMessages.default,
     },
   };
 });

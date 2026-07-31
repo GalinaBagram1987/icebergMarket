@@ -49,3 +49,8 @@
   font-size: 14px;
   margin-left: auto;
 }
+
+.rulesUseBlock {
+  display: flex;
+  flex-direction: column;
+}
