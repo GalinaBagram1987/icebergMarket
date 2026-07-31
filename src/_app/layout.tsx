@@ -1,21 +1,32 @@
-/**
- * Корневой лайаут (html, body) — ЖИВЕТ ТУТ
- */
-import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import { Metadata, Viewport } from 'next';
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
 import { AppProviders } from './providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import './globals.css';
-import type { Viewport } from 'next';
 
+/** Свойства корневого layout приложения. */
+interface RootLayoutProvider {
+  /** Содержимое текущей страницы */
+  children: ReactNode;
+}
+
+/** Размер  видимой области окна браузера*/
 export const viewport: Viewport = {
-  width: 1440,
+  width: 'device-width',
   initialScale: 1,
 };
 
-export const generateMetadata = async () => {
+/**
+ * Формирует метаданные приложения на основе текущей локали.
+ * Next.js автоматически добавляет возвращаемые значения
+ * в тег `<head>` страницы.
+ * @returns Асинхронно сформированные метаданные страницы.
+ */
+
+export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations('icebergMarket.header');
 
   return {
@@ -27,14 +38,25 @@ export const generateMetadata = async () => {
   };
 };
 
-const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  // Получаем тексты на сервере
-  const messages = await getMessages();
+/**
+ * Корневой layout приложения.
+ *
+ * Layout подключает глобальные стили, провайдеры приложения,
+ * локализованные сообщения, шапку и подвал сайта.
+ * Определяет общие метаданные для всего приложения.
+ * При необходимости их можно переопределить
+ * в layout или на отдельных страницах.
+ *
+ * @param props Свойства корневого layout.
+ * @param props.children Содержимое текущей страницы.
+ * @returns Корневую HTML-структуру приложения.
+ */
 
+const RootLayout = async ({ children }: RootLayoutProvider) => {
+  const messages = await getMessages();
   return (
     <html lang="ru">
       <body>
-        {/*  Оборачиваем в провайдер текстов, чтобы клиентские компоненты тоже имели к ним доступ */}
         <NextIntlClientProvider messages={messages}>
           <AppProviders>
             <Header />

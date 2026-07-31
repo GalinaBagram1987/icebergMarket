@@ -3,9 +3,10 @@
 import { type ReactNode } from 'react';
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
-import { makeStore, AppStore } from '@/_app/store';
+import { makeStore, type AppStore } from '../store';
 
 interface ReduxProviderProps {
+  /** Содержимое, которое будет обёрнуто в Redux Provider. */
   children: ReactNode;
 }
 

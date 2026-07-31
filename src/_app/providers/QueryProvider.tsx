@@ -1,9 +1,19 @@
-"use client";
+'use client';
+import { type ReactNode } from 'react';
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+interface QueryProviderProps {
+  /** Дочерние компоненты, которым предоставляется доступ к React Query. */
+  children: ReactNode;
+}
 
-export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
+/**
+ * Подключает React Query к клиентской части приложения
+ * и задаёт стандартные параметры работы с запросами и кэшем.
+ */
+
+export const QueryProvider = ({ children }: QueryProviderProps) => {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -17,7 +27,5 @@ export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
       }),
   );
 
-  return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
