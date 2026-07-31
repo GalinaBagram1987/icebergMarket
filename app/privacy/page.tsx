@@ -1,9 +1,13 @@
 import { Metadata } from 'next';
-import PrivacyView from '@/_pages/privacy';
+import PrivacyPage from '@/_pages/privacy';
 
 /**
- * Страница Политика конфиденциальности
- * переопределяем метатеги именно под эту страницу
+ * Страница /privacy (Next.js App Router).
+ *
+ * Компонент страницы импортируется из FSD-слоя `src/_pages/privacy`.
+ * Метаданные (title, description) переопределены здесь для данного маршрута.
+ *
+ * Вносить изменения в бизнес-логику следует в `src/_pages/privacy/`.
  */
 
 export const metadata: Metadata = {
@@ -11,8 +15,8 @@ export const metadata: Metadata = {
   description: 'Политика конфиденциальности Айсберг Маркет.',
 };
 
-const Privacy = async () => {
-  return <PrivacyView />;
+const Privacy = () => {
+  return <PrivacyPage />;
 };
 
 export default Privacy;

@@ -1,22 +1,22 @@
-// Главная страница поисковика — ЖИВЕТ ТУТ
 import { Metadata } from 'next';
-import { SearchMain } from '@/widgets/SearchMainPage';
-import { CookieConsent } from '@/features/CookieConsent';
+import MainPage from '@/_pages/main';
 
-// Переопределяем метатеги конкретно для Главной страницы
+/**
+ * Корневая страница приложения (маршрут /).
+ *
+ * Компонент страницы импортируется из FSD-слоя `_pages/main`.
+ * Метаданные (title, description) определены здесь для главной страницы.
+ *
+ * Бизнес-логику следует изменять в `src/_pages/main/`.
+ */
+
 export const metadata: Metadata = {
   title: 'Айсберг Маркет — Доска объявлений Сочи',
   description: 'Покупка и продажа товаров, автомобилей, недвижимости в Сочи. ',
 };
 
-const HomePage = () => {
-  return (
-    <main className="container">
-      <SearchMain />
-      <CookieConsent />
-      <h1 style={{ marginTop: '20px', marginBottom: '20px' }}>Привет! здесь будет Aйсберг Маркет</h1>
-    </main>
-  );
+const HomePage = async () => {
+  return <MainPage />;
 };
 
 export default HomePage;
