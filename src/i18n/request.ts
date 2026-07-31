@@ -1,5 +1,12 @@
 import { getRequestConfig } from 'next-intl/server';
 
+/**
+ * инициализация next-intl/server
+ * эта библиотека в проекте отвечает за централизованное хранение
+ *  всех текстов фронта
+ *  крупные текстовые блоки (страницы из футера) вынесены в отдельные файлы
+ */
+
 export default getRequestConfig(async () => {
   const locale = 'ru';
 
