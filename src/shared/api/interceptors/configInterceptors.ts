@@ -1,7 +1,19 @@
 import { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { getCookie, deleteCookie } from '@/shared/lib';
 
-// в next токен живет в куки. Проверяем его и получаем из куки
+/**
+ * Подключает к экземпляру Axios интерцепторы запросов и ответов.
+ *
+ * Интерцептор запроса получает `accessToken` из cookie и добавляет его
+ * в заголовок `Authorization` в формате `Bearer <token>`.
+ *
+ * Интерцептор ответа обрабатывает ошибку со статусом `401`:
+ * удаляет недействительный токен и перенаправляет пользователя
+ * на страницу авторизации.
+ *
+ * @param instance Экземпляр Axios, к которому подключаются интерцепторы.
+ * @returns Переданный экземпляр Axios с настроенными интерцепторами.
+ */
 
 export const setupInterceptors = (instance: AxiosInstance): AxiosInstance => {
   instance.interceptors.request.use(
