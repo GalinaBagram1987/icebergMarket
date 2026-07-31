@@ -31,7 +31,7 @@ export const Footer = async () => {
                 {t('footer.siteUse')}
               </Link>
             </div>
-            <Link href="#" className={styles.textBase}>
+            <Link href="/contacts" className={styles.textBase}>
               {t('footer.contacts')}
             </Link>
           </div>
