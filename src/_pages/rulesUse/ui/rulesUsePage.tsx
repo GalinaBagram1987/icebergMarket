@@ -1,6 +1,8 @@
 import styles from '@/shared/ui/styles/textPage.module.css';
 import { getTranslations } from 'next-intl/server';
 
+/** Компонент страницы "Правила испольования" */
+
 export const RulesUsePage = async () => {
   const t = await getTranslations('rulesUse');
 

@@ -1,6 +1,8 @@
 import styles from '@/shared/ui/styles/textPage.module.css';
 import { getTranslations } from 'next-intl/server';
 
+/** Компонент страницы "Политика конфиденциальности" */
+
 export const PrivacyPage = async () => {
   const t = await getTranslations('privacy');
 
