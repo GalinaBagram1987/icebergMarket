@@ -26,7 +26,7 @@ export default getRequestConfig(async () => {
       ...mainMessages.default,
       // т.к. внутри ваших JSON-файлов уже есть обертки, просто разворачиваем их в общий корень через оператор ...
       privacy: privacyMessages.default,
-      business: businessMessages.default,
+      forBusiness: businessMessages.default,
       rulesUse: rulesUseMessages.default,
       rulesSite: rulesSiteMessages.default,
       contacts: contactsMessages.default,

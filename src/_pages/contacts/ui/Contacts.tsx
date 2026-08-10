@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 /** Компонент страницы "Контакты" */
 
 export const ContactsPage = async () => {
-  const t = await getTranslations('forBusiness');
+  const t = await getTranslations('contacts');
 
   return (
     <main className="container">

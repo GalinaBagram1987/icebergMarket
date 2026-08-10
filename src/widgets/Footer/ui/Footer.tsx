@@ -23,7 +23,7 @@ export const Footer = async () => {
             <Link href="/privacy" className={styles.textBase}>
               {t('footer.privacyPolitic')}
             </Link>
-            <div className="rulesUseBlock">
+            <div className={styles.rulesUseBlock}>
               <Link href="/rules-site" className={styles.textBase}>
                 {t('footer.siteRules')}
               </Link>
