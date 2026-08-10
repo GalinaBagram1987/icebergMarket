@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useCookieConsent } from '../model/useCookieConsent';
+import { useCookieConsent } from '../model/useCoockieConsent';
 import styles from './CookieConsent.module.css';
 
 /**

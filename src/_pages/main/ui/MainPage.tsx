@@ -1,5 +1,5 @@
 import { SearchMain } from '@/widgets/SearchMainPage';
-import { CookieConsent } from '@/features/CookieConsent';
+import { CookieConsent } from '@/features/CoockieConsent';
 
 /**
  * Компоннет главной страницы

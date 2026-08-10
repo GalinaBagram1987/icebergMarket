@@ -1,5 +1,5 @@
 import { hasConsent, saveConsent } from './consent';
-import { initTrackers } from './initTracKers';
+import { initTrackers } from './initTrackers';
 
 /**Менеджер состояния
  * проверяет есть ли согласие сразу isConsentAccepted
