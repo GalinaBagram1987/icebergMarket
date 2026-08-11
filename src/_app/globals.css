@@ -7,7 +7,7 @@
   font-family: 'Podkova';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/podkova-v33-cyrillic_cyrillic-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/podkova-v33-cyrillic_cyrillic-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* dela-gothic-one-regular - cyrillic */
@@ -17,7 +17,7 @@
   font-family: 'Dela Gothic One';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/dela-gothic-one-v19-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/dela-gothic-one-v19-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* pt-sans-regular - cyrillic */
@@ -28,7 +28,7 @@
   font-family: 'PT Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/pt-sans-v18-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/pt-sans-v18-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* pt-mono-regular - cyrillic */
@@ -38,7 +38,7 @@
   font-family: 'PT Mono';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/pt-mono-v14-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/pt-mono-v14-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* pt-sans-caption-regular - cyrillic */
@@ -48,7 +48,7 @@
   font-family: 'PT Sans Caption';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/pt-sans-caption-v20-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/pt-sans-caption-v20-cyrillic-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* pt-sans-narrow-regular - cyrillic */
 /* хэдер, футер, кн найти, кнопки применить фильтры*/
@@ -59,7 +59,7 @@
   font-family: 'PT Sans Narrow';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/pt-sans-narrow-v19-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../shared/assets/fonts/pt-sans-narrow-v19-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 :root {
