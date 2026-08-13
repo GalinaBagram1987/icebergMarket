@@ -1,4 +1,5 @@
 import type { StaticImageData } from 'next/image';
+import type { BackendCategoryListItem } from '@/shared/api/apiMethods/catalog';
 
 /**
  * У бэка есть 2 типа эндпоинтов для главного каталога:
@@ -11,37 +12,11 @@ import type { StaticImageData } from 'next/image';
  * В файле собраны типы, необходимые для сборки единого дерева каталога.
  */
 
-/** Тип аттрибута категории. Пока не знаем точную структуру attrs */
-export type BackendCategoryAttr = unknown;
-
-/**
- * Элемент списка категорий, полученный с бэка.
- * Сейчас используется в ответах с основными категориями
- * и подкатегориями первого уровня.
- */
-
-export type BackendCategoryListItem = {
-  id: number;
-  parent_id: number | null;
-  name: string;
-  slug: string;
-  full_path: string;
-  is_leaf: boolean;
-  attrs: BackendCategoryAttr[];
-};
-/**
- * Общий тип ответа бэка для основных  категорий и категори 1 типа
- */
-
-export type BackendCategoryListResponse = {
-  categories: BackendCategoryListItem[];
-};
-
 /**
  * Тип локальной картинки основной категории каталога
  */
 export type MainCatalogImage = {
-  id: number;
+  slug: string;
   src: StaticImageData;
   alt?: string | null;
 };
@@ -50,7 +25,7 @@ export type MainCatalogImage = {
  * Основная категория собранного главного каталога
  */
 export type MainCatalogNode = BackendCategoryListItem & {
-  image: MainCatalogImage;
+  // image: MainCatalogImage;
   children: BackendCategoryListItem[];
 };
 

@@ -1,3 +1,1 @@
-import { apiWithInterceptors } from './configApi';
-
-export { apiWithInterceptors };
+export { apiWithInterceptors } from './configApi';
