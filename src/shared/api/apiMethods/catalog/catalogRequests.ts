@@ -10,7 +10,7 @@ export const catalogRequest = {
    * получить корневые категории
    * @param path - эндпоинт '/posts/'
    */
-  getMainCategories: async (): Promise<BackendCategoryListItem[]> => {
+  getRootCategories: async (): Promise<BackendCategoryListItem[]> => {
     const { data } = await apiWithInterceptors.get<BackendCategoryListResponse>('/posts/');
     return data.categories;
   },

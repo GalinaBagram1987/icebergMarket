@@ -7,19 +7,19 @@ import { catalogRequest } from '@/shared/api/apiMethods/catalog';
  */
 
 export const getFullTree = async (): Promise<MainCatalogTree> => {
-  const rootCategories = await catalogRequest.getMainCategories();
+  const rootCategories = await catalogRequest.getRootCategories();
 
   const results = await Promise.allSettled(
     rootCategories.map(async (parent): Promise<MainCatalogNode> => {
-      if (parent.is_leaf) {
+      if (parent.is_leaf === true) {
+        // нет детей
         return {
           ...parent,
           children: [],
         };
       }
-
+      // если дети есть
       const children = await catalogRequest.getChildren(parent.slug);
-
       return {
         ...parent,
         children,

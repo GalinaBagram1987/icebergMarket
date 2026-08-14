@@ -13,7 +13,7 @@ export type BackendCategoryListItem = {
   name: string;
   slug: string;
   full_path: string;
-  is_leaf: boolean;
+  is_leaf: boolean; // if true - нет детей (конечная категория), if false - есть дети
   attrs: BackendCategoryAttr[];
 };
 /**

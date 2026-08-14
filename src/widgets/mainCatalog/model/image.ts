@@ -19,7 +19,7 @@ import health18 from '../assets/images/18_health.png';
 import souvenirs19 from '../assets/images/19_souvenirs.png';
 import toys20 from '../assets/images/20_toys.png';
 
-import type { MainCatalogImage } from './types';
+import type { MainCatalogImage } from '../../../entities/mainCatalog/model/types';
 
 export const catalogImages = [
   { slug: 'auto-moto', src: auto1, alt: 'Авто' },

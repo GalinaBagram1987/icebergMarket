@@ -1,4 +1,3 @@
-import type { StaticImageData } from 'next/image';
 import type { BackendCategoryListItem } from '@/shared/api/apiMethods/catalog';
 
 /**
@@ -13,19 +12,9 @@ import type { BackendCategoryListItem } from '@/shared/api/apiMethods/catalog';
  */
 
 /**
- * Тип локальной картинки основной категории каталога
- */
-export type MainCatalogImage = {
-  slug: string;
-  src: StaticImageData;
-  alt?: string | null;
-};
-
-/**
  * Основная категория собранного главного каталога
  */
 export type MainCatalogNode = BackendCategoryListItem & {
-  // image: MainCatalogImage;
   children: BackendCategoryListItem[];
 };
 
