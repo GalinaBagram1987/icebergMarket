@@ -5,8 +5,14 @@ import type { StaticImageData } from 'next/image';
  * Используется для связывания изображения с категорией по её slug.
  * Применяется в виджете mainCatalog для рендеринга иконок категорий.
  */
-export type MainCatalogImage = {
-  slug: string;
-  src: StaticImageData;
-  alt?: string | null;
-};
+export type MainCatalogUiConfig = Record<
+  string,
+  {
+    area: string;
+    order: number;
+    src: StaticImageData;
+    alt?: string | null;
+    bgColor: string;
+    hoverColor: string;
+  }
+>;

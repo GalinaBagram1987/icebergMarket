@@ -23,6 +23,6 @@
     },
     "types": ["node"]
   },
-  "include": ["declarations.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+  "include": ["declarations.d.ts", "next-env.d.ts", "css.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
