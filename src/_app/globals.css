@@ -101,6 +101,7 @@
 
   --bg-hover: #dad8d8; /* Эффект при наведении на строку списка/таблицы */
   --bg-dark: #8c8989; /* Элемент "В разделе", гамбургер, вход, звезда */
+  --border-dark: #8c8989; /*Бордел в окнах согласия*/
   --bg-light: #c0c0c0; /* Кнопка "В разделе" */
 
   /* Системные и специфические статусы */
@@ -212,4 +213,11 @@ button {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
+}
+
+.containerTest {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 50px;
 }

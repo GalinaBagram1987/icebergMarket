@@ -1,0 +1,57 @@
+.confirmDialog {
+  width: 431px;
+  height: 90px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 0 10px 0 36px;
+  background-color: var(--text-wigth);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.confirmTitle {
+  font-family: var(--font-main);
+  font-size: 18px;
+  color: var(--text-black);
+  margin: 0;
+}
+
+.confirmBtnText {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-wigth);
+  margin-left: 36px;
+}
+
+.confBtnGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-left: 36px;
+}
+
+.confirmBtnOk,
+.confirmBtnCancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 30px;
+  border: none;
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-white);
+  background-color: var(--accent-color);
+  cursor: pointer;
+}
+
+.confirmBtnOk {
+  width: 110px;
+}
+
+.confirmBtnCancel {
+  width: 109px;
+}

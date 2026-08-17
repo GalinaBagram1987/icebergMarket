@@ -11,5 +11,6 @@ export const useMainCatalogTreeQuery = () => {
     queryKey: ['mainCatalogTree'],
     queryFn: getFullTree,
     staleTime: 10 * 60 * 1000, // Только каталог свежий 10 минут
+    ...(select ? { select } : {}),
   });
 };

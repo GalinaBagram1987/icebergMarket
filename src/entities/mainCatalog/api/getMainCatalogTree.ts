@@ -9,7 +9,7 @@ import { catalogRequest } from '@/shared/api/apiMethods/catalog';
 export const getFullTree = async (): Promise<MainCatalogTree> => {
   const rootCategories = await catalogRequest.getRootCategories();
 
-  const results = await Promise.allSettled(
+  const results = await Promise.all(
     rootCategories.map(async (parent): Promise<MainCatalogNode> => {
       if (parent.is_leaf === true) {
         // нет детей
@@ -26,15 +26,38 @@ export const getFullTree = async (): Promise<MainCatalogTree> => {
       };
     }),
   );
-
-  return results.map((result, index) => {
-    if (result.status === 'fulfilled') {
-      return result.value;
-    }
-
-    return {
-      ...rootCategories[index],
-      children: [],
-    };
-  });
 };
+
+// я рассматриаю два варианта с promise.all и promise.allSetted оставляю второй код пока комментированым
+// export const getFullTree = async (): Promise<MainCatalogTree> => {
+//   const rootCategories = await catalogRequest.getRootCategories();
+
+//   const results = await Promise.allSettled(
+//     rootCategories.map(async (parent): Promise<MainCatalogNode> => {
+//       if (parent.is_leaf === true) {
+//         // нет детей
+//         return {
+//           ...parent,
+//           children: [],
+//         };
+//       }
+//       // если дети есть
+//       const children = await catalogRequest.getChildren(parent.slug);
+//       return {
+//         ...parent,
+//         children,
+//       };
+//     }),
+//   );
+
+//   return results.map((result, index) => {
+//     if (result.status === 'fulfilled') {
+//       return result.value;
+//     }
+
+//     return {
+//       ...rootCategories[index],
+//       children: [],
+//     };
+//   });
+// };
