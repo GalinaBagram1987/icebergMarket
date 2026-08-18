@@ -9,6 +9,7 @@
 import { useState } from 'react';
 import { ConfirmDialog } from '@/shared/ui/confirmDialog';
 import { RejectDialog } from '@/shared/ui/rejectDialog';
+import { DelDialog } from '@/shared/ui/deleteDialog';
 
 const TestPage = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,13 +29,27 @@ const TestPage = () => {
             onCancel={() => setIsOpen(false)}
           />
         </div>
+        <div></div>
         <div>
           {/*Проверка как выглядит окно диалога отказа*/}
 
           <RejectDialog
             isOpen={isOpen}
             onConfirm={() => {
-              console.log('Подтверждено');
+              console.log('Отклонено');
+              setIsOpen(false);
+            }}
+            onCancel={() => setIsOpen(false)}
+          />
+        </div>
+        <div></div>
+        <div>
+          {/*Проверка как выглядит окно диалога удалить*/}
+
+          <DelDialog
+            isOpen={isOpen}
+            onConfirm={() => {
+              console.log('Удалено');
               setIsOpen(false);
             }}
             onCancel={() => setIsOpen(false)}

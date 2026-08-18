@@ -3,10 +3,9 @@ import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './rejectDialog.module.css';
 import { RejectDialogProps } from '../module/types';
-import { cn } from '@/shared/lib';
 
 /**
- * Компонент диалог согласия
+ * Компонент диалог отказа
  * будет принимать функции в зависмости от компонента
  * в котором он будет использоваться
  */

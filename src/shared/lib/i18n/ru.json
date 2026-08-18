@@ -25,6 +25,11 @@
       "ok": "Ok",
       "cancel": "Отмена",
       "rejectBut": "Отклонить"
+    },
+    "deleteDialog": {
+      "delTitle": "Точно удалить?",
+      "delete": "Удалить",
+      "cancel": "Отмена"
     }
   }
 }
