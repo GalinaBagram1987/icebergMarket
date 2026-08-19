@@ -1,18 +1,34 @@
 import type { StaticImageData } from 'next/image';
+import { BackendMainCategory } from '@/shared/api/apiMethods/catalog/type';
 
 /**
- * Тип локальной картинки для основной категории каталога.
- * Используется для связывания изображения с категорией по её slug.
- * Применяется в виджете mainCatalog для рендеринга иконок категорий.
+ * UI-настройки одной категории.
  */
-export type MainCatalogUiConfig = Record<
-  string,
-  {
-    area: string;
-    order: number;
-    src: StaticImageData;
-    alt?: string | null;
-    bgColor: string;
-    hoverColor: string;
-  }
->;
+export type MainCatalogUiConfigItem = {
+  area: string;
+  order: number;
+  src: StaticImageData;
+  alt?: string | null;
+  bgColor: string;
+  hoverColor: string;
+};
+
+/**
+ * UI-конфигурация категорий.
+ * Ключ — slug категории.
+ */
+export type MainCatalogUiConfig = {
+  [slug: string]: MainCatalogUiConfigItem | undefined;
+};
+
+/**
+ * Категория с бэкенда, объединённая с UI-настройками.
+ */
+export type MainCatalogItem = BackendMainCategory & MainCatalogUiConfigItem;
+
+/**
+ * Подготовленные данные главного каталога.
+ */
+export type MainCatalogData = {
+  categories: MainCatalogItem[];
+};

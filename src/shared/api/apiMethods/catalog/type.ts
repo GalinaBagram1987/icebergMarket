@@ -2,9 +2,7 @@
 export type BackendCategoryAttr = unknown;
 
 /**
- * Элемент списка категорий, полученный с бэка.
- * Сейчас используется в ответах с основными категориями
- * и подкатегориями первого уровня.
+ * Общий тип который приходит с бэка для категоий
  */
 
 export type BackendCategoryListItem = {
@@ -16,10 +14,25 @@ export type BackendCategoryListItem = {
   is_leaf: boolean; // if true - нет детей (конечная категория), if false - есть дети
   attrs: BackendCategoryAttr[];
 };
+
 /**
- * Общий тип ответа бэка для основных  категорий и категори 1 типа
+ * тип для одной категории на главного каталога.
+ * Заголовок и первый уровень вложенности
  */
 
-export type BackendCategoryListResponse = {
+export type BackendMainCategory = BackendCategoryListItem & {
+  subcategory: BackendCategoryListItem[];
+};
+
+/**
+ * Типы для каталога на главной странице
+ */
+export type MainCatalogResponse = {
+  categories: BackendMainCategory[];
+};
+/**
+ * Тип для категори первого уроня
+ */
+export type FirstLevCategoryResponse = {
   categories: BackendCategoryListItem[];
 };

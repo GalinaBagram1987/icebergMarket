@@ -1,3 +1,1 @@
-export type { MainCatalogNode, MainCatalogTree } from './model/types';
-
-export { useMainCatalogTreeQuery } from './api/mainCatalogTreeQuery';
+export { MainCatalogQueryqueryOpt } from './model/mainCatalogQueryOptions';

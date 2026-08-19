@@ -1,5 +1,5 @@
 import { apiWithInterceptors } from '../../configApi';
-import type { BackendCategoryListItem, BackendCategoryListResponse } from './type';
+import type { BackendCategoryListItem, BackendMainCategory, MainCatalogResponse, FirstLevCategoryResponse } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку
@@ -7,20 +7,22 @@ import type { BackendCategoryListItem, BackendCategoryListResponse } from './typ
  */
 export const catalogRequest = {
   /**
-   * получить корневые категории
+   * получаем категории для главного каталога
+   * заголовки и ссылки первого уровня
    * @param path - эндпоинт '/posts/'
    */
-  getRootCategories: async (): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<BackendCategoryListResponse>('/posts/');
+  getMainCatalog: async (): Promise<BackendMainCategory[]> => {
+    const { data } = await apiWithInterceptors.get<MainCatalogResponse>('/posts/');
     return data.categories;
   },
 
   /**
    * получить категории первого уровня
+   * @param path - эндпоинт '/posts/${slug}'
    */
 
-  getChildren: async (slug: string): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<BackendCategoryListResponse>(`/posts/${slug}`);
+  getFirstLevelCateg: async (slug: string): Promise<BackendCategoryListItem[]> => {
+    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`/posts/${slug}`);
     return data.categories;
   },
 };
