@@ -1,1 +1,1 @@
-export { MainCatalogQueryqueryOpt } from './model/mainCatalogQueryOptions';
+export { MainCatalogQueryOptions } from './model/mainCatalogQueryOptions';

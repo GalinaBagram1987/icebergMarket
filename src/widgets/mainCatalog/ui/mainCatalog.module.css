@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    'auto computers construction'
+    'tools appliances furniture'
+    'water-tech appliances furniture'
+    'sport-tourism clothes kitchenware'
+    'garden-country clothes kitchenware'
+    'animals clothes fabrics'
+    'stationery beauty kids'
+    'food-beverages health kids'
+    'packaging gifts kids';
+  gap: 20px;
+}
