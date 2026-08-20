@@ -10,7 +10,14 @@ export type MainCatalogUiConfigItem = {
   src: StaticImageData;
   alt?: string | null;
   bgColor: string;
-  hoverColor: string;
+  headerTitleSize?: string;
+  leftMarginTitle?: string;
+  headerHeight?: string;
+  cardHeight?: string;
+  listPaddingLeft?: string;
+  listPaddingTop?: string;
+  listPaggingRight?: string;
+  listPaddindBottom?: string;
 };
 
 /**

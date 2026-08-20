@@ -1,6 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 325px, 309px, 300px, 309px;
   grid-template-areas:
     'auto computers construction'
     'tools appliances furniture'
@@ -12,4 +13,78 @@
     'food-beverages health kids'
     'packaging gifts kids';
   gap: 20px;
+}
+
+.grid > :nth-child(4),
+.grid > :nth-child(5),
+.grid > :nth-child(6),
+.grid > :nth-child(7) {
+  background-color: var(--bg-mainCatalog);
+}
+
+.grid > :nth-child(14),
+.grid > :nth-child(15),
+.grid > :nth-child(16),
+.grid > :nth-child(17),
+.grid > :nth-child(18),
+.grid > :nth-child(19),
+.grid > :nth-child(20) {
+  background-color: var(--bg-mainCatalog);
+}
+
+.catalogCard {
+  width: 323px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: var(--radius-md);
+}
+
+.catalogHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: var(--font-headings);
+  border-radius: var(--radius-md);
+
+  width: 100%;
+  box-sizing: border-box;
+
+  height: var(--header-height, 67px);
+}
+
+.headerTitle {
+  font-family: var(--font-headings);
+  margin: 0;
+  font-weight: 400;
+  font-size: var(--header-title-size);
+  margin-left: var(--left-margin-size);
+}
+
+.headerBgFirstVar {
+  background-color: var(--bg-main-one);
+  opacity: 0.5;
+  &:hover {
+    background-color: var(--bg-main-one-hover);
+  }
+}
+
+.headerBgSecondVar {
+  background-color: var(--bg-main-two);
+  opacity: 0.5;
+  &:hover {
+    background-color: var(--bg-main-two-hover);
+  }
+}
+
+.catalogListContainer {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+
+  padding-top: var(--list-padding-top);
+  padding-right: var(--list-padding-right);
+  padding-bottom: var(--list-padding-bottom);
+  padding-left: var(--list-padding-left);
 }
