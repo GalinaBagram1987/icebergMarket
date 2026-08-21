@@ -1,4 +1,4 @@
-import styles from './mainCatalogUiConfig.module.css';
+import styles from './mainCatalog.module.css';
 import { CatalogList } from './catalogList';
 import { CatalogHeader } from './catalogHeader';
 

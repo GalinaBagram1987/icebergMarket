@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { setupInterceptors } from '../interceptors';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
+console.log('NEXT_PUBLIC_API_URL:', BASE_URL);
+
+if (!BASE_URL) {
+  throw new Error('NEXT_PUBLIC_API_BASE_URL не задан');
+}
 
 /**
  * Базовый экземпляр Axios для выполнения HTTP-запросов к API.

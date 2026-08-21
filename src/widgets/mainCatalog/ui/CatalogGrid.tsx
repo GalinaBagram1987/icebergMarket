@@ -1,4 +1,4 @@
-import styles from './mainCatalogUiConfig.module.css';
+import styles from './mainCatalog.module.css';
 import { CatalogCard } from './catalogCard';
 
 /**

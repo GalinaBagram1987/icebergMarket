@@ -1,4 +1,4 @@
-import styles from './mainCatalogUiConfig.module.css';
+import styles from './mainCatalog.module.css';
 import { cn } from '@/shared/lib';
 
 export const CatalogHeader = ({ item }: { item: any }) => {

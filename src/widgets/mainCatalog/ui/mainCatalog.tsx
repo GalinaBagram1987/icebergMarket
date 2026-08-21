@@ -1,3 +1,4 @@
+'use client';
 import { useMainCatalogQuery } from '../model/hooks';
 import { CatalogGrid } from './CatalogGrid';
 // Добавить еще два импорта скелетонов
