@@ -19,13 +19,6 @@ import health18 from '../assets/images/18_health.png';
 import souvenirs19 from '../assets/images/19_souvenirs.png';
 import toys20 from '../assets/images/20_toys.png';
 
-import type { MainCatalogUiConfig } from './types';
-
-const ACCENT_BG = 'var(--btn-accent-bg)';
-const ACCENT_BG_HOVER = 'var(--btn-accent-bg-hover)';
-const NEUTRAL_BG = 'var(--btn-neutral-bg)';
-const NEUTRAL_BG_HOVER = 'var(--btn-neutral-bg-hover)';
-
 export const mainCatalogUiConfig = {
   'auto-moto': {
     area: 'auto',
@@ -36,7 +29,7 @@ export const mainCatalogUiConfig = {
     headerTitleSize: '22px',
     leftMarginTitle: '38px',
     headerHeight: '72px',
-    cardWidth: '312px',
+    cardHeight: '312px',
     listPaddingLeft: '29px',
     listPaddingTop: '15px',
     listPaggingRight: '46px',

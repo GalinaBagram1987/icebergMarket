@@ -1,5 +1,6 @@
 import { SearchMain } from '@/widgets/SearchMainPage';
 import { CookieConsent } from '@/features/CoockieConsent';
+import { MainCatalog } from '@/widgets/mainCatalog';
 
 /**
  * Компоннет главной страницы
@@ -10,7 +11,7 @@ export const MainPage = async () => {
     <main className="container">
       <SearchMain />
       <CookieConsent />
-      <h1 style={{ marginTop: '20px', marginBottom: '20px' }}>Привет! здесь будет Aйсберг Маркет</h1>
+      <MainCatalog />
     </main>
   );
 };

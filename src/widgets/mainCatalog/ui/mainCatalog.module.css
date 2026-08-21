@@ -1,7 +1,11 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: 325px, 309px, 300px, 309px;
+  grid-template-rows:
+    325px /*временное решение пока высоты сделать 20, сетку надо будет перебирать*/
+    repeat(2, calc((309px - 20px) / 2))
+    repeat(3, calc((300px - 40px) / 3))
+    repeat(3, calc((309px - 40px) / 3));
   grid-template-areas:
     'auto computers construction'
     'tools appliances furniture'
@@ -34,6 +38,7 @@
 
 .catalogCard {
   width: 323px;
+  height: var(--card-height);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -83,8 +88,8 @@
   box-sizing: border-box;
   background-color: #ffffff;
 
+  padding-left: var(--list-padding-left);
   padding-top: var(--list-padding-top);
   padding-right: var(--list-padding-right);
   padding-bottom: var(--list-padding-bottom);
-  padding-left: var(--list-padding-left);
 }
