@@ -23,7 +23,7 @@ export const CatalogGrid: React.FC<CatalogGridProps> = ({ categories }) => {
   }
 
   return (
-    <div className="container">
+    <div className="containerContent">
       <div className={styles.grid}>
         {categories.map((item) => (
           <div

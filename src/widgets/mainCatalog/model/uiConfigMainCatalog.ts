@@ -58,7 +58,7 @@ export const mainCatalogUiConfig = {
     bgColor: 'headerBgFirstVar',
     headerTitleSize: '18px',
     leftMarginTitle: '15px',
-    headerHeight: '18px',
+    headerHeight: '67px',
     cardHeight: '315px',
     listPaddingLeft: '23px',
     listPaddingTop: '9px', //15

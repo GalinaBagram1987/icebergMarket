@@ -17,9 +17,14 @@
     'food-beverages health kids'
     'packaging gifts kids';
   gap: 20px;
+
+  /* ОПРЕДЕЛЯЕМ ЗОНЫ ЗАЛИВКИ GAP: */
+  /* Первый ряд (325px) + gap (20px) = 345px. Отсюда начинается заливка второго ряда. */
+  /* Второй ряд (309px) + следующий gap (20px) = 329px. Итого заливка до 674px. */
+  background: linear-gradient(to bottom, transparent 0px, transparent 345px, var(--bg-mainCatalog) 345px, var(--bg-mainCatalog) 674px, transparent 674px, transparent 100%);
 }
 
-.grid > :nth-child(4),
+/* .grid > :nth-child(4),
 .grid > :nth-child(5),
 .grid > :nth-child(6),
 .grid > :nth-child(7) {
@@ -34,7 +39,7 @@
 .grid > :nth-child(19),
 .grid > :nth-child(20) {
   background-color: var(--bg-mainCatalog);
-}
+} */
 
 .catalogCard {
   width: 323px;
@@ -69,7 +74,6 @@
 
 .headerBgFirstVar {
   background-color: var(--bg-main-one);
-  opacity: 0.5;
   &:hover {
     background-color: var(--bg-main-one-hover);
   }
@@ -77,7 +81,6 @@
 
 .headerBgSecondVar {
   background-color: var(--bg-main-two);
-  opacity: 0.5;
   &:hover {
     background-color: var(--bg-main-two-hover);
   }
