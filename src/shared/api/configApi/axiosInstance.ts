@@ -1,12 +1,7 @@
 import axios from 'axios';
 import { setupInterceptors } from '../interceptors';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_ORIGIN;
-
-console.log('NEXT_PUBLIC_API_ORIGIN:', BASE_URL);
-if (!BASE_URL) {
-  throw new Error('NEXT_PUBLIC_API_ORIGIN не задан');
-}
+const isServer = typeof window === 'undefined';
 
 /**
  * Базовый экземпляр Axios для выполнения HTTP-запросов к API.
@@ -18,7 +13,8 @@ if (!BASE_URL) {
  */
 
 export const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  //baseURL: isServer ? process.env.API_ORIGIN || 'http://45.149.154' : '/api/v1/',
+  baseURL: process.env.NEXT_PUBLIC_API_ORIGIN,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
