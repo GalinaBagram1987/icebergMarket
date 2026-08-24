@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { setupInterceptors } from '../interceptors';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+// const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-console.log('NEXT_PUBLIC_API_URL:', BASE_URL);
+// console.log('NEXT_PUBLIC_API_URL:', BASE_URL);
 
-if (!BASE_URL) {
-  throw new Error('NEXT_PUBLIC_API_BASE_URL не задан');
-}
+// if (!BASE_URL) {
+//   throw new Error('NEXT_PUBLIC_API_BASE_URL не задан');
+// }
 
 /**
  * Базовый экземпляр Axios для выполнения HTTP-запросов к API.
@@ -19,7 +19,7 @@ if (!BASE_URL) {
  */
 
 export const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: '/api/v1',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

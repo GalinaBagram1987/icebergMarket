@@ -2,7 +2,8 @@
 
 import createNextIntlPlugin from 'next-intl/plugin';
 
-const isProd = process.env.NODE_ENV === 'production';
+// const isProd = process.env.NODE_ENV === 'production';
+const API_ORIGIN = process.env.API_ORIGIN;
 
 const nextConfig = {
   // разрешаем скачивать картинки с бэка
@@ -10,7 +11,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '217.216.37.136',
+        hostname: '45.149.154.20',
         port: '80',
         pathname: '/**', // Разрешаем любые папки с картинками на этом сервере
       },
@@ -24,7 +25,7 @@ const nextConfig = {
         source: '/api/v1/:path*',
         /* Универсальный путь: Next.js сам подставит нужное значение из активного .env файла */
         /* Next.js чисто склеит http://45.149.154.20:80/api/v:80 с /api/v1/catalog*/
-        destination: `${process.env.API_ORIGIN}/api/v1/:path*`,
+        destination: `${API_ORIGIN}/api/v1/:path*/`,
       },
     ];
   },
