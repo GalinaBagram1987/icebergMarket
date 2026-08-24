@@ -12,7 +12,7 @@ export const catalogRequest = {
    * @param path - эндпоинт '/posts/'
    */
   getMainCatalog: async (): Promise<BackendMainCategory[]> => {
-    const { data } = await apiWithInterceptors.get<MainCatalogResponse>('/posts/');
+    const { data } = await apiWithInterceptors.get<MainCatalogResponse>('posts/');
     return data.categories;
   },
 
@@ -22,7 +22,7 @@ export const catalogRequest = {
    */
 
   getFirstLevelCateg: async (slug: string): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`/posts/${slug}`);
+    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`posts/${slug}/`);
     return data.categories;
   },
 };

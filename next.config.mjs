@@ -3,10 +3,10 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
 // const isProd = process.env.NODE_ENV === 'production';
-const API_ORIGIN = process.env.API_ORIGIN;
+const API_ORIGIN = process.env.API_ORIGIN || 'http://45.149.154.20:80';
 
 const nextConfig = {
-  trailingSlash: true, // заставляет Next.js всегда добавлять слеш в конце URL (бэк только со слешем)
+  // trailingSlash: true, // заставляет Next.js всегда добавлять слеш в конце URL (бэк только со слешем)
   // разрешаем скачивать картинки с бэка
   images: {
     remotePatterns: [
@@ -26,7 +26,7 @@ const nextConfig = {
         source: '/api/v1/:path*',
         /* Универсальный путь: Next.js сам подставит нужное значение из активного .env файла */
         /* Next.js чисто склеит http://45.149.154.20:80/api/v:80 с /api/v1/catalog*/
-        destination: `${API_ORIGIN}/api/v1/:path*/`,
+        destination: `${API_ORIGIN}/api/v1/:path*`,
       },
     ];
   },
