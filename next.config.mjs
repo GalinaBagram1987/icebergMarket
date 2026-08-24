@@ -6,6 +6,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const API_ORIGIN = process.env.API_ORIGIN;
 
 const nextConfig = {
+  trailingSlash: true, // заставляет Next.js всегда добавлять слеш в конце URL (бэк только со слешем)
   // разрешаем скачивать картинки с бэка
   images: {
     remotePatterns: [
