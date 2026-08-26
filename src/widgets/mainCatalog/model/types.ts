@@ -29,9 +29,29 @@ export type MainCatalogUiConfig = {
 };
 
 /**
+ *
+ */
+
+export type mainCatalogDataFrontItem = {
+  name: string;
+  slug: string;
+  full_path: string;
+};
+
+export type mainCatalogDataFront = 
+
+id: ;
+order: ;
+{
+  subcategory: mainCatalogDataFrontItem[];
+}
+
+
+
+/**
  * Категория с бэкенда, объединённая с UI-настройками.
  */
-export type MainCatalogItem = BackendMainCategory & MainCatalogUiConfigItem;
+export type MainCatalogItem = mainCatalogDataFront & MainCatalogUiConfigItem;
 
 /**
  * Подготовленные данные главного каталога.
