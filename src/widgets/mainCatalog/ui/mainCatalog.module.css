@@ -1,3 +1,8 @@
+.margin {
+  margin-left: 41px;
+  margin-bottom: 10px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -16,30 +21,60 @@
     'stationery beauty kids'
     'food-beverages health kids'
     'packaging gifts kids';
-  gap: 20px;
-
-  /* ОПРЕДЕЛЯЕМ ЗОНЫ ЗАЛИВКИ GAP: */
-  /* Первый ряд (325px) + gap (20px) = 345px. Отсюда начинается заливка второго ряда. */
-  /* Второй ряд (309px) + следующий gap (20px) = 329px. Итого заливка до 674px. */
-  background: linear-gradient(to bottom, transparent 0px, transparent 345px, var(--bg-mainCatalog) 345px, var(--bg-mainCatalog) 674px, transparent 674px, transparent 100%);
+  column-gap: 20px;
+  row-gap: 30px;
+  position: relative; /* Важно: чтобы подложка позиционировалась внутри сетки */
 }
 
-/* .grid > :nth-child(4),
-.grid > :nth-child(5),
-.grid > :nth-child(6),
-.grid > :nth-child(7) {
+/*Создаем серую полосу во втором ряду*/
+.grid::before {
+  content: '';
   background-color: var(--bg-mainCatalog);
+
+  /* Растягиваем от первой до последней колонки (всего 3 колонки, значит линий 4) */
+  grid-column: 1 / 4;
+
+  /* Ставим строго во второй ряд (от 2-й до 4-й горизонтальной линии Grid) */
+  /* Это автоматически покроет области tools, appliances, furniture и water-tech */
+  grid-row: 2 / 4;
+
+  /* Отправляем на задний план, чтобы карточки лежали поверх */
+  z-index: 0;
+
+  /* Компенсируем gap, чтобы серый фон заходил в межстрочные интервалы */
+  margin-top: -15px;
+  margin-bottom: -15px;
+  margin-left: -18px;
 }
 
-.grid > :nth-child(14),
-.grid > :nth-child(15),
-.grid > :nth-child(16),
-.grid > :nth-child(17),
-.grid > :nth-child(18),
-.grid > :nth-child(19),
-.grid > :nth-child(20) {
+/* Все ваши карточки внутри grid-areas должны иметь z-index выше подложки */
+.grid > div {
+  z-index: 1;
+}
+
+.grid::after {
+  content: '';
   background-color: var(--bg-mainCatalog);
-} */
+
+  /* Растягиваем от первой до последней колонки (всего 3 колонки, значит линий 4) */
+  grid-column: 1 / 4;
+
+  /* Ставим строго во второй ряд (от 2-й до 4-й горизонтальной линии Grid) */
+  /* Это автоматически покроет области tools, appliances, furniture и water-tech */
+  grid-row: 7 / 10;
+
+  /* Отправляем на задний план, чтобы карточки лежали поверх */
+  z-index: 0;
+
+  /* Компенсируем gap, чтобы серый фон заходил в межстрочные интервалы */
+  margin-top: -20px;
+  margin-left: -18px;
+}
+
+/* Все ваши карточки внутри grid-areas должны иметь z-index выше подложки */
+.grid > div {
+  z-index: 1;
+}
 
 .catalogCard {
   width: 323px;
@@ -70,17 +105,18 @@
   font-weight: 400;
   font-size: var(--header-title-size);
   margin-left: var(--left-margin-size);
+  line-height: 1.4;
 }
 
 .headerBgFirstVar {
-  background-color: var(--bg-main-one);
+  background-color: color-mix(in srgb, var(--bg-main-one) 50%, transparent); /*var(--bg-main-one)*/
   &:hover {
     background-color: var(--bg-main-one-hover);
   }
 }
 
 .headerBgSecondVar {
-  background-color: var(--bg-main-two);
+  background-color: color-mix(in srgb, var(--bg-main-two) 50%, transparent);
   &:hover {
     background-color: var(--bg-main-two-hover);
   }

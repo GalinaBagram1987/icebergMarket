@@ -13,8 +13,7 @@ const isServer = typeof window === 'undefined';
  */
 
 export const axiosInstance = axios.create({
-  //baseURL: isServer ? process.env.API_ORIGIN || 'http://45.149.154' : '/api/v1/',
-  baseURL: process.env.NEXT_PUBLIC_API_ORIGIN,
+  baseURL: isServer ? process.env.API_ORIGIN || 'http://45.149.154' : '/api/v1/',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

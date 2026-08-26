@@ -74,7 +74,7 @@ export const mainCatalogUiConfig = {
     headerTitleSize: '18px',
     leftMarginTitle: '16px',
     headerHeight: '67px',
-    cardHeight: '207px',
+    cardHeight: '340px',
     listPaddingLeft: '21px',
     listPaddingTop: '16px',
     listPaggingRight: '12px',

@@ -24,7 +24,7 @@ const nextConfig = {
         source: '/api/v1/:path*',
         /* Универсальный путь: Next.js сам подставит нужное значение из активного .env файла */
         /* Next.js чисто склеит http://45.149.154.20:80/api/v:80 с /api/v1/catalog*/
-        destination: `${API_ORIGIN}/api/v1/:path*`,
+        destination: `${API_ORIGIN}/api/v1/:path*/`,
         basePath: false,
       },
     ];

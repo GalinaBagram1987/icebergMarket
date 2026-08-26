@@ -1,5 +1,7 @@
 import styles from './mainCatalog.module.css';
 import { CatalogCard } from './catalogCard';
+import { CatalogList } from './catalogList';
+import { cn } from '@/shared/lib';
 
 /**
  * Свойства компонента сетки главного каталога
@@ -23,7 +25,7 @@ export const CatalogGrid: React.FC<CatalogGridProps> = ({ categories }) => {
   }
 
   return (
-    <div className="containerContent">
+    <div className={cn('containerContent', styles.margin)}>
       <div className={styles.grid}>
         {categories.map((item) => (
           <div
@@ -32,6 +34,7 @@ export const CatalogGrid: React.FC<CatalogGridProps> = ({ categories }) => {
             style={{ gridArea: item.area }}
           >
             <CatalogCard item={item} />
+            <CatalogList item={item} />
           </div>
         ))}
       </div>
