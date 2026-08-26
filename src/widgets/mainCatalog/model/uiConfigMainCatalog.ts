@@ -47,7 +47,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '312px',
     listPaddingLeft: '30px',
     listPaddingTop: '16px', //или 25
-    listPaggingRight: '17px',
+    listPaddingRight: '17px',
     listPaddindBottom: '26px',
   },
   construction: {
@@ -62,7 +62,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '315px',
     listPaddingLeft: '23px',
     listPaddingTop: '9px', //15
-    listPaggingRight: '29px',
+    listPaddingRight: '29px',
     listPaddindBottom: '12px',
   },
   'instruments-and-equipment': {
@@ -77,7 +77,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '340px',
     listPaddingLeft: '21px',
     listPaddingTop: '16px',
-    listPaggingRight: '12px',
+    listPaddingRight: '12px',
     listPaddindBottom: '21px',
   },
 
@@ -93,7 +93,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '280px',
     listPaddingLeft: '21px',
     listPaddingTop: '16px',
-    listPaggingRight: '23px',
+    listPaddingRight: '23px',
     listPaddindBottom: '15px',
   },
   furniture: {
@@ -108,7 +108,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '280px',
     listPaddingLeft: '12px',
     listPaddingTop: '8px',
-    listPaggingRight: '28',
+    listPaddingRight: '28',
     listPaddindBottom: '1px',
   },
   'water-tech': {
@@ -167,7 +167,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '265px',
     listPaddingLeft: '13px',
     listPaddingTop: '15px',
-    listPaggingRight: '8px',
+    listPaddingRight: '8px',
     listPaddindBottom: '26px',
   },
   kitchenware: {
@@ -182,7 +182,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '172px',
     listPaddingLeft: '13px',
     listPaddingTop: '15px',
-    listPaggingRight: '5px',
+    listPaddingRight: '5px',
     listPaddindBottom: '25px',
   },
   'fabrics-haberdashery': {
@@ -274,7 +274,7 @@ export const mainCatalogUiConfig = {
     cardHeight: '269px',
     listPaddingLeft: '26px',
     listPaddingTop: '13px',
-    listPaggingRight: '55px',
+    listPaddingRight: '55px',
     listPaddindBottom: '10px',
   },
 } as const;

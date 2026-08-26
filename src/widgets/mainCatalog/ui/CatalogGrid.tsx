@@ -1,6 +1,5 @@
 import styles from './mainCatalog.module.css';
 import { CatalogCard } from './catalogCard';
-import { CatalogList } from './catalogList';
 import { cn } from '@/shared/lib';
 
 /**
@@ -34,7 +33,6 @@ export const CatalogGrid: React.FC<CatalogGridProps> = ({ categories }) => {
             style={{ gridArea: item.area }}
           >
             <CatalogCard item={item} />
-            <CatalogList item={item} />
           </div>
         ))}
       </div>

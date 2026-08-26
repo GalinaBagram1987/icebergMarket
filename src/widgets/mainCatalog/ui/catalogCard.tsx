@@ -13,12 +13,13 @@ export const CatalogCard = ({ item }: { item: any }) => {
         '--card-height': item.cardHeight,
         '--list-padding-left': item.listPaddingLeft,
         '--list-padding-top': item.listPaddingTop,
-        '--list-padding-right': item.listPaggingRight,
+        '--list-padding-right': item.listPaddingRight,
         '--list-padding-bottom': item.listPaddindBottom,
       }}
     >
       <CatalogHeader item={item} />
-      {item.children && item.children.length > 0 && <CatalogList item={item} />}
+      {/* {item.children && item.children.length > 0 && <CatalogList item={item} />} */}
+      <CatalogList item={item} />
     </div>
   );
 };

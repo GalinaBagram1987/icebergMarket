@@ -1,16 +1,18 @@
 .margin {
   margin-left: 41px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+.scrollWrapper {
+  width: 100%; /* Растягивается на всю доступную ширину экрана/страницы */
+  overflow-x: auto; /* Включает горизонтальный скролл, если сетка не помещается */
+  padding-bottom: 15px; /* Отступ снизу, чтобы полоса прокрутки не перекрывала карточки */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows:
-    325px /*временное решение пока высоты сделать 20, сетку надо будет перебирать*/
-    repeat(2, calc((309px - 20px) / 2))
-    repeat(3, calc((300px - 40px) / 3))
-    repeat(3, calc((309px - 40px) / 3));
+  grid-template-columns: repeat(3, 323px);
+  grid-template-rows: auto;
   grid-template-areas:
     'auto computers construction'
     'tools appliances furniture'
@@ -45,6 +47,7 @@
   margin-top: -15px;
   margin-bottom: -15px;
   margin-left: -18px;
+  margin-right: -8px;
 }
 
 /* Все ваши карточки внутри grid-areas должны иметь z-index выше подложки */
@@ -69,6 +72,8 @@
   /* Компенсируем gap, чтобы серый фон заходил в межстрочные интервалы */
   margin-top: -20px;
   margin-left: -18px;
+  margin-right: -8px;
+  margin-bottom: -15px;
 }
 
 /* Все ваши карточки внутри grid-areas должны иметь z-index выше подложки */
@@ -123,12 +128,36 @@
 }
 
 .catalogListContainer {
+  flex-grow: 1;
   width: 100%;
   box-sizing: border-box;
   background-color: #ffffff;
 
+  border-radius: var(--radius-md);
   padding-left: var(--list-padding-left);
   padding-top: var(--list-padding-top);
   padding-right: var(--list-padding-right);
   padding-bottom: var(--list-padding-bottom);
+  overflow: hidden; /* Защита от вылезания текста наружу */
+}
+
+.catalogListContainer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Убирает маркеры-точки */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Расстояние между строчками подкатегорий */
+}
+
+.catalogListContainer li {
+  font-family: var(--font-main);
+  color: var(--text-black);
+  font-size: 20px;
+  line-height: 0.9;
+}
+
+.catalogListContainer li:hover {
+  text-decoration: underline;
+  color: var(--text-main-li-hover);
 }
