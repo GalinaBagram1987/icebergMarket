@@ -28,6 +28,17 @@
   position: relative; /* Важно: чтобы подложка позиционировалась внутри сетки */
 }
 
+/*Поднимаем водную технику и ткани согласно макету*/
+.grid > div[style*='water-tech'] {
+  position: relative;
+  top: -17px;
+}
+
+.grid > div[style*='fabrics'] {
+  position: relative;
+  top: -5px;
+}
+
 /*Создаем серую полосу во втором ряду*/
 .grid::before {
   content: '';

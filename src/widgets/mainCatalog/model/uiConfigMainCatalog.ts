@@ -19,7 +19,7 @@ import health18 from '../assets/images/18_health.png';
 import souvenirs19 from '../assets/images/19_souvenirs.png';
 import toys20 from '../assets/images/20_toys.png';
 
-export const mainCatalogUiConfig = {
+export const mainCatalogUiData = {
   'auto-moto': {
     area: 'auto',
     order: 1,
@@ -74,7 +74,7 @@ export const mainCatalogUiConfig = {
     headerTitleSize: '18px',
     leftMarginTitle: '16px',
     headerHeight: '67px',
-    cardHeight: '340px',
+    cardHeight: '207px',
     listPaddingLeft: '21px',
     listPaddingTop: '16px',
     listPaddingRight: '12px',

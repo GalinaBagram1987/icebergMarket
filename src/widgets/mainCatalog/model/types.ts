@@ -1,6 +1,4 @@
 import type { StaticImageData } from 'next/image';
-import { BackendMainCategory } from '@/shared/api/apiMethods/catalog/type';
-
 /**
  * UI-настройки одной категории.
  */
@@ -29,33 +27,31 @@ export type MainCatalogUiConfig = {
 };
 
 /**
- *
+ * Содержание 1 категории главного каталога
  */
 
-export type mainCatalogDataFrontItem = {
+export type mainCatalogDataFrontCategory = {
   name: string;
   slug: string;
   full_path: string;
 };
 
-export type mainCatalogDataFront = 
+/**
+ * Содержание всего главного каталога
+ */
 
-id: ;
-order: ;
-{
-  subcategory: mainCatalogDataFrontItem[];
-}
-
-
+export type mainCatalogDataFront = mainCatalogDataFrontCategory & {
+  subcategories: mainCatalogDataFrontCategory[];
+};
 
 /**
- * Категория с бэкенда, объединённая с UI-настройками.
+ * Категория главного каталога, объединённая с UI-настройками.
  */
-export type MainCatalogItem = mainCatalogDataFront & MainCatalogUiConfigItem;
+export type MainCatalogCategory = mainCatalogDataFront & MainCatalogUiConfigItem;
 
 /**
  * Подготовленные данные главного каталога.
  */
 export type MainCatalogData = {
-  categories: MainCatalogItem[];
+  categories: MainCatalogCategory[];
 };

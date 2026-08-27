@@ -3,7 +3,7 @@ export const mainCatalogDataFront = {
     name: 'Авто-мото',
     slug: 'auto-moto',
     full_path: 'auto-moto',
-    categories: [
+    subcategories: [
       { name: 'Запчасти', slug: 'parts', full_path: 'auto-moto/parts' },
       { name: 'Шины — ', slug: '', full_path: '' },
       { name: 'Диски — ', slug: '', full_path: '' },
@@ -18,7 +18,7 @@ export const mainCatalogDataFront = {
     name: 'Компьютеры и цифровая техника',
     slug: 'computers-tech',
     full_path: 'computers-tech',
-    categories: [
+    subcategories: [
       { name: 'Фото и видеокамеры', slug: 'photo-video', full_path: '' },
       { name: 'Телефоны', slug: '', full_path: '' },
       { name: 'Умные часы и фитнес-браслеты', slug: '', full_path: '' },
@@ -35,7 +35,7 @@ export const mainCatalogDataFront = {
     name: 'Строительство, ремонт, материалы',
     slug: 'construction',
     full_path: 'construction',
-    categories: [
+    subcategories: [
       { name: 'Сантехника — ', slug: 'plumbing', full_path: 'construction/plumbing' },
       { name: 'Электрика', slug: 'electrics', full_path: 'construction/electrics' },
       { name: 'Плитка / Кафель', slug: '', full_path: '' },
@@ -53,7 +53,7 @@ export const mainCatalogDataFront = {
     name: 'Инструменты и оборудование',
     slug: 'instruments-and-equipment',
     full_path: 'instruments-and-equipment',
-    categories: [
+    subcategories: [
       { name: 'Общего назначения', slug: '', full_path: '' },
       { name: 'Строительное', slug: '', full_path: '' },
       { name: 'Для авторемонта', slug: '', full_path: '' },
@@ -64,7 +64,7 @@ export const mainCatalogDataFront = {
     name: 'Бытовая техника',
     slug: 'appliances',
     full_path: 'appliances',
-    categories: [
+    subcategories: [
       { name: 'Холодильники и морозильники', slug: 'fridges', full_path: 'appliances/fridges' },
       { name: 'Плиты, духовые шкафы и варочные панели', slug: 'stoves-ovens', full_path: 'appliances/stoves-ovens' },
       { name: 'Стиральные машины', slug: 'washing-machines', full_path: 'appliances/washing-machines' },
@@ -77,7 +77,7 @@ export const mainCatalogDataFront = {
     name: 'Мебель и интерьер',
     slug: 'furniture',
     full_path: 'furniture',
-    categories: [
+    subcategories: [
       { name: 'Диваны — ', slug: 'sofas', full_path: 'furniture/sofas' },
       { name: 'Кровати — ', slug: 'beds', full_path: 'furniture/beds' },
       { name: 'Матрасы', slug: 'mattresses', full_path: 'furniture/mattresses' },
@@ -115,7 +115,7 @@ export const mainCatalogDataFront = {
     name: 'Одежда, обувь. аксуссуары',
     slug: 'clothes-shoes-accessories',
     full_path: 'clothes-shoes-accessories',
-    categories: [
+    subcategories: [
       { name: 'Женская одежда — ', slug: 'womens-clothing', full_path: 'clothes-shoes-accessories/womens-clothing' },
       { name: 'Женская обувь', slug: 'womens-shoes', full_path: 'clothes-shoes-accessories/womens-shoes' },
       { name: 'Мужская одежда — ', slug: 'mens-clothing', full_path: 'clothes-shoes-accessories/mens-clothing' },
@@ -177,7 +177,7 @@ export const mainCatalogDataFront = {
     name: 'Товары для детей',
     slug: 'kids-maternity',
     full_path: 'kids-maternity',
-    categories: [
+    subcategories: [
       { name: 'Коляски и переноски', slug: '', full_path: '' },
       { name: 'Питание и кормление', slug: 'baby-feeding', full_path: 'kids-maternity/baby-feeding' },
       { name: 'Гигиена и уход', slug: 'baby-hygiene', full_path: 'kids-maternity/baby-hygiene' },

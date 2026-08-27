@@ -1,32 +1,36 @@
-'use client';
-import { useMainCatalogQuery } from '../model/hooks';
-import { CatalogGrid } from './CatalogGrid';
-// Добавить еще два импорта скелетонов
+import { composeMainCatalog } from '../lib/composeMainCatalog';
+import { mainCatalogDataFront } from '../model/mainCatalogDataFront';
+import type { MainCatalogData } from '../model/types';
+import styles from './mainCatalog.module.css';
+import { CatalogCard } from './catalogCard';
+import { cn } from '@/shared/lib';
+import { mainCatalogUiData } from '../model/uiConfigMainCatalog';
 
 /**
- * Основной каталог на главной странице
- *
- * @returns
+ * Собираем хардкод данных каталога один раз на уровне файла
  */
 
-export const MainCatalog = () => {
-  const { data, isPending, isError, refetch } = useMainCatalogQuery();
+const { categories }: MainCatalogData = composeMainCatalog(mainCatalogDataFront, mainCatalogUiData);
 
-  const categories = data?.categories ?? [];
+/**
+ * Главный каталог (Сетка главного каталога)
+ * Выстраивает карточки категорий в асимметричную Grid-структуру на основе свойства `gridArea`.
+ */
 
-  if (isPending) {
-    return null;
-    {
-      /*Рендерим скелетон загрузки */
-    }
-  }
-
-  if (isError) {
-    return null;
-    {
-      /*Рендерим скелетон ошибки. вызываем перезапрос onRetry={() => void refetch() */
-    }
-  }
-
-  return <CatalogGrid categories={categories} />;
+export const MainCatalog: React.FC = () => {
+  return (
+    <div className={cn('containerContent', styles.margin)}>
+      <div className={styles.grid}>
+        {categories.map((item) => (
+          <div
+            key={item.slug}
+            // Динамически связываем карточку с её законным местом в грид-карте
+            style={{ gridArea: item.area }}
+          >
+            <CatalogCard item={item} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
