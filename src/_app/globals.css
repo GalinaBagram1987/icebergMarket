@@ -168,6 +168,9 @@ body {
   background-color: var(--bg-main);
   line-height: 1;
   -webkit-font-smoothing: antialiased; /* субпиксельное сглаживание, сглаживает края букв, делая их менее «зубчатыми».*/
+  min-width: 1440px;
+  width: 100%;
+  overflow-x: auto; /* Разрешаем браузеру показывать скроллбары, если контент не влезает */
 }
 
 h1 {
