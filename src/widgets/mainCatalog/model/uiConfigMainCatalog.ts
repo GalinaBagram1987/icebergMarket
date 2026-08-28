@@ -45,7 +45,7 @@ export const mainCatalogUiData = {
     leftMarginTitle: '6px',
     headerHeight: '67px',
     cardHeight: '312px',
-    listPaddingLeft: '30px',
+    listPaddingLeft: '21px',
     listPaddingTop: '16px', //или 25
     listPaddingRight: '17px',
     listPaddindBottom: '26px',
@@ -167,7 +167,7 @@ export const mainCatalogUiData = {
     cardHeight: '265px',
     listPaddingLeft: '13px',
     listPaddingTop: '15px',
-    listPaddingRight: '8px',
+    listPaddingRight: '4px',
     listPaddindBottom: '26px',
   },
   kitchenware: {

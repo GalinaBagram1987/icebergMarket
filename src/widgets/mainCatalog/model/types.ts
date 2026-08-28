@@ -34,6 +34,8 @@ export type mainCatalogDataFrontCategory = {
   name: string;
   slug: string;
   full_path: string;
+  inline?: boolean;
+  isDots?: boolean;
 };
 
 /**

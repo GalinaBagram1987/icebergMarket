@@ -153,22 +153,34 @@
 }
 
 .catalogListContainer ul {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none; /* Убирает маркеры-точки */
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* Расстояние между строчками подкатегорий */
+  /* row-gap: 8px; Расстояние только между строчками подкатегорий */
 }
 
 .catalogListContainer li {
   font-family: var(--font-main);
   color: var(--text-black);
   font-size: 20px;
-  line-height: 0.9;
+  line-height: 1.3;
+  width: 100%;
 }
 
 .catalogListContainer li:hover {
   text-decoration: underline;
   color: var(--text-main-li-hover);
+}
+
+.catalogListContainer ul .inlineItem {
+  width: auto !important; /* Перебивает ширину 100% */
+  display: inline-flex;
+}
+
+.catalogListContainer ul .dotsItem {
+  width: 100%; /* Растягиваем на всю ширину, чтобы сбросить инлайновость */
+  display: flex;
+  justify-content: center;
 }

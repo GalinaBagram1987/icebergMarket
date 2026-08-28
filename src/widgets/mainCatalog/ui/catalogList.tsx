@@ -1,5 +1,6 @@
 import styles from './mainCatalog.module.css';
 import type { MainCatalogCategory } from '../model/types';
+import { cn } from '@/shared/lib';
 
 /**
  * Типы для списка подкатегорий на главной
@@ -18,9 +19,16 @@ export const CatalogList = ({ item }: CatalogListProps) => {
   return (
     <div className={styles.catalogListContainer}>
       <ul>
-        {subcategories.map((child) => (
-          <li key={child.slug}>{child.name}</li>
-        ))}
+        {subcategories.map((child) => {
+          const inlineClass = child.inline ? styles.inlineItem : '';
+          const dotsClass = child.isDots ? styles.dotsItem : '';
+
+          return (
+            <li key={child.slug} className={cn(inlineClass, dotsClass)}>
+              <a href={child.full_path}>{child.name}</a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
