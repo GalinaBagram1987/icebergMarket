@@ -11,7 +11,8 @@
   padding-left: 29px;
   padding-right: 12px;
   /*расположение на странице*/
-  position: fixed;
+  position: sticky;
+
   left: 77%;
   /*по центру по вертикали*/
   top: 50%; /* Спускаем верх на пол экрана */
