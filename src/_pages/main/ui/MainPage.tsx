@@ -10,8 +10,8 @@ export const MainPage = async () => {
   return (
     <main className="container">
       <SearchMain />
-      <CookieConsent />
       <MainCatalog />
+      <CookieConsent />
     </main>
   );
 };

@@ -158,25 +158,27 @@
   padding: 0;
 }
 
-html,
-body {
-  margin: 0;
-
-  width: 100%;
-  min-width: 1440px;
-
-  height: auto;
-  min-height: 100dvh;
-
-  overflow: auto; /* Разрешаем браузеру показывать скроллбары, если контент не влезает */
-
+html {
+  background-color: var(--bg-main);
   /* Плотный шрифт без засечек, стандартный для интерфейсов */
   font-family: var(--font-main);
   font-size: 16px; /* Плотный шрифт 16px — база для классисайдов вроде FarPost */
   color: var(--text-main);
-  background-color: var(--bg-main);
   line-height: 1;
-  -webkit-font-smoothing: antialiased; /* субпиксельное сглаживание, сглаживает края букв, делая их менее «зубчатыми».*/
+  -webkit-font-smoothing: antialiased; /* с*/
+
+  overflow: auto;
+  min-height: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 1440px;
+  min-height: auto;
+
+  margin: 0 auto;
+
+  position: relative;
 }
 
 h1 {
@@ -234,4 +236,13 @@ button {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 50px;
+}
+
+@media screen and (max-width: 1439px) {
+  html,
+  body {
+    height: 100% !important;
+    min-height: auto !important;
+    overflow: auto !important;
+  }
 }

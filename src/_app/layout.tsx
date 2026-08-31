@@ -60,7 +60,7 @@ const RootLayout = async ({ children }: RootLayoutProvider) => {
         <NextIntlClientProvider messages={messages}>
           <AppProviders>
             <Header />
-            {children}
+            <main className="main">{children}</main>
             <Footer />
           </AppProviders>
         </NextIntlClientProvider>
