@@ -57,13 +57,15 @@ const RootLayout = async ({ children }: RootLayoutProvider) => {
   return (
     <html lang="ru">
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <AppProviders>
-            <Header />
-            <main className="main">{children}</main>
-            <Footer />
-          </AppProviders>
-        </NextIntlClientProvider>
+        <div className="page">
+          <NextIntlClientProvider messages={messages}>
+            <AppProviders>
+              <Header />
+              <main className="main">{children}</main>
+              <Footer />
+            </AppProviders>
+          </NextIntlClientProvider>
+        </div>
       </body>
     </html>
   );
