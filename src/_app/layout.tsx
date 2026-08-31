@@ -15,7 +15,7 @@ interface RootLayoutProvider {
 
 /** Размер  видимой области окна браузера*/
 export const viewport: Viewport = {
-  width: 1440,
+  width: 'device-width',
   initialScale: 1,
 };
 
