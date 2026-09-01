@@ -20,16 +20,18 @@ const { categories }: MainCatalogData = composeMainCatalog(mainCatalogDataFront,
 export const MainCatalog: React.FC = () => {
   return (
     <div className={cn('containerContent', styles.margin)}>
-      <div className={styles.grid}>
-        {categories.map((item) => (
-          <div
-            key={item.slug}
-            // Динамически связываем карточку с её законным местом в грид-карте
-            style={{ gridArea: item.area }}
-          >
-            <CatalogCard item={item} />
-          </div>
-        ))}
+      <div className="flexAdaptive">
+        <div className={styles.grid}>
+          {categories.map((item) => (
+            <div
+              key={item.slug}
+              // Динамически связываем карточку с её законным местом в грид-карте
+              style={{ gridArea: item.area }}
+            >
+              <CatalogCard item={item} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

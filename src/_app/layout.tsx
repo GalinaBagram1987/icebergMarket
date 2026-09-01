@@ -17,6 +17,8 @@ interface RootLayoutProvider {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  userScalable: true, // Разрешаем пользователю щипать экран для уменьшения/увеличения
+  maximumScale: 3,
 };
 
 /**

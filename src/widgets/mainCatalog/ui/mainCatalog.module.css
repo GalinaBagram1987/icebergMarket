@@ -93,7 +93,11 @@
 }
 
 .catalogCard {
-  width: 323px;
+  /* width: 323px; */
+
+  width: 100%;
+  min-width: 323px;
+
   height: var(--card-height);
   display: flex;
   flex-direction: column;
