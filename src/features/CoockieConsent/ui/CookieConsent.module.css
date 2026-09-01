@@ -11,7 +11,7 @@
   padding-left: 29px;
   padding-right: 12px;
   /*расположение на странице*/
-  position: sticky;
+  position: fixed;
 
   right: 10px;
   /*по центру по вертикали*/
@@ -48,4 +48,14 @@
   font-weight: 400;
   color: var(--text-white);
   cursor: pointer;
+}
+
+@media screen and (max-width: 920) {
+  .cookieConsent {
+    position: fixed;
+    left: 40px;
+    top: 100px;
+    bottom: auto;
+    transform: none;
+  }
 }
