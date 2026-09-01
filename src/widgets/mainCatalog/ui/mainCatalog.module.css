@@ -173,7 +173,7 @@
   width: 100%;
 }
 
-.catalogListContainer li:hover {
+.catalogListContainer link:hover {
   text-decoration: underline;
   color: var(--text-main-li-hover);
 }

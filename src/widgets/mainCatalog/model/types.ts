@@ -36,6 +36,7 @@ export type mainCatalogDataFrontCategory = {
   full_path: string;
   inline?: boolean;
   isDots?: boolean;
+  hasSeparator?: boolean;
 };
 
 /**
