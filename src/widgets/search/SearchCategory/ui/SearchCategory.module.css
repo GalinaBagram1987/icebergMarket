@@ -1,0 +1,104 @@
+.searchContainer {
+  margin-top: 13px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  padding-right: 58px;
+}
+
+.searchFormCateg {
+  background-color: var(--bg-search-field);
+  border-radius: var(--radius-md);
+
+  margin-right: 45px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: left;
+  width: 765px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 21px;
+}
+
+.searchInputCateg {
+  width: 634px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--text-white);
+}
+
+.searchButtonCateg {
+  width: 90px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* стили шрифта */
+  font-family: var(--font-header-footer);
+  color: var(--text-white);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.btnGroup {
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--text-black);
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  width: 97;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* appearance: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+
+  font: inherit;
+  color: inherit;
+  cursor: pointer; */
+}
+
+/* .btn:hover,
+.btn:active {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+} */
+
+/* .btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+} */
+
+.btnLeft {
+  background-color: var(--bg-searchCategButLeft);
+}
+
+.btnRight {
+  background-color: var(--bg-searchCategoryButRight);
+}
+
+.btnLeft:hover {
+  background-color: var(--bg-searchCategButLeftHover);
+}
+
+.btnRight:hover {
+  background-color: var(--bg-searchCategoryButRightHover);
+}

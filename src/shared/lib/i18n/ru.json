@@ -30,6 +30,10 @@
       "delTitle": "Точно удалить?",
       "delete": "Удалить",
       "cancel": "Отмена"
+    },
+    "categoriesPage": {
+      "searchButLeft": "В разделе",
+      "searchButRight": "На сайте"
     }
   }
 }

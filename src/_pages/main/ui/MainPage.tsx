@@ -1,6 +1,6 @@
-import { SearchMain } from '@/widgets/SearchMainPage';
+import { SearchMain } from '@/widgets/search/SearchMainPage';
 import { CookieConsent } from '@/features/CoockieConsent';
-import { MainCatalog } from '@/widgets/mainCatalog';
+import { MainCatalog } from '@/widgets/catalog/mainCatalog';
 
 /**
  * Компоннет главной страницы

@@ -106,6 +106,11 @@
   --border-dark: #8c8989; /*Бордел в окнах согласия*/
   --bg-light: #c0c0c0; /* Кнопка "В разделе" */
 
+  --bg-searchCategButLeft: #c0c0c0; /* Фоны кнопок поиска */
+  --bg-searchCategoryButRight: #d0d0d080; /* Фоны кнопок поиска */
+  --bg-searchCategButLeftHover: #8c8989; /* Фоны кнопок поиска */
+  --bg-searchCategoryButRightHover: #c0c0c0; /* Фоны кнопок поиска */
+
   /* Системные и специфические статусы */
   --bg-delete: #ffbc57; /* Кнопка удалить, кол-во уведомлений, отклонить */
   --bg-inter: #403d5b; /* Для кнопки вход, текст восстановить доступ */

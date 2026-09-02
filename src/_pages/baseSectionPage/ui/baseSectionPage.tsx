@@ -1,4 +1,4 @@
-import { SearchMain } from '@/widgets/SearchMainPage';
+import { SearchMain } from '@/widgets/search/SearchMainPage';
 
 /**
  * Страница раздела типовая
