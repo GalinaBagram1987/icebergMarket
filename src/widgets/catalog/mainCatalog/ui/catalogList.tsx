@@ -23,10 +23,11 @@ export const CatalogList = ({ item }: CatalogListProps) => {
         {subcategories.map((child) => {
           const inlineClass = child.inline ? styles.inlineItem : '';
           const dotsClass = child.isDots ? styles.dotsItem : '';
+          const href = child.full_path.startsWith('/') ? child.full_path : `/${child.full_path}`;
 
           return (
             <li key={child.slug} className={cn(inlineClass, dotsClass)}>
-              <Link href={child.full_path}>{child.name}</Link>
+              <Link href={href}>{child.name}</Link>
               {child.hasSeparator && '\u00A0\—\u00A0'}
             </li>
           );

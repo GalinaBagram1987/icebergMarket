@@ -11,7 +11,7 @@ import ForBusinessPage from '@/_pages/forBusiness';
  */
 
 export const metadata: Metadata = {
-  title: 'Информация для бизнесаа',
+  title: 'Информация для бизнеса',
   description: 'Информация для бизнеса от Айсберг Маркет.',
 };
 
