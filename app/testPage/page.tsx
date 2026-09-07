@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { ConfirmDialog } from '@/shared/ui/confirmDialog';
 import { RejectDialog } from '@/shared/ui/rejectDialog';
 import { DelDialog } from '@/shared/ui/deleteDialog';
-import { SearchCategory } from '@/widgets/search/SearchCategory/ui/SearchCategory';
+import { SearchCategory } from '@/widgets/SearchCategory/ui/SearchCategory';
 
 const TestPage = () => {
   const [isOpen, setIsOpen] = useState(true);

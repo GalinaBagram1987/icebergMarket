@@ -25,4 +25,9 @@ export const catalogRequest = {
     const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`posts/${slug}/`);
     return data.categories;
   },
+
+  getSubcategory: async (path: string): Promise<BackendCategoryListItem[]> => {
+    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`posts/${path}/`);
+    return data.categories;
+  },
 };
