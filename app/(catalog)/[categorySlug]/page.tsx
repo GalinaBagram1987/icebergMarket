@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CategoryPage } from '@/_pages/category';
-import { title } from 'node:process';
+import { fetchServerCategory } from '@/entities/category';
 
 /**
  * Тип для страницы категорий
@@ -19,10 +19,10 @@ type CategoryPageAppProps = {
  */
 
 export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
-	const category =  запрос сюда дописать
+  const category = fetchServerCategory(CategoryPageAppProps);
 
-	if (!category) {
-		return {
+  if (!category) {
+    return {
       title: 'Категория не найдена',
       description: 'Запрашиваемая категория не найдена.',
       robots: {
@@ -30,12 +30,12 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
         follow: false,
       },
     };
-	}
+  }
 
-	return {
-		title: `${category.name} — Айсберг Маркет`,
-		description: `Товары и объявления в категории «${category.name}».`,
-	};
+  return {
+    title: `${category.name} — Айсберг Маркет`,
+    description: `Товары и объявления в категории «${category.name}».`,
+  };
 };
 
 /**
