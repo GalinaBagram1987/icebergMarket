@@ -10,7 +10,7 @@ import { fetchServerCategory } from '@/entities/category';
 
 type CategoryPageAppProps = {
   params: Promise<{
-    categorySlug: string;
+    path: string;
   }>;
 };
 
@@ -49,8 +49,8 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
  */
 
 const CategoryPageApp = async ({ params }: CategoryPageAppProps) => {
-  const { categorySlug } = await params;
-  return <CategoryPage slug={categorySlug} />;
+  const { path } = await params;
+  return <CategoryPage path={categorySlug} />;
 };
 
 export default CategoryPageApp;
