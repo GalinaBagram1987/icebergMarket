@@ -1,1 +1,1 @@
-export { fetchServerCategory } from './api/fetchServerCategory';
+export { ServerFetchAndCashedCategory } from './api/fetchAndCashedCategory';

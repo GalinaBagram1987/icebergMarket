@@ -1,5 +1,5 @@
 import { apiWithInterceptors } from '../../configApi';
-import type { BackendCategoryListItem, BackendMainCategory, MainCatalogResponse, FirstLevCategoryResponse } from './type';
+import type { BackendCategoryListItem, BackendMainCategory, MainCatalogResponse, CategoryResponse } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку
@@ -17,17 +17,12 @@ export const catalogRequest = {
   },
 
   /**
-   * получить категории первого уровня
-   * @param path - эндпоинт '/posts/${slug}'
+   * получить категории любого уровня
+   * @param path - эндпоинт '/posts/${path}'
    */
 
-  getFirstLevelCateg: async (slug: string): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`posts/${slug}/`);
-    return data.categories;
-  },
-
-  getSubcategory: async (path: string): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<FirstLevCategoryResponse>(`posts/${path}/`);
+  getCategories: async (path: string): Promise<BackendCategoryListItem[]> => {
+    const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}/`);
     return data.categories;
   },
 };

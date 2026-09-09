@@ -20,7 +20,8 @@ type SubCategoryPageAppProps = {
  */
 
 export const generateMetadata = async ({ params }: SubCategoryPageAppProps) => {
-  const category = fetchServerSubcategory(SubCategoryPageAppProps);
+  const { categorySlug } = await params;
+  const category = fetchServerSubcategory(categorySlug);
 
   if (!category) {
     return {

@@ -1,6 +1,3 @@
-/** Тип аттрибута категории. Пока не знаем точную структуру attrs */
-export type BackendCategoryAttr = unknown;
-
 /**
  * Общий тип который приходит с бэка для категоий
  */
@@ -12,7 +9,8 @@ export type BackendCategoryListItem = {
   slug: string;
   full_path: string;
   is_leaf: boolean; // if true - нет детей (конечная категория), if false - есть дети
-  attrs: BackendCategoryAttr[];
+  attributes: string[];
+  count?: number;
 };
 
 /**
@@ -21,18 +19,20 @@ export type BackendCategoryListItem = {
  */
 
 export type BackendMainCategory = BackendCategoryListItem & {
-  subcategory: BackendCategoryListItem[];
+  categories: BackendCategoryListItem[];
 };
 
 /**
  * Типы для каталога на главной странице
  */
 export type MainCatalogResponse = {
+  count?: number;
   categories: BackendMainCategory[];
 };
 /**
- * Тип для категори первого уроня
+ * Тип для всех категорий
  */
-export type FirstLevCategoryResponse = {
+export type CategoryResponse = {
+  count?: number;
   categories: BackendCategoryListItem[];
 };
