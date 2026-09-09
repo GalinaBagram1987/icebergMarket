@@ -7,7 +7,7 @@ export type BackendCategoryListItem = {
   parent_id: number | null;
   name: string;
   slug: string;
-  full_path: string;
+  path: string;
   is_leaf: boolean; // if true - нет детей (конечная категория), if false - есть дети
   attributes: string[];
   count?: number;

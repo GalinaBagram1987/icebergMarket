@@ -26,7 +26,7 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  * получает данные с бэка и кеширует на указанное в конфиге некст времени
  */
 
-export const ServerFetchAndCashedCategory = async (path: string): Promise<BackendCategoryListItem[]> => {
+export const serverFetchAndCashedCategory = async (path: string): Promise<BackendCategoryListItem[]> => {
   'use cache';
 
   cacheLife('minutes');

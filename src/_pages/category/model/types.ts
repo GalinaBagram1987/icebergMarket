@@ -3,7 +3,7 @@
  */
 
 export type CategoryPageProps = {
-  slug: string;
+  path: string;
 };
 
 /**

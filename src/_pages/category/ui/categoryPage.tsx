@@ -4,6 +4,6 @@ import type { CategoryPageProps } from '../model/types';
  * Основной комопнент категорий
  */
 
-export const CategoryPage = ({ slug }: CategoryPageProps) => {
-  return <div>Здесь будет динамически сформированаая категория {slug}</div>;
+export const CategoryPage = ({ path }: CategoryPageProps) => {
+  return <div>Здесь будет динамически сформированаая категория {path}</div>;
 };

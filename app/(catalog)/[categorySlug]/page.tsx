@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CategoryPage } from '@/_pages/category';
-import { fetchServerCategory } from '@/entities/category';
+import { serverFetchAndCashedCategory } from '@/entities/category';
 
 /**
  * Тип для страницы категорий
@@ -19,7 +19,8 @@ type CategoryPageAppProps = {
  */
 
 export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
-  const category = fetchServerCategory(CategoryPageAppProps);
+  const { path } = await params;
+  const category = await serverFetchAndCashedCategory(path);
 
   if (!category) {
     return {
@@ -50,7 +51,8 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
 
 const CategoryPageApp = async ({ params }: CategoryPageAppProps) => {
   const { path } = await params;
-  return <CategoryPage path={categorySlug} />;
+  const category = await serverFetchAndCashedCategory(path);
+  return <CategoryPage path={path} />;
 };
 
 export default CategoryPageApp;
