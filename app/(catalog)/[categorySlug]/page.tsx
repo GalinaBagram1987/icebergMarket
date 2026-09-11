@@ -18,26 +18,26 @@ type CategoryPageAppProps = {
  * Динамические метаданные страницы категории первого уровня.
  */
 
-export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
-  const { path } = await params;
-  const category = await serverFetchAndCashedCategory(path);
+// export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
+//   const { path } = await params;
+//   const category = await serverFetchAndCashedCategory(path);
 
-  if (!category) {
-    return {
-      title: 'Категория не найдена',
-      description: 'Запрашиваемая категория не найдена.',
-      robots: {
-        index: false,
-        follow: false,
-      },
-    };
-  }
+//   if (!category) {
+//     return {
+//       title: 'Категория не найдена',
+//       description: 'Запрашиваемая категория не найдена.',
+//       robots: {
+//         index: false,
+//         follow: false,
+//       },
+//     };
+//   }
 
-  return {
-    title: `${category.name} — Айсберг Маркет`,
-    description: `Товары и объявления в категории «${category.name}».`,
-  };
-};
+//   return {
+//     title: `${category.name} — Айсберг Маркет`,
+//     description: `Товары и объявления в категории «${category.name}».`,
+//   };
+// };
 
 /**
  *

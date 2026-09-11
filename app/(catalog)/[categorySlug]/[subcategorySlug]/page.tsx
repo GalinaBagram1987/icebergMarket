@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { SubcategoryPage } from '@/_pages/subCategory';
-import { fetchServerSubcategory } from '@/entities/subCategory';
-
+import { serverFetchAndCashedCategory } from '@/entities/category';
 /**
  * Тип для страницы категорий
  * примимает slug. грузит метатеги и данные
@@ -11,7 +10,7 @@ import { fetchServerSubcategory } from '@/entities/subCategory';
 
 type SubCategoryPageAppProps = {
   params: Promise<{
-    categorySlug: string;
+    path: string;
   }>;
 };
 
@@ -19,26 +18,26 @@ type SubCategoryPageAppProps = {
  * Динамические метаданные страницы категории первого уровня.
  */
 
-export const generateMetadata = async ({ params }: SubCategoryPageAppProps) => {
-  const { categorySlug } = await params;
-  const category = fetchServerSubcategory(categorySlug);
+// export const generateMetadata = async ({ params }: SubCategoryPageAppProps) => {
+//   const { path } = await params;
+//   const category = serverFetchAndCashedCategory(path);
 
-  if (!category) {
-    return {
-      title: 'Категория не найдена',
-      description: 'Запрашиваемая категория не найдена.',
-      robots: {
-        index: false,
-        follow: false,
-      },
-    };
-  }
+//   if (!category) {
+//     return {
+//       title: 'Категория не найдена',
+//       description: 'Запрашиваемая категория не найдена.',
+//       robots: {
+//         index: false,
+//         follow: false,
+//       },
+//     };
+//   }
 
-  return {
-    title: `${category.name} — Айсберг Маркет`,
-    description: `Товары и объявления в категории «${category.name}».`,
-  };
-};
+//   return {
+//     title: `${category.name} — Айсберг Маркет`,
+//     description: `Товары и объявления в категории «${category.name}».`,
+//   };
+// };
 
 /**
  *
@@ -51,8 +50,8 @@ export const generateMetadata = async ({ params }: SubCategoryPageAppProps) => {
  */
 
 const SubCategoryPageApp = async ({ params }: SubCategoryPageAppProps) => {
-  const { categorySlug } = await params;
-  return <SubcategoryPage slug={categorySlug} />;
+  const { path } = await params;
+  return <SubcategoryPage path={path} />;
 };
 
 export default SubCategoryPageApp;

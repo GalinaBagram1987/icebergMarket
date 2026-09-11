@@ -33,7 +33,7 @@ export type MainCatalogUiConfig = {
 export type mainCatalogDataFrontCategory = {
   name: string;
   slug: string;
-  full_path: string;
+  path: string;
   inline?: boolean;
   isDots?: boolean;
   hasSeparator?: boolean;

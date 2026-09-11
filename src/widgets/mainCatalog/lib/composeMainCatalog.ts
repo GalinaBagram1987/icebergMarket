@@ -24,7 +24,7 @@ export const composeMainCatalog = (categoriesData: Record<string, mainCatalogDat
         {
           name: category.name,
           slug: category.slug,
-          full_path: category.full_path,
+          path: category.path,
           subcategories: category.subcategories || [],
           ...ui,
         } as MainCatalogCategory,

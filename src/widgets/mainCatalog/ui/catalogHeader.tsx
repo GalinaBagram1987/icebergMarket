@@ -20,7 +20,7 @@ export const CatalogHeader = ({ item }: CatalogHeaderProps) => {
 
   const imgSrcString = (item.src?.src || item.src) as string;
 
-  const href = item.full_path.startsWith('/') ? item.full_path : `/${item.full_path}`;
+  const href = item.path.startsWith('/') ? item.path : `/${item.path}`;
 
   return (
     <div className={cn(styles.catalogHeader, bgClassFromModule)}>

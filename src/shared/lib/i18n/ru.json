@@ -34,6 +34,14 @@
     "categoriesPage": {
       "searchButLeft": "В разделе",
       "searchButRight": "На сайте"
+    },
+    "errorPage": {
+      "text": "Ошибка загрузки данных",
+      "button": "Повторить"
+    },
+    "loagingPage": {
+      "textOne": "Ожидайте.",
+      "textTwo": "Идет загрузка данных"
     }
   }
 }

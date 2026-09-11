@@ -11,6 +11,8 @@ import { ConfirmDialog } from '@/shared/ui/confirmDialog';
 import { RejectDialog } from '@/shared/ui/rejectDialog';
 import { DelDialog } from '@/shared/ui/deleteDialog';
 import { SearchCategory } from '@/widgets/SearchCategory/ui/SearchCategory';
+import { LoadingRender } from '@/shared/ui/LoadingRender';
+import { ErrorRender } from '@/shared/ui/errorRender';
 
 const TestPage = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -61,6 +63,7 @@ const TestPage = () => {
           <SearchCategory />
         </div>
       </div>
+      <LoadingRender />
     </main>
   );
 };

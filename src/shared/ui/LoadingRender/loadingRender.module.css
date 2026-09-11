@@ -1,0 +1,77 @@
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100dvh;
+}
+.block {
+  width: 450px;
+  height: 570px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.text {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--text-black);
+  font-weight: bold;
+}
+
+.loadWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: transparent; /* Чтобы лоадер красиво смотрелся на любом фоне */
+}
+
+.spinner {
+  width: 150px; /* Физический размер лоадера на экране телефона/ПК */
+  height: 150px;
+}
+
+.bar {
+  stroke: #2d2d2d; /* Точный темный цвет главной палочки с картинки */
+  stroke-width: 4.5; /* Толщина вытянутых палочек */
+  stroke-linecap: round; /* Закругляем концы лучей, превращая их в идеальные капсулы */
+
+  /* Переносим точку трансформации в центр, чтобы rotate() работал корректно */
+  transform-origin: 0 0;
+
+  /* Запускаем цикличную анимацию изменения прозрачности */
+  animation: fadePulse 1s linear infinite;
+}
+
+/* АНИМАЦИЯ БЛИКА:
+   Палочка мгновенно становится яркой (голова блика), а затем плавно 
+   тухнет до минимума, создавая длинный затухающий хвост */
+@keyframes fadePulse {
+  0% {
+    opacity: 1; /* Пик яркости блика */
+  }
+  80% {
+    opacity: 0.15; /* Затухание хвоста */
+  }
+  100% {
+    opacity: 0.05; /* Полное растворение */
+  }
+}
