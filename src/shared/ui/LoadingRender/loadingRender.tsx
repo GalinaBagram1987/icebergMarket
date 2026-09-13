@@ -8,11 +8,8 @@ export const LoadingRender = () => {
   return (
     <div className={styles.parent}>
       <div className={styles.block}>
-        <div>
-          <Spinner />
-          <p className={styles.text}>{t('loagingPage.textOne')}</p>
-          <p className={styles.text}>{t('loagingPage.textTwo')}</p>
-        </div>
+        <Spinner />
+        <p className={styles.text}>{t('loagingPage.textOne')}</p>
       </div>
     </div>
   );
