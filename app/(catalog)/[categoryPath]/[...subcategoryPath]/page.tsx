@@ -1,16 +1,17 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { CategoryPage } from '@/_pages/category';
-import { serverFetchAndCashedCategory } from '@/entities/category';
 
+import { SubcategoryPage } from '@/_pages/subCategory';
+import { serverFetchAndCashedCategory } from '@/entities/category';
 /**
  * Тип для страницы категорий
  * примимает slug. грузит метатеги и данные
  */
 
-type CategoryPageAppProps = {
+type SubCategoryPageAppProps = {
   params: Promise<{
-    path: string;
+    categoryPath: string;
+    subcategoryPath: string[];
   }>;
 };
 
@@ -18,9 +19,9 @@ type CategoryPageAppProps = {
  * Динамические метаданные страницы категории первого уровня.
  */
 
-// export const generateMetadata = async ({ params }: CategoryPageAppProps) => {
+// export const generateMetadata = async ({ params }: SubCategoryPageAppProps) => {
 //   const { path } = await params;
-//   const category = await serverFetchAndCashedCategory(path);
+//   const category = serverFetchAndCashedCategory(path);
 
 //   if (!category) {
 //     return {
@@ -49,10 +50,10 @@ type CategoryPageAppProps = {
  * Вносить изменения в бизнесс-логику в компонент /написать тут
  */
 
-const CategoryPageApp = async ({ params }: CategoryPageAppProps) => {
-  const { path } = await params;
-  const category = await serverFetchAndCashedCategory(path);
-  return <CategoryPage path={path} />;
+const SubCategoryPageApp = async ({ params }: SubCategoryPageAppProps) => {
+  const { subcategoryPath } = await params;
+  const currentPathString = subcategoryPath[subcategoryPath.length - 1];
+  return <SubcategoryPage path={currentPathString} />;
 };
 
-export default CategoryPageApp;
+export default SubCategoryPageApp;

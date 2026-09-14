@@ -1,17 +1,17 @@
 export const mainCatalogDataFront = {
-  'auto-moto': {
+  'avto-moto-moto': {
     name: 'Авто-мото',
-    slug: 'auto-moto',
-    path: 'auto-moto',
+    slug: 'avto-moto',
+    path: 'avto-moto',
     subcategories: [
-      { name: 'Запчасти', slug: 'parts', path: 'auto-moto/parts' },
+      { name: 'Запчасти', slug: 'parts', path: 'avto-moto/parts' },
       { name: 'Шины', slug: 'shiny-i-diski', path: 'avto-moto/shiny-i-diski', inline: true, hasSeparator: true },
-      { name: 'Диски', slug: '', path: '', inline: true, hasSeparator: true },
-      { name: 'Колпаки', slug: '', path: '', inline: true, hasSeparator: false },
-      { name: 'Аккумуляторы', slug: '', path: '' },
-      { name: 'Принадлежности', slug: '', path: '' },
-      { name: 'Автохимия и ГСМ', slug: '', path: '' },
-      { name: '...', slug: '', path: '', isDots: true },
+      { name: 'Диски', slug: 'diski', path: 'avto-moto/shiny-i-diski/diski', inline: true, hasSeparator: true },
+      { name: 'Колпаки', slug: 'kolpaki', path: 'avto-moto/shiny-i-diski/kolpaki', inline: true, hasSeparator: false },
+      { name: 'Аккумуляторы', slug: 'akkumuljatory-', path: 'avto-moto/akkumuljatory-' },
+      { name: 'Принадлежности', slug: 'avto-prinadlezhnosti', path: 'avto-moto/avto-prinadlezhnosti' },
+      { name: 'Автохимия и ГСМ', slug: 'avtohimija-i-gsm', path: 'avto-moto/avtohimija-i-gsm' },
+      { name: '...', slug: 'avto-moto', path: 'avto-moto', isDots: true },
     ],
   },
   'computers-tech': {
@@ -28,7 +28,7 @@ export const mainCatalogDataFront = {
       { name: 'Периферия', slug: '', path: '', inline: true, hasSeparator: true },
       { name: 'Комплектующие', slug: '', path: '', inline: true, hasSeparator: false },
       { name: 'Игровые приставки и консоли', slug: 'gaming-consoles', path: 'computers-tech/gaming-consoles' },
-      { name: '...', slug: '', path: '', isDots: true },
+      { name: '...', slug: 'computers-tech', path: 'computers-tech', isDots: true },
     ],
   },
   construction: {
@@ -46,7 +46,7 @@ export const mainCatalogDataFront = {
       { name: 'Металлопрокат', slug: 'metal-roll', path: 'construction/metal-roll' },
       { name: 'Цемент и строительные смеси', slug: 'cement-mixes', path: 'construction/cement-mixes' },
       { name: 'Лакокрасочные материалы', slug: 'paints', path: 'construction/paints' },
-      { name: '...', slug: '', path: '', isDots: true },
+      { name: '...', slug: 'construction', path: 'construction', isDots: true },
     ],
   },
   'instruments-and-equipment': {
@@ -70,7 +70,7 @@ export const mainCatalogDataFront = {
       { name: 'Стиральные машины', slug: 'washing-machines', path: 'appliances/washing-machines' },
       { name: 'Кондиционеры', slug: 'air-conditioners', path: 'appliances/air-conditioners' },
       { name: 'Водонагреватели', slug: 'water-heaters', path: 'appliances/water-heaters' },
-      { name: '...', slug: '', path: '', isDots: true },
+      { name: '...', slug: 'appliances', path: 'appliances', isDots: true },
     ],
   },
   furniture: {
@@ -88,7 +88,7 @@ export const mainCatalogDataFront = {
       { name: 'Комоды и тумбы', slug: 'chests-cabinets', path: 'furniture/chests-cabinets', inline: true, hasSeparator: false },
       { name: 'Текстиль для дома', slug: 'home-textiles', path: 'furniture/home-textiles' },
       { name: 'Шторы и жалюзи', slug: 'curtains-blinds', path: 'furniture/curtains-blinds' },
-      { name: '...', slug: '', path: '', isDots: true },
+      { name: '...', slug: 'furniture', path: 'furniture', isDots: true },
     ],
   },
   'water-tech': {

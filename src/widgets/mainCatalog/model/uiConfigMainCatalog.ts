@@ -20,7 +20,7 @@ import souvenirs19 from '../assets/images/19_souvenirs.png';
 import toys20 from '../assets/images/20_toys.png';
 
 export const mainCatalogUiData = {
-  'auto-moto': {
+  'avto-moto': {
     area: 'auto',
     order: 1,
     src: auto1,
