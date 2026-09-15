@@ -105,6 +105,7 @@
   --bg-dark: #8c8989; /* Элемент "В разделе", гамбургер, вход, звезда */
   --border-dark: #8c8989; /*Бордел в окнах согласия*/
   --bg-light: #c0c0c0; /* Кнопка "В разделе" */
+  --bg-white: #ffffff;
 
   --bg-searchCategButLeft: #c0c0c0; /* Фоны кнопок поиска */
   --bg-searchCategoryButRight: #d0d0d080; /* Фоны кнопок поиска */

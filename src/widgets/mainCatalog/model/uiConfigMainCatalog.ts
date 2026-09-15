@@ -35,7 +35,7 @@ export const mainCatalogUiData = {
     listPaggingRight: '46px',
     listPaddindBottom: '52px',
   },
-  'computers-tech': {
+  "komp'jutery-i-tsifrovaja-tehnika": {
     area: 'computers',
     order: 2,
     src: computers2,

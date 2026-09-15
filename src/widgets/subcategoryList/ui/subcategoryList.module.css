@@ -1,0 +1,41 @@
+.subcategoryList {
+  width: 100%;
+  padding: 18px 0px 23px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.subcategoryItem {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--bg-white);
+}
+
+.subcategoryItem:hover {
+  background-color: var(--bg-mainCatalog);
+}
+
+.subcategoryLink {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.itemText {
+  font-family: var(--font-headings);
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+
+.itemNum {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--text-black);
+}

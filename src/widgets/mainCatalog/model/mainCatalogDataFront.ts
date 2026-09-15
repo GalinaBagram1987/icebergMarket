@@ -14,12 +14,12 @@ export const mainCatalogDataFront = {
       { name: '...', slug: 'avto-moto', path: 'avto-moto', isDots: true },
     ],
   },
-  'computers-tech': {
+  "komp'jutery-i-tsifrovaja-tehnika": {
     name: 'Компьютеры и цифровая техника',
-    slug: 'computers-tech',
-    path: 'computers-tech',
+    slug: "komp'jutery-i-tsifrovaja-tehnika",
+    path: "komp'jutery-i-tsifrovaja-tehnika",
     subcategories: [
-      { name: 'Фото и видеокамеры', slug: 'photo-video', path: '' },
+      { name: 'Фото и видеокамеры', slug: 'foto-i-videokamery', path: "komp'jutery-i-tsifrovaja-tehnika/foto-i-videokamery" },
       { name: 'Телефоны', slug: '', path: '' },
       { name: 'Умные часы и фитнес-браслеты', slug: '', path: '' },
       { name: 'Ноутбуки', slug: '', path: '', inline: true, hasSeparator: true },
@@ -28,7 +28,7 @@ export const mainCatalogDataFront = {
       { name: 'Периферия', slug: '', path: '', inline: true, hasSeparator: true },
       { name: 'Комплектующие', slug: '', path: '', inline: true, hasSeparator: false },
       { name: 'Игровые приставки и консоли', slug: 'gaming-consoles', path: 'computers-tech/gaming-consoles' },
-      { name: '...', slug: 'computers-tech', path: 'computers-tech', isDots: true },
+      { name: '...', slug: "komp'jutery-i-tsifrovaja-tehnika", path: "komp'jutery-i-tsifrovaja-tehnika", isDots: true },
     ],
   },
   construction: {
