@@ -1,9 +1,18 @@
 import type { CategoryPageProps } from '../model/types';
+import { SearchCategory } from '@/widgets/SearchCategory';
+import { SubcategoryList } from '@/widgets/subcategoryList';
 
 /**
- * Основной комопнент категорий
+ * Сборка страницы категорий
  */
 
 export const CategoryPage = ({ path }: CategoryPageProps) => {
-  return <div>Здесь будет динамически сформированаая категория {path}</div>;
+  return (
+    <main className="container">
+      <div className="containerContent">
+        <SearchCategory />
+        <SubcategoryList subcategories={CategoryPage} />
+      </div>
+    </main>
+  );
 };

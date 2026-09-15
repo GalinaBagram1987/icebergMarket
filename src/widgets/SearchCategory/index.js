@@ -1,1 +1,1 @@
-export { SearchCategory } from '../ui/SearchCategory';
+export { SearchCategory } from './ui/SearchCategory';
