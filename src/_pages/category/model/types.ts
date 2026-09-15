@@ -2,23 +2,18 @@
  * Пропсы для основного компонента категории
  */
 
-export type CategoryPageProps = {
+export type SubcategoryItem = {
+  id: number;
+  parent_id: number;
+  name: string;
+  slug: string;
   path: string;
+  is_leaf: boolean;
+  attributes?: string[];
+  count?: number;
 };
 
-/**
- * Интерфейс ошибки для пропросов, которые придут от next.js
- */
-
-export interface CategoryErrorProps {
-  error: Error & { digest?: string };
-  reset: () => void; // Колбэк для кнопки повтора запроса
-}
-
-/**
- * Интерфейс загрузки для пропросов, которые придут от next.js
- */
-
-export interface CategoryLoadingProps {
-  load?: string;
-}
+export type CategoryPageProps = {
+  path: string;
+  subcategories: SubcategoryItem[];
+};

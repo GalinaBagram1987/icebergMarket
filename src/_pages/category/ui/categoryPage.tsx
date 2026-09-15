@@ -6,12 +6,12 @@ import { SubcategoryList } from '@/widgets/subcategoryList';
  * Сборка страницы категорий
  */
 
-export const CategoryPage = ({ path }: CategoryPageProps) => {
+export const CategoryPage = ({ path, subcategories }: CategoryPageProps) => {
   return (
     <main className="container">
       <div className="containerContent">
         <SearchCategory />
-        <SubcategoryList subcategories={CategoryPage} />
+        <SubcategoryList subcategories={subcategories} />
       </div>
     </main>
   );
