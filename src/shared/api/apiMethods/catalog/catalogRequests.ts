@@ -22,7 +22,7 @@ export const catalogRequest = {
    */
 
   getCategories: async (path: string): Promise<BackendCategoryListItem[]> => {
-    const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}/`);
+    const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
     return data.categories;
   },
 };

@@ -4,7 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const API_ORIGIN = process.env.API_ORIGIN || 'http://45.149.154.20';
 
 const nextConfig = {
-  trailingSlash: true, // заставляет Next.js всегда добавлять слеш в конце URL (бэк только со слешем)
+  // trailingSlash: true, // заставляет Next.js всегда добавлять слеш в конце URL (бэк только со слешем)
   // разрешаем скачивать картинки с бэка
   images: {
     remotePatterns: [
