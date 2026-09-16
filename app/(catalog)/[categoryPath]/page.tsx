@@ -1,17 +1,21 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import { CategoryPage } from '@/_pages/category';
 import { serverFetchAndCashedCategory } from '@/entities/category';
-import type { SubcategoryItem } from '@/_pages/category/model/types';
-import { BackendMainCategory } from '@/shared/api/apiMethods/catalog';
+
 /**
  * Тип для страницы категорий
  * примимает path. грузит метатеги и данные
+ * searchParams - втроенная в некс фича - ловит изменения из поиска и добавляет в url
  */
 
 type CategoryPageAppProps = {
   params: Promise<{
     categoryPath: string;
+  }>;
+  searchParams: Promise<{
+    search?: string | string[];
+    page?: string | string[];
+    sort?: string | string[];
   }>;
 };
 
@@ -19,27 +23,27 @@ type CategoryPageAppProps = {
  * Динамические метаданные страницы категории первого уровня.
  */
 
-// export const generateMetadata = async ({ params }: CategoryPageAppProps): Promise<Metadata> => {
-//   const { categoryPath } = await params;
-// const path = categoryPath;
-//   const category = await serverFetchAndCashedCategory(path);
+export const generateMetadata = async ({ params }: CategoryPageAppProps): Promise<Metadata> => {
+  const { categoryPath } = await params;
+  const path = categoryPath;
+  const category = await serverFetchAndCashedCategory(path);
 
-//   if (!category) {
-//     return {
-//       title: 'Категория не найдена',
-//       description: 'Запрашиваемая категория не найдена.',
-//       robots: {
-//         index: false,
-//         follow: false,
-//       },
-//     };
-//   }
+  if (!category) {
+    return {
+      title: 'Категория не найдена',
+      description: 'Запрашиваемая категория не найдена.',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 
-//   return {
-//     title: `${category.name} — Айсберг Маркет`,
-//     description: `Товары и объявления в категории «${category.name}».`,
-//   };
-// };
+  return {
+    // title: `${category.name} — Айсберг Маркет`,
+    // description: `Товары и объявления в категории «${category.name}».`,
+  };
+};
 
 /**
  *
@@ -51,17 +55,23 @@ type CategoryPageAppProps = {
  * Вносить изменения в бизнесс-логику в компонент /написать тут
  */
 
-const CategoryPageApp = async ({ params }: CategoryPageAppProps) => {
+const CategoryPageApp = async ({ params, searchParams }: CategoryPageAppProps) => {
   const { categoryPath } = await params;
+  const query = await searchParams;
 
-  const categoryData = (await serverFetchAndCashedCategory(categoryPath)) as unknown as BackendMainCategory;
-  if (!categoryData) {
-    notFound();
-  }
+  // 2. Достаем значения (если массив — берем первый элемент)
+  const search = Array.isArray(query.search) ? query.search[0] : query.search;
+  const page = Array.isArray(query.page) ? query.page[0] : query.page;
+  const sort = Array.isArray(query.sort) ? query.sort[0] : query.sort;
 
-  const subcategories: SubcategoryItem[] = (categoryData.categories || []) as unknown as SubcategoryItem[];
-
-  return <CategoryPage path={categoryPath} subcategories={subcategories} />;
+  <CategoryPage
+    path={categoryPath}
+    query={{
+      search: search ?? '',
+      page: page ?? '1',
+      sort: sort ?? 'new',
+    }}
+  />;
 };
 
 export default CategoryPageApp;

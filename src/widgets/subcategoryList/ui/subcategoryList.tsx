@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import type { CategoryTagsProps } from '../model/type';
 import styles from './subcategoryList.module.css';
+import { serverFetchAndCashedCategory } from '@/entities/category';
 
-export const SubcategoryList = ({ subcategories }: CategoryTagsProps) => {
+export const SubcategoryList = async ({ path }: { path: string }) => {
+  const subcategories = await serverFetchAndCashedCategory(path);
+
   if (!subcategories || subcategories.length === 0) return null;
 
   return (
