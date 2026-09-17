@@ -1,3 +1,7 @@
+'use cache';
+
+import 'server-only';
+
 import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
@@ -26,11 +30,11 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  * получает данные с бэка и кеширует на указанное в конфиге некст времени
  */
 
-export const serverFetchAndCashedCategory = async (path: string): Promise<BackendCategoryListItem[]> => {
-  'use cache';
-
+export const serverFetchAndCachedCategory = async (path: string): Promise<BackendCategoryListItem[]> => {
+  console.log('[CACHE CALL]', { path });
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
+  console.log(`[normalizedPath]', normalizedPath`);
   cacheTag(`category-${normalizedPath}`);
 
   try {

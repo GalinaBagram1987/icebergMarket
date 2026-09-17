@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { CategoryPage } from '@/_pages/category';
-import { serverFetchAndCashedCategory } from '@/entities/category';
+import { serverFetchAndCachedCategory } from '@/entities/category';
+import { Suspense } from 'react';
 
 /**
  * Тип для страницы категорий
@@ -12,11 +13,11 @@ type CategoryPageAppProps = {
   params: Promise<{
     categoryPath: string;
   }>;
-  searchParams: Promise<{
-    search?: string | string[];
-    page?: string | string[];
-    sort?: string | string[];
-  }>;
+  // searchParams: Promise<{
+  //   search?: string | string[];
+  //   page?: string | string[];
+  //   sort?: string | string[];
+  // }>;
 };
 
 /**
@@ -24,9 +25,11 @@ type CategoryPageAppProps = {
  */
 
 export const generateMetadata = async ({ params }: CategoryPageAppProps): Promise<Metadata> => {
+  console.log('[PAGE] before await params');
+
   const { categoryPath } = await params;
   const path = categoryPath;
-  const category = await serverFetchAndCashedCategory(path);
+  const category = await serverFetchAndCachedCategory(path);
 
   if (!category) {
     return {
@@ -45,6 +48,11 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
   };
 };
 
+const CategoryPageContent = async ({ params }: CategoryPageAppProps) => {
+  const { categoryPath } = await params;
+  return <CategoryPage path={categoryPath} />;
+};
+
 /**
  *
  * Динаминческая страница каталога первой категории
@@ -55,23 +63,12 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
  * Вносить изменения в бизнесс-логику в компонент /написать тут
  */
 
-const CategoryPageApp = async ({ params, searchParams }: CategoryPageAppProps) => {
-  const { categoryPath } = await params;
-  const query = await searchParams;
-
-  // 2. Достаем значения (если массив — берем первый элемент)
-  const search = Array.isArray(query.search) ? query.search[0] : query.search;
-  const page = Array.isArray(query.page) ? query.page[0] : query.page;
-  const sort = Array.isArray(query.sort) ? query.sort[0] : query.sort;
-
-  <CategoryPage
-    path={categoryPath}
-    query={{
-      search: search ?? '',
-      page: page ?? '1',
-      sort: sort ?? 'new',
-    }}
-  />;
+const CategoryPageApp = async ({ params }: CategoryPageAppProps) => {
+  return (
+    <Suspense fallback={null}>
+      <CategoryPageContent params={params} />
+    </Suspense>
+  );
 };
 
 export default CategoryPageApp;

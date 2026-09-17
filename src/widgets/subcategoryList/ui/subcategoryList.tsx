@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import styles from './subcategoryList.module.css';
-import { serverFetchAndCashedCategory } from '@/entities/category';
+import { serverFetchAndCachedCategory } from '@/entities/category';
 
 export const SubcategoryList = async ({ path }: { path: string }) => {
-  const subcategories = await serverFetchAndCashedCategory(path);
+  const subcategories = await serverFetchAndCachedCategory(path);
 
   if (!subcategories || subcategories.length === 0) return null;
 

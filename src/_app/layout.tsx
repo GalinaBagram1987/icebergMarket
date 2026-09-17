@@ -35,7 +35,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title: t('companyName').replace('\n', ' '),
     description: `Доска объявлений в городе ${t('city')}`,
     icons: {
-      icon: '/images/favicon.png',
+      icon: '/favicon.png',
+      shortcut: '/favicon.png',
+      apple: '/favicon.png',
     },
   };
 };

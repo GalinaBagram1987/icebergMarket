@@ -6,10 +6,11 @@ import { SearchCategory } from '@/widgets/SearchCategory';
 import { SubcategoryList } from '@/widgets/subcategoryList';
 
 /**
+ * Страница категории типовая
  * Сборка страницы категорий
  */
 
-export const CategoryPage = ({ path, query }: { path: string; query: any }) => {
+export const CategoryPage = ({ path }: { path: string }) => {
   return (
     <main className="container">
       <div className="containerContent">
