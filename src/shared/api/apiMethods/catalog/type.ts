@@ -1,8 +1,9 @@
 /**
- * Общий тип который приходит с бэка для категоий
+ * Общий тип одной категории,
+ * который приходит с бэкенда.
  */
 
-export type BackendCategoryListItem = {
+export type BackendListItem = {
   id: number;
   parent_id: number | null;
   name: string;
@@ -12,27 +13,40 @@ export type BackendCategoryListItem = {
   attributes: string[];
   count?: number;
 };
-
 /**
- * тип для одной категории на главного каталога.
- * Заголовок и первый уровень вложенности
+ * Одна главная категория
+ * с её непосредственными подкатегориями.
  */
-
-export type BackendMainCategory = BackendCategoryListItem & {
-  categories: BackendCategoryListItem[];
+export type BackendCategory = BackendListItem & {
+  subcategory: BackendListItem[];
 };
 
 /**
- * Типы для каталога на главной странице
+ * Ответ для каталога на главной странице:
+ * GET /api/v1/posts/
+ * сейчас это хардкод
  */
-export type MainCatalogResponse = {
+export type MainCatalog = {
   count?: number;
-  categories: BackendMainCategory[];
+  categories: BackendCategory[];
 };
+
 /**
- * Тип для всех категорий
+ * Ответ сервера для конкретной категории/подкатегории
+ * GET /api/v1/posts/[categoryPath] (например, /posts/avto-moto)
  */
 export type CategoryResponse = {
   count?: number;
-  categories: BackendCategoryListItem[];
+  category: BackendCategory;
+};
+
+/**
+ * Ответ сервера для конкретной категории/подкатегории
+ * GET /api/v1/posts/[categoryPath]/[subcategoryPath]
+ */
+
+export type SubcategoryResponse = {
+  count?: number;
+  category: BackendListItem;
+  categories: BackendListItem[];
 };
