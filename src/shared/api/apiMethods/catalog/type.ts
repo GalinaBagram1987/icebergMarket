@@ -3,7 +3,7 @@
  * который приходит с бэкенда.
  */
 
-export type BackendListItem = {
+export type BackendCategoryItem = {
   id: number;
   parent_id: number | null;
   name: string;
@@ -17,8 +17,8 @@ export type BackendListItem = {
  * Одна главная категория
  * с её непосредственными подкатегориями.
  */
-export type BackendCategory = BackendListItem & {
-  subcategory: BackendListItem[];
+export type BackendCategory = BackendCategoryItem & {
+  subcategory: BackendCategoryItem[];
 };
 
 /**
@@ -47,6 +47,6 @@ export type CategoryResponse = {
 
 export type SubcategoryResponse = {
   count?: number;
-  category: BackendListItem;
-  categories: BackendListItem[];
+  category: BackendCategoryItem;
+  categories: BackendCategoryItem[];
 };
