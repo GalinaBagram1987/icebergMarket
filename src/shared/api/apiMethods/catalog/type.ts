@@ -34,7 +34,13 @@ export type MainCatalog = {
 /**
  * Ответ сервера для конкретной категории/подкатегории
  * GET /api/v1/posts/[categoryPath] (например, /posts/avto-moto)
- */
+ @example
+ * // Как обращаться к запросу (Деструктуризация):
+ * const { category } = await getCategories("avto-moto");
+ * category.name; // "Авто-мото"
+ * category.subcategory; // Массив подкатегорий внутр
+*/
+
 export type CategoryResponse = {
   count?: number;
   category: BackendCategory;
@@ -43,6 +49,11 @@ export type CategoryResponse = {
 /**
  * Ответ сервера для конкретной категории/подкатегории
  * GET /api/v1/posts/[categoryPath]/[subcategoryPath]
+ * * @example
+ * // Как обращаться к запросу (Деструктуризация):
+ * const { category, categories } = await getSubCategories("avto-moto/zapchasti");
+ * category.name; // Текущая подкатегория "Запчасти"
+ * categories; // Массив вложенных в неё детей на ОДНОМ уровне с ней
  */
 
 export type SubcategoryResponse = {

@@ -5,7 +5,7 @@ import 'server-only';
 import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
-import { BackendCategoryListItem } from '@/shared/api/apiMethods/catalog';
+import { BackendCategoryItem } from '@/shared/api/apiMethods/catalog';
 
 /**
  * Листок проходит через ошибку.
@@ -30,7 +30,7 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  * получает данные с бэка и кеширует на указанное в конфиге некст времени
  */
 
-export const serverFetchAndCachedCategory = async (path: string): Promise<BackendCategoryListItem[]> => {
+export const serverFetchAndCachedCategory = async (path: string): Promise<BackendCategoryItem[]> => {
   console.log('[CACHE CALL]', { path });
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
