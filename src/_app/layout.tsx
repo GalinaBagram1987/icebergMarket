@@ -59,7 +59,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const RootLayout = async ({ children }: RootLayoutProvider) => {
   const messages = await getMessages();
   return (
-    <html lang="ru">
+    <html lang="ru" className="notranslate">
       <body>
         <div className="page">
           <NextIntlClientProvider messages={messages}>
