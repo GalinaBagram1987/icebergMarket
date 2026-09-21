@@ -30,7 +30,7 @@ export const catalogRequest = {
 
   getCategory: async (path: string): Promise<CategoryResponse> => {
     // Предохранитель от системных запросов, возвращ путые данные с вашим типом CategoryResponse
-    if (path.includes('favicon.ico') || path.includes('.well-known')) {
+    if (path.includes('favicon') || path.includes('.well-known')) {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
       return {
         count: 0,
