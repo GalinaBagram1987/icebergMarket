@@ -8,8 +8,7 @@
 }
 
 .subcategoryItem {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 8px 15px 8px 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,6 +30,7 @@
   font-size: 16px;
   line-height: 1.2;
   color: var(--primary-color);
+  margin-right: 15px;
 }
 
 .itemNum {

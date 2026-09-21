@@ -20,7 +20,7 @@ export const SubcategoryList = async ({ path }: { path: string }) => {
           <div key={subcat.id} className={styles.subcategoryItem}>
             <Link className={styles.subcategoryLink} href={`/${safePath}`}>
               <span className={styles.itemText}>{subcat.name}</span>
-              <span className={styles.itemNum}>{subcat.count}</span>
+              <span className={styles.itemNum}>{subcat.count ? Number(subcat.count).toLocaleString('ru-RU') : 0}</span>
             </Link>
           </div>
         );
