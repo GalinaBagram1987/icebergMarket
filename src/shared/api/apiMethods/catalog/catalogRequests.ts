@@ -21,13 +21,16 @@ export const catalogRequest = {
   },
 
   /**
-   * получить данные одной категории и список его подкатегорий
-   * @param path - эндпоинт '/posts/${path}'
+   * Получить данные одной категории
+   * @param path - эндпоинт '/posts/${path}/'
+   * обращение  в компоненте
+   * data.category.name - к данным категории
+   * data.category.categories - массив детей если они есть
    */
 
-  getCategories: async (path: string): Promise<BackendCategory> => {
+  getCategory: async (path: string): Promise<CategoryResponse> => {
     const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
-    return data.category;
+    return data;
   },
 
   /**
@@ -38,7 +41,7 @@ export const catalogRequest = {
    * data.categories - массив детей если они есть
    */
 
-  getSubCategories: async (path: string): Promise<SubcategoryResponse> => {
+  getSubCategory: async (path: string): Promise<SubcategoryResponse> => {
     const { data } = await apiWithInterceptors.get<SubcategoryResponse>(`posts/${path}`);
     return data;
   },

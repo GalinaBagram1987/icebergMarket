@@ -1,15 +1,19 @@
 import Link from 'next/link';
 import styles from './subcategoryList.module.css';
-import { serverFetchAndCachedCategory } from '@/entities/category';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
 
 export const SubcategoryList = async ({ path }: { path: string }) => {
-  const subcategories = await serverFetchAndCachedCategory(path);
+  const data = await serverFethcAndCachedSubcategory(path);
+  // Информация о текущей подкатегории (например, имя, слаг)
+  const categoryInfo = data.category;
+  // Массив вложенных детей берем строго из поля .categories, как возвращает бэк
+  const childrenInfo = data.categories;
 
-  if (!subcategories || subcategories.length === 0) return null;
+  if (!childrenInfo || childrenInfo.length === 0) return null;
 
   return (
     <div className={styles.subcategoryList}>
-      {subcategories.map((subcat) => {
+      {childrenInfo.map((subcat) => {
         // Защищаем URL: кодируем спецсимволы (запятые, апострофы, слэши) из базы бэка
         const safePath = encodeURI(subcat.path);
         return (

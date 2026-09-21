@@ -5,7 +5,7 @@ import 'server-only';
 import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
-import { BackendCategoryItem } from '@/shared/api/apiMethods/catalog';
+import type { CategoryResponse } from '@/shared/api/apiMethods/catalog';
 
 /**
  * Листок проходит через ошибку.
@@ -30,20 +30,20 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  * получает данные с бэка и кеширует на указанное в конфиге некст времени
  */
 
-export const serverFetchAndCachedCategory = async (path: string): Promise<BackendCategoryItem[]> => {
-  console.log('[CACHE CALL]', { path });
+export const serverFetchAndCachedCategory = async (path: string): Promise<CategoryResponse | {}> => {
+  console.log('[CACHE CALL cat]', { path });
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
-  console.log(`[normalizedPath]', normalizedPath`);
+  console.log('[normalizedPath]', normalizedPath);
   cacheTag(`category-${normalizedPath}`);
 
   try {
-    const categories = await catalogRequest.getCategories(normalizedPath);
-    return categories;
+    const data = await catalogRequest.getCategory(normalizedPath);
+    return data;
   } catch (error) {
     // Делаем пустой массив на вывод листка, убираем его из ошибок
     if (axios.isAxiosError<CatalogErrorResponse>(error) && error.response?.status === 400 && error.response.data?.detail === LEAF_CATEGORY_DETAIL) {
-      return [];
+      return {};
     }
     // Пробрасываем реальные ошибки дальше. Next.js перехватит её и включит error.tsx
     console.error('Ошибка получения categories каталога');

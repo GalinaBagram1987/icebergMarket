@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SubcategoryPage } from '@/_pages/subCategory';
-import { serverFetchAndCachedCategory } from '@/entities/category';
+import { serverFetchAndCachedCategory } from '@/entities/catalog';
 /**
  * Тип для страницы категорий
  * примимает path. грузит метатеги и данные

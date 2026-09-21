@@ -17,6 +17,7 @@ export type BackendCategoryItem = {
  * Одна главная категория
  * с её непосредственными подкатегориями.
  */
+
 export type BackendCategory = BackendCategoryItem & {
   subcategory: BackendCategoryItem[];
 };

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { CategoryPage } from '@/_pages/category';
-import { serverFetchAndCachedCategory } from '@/entities/category';
+import { serverFetchAndCachedCategory } from '@/entities/catalog';
 import { Suspense } from 'react';
 
 /**
