@@ -1,4 +1,4 @@
-'use cash';
+'use cache';
 
 import 'server-only';
 

@@ -14,7 +14,7 @@ import { SearchCategory } from '@/widgets/SearchCategory/ui/SearchCategory';
 import { LoadingRender } from '@/shared/ui/LoadingRender';
 import { ErrorRender } from '@/shared/ui/errorRender';
 import { NextErrorProps } from '@/shared/ui/errorRender';
-import { SubcategoryListError } from '@/widgets/subcategoryList';
+// import { SubcategoryListError } from '@/widgets/subcategoryList';
 
 const TestPage = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -67,7 +67,7 @@ const TestPage = () => {
       <LoadingRender />
       {/* Только для визуальной проверки — моковые пропсы */}
       <ErrorRender error={new Error('Тестовая ошибка для отображения страницы')} reset={() => console.log('reset clicked')} />
-      <SubcategoryListError />
+      {/* <SubcategoryListError /> */}
     </main>
   );
 };

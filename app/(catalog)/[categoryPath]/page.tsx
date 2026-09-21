@@ -28,6 +28,7 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
   console.log('[PAGE] before await params');
 
   const { categoryPath } = await params;
+
   const path = categoryPath;
   const category = await serverFetchAndCachedCategory(path);
 

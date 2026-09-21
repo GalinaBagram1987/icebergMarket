@@ -29,6 +29,23 @@ export const catalogRequest = {
    */
 
   getCategory: async (path: string): Promise<CategoryResponse> => {
+    // Предохранитель от системных запросов, возвращ путые данные с вашим типом CategoryResponse
+    if (path.includes('favicon.ico') || path.includes('.well-known')) {
+      console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
+      return {
+        count: 0,
+        category: {
+          id: 0,
+          parent_id: null,
+          name: '',
+          slug: '',
+          path: '',
+          is_leaf: true,
+          attributes: [],
+          subcategory: [],
+        },
+      };
+    }
     const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
     return data;
   },
@@ -42,6 +59,24 @@ export const catalogRequest = {
    */
 
   getSubCategory: async (path: string): Promise<SubcategoryResponse> => {
+    // Предохранитель от системных запросов, возвращающий пустые данные под ваш тип SubcategoryResponse
+    if (path.includes('favicon.ico') || path.includes('.well-known')) {
+      console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
+      return {
+        count: 0,
+        category: {
+          id: 0,
+          parent_id: null,
+          name: '',
+          slug: '',
+          path: '',
+          is_leaf: true,
+          attributes: [],
+        },
+        categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
+      };
+    }
+
     const { data } = await apiWithInterceptors.get<SubcategoryResponse>(`posts/${path}`);
     return data;
   },
