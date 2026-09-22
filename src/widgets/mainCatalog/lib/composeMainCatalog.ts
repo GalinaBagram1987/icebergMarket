@@ -1,11 +1,11 @@
-import type { MainCatalogUiConfig, MainCatalogCategory, mainCatalogDataFrontCategory, MainCatalogData } from '../model/types';
+import type { MainCatalogUiConfig, MainCatalogCategory, MainCatalogDataFrontCategory, MainCatalogData } from '../model/types';
 
 /**
  * Функция объединяет  текстовые данные с UI-конфигруацией
  * сортирует по порядку экранирования компонентов
  */
 
-export const composeMainCatalog = (categoriesData: Record<string, mainCatalogDataFrontCategory>, uiConfig: MainCatalogUiConfig): MainCatalogData => {
+export const composeMainCatalog = (categoriesData: Record<string, MainCatalogDataFrontCategory>, uiConfig: MainCatalogUiConfig): MainCatalogData => {
   if (!categoriesData) {
     console.error('composeMainCatalog: categoriesData ис missing!');
     return { categories: [] };

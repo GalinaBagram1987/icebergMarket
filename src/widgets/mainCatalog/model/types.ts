@@ -27,10 +27,10 @@ export type MainCatalogUiConfig = {
 };
 
 /**
- * Содержание 1 категории главного каталога
- */
+  * Содержание 1 категории главного каталога
+//  */
 
-export type mainCatalogDataFrontCategory = {
+export type MainCatalogDataFrontCategory = {
   name: string;
   slug: string;
   path: string;
@@ -43,14 +43,14 @@ export type mainCatalogDataFrontCategory = {
  * Содержание всего главного каталога
  */
 
-export type mainCatalogDataFront = mainCatalogDataFrontCategory & {
-  subcategories: mainCatalogDataFrontCategory[];
+export type MainCatalogDataFront = MainCatalogDataFrontCategory & {
+  subcategories: MainCatalogDataFrontCategory[];
 };
 
 /**
- * Категория главного каталога, объединённая с UI-настройками.
+ * Категоря главного каталога, объединённая с UI-настройками.
  */
-export type MainCatalogCategory = mainCatalogDataFront & MainCatalogUiConfigItem;
+export type MainCatalogCategory = MainCatalogDataFront & MainCatalogUiConfigItem;
 
 /**
  * Подготовленные данные главного каталога.
