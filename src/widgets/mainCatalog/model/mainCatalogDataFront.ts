@@ -1,5 +1,5 @@
 export const mainCatalogDataFront = {
-  'avto-moto-moto': {
+  'avto-moto': {
     name: 'Авто-мото',
     slug: 'avto-moto',
     path: 'avto-moto',
