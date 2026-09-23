@@ -8,7 +8,7 @@ import { getTranslations } from 'next-intl/server';
 
 export type BreadcrumbsProps = {
   currentCategory: BackendCategoryItem;
-  parentCategory: BackendCategoryItem | null;
+  parentCategory: BackendCategoryItem;
 };
 
 /**
@@ -20,9 +20,9 @@ export const Breadcrumbs = async ({ currentCategory, parentCategory }: Breadcrum
   if (!currentCategory || !parentCategory) return null;
 
   return (
-    <nav className={styles} aria-label="Хлебные крошки">
-      <ul className={styles.list}>
-        <li className={styles.item}>
+    <nav className={styles.breadcrumbs} aria-label="Хлебные крошки">
+      <ul>
+        <li>
           <Link href="/" className={styles.link}>
             {t('breadcrumbs.main')}
           </Link>

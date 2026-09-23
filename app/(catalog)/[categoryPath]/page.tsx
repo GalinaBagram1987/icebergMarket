@@ -49,9 +49,14 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
   };
 };
 
+/**
+ * Для некс переносим асинхронную логику отдельно, чтобы потом обвернуть все в suspense
+ */
+
 const CategoryPageContent = async ({ params }: CategoryPageAppProps) => {
   const { categoryPath } = await params;
-  return <CategoryPage path={categoryPath} />;
+  const categoryData = await serverFetchAndCachedCategory(categoryPath);
+  return <CategoryPage path={categoryPath} categoryData={categoryData} />;
 };
 
 /**

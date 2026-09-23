@@ -1,3 +1,4 @@
+import { CategoryResponse } from '@/shared/api/apiMethods/catalog';
 /**
  * Пропсы для основного компонента категории
  */
@@ -13,7 +14,11 @@ export type SubcategoryItem = {
   count?: number;
 };
 
+/**
+ * Типы для страницы категорий
+ */
+
 export type CategoryPageProps = {
   path: string;
-  subcategories: SubcategoryItem[];
+  categoryData: CategoryResponse;
 };

@@ -25,6 +25,10 @@
   outline: none;
 }
 
+.subcategoryLink:hover {
+  text-decoration: none;
+}
+
 .itemText {
   font-family: var(--font-headings);
   font-size: 16px;
