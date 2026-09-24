@@ -1,5 +1,5 @@
 import { apiWithInterceptors } from '../../configApi';
-import type { BackendCategory, MainCatalog, CategoryResponse, SubcategoryResponse } from './type';
+import type { BackendCategory, MainCatalog, CategoryResponse, BackendCategoryItem } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку
@@ -7,19 +7,6 @@ import type { BackendCategory, MainCatalog, CategoryResponse, SubcategoryRespons
  *
  */
 export const catalogRequest = {
-  /**
-   * получаем категории для главного каталога
-   * заголовки и ссылки первого уровня
-   * @param path - эндпоинт '/posts/'
-   * На данный момент каталог захардкоден
-   * Запрос оставляю
-   */
-
-  getMainCatalog: async (): Promise<BackendCategory[]> => {
-    const { data } = await apiWithInterceptors.get<MainCatalog>('posts/');
-    return data.categories;
-  },
-
   /**
    * Получить данные одной категории
    * @param path - эндпоинт '/posts/${path}/'
@@ -33,7 +20,6 @@ export const catalogRequest = {
     if (path.includes('favicon') || path.includes('.well-known')) {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
       return {
-        count: 0,
         category: {
           id: 0,
           parent_id: null,
@@ -42,8 +28,8 @@ export const catalogRequest = {
           path: '',
           is_leaf: true,
           attributes: [],
-          subcategory: [],
         },
+        categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
       };
     }
     const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
@@ -58,12 +44,11 @@ export const catalogRequest = {
    * data.categories - массив детей если они есть
    */
 
-  getSubCategory: async (path: string): Promise<SubcategoryResponse> => {
+  getSubCategory: async (path: string): Promise<CategoryResponse> => {
     // Предохранитель от системных запросов, возвращающий пустые данные под ваш тип SubcategoryResponse
     if (path.includes('favicon.ico') || path.includes('.well-known')) {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
       return {
-        count: 0,
         category: {
           id: 0,
           parent_id: null,
@@ -77,7 +62,22 @@ export const catalogRequest = {
       };
     }
 
-    const { data } = await apiWithInterceptors.get<SubcategoryResponse>(`posts/${path}`);
+    const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
     return data;
+  },
+
+  // =======================================================
+
+  /**
+   * получаем категории для главного каталога
+   * заголовки и ссылки первого уровня
+   * @param path - эндпоинт '/posts/'
+   * На данный момент каталог захардкоден
+   * Запрос оставляю
+   */
+
+  getMainCatalog: async (): Promise<BackendCategory[]> => {
+    const { data } = await apiWithInterceptors.get<MainCatalog>('posts/');
+    return data.categories;
   },
 };
