@@ -13,9 +13,30 @@ export type BackendCategoryItem = {
   attributes: string[];
   count?: number;
 };
+
 /**
- * Одна главная категория
- * с её непосредственными подкатегориями.
+ * Ответ сервера для конкретной категории/подкатегории
+ * GET /api/v1/posts/[categoryPath] (например, /posts/avto-moto)
+ * GET /api/v1/posts/[categoryPath]/[subcategoryPath]
+ * * @example
+ * // Как обращаться к запросу (Деструктуризация):
+ * const { category, categories } = await getSubCategories("avto-moto/zapchasti");
+ * category.name; // Текущая подкатегория "Запчасти"
+ * categories; // Массив вложенных в неё детей на ОДНОМ уровне с ней
+ */
+
+export type CategoryResponse = {
+  category: BackendCategoryItem;
+  categories: BackendCategoryItem[];
+};
+
+// ================================================
+
+/**
+ * Категория для каталога на главной странице.
+ * Сейчас это хардкод. но есть такой эндпоинт.
+ * оставляем под него типы и запрос
+ * на случай если уберут в будущем хардкод
  */
 
 export type BackendCategory = BackendCategoryItem & {
@@ -30,35 +51,4 @@ export type BackendCategory = BackendCategoryItem & {
 export type MainCatalog = {
   count?: number;
   categories: BackendCategory[];
-};
-
-/**
- * Ответ сервера для конкретной категории/подкатегории
- * GET /api/v1/posts/[categoryPath] (например, /posts/avto-moto)
- @example
- * // Как обращаться к запросу (Деструктуризация):
- * const { category } = await getCategories("avto-moto");
- * category.name; // "Авто-мото"
- * category.subcategory; // Массив подкатегорий внутр
-*/
-
-export type CategoryResponse = {
-  count?: number;
-  category: BackendCategory;
-};
-
-/**
- * Ответ сервера для конкретной категории/подкатегории
- * GET /api/v1/posts/[categoryPath]/[subcategoryPath]
- * * @example
- * // Как обращаться к запросу (Деструктуризация):
- * const { category, categories } = await getSubCategories("avto-moto/zapchasti");
- * category.name; // Текущая подкатегория "Запчасти"
- * categories; // Массив вложенных в неё детей на ОДНОМ уровне с ней
- */
-
-export type SubcategoryResponse = {
-  count?: number;
-  category: BackendCategoryItem;
-  categories: BackendCategoryItem[];
 };
