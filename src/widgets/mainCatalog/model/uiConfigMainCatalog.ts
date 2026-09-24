@@ -35,7 +35,7 @@ export const mainCatalogUiData = {
     listPaggingRight: '46px',
     listPaddindBottom: '52px',
   },
-  "komp'jutery-i-tsifrovaja-tehnika": {
+  'kompiutery-i-tsifrovaia-tekhnika': {
     area: 'computers',
     order: 2,
     src: computers2,
@@ -50,7 +50,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '17px',
     listPaddindBottom: '26px',
   },
-  construction: {
+  'stroitelstvo-remont-stroi-prom-materialy': {
     area: 'construction',
     order: 3,
     src: construction3,
@@ -65,7 +65,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '29px',
     listPaddindBottom: '12px',
   },
-  'instruments-and-equipment': {
+  'instrumenty-i-oborudovanie': {
     area: 'tools',
     order: 4,
     src: tools4,
@@ -81,7 +81,7 @@ export const mainCatalogUiData = {
     listPaddindBottom: '21px',
   },
 
-  appliances: {
+  'bytovaia-tekhnika': {
     area: 'appliances',
     order: 5,
     src: household5,
@@ -96,7 +96,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '23px',
     listPaddindBottom: '15px',
   },
-  furniture: {
+  'mebel-i-interer': {
     area: 'furniture',
     order: 6,
     src: furniture6,
@@ -111,7 +111,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '28',
     listPaddindBottom: '1px',
   },
-  'water-tech': {
+  'vodnaia-tekhnika': {
     area: 'water-tech',
     order: 7,
     src: waterGoods7,
@@ -122,7 +122,7 @@ export const mainCatalogUiData = {
     headerHeight: '60px',
     cardHeight: '60px',
   },
-  'sport-tourism-hunting': {
+  'sport-turizm-okhota': {
     area: 'sport-tourism',
     order: 8,
     src: tourism8,
@@ -133,7 +133,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'garden-country': {
+  'tovary-dlia-dachi-sada-i-ogoroda': {
     area: 'garden-country',
     order: 9,
     src: dacha9,
@@ -144,7 +144,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'pet-supplies': {
+  'tovary-dlia-zhivotnykh': {
     area: 'animals',
     order: 10,
     src: animals10,
@@ -155,7 +155,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'clothes-shoes-accessories': {
+  'odezhda-obuv-i-aksessuary': {
     area: 'clothes',
     order: 11,
     src: clothes11,
@@ -170,7 +170,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '4px',
     listPaddindBottom: '26px',
   },
-  kitchenware: {
+  'posuda-i-kukhonnye-prinadlezhnosti': {
     area: 'kitchenware',
     order: 12,
     src: dishes12,
@@ -185,7 +185,7 @@ export const mainCatalogUiData = {
     listPaddingRight: '5px',
     listPaddindBottom: '25px',
   },
-  'fabrics-haberdashery': {
+  'tkani-i-shveinaia-furnitura': {
     area: 'fabrics',
     order: 13,
     src: fabrics13,
@@ -196,7 +196,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  stationery: {
+  'kantstovary-i-knigi': {
     area: 'stationery',
     order: 14,
     src: stationery14,
@@ -207,7 +207,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'food-beverages': {
+  'produkty-i-napitki': {
     area: 'food-beverages',
     order: 15,
     src: foods15,
@@ -218,7 +218,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'containers-packaging': {
+  'tara-i-upakovka': {
     area: 'packaging',
     order: 16,
     src: packaging16,
@@ -229,7 +229,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  beauty: {
+  krasota: {
     area: 'beauty',
     order: 17,
     src: beauty17,
@@ -240,7 +240,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  health: {
+  zdorove: {
     area: 'health',
     order: 18,
     src: health18,
@@ -251,7 +251,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'gifts-souvenirs-flowers': {
+  'podarki-suveniry-tsvety': {
     area: 'gifts',
     order: 19,
     src: souvenirs19,
@@ -262,7 +262,7 @@ export const mainCatalogUiData = {
     headerHeight: '67px',
     cardHeight: '67px',
   },
-  'kids-maternity': {
+  'deti-i-materinstvo': {
     area: 'kids',
     order: 20,
     src: toys20,

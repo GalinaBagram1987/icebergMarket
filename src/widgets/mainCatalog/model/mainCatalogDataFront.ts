@@ -60,7 +60,7 @@ export const mainCatalogDataFront = {
       { name: 'Промышленное и коммерческое', slug: 'promyshlennoe-i-kommercheskoe', path: 'instrumenty-i-oborudovanie/promyshlennoe-i-kommercheskoe' },
     ],
   },
-  appliances: {
+  'bytovaia-tekhnika': {
     name: 'Бытовая техника',
     slug: 'bytovaia-tekhnika',
     path: 'bytovaia-tekhnika',
@@ -77,7 +77,7 @@ export const mainCatalogDataFront = {
       { name: '...', slug: 'appliances', path: 'appliances', isDots: true },
     ],
   },
-  furniture: {
+  'mebel-i-interer': {
     name: 'Мебель и интерьер',
     slug: 'mebel-i-interer',
     path: 'mebel-i-interer',
@@ -131,7 +131,7 @@ export const mainCatalogDataFront = {
       { name: 'Спецодежда', slug: 'spetsodezhda', path: 'odezhda-obuv-i-aksessuary/spetsodezhda' },
     ],
   },
-  kitchenware: {
+  'posuda-i-kukhonnye-prinadlezhnosti': {
     name: 'Посуда и кухонные принадлежности',
     slug: 'posuda-i-kukhonnye-prinadlezhnosti',
     path: 'posuda-i-kukhonnye-prinadlezhnosti',
@@ -146,12 +146,12 @@ export const mainCatalogDataFront = {
     slug: 'tkani-i-shveinaia-furnitura',
     path: 'tkani-i-shveinaia-furnitura',
   },
-  stationery: {
+  'kantstovary-i-knigi': {
     name: 'Канцтовары',
     slug: 'kantstovary-i-knigi',
     path: 'kantstovary-i-knigi',
   },
-  'food-beverages': {
+  'produkty-i-napitki': {
     name: 'Продукты и напитки',
     slug: 'produkty-i-napitki',
     path: 'produkty-i-napitki',
