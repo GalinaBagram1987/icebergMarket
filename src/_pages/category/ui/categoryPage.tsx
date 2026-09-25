@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
-import { SubcategoryListError } from '@/widgets/subcategoryList';
-import { ErrorBonduary } from '@/shared/ui/errorBonduare';
+
 import { CategoryPageProps } from '../model/types';
 
 import { SearchCategory } from '@/widgets/SearchCategory';
@@ -18,15 +17,13 @@ export const CategoryPage = ({ path, categoryData }: CategoryPageProps) => {
   return (
     <main className="container">
       <div className="containerContent">
-        <ErrorBonduary fallback={null}>{categoryData?.category && <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />}</ErrorBonduary>
+        <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
 
         <SearchCategory />
 
-        <ErrorBonduary fallback={<SubcategoryListError />}>
-          <Suspense fallback={null}>
-            <SubcategoryList path={path} />
-          </Suspense>
-        </ErrorBonduary>
+        <Suspense fallback={null}>
+          <SubcategoryList path={path} />
+        </Suspense>
       </div>
     </main>
   );

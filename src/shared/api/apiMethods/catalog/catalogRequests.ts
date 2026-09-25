@@ -46,7 +46,7 @@ export const catalogRequest = {
 
   getSubCategory: async (path: string): Promise<CategoryResponse> => {
     // Предохранитель от системных запросов, возвращающий пустые данные под ваш тип SubcategoryResponse
-    if (path.includes('favicon.ico') || path.includes('.well-known')) {
+    if (path.includes('favicon') || path.includes('.well-known')) {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', path);
       return {
         category: {
