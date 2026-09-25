@@ -26,7 +26,9 @@ export const CatalogHeader = ({ item }: CatalogHeaderProps) => {
     <div className={cn(styles.catalogHeader, bgClassFromModule)}>
       <img src={imgSrcString} alt={item.alt ?? ''} />
       <h3 className={styles.headerTitle}>
-        <Link href={href}>{item.name}</Link>
+        <Link href={href} className={styles.headerLink}>
+          {item.name}
+        </Link>
       </h3>
     </div>
   );
