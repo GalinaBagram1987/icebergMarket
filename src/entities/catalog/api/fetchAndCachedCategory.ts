@@ -52,6 +52,7 @@ export const serverFetchAndCachedCategory = async (path: string): Promise<Catego
           attributes: [],
         },
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
+        hasError: true, // маркер, что произошел сбой
       };
     }
     // Пробрасываем реальные ошибки дальше. Next.js перехватит её и включит error.tsx
