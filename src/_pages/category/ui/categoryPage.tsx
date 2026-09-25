@@ -18,8 +18,10 @@ export const CategoryPage = ({ path, categoryData }: CategoryPageProps) => {
   return (
     <main className="container">
       <div className="containerContent">
-        <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
+        <ErrorBonduary fallback={null}>{categoryData?.category && <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />}</ErrorBonduary>
+
         <SearchCategory />
+
         <ErrorBonduary fallback={<SubcategoryListError />}>
           <Suspense fallback={null}>
             <SubcategoryList path={path} />

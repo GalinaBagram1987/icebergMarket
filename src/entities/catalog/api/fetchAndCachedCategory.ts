@@ -31,6 +31,14 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  */
 
 export const serverFetchAndCachedCategory = async (path: string): Promise<CategoryResponse | {}> => {
+  if (path.includes('favicon') || path.includes('.well-known')) {
+    console.log('[SERVER CACHE PREVENT] Заблокирован системный запрос фавикона:', path);
+    return {
+      category: { id: 0, parent_id: null, name: '', slug: '', path: '', is_leaf: true, attributes: [] },
+      categories: [],
+    };
+  }
+
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
   cacheTag(`category-${normalizedPath}`);
@@ -52,7 +60,6 @@ export const serverFetchAndCachedCategory = async (path: string): Promise<Catego
           attributes: [],
         },
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
-        hasError: true, // маркер, что произошел сбой
       };
     }
     // Пробрасываем реальные ошибки дальше. Next.js перехватит её и включит error.tsx

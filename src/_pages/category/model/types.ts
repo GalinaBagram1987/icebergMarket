@@ -20,5 +20,5 @@ export type SubcategoryItem = {
 
 export type CategoryPageProps = {
   path: string;
-  categoryData: CategoryResponse;
+  categoryData: CategoryResponse | null;
 };

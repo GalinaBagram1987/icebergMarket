@@ -1,5 +1,5 @@
 import { apiWithInterceptors } from '../../configApi';
-import type { BackendCategory, MainCatalog, CategoryResponse, BackendCategoryItem } from './type';
+import type { BackendCategory, MainCatalog, CategoryResponse } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку

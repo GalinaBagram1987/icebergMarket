@@ -13,11 +13,6 @@ type CategoryPageAppProps = {
   params: Promise<{
     categoryPath: string;
   }>;
-  // searchParams: Promise<{
-  //   search?: string | string[];
-  //   page?: string | string[];
-  //   sort?: string | string[];
-  // }>;
 };
 
 /**
@@ -56,7 +51,10 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
 const CategoryPageContent = async ({ params }: CategoryPageAppProps) => {
   const { categoryPath } = await params;
   const categoryData = await serverFetchAndCachedCategory(categoryPath);
-  return <CategoryPage path={categoryPath} categoryData={categoryData} />;
+  // прилетел {} (ошибка или листок), подменяем его на null.
+  const safeCategoryData = categoryData && 'category' in categoryData ? categoryData : null;
+
+  return <CategoryPage path={categoryPath} categoryData={safeCategoryData} />;
 };
 
 /**

@@ -5,7 +5,7 @@ import 'server-only';
 import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
-import type { SubcategoryResponse } from '@/shared/api/apiMethods/catalog';
+import type { CategoryResponse } from '@/shared/api/apiMethods/catalog';
 
 /**
  * Функция получения и кеширования подкатегорий на строне сервера
@@ -23,11 +23,17 @@ type CatalogErrorResponse = {
 
 const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Use the search endpoint directly';
 
-export const serverFethcAndCachedSubcategory = async (path: string): Promise<SubcategoryResponse> => {
-  console.log('[CACHE CALL subcat]', { path });
+export const serverFethcAndCachedSubcategory = async (path: string): Promise<CategoryResponse> => {
+  if (path.includes('favicon') || path.includes('.well-known')) {
+    console.log('[SERVER CACHE PREVENT] Заблокирован системный запрос фавикона:', path);
+    return {
+      category: { id: 0, parent_id: null, name: '', slug: '', path: '', is_leaf: true, attributes: [] },
+      categories: [],
+    };
+  }
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
-  console.log('[normalizedPath]', normalizedPath);
+
   cacheTag(`subcategory-${normalizedPath}`);
 
   try {
@@ -47,7 +53,6 @@ export const serverFethcAndCachedSubcategory = async (path: string): Promise<Sub
           attributes: [],
         },
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
-        hasError: true, // маркер, что произошел сбой
       };
     }
     // Пробрасываем реальные ошибки дальше. Next.js перехватит её и включит error.tsx
