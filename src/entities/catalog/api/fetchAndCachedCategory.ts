@@ -31,10 +31,8 @@ const LEAF_CATEGORY_DETAIL = 'Cannot fetch subcategories for a leaf category. Us
  */
 
 export const serverFetchAndCachedCategory = async (path: string): Promise<CategoryResponse | {}> => {
-  console.log('[CACHE CALL cat]', { path });
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
-  console.log('[normalizedPath]', normalizedPath);
   cacheTag(`category-${normalizedPath}`);
 
   try {
@@ -43,10 +41,22 @@ export const serverFetchAndCachedCategory = async (path: string): Promise<Catego
   } catch (error) {
     // Делаем пустой массив на вывод листка, убираем его из ошибок
     if (axios.isAxiosError<CatalogErrorResponse>(error) && error.response?.status === 400 && error.response.data?.detail === LEAF_CATEGORY_DETAIL) {
-      return {};
+      return {
+        category: {
+          id: 0,
+          parent_id: null,
+          name: '',
+          slug: '',
+          path: '',
+          is_leaf: true,
+          attributes: [],
+        },
+        categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
+      };
     }
     // Пробрасываем реальные ошибки дальше. Next.js перехватит её и включит error.tsx
-    console.error('Ошибка получения categories каталога');
-    throw error;
+    const message = axios.isAxiosError(error) ? error.response?.data?.detail || error.message : 'Ошибка сети';
+    console.error(`Ошибка получения categories каталога: ${message}`);
+    throw new Error(message);
   }
 };

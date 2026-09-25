@@ -20,13 +20,13 @@ export const CatalogList = ({ item }: CatalogListProps) => {
   return (
     <div className={styles.catalogListContainer}>
       <ul>
-        {subcategories.map((child) => {
+        {subcategories.map((child, index) => {
           const inlineClass = child.inline ? styles.inlineItem : '';
           const dotsClass = child.isDots ? styles.dotsItem : '';
           const href = child.path.startsWith('/') ? child.path : `/${child.path}`;
-
+          const childKey = `${child.slug}-${index}`;
           return (
-            <li key={child.slug} className={cn(inlineClass, dotsClass)}>
+            <li key={childKey} className={cn(inlineClass, dotsClass)}>
               <Link href={href}>{child.name}</Link>
               {child.hasSeparator && '\u00A0\—\u00A0'}
             </li>
