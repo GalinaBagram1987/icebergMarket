@@ -52,9 +52,11 @@ export const generateMetadata = async ({ params }: SubCategoryPageAppProps): Pro
 
 const SubCategoryPageContent = async ({ params }: SubCategoryPageAppProps) => {
   const resolvedParams = await params;
-  const fullPath = buildFullPath(resolvedParams);
-  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
 
+  const fullPath = buildFullPath(resolvedParams);
+
+  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
+  console.log('[SubCategoryPage] API response:', subcategoryData);
   const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
 
   return <SubcategoryPage path={fullPath} subcategoryData={safeSubcategoryData} />;
