@@ -1,21 +1,23 @@
 .breadcrumbs {
-  font-family: var(--font-mono);
-  color: var(--text-black);
-  font-size: 16px;
-  line-height: 1.2;
   margin-top: 25px;
   margin-bottom: 13px;
+}
+
+.list {
+  text-decoration: none;
+  color: var(--text-black);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   list-style: none;
-  gap: 19px;
+  gap: 18px;
 }
-
 .link {
-  text-decoration: none;
+  margin-right: 19px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--text-black);
 }
-
 .link:hover {
   text-decoration: underline;
 }

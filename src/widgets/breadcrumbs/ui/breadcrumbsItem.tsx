@@ -21,7 +21,7 @@ export const Breadcrumbs = async ({ currentCategory, parentCategory }: Breadcrum
 
   return (
     <nav className={styles.breadcrumbs} aria-label="Хлебные крошки">
-      <ul>
+      <ul className={styles.list}>
         <li>
           <Link href="/" className={styles.link}>
             {t('breadcrumbs.main')}
@@ -32,13 +32,11 @@ export const Breadcrumbs = async ({ currentCategory, parentCategory }: Breadcrum
         </li>
         {parentCategory && (
           <li>
-            <Link href={`/${parentCategory.path}`}>{parentCategory.name}</Link>
-            <span aria-hidden="true"> / </span>
+            <Link className={styles.link} href={`/${parentCategory.path}`}>
+              {parentCategory.name}
+            </Link>
           </li>
         )}
-        <li aria-current="page" className={styles.item}>
-          {currentCategory.name}
-        </li>
       </ul>
     </nav>
   );

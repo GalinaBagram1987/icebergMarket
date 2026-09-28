@@ -2,9 +2,14 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SubcategoryPage } from '@/_pages/subCategory';
 import { serverFetchAndCachedCategory } from '@/entities/catalog';
+import { buildFullPath } from '@/entities/lib';
+import { isCategoryResponse } from '@/entities/lib';
+
 /**
- * Тип для страницы категорий
- * примимает path. грузит метатеги и данные
+ * Тип для страницы покатегорий
+ * примимает path.
+ * для подкатегориий такого типа app/catalog/[categoryPath]/[...subcategoryPath]/page.tsx
+ * некст возвращает основн строкой и далее объект
  */
 
 type SubCategoryPageAppProps = {
@@ -19,12 +24,12 @@ type SubCategoryPageAppProps = {
  */
 
 export const generateMetadata = async ({ params }: SubCategoryPageAppProps): Promise<Metadata> => {
-  const { categoryPath } = await params;
-  const path = categoryPath;
-  //const currentPathString = subcategoryPath[subcategoryPath.length - 1];
-  const subcategory = await serverFetchAndCachedCategory(path);
-
-  if (!subcategory) {
+  console.log('[PAGE] before await params');
+  const resolvedParams = await params;
+  const fullPath = buildFullPath(resolvedParams);
+  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
+  const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
+  if (!safeSubcategoryData) {
     return {
       title: 'Категория не найдена',
       description: 'Запрашиваемая категория не найдена.',
@@ -41,10 +46,18 @@ export const generateMetadata = async ({ params }: SubCategoryPageAppProps): Pro
   };
 };
 
-const SubCategoryPageContent = async ({ params }: SubCategoryPageAppProps) => {
-  const { categoryPath } = await params;
+/**
+ * Для некс переносим асинхронную логику отдельно, чтобы потом обвернуть все в suspense
+ */
 
-  return <SubcategoryPage path={categoryPath} />;
+const SubCategoryPageContent = async ({ params }: SubCategoryPageAppProps) => {
+  const resolvedParams = await params;
+  const fullPath = buildFullPath(resolvedParams);
+  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
+
+  const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
+
+  return <SubcategoryPage path={fullPath} subcategoryData={safeSubcategoryData} />;
 };
 
 /**
