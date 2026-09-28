@@ -32,6 +32,19 @@ export const catalogRequest = {
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
       };
     }
+
+    const requestPath = `posts/${path}`;
+
+    console.log('[GET CATEGORY] path:', path);
+    console.log('[GET CATEGORY] baseURL:', apiWithInterceptors.defaults.baseURL);
+    console.log(
+      '[GET CATEGORY] full URL:',
+      apiWithInterceptors.getUri({
+        method: 'GET',
+        url: requestPath,
+      }),
+    );
+
     const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
     return data;
   },
@@ -61,6 +74,18 @@ export const catalogRequest = {
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
       };
     }
+
+    const requestPath = `posts/${path}`;
+
+    console.log('[GET CATEGORY] path:', path);
+    console.log('[GET CATEGORY] baseURL:', apiWithInterceptors.defaults.baseURL);
+    console.log(
+      '[GET CATEGORY] full URL:',
+      apiWithInterceptors.getUri({
+        method: 'GET',
+        url: requestPath,
+      }),
+    );
 
     const { data } = await apiWithInterceptors.get<CategoryResponse>(`posts/${path}`);
     return data;
