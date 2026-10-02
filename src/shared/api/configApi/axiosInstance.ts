@@ -18,6 +18,7 @@ export const axiosInstance = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
+    ...(process.env.API_TOKEN && { 'X-API-Token': process.env.API_TOKEN }),
   },
 });
 
