@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin: 30px 64px 17px 16px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--text-black);
+}
+
+.triggerButton {
+  background: none; /* Полностью убирает стандартный серый фон кнопки */
+  border: none; /* Убирает системную черную рамку */
+  padding: 8px 0; /* Оставляем только нужные нам отступы */
+  font: inherit; /* Кнопка послушно берет шрифт и размер вашего макета */
+  cursor: pointer; /*  Важно: при наведении мышки курсор превратится в «пальчик» */
+}
+
+.icon {
+  height: 16px;
+}
+
+.activeLabel:hover {
+  text-decoration: underline;
+}
+
+/* Базовый класс для стрелочки */
+.arrow {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 4px;
+
+  /*Заставляет стрелочку поворачиваться ПЛАВНО (за 0.2 секунды), а не резко дергаться */
+  transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+  /* Поворачивает стрелочку «V» вверх тормашками на 180 градусов */
+  transform: rotate(180deg);
+}
+
+.menuList {
+  width: 144px;
+  height: 68px;
+  border: 1 px solid var(--bg-dark);
+  border-radius: var(--radius-sm);
+  background-color: var(--bd-netural);
+  line-height: 1.2;
+}

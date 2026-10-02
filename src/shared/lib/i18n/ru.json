@@ -48,6 +48,12 @@
     },
     "breadcrumbs": {
       "main": "Главная"
+    },
+    "sort": {
+      "seconsEl": "Сортировка",
+      "byDate": "По дате",
+      "expensive": "Дороже",
+      "cheaper": "Девешле"
     }
   }
 }
