@@ -20,10 +20,6 @@
   height: 16px;
 }
 
-.activeLabel:hover {
-  text-decoration: underline;
-}
-
 /* Базовый класс для стрелочки */
 .arrow {
   display: inline-block;
@@ -46,4 +42,13 @@
   border-radius: var(--radius-sm);
   background-color: var(--bd-netural);
   line-height: 1.2;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: var(--text-black);
+}
+
+.activeLink {
+  background-color: var(--bg-light);
 }

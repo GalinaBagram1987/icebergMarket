@@ -22,17 +22,68 @@ const SORT_OPTIONS = [
  * сортирует по дпте, по цене
  */
 
-const SortPost = () => {
+export const SortPost = () => {
+  const t = useTranslations('icebergMarket'); // хук next-intl
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [isOpen, setIsOpen] = useState(false);
-  const t = useTranslations('icebergMarket'); // Хук для клиента
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Текущая активная сортировка из URL
+  const currentSort = searchParams.get('sort') || 'date:asc';
+
+  // Находим объект текущей сортировки, чтобы отобразить его в кнопке
+  const currentOption = SORT_OPTIONS.find((opt) => opt.value === currentSort) || SORT_OPTIONS[0];
+
+  // Закрытие меню при клике вне контейнера
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Генерируем ссылку с новыми параметрами сортировки
+  const getSortLink = (sortValue: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('sort', sortValue);
+    params.set('page', '1'); // при смене сортировки сбрасываем на 1-ю страницу
+    return `${pathname}?${params.toString()}`;
+  };
+
   return (
-    <div className={styles.wrapper}>
-      <button type="button" className={styles.trigerButton}>
+    <div className={styles.wrapper} ref={containerRef}>
+      <button type="button" className={styles.triggerButton} onClick={() => setIsOpen((prev) => !prev)} aria-expanded={isOpen}>
         <span className={styles.icon}>↓↑</span>
-        <span className={styles.activeLabel}>t('sort.seconsEl')</span>
+        <span className={styles.activeLabel}>{t('sort.seconsEl')}</span>
         <span className={`${styles.arrow} ${isOpen ? styles.arrowOpen : ''}`}>V</span>
       </button>
-      {isOpen && <ul className={styles.menuList}></ul>}
+
+      {isOpen && (
+        <ul className={styles.menuList}>
+          {SORT_OPTIONS.map((option) => {
+            const isActive = option.value === currentSort;
+
+            return (
+              <li key={option.value} role="none">
+                <Link
+                  href={getSortLink(option.value)}
+                  className={`${styles.menuLink} ${isActive ? styles.activeLink : ''}`}
+                  onClick={() => setIsOpen(false)} // закрываем меню после выбора
+                  role="menuitem"
+                >
+                  {t(currentOption.labelKey)}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
