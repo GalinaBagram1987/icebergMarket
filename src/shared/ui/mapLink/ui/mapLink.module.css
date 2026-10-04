@@ -1,0 +1,26 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Отступ между иконкой и текстом */
+  text-decoration: none;
+  color: var(--text-black, #000);
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 19px;
+  margin-bottom: 16px;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.text:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: inherit; /* Иконка послушно красится в цвет текста */
+  flex-shrink: 0;
+}

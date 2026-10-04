@@ -13,6 +13,7 @@ type CategoryPageAppProps = {
   params: Promise<{
     categoryPath: string;
   }>;
+  // searchParams: Promise<{ sort?: string }>;
 };
 
 /**
@@ -50,6 +51,10 @@ export const generateMetadata = async ({ params }: CategoryPageAppProps): Promis
 
 const CategoryPageContent = async ({ params }: CategoryPageAppProps) => {
   const { categoryPath } = await params;
+
+  // 1. Достаем текущее значение сортировки из URL (если его там нет, ставим дефолт 'date:asc')
+  // const { sort = 'date:asc' } = await searchParams;
+
   const categoryData = await serverFetchAndCachedCategory(categoryPath);
   // прилетел {} (ошибка или листок), подменяем его на null.
   const safeCategoryData = categoryData && 'category' in categoryData ? categoryData : null;

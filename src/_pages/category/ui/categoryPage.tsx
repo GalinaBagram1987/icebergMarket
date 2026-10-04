@@ -5,7 +5,7 @@ import { CategoryPageProps } from '../model/types';
 import { SearchCategory } from '@/widgets/SearchCategory';
 import { SubcategoryList } from '@/widgets/subcategoryList';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
-
+import { MapLink } from '@/shared/ui/mapLink';
 /**
  * Страница категории типовая
  * Сборка страницы категорий
@@ -24,6 +24,7 @@ export const CategoryPage = ({ path, categoryData }: CategoryPageProps) => {
         <Suspense fallback={null}>
           <SubcategoryList path={path} />
         </Suspense>
+        <MapLink path={path} />
       </div>
     </main>
   );

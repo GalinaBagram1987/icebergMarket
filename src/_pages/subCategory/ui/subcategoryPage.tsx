@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { SubCategoryPageProps } from '../model/types';
 import { SearchCategory } from '@/widgets/SearchCategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
+import { MapLink } from '@/shared/ui/mapLink';
 
 /**
  * Страница подкатегории типовая
@@ -18,6 +19,7 @@ export const SubcategoryPage = ({ path, subcategoryData }: SubCategoryPageProps)
           <Breadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
         </Suspense>
         <SearchCategory />
+        <MapLink path={path} />
         <div>Здесь будет динамически сформированаая подкатегория {path}</div>
       </div>
     </main>
