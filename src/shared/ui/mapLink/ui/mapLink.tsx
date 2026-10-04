@@ -10,7 +10,7 @@ export type MapLinkProps = {
 export const MapLink = ({ path }: MapLinkProps) => {
   const t = useTranslations('icebergMarket'); // Хук для клиента
   return (
-    <Link href={`/map/${path}`} className={styles.link} role="button">
+    <Link href={`/mapSearch/${path}`} className={styles.link} role="button">
       {/* SVG Иконка карта со складкой */}
       <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />

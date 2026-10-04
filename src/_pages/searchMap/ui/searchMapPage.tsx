@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { serverFetchAndCachedCategory } from '@/entities/catalog';
 import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
@@ -29,7 +27,12 @@ const BreadcrumbsServerLoader = async ({ categoryPath, subcategoryPath }: Search
 
   const currentCategory = subData?.category || parentData?.category || null;
   const parentCategory = parentData?.category || null;
-  return <Breadcrumbs currentCategory={currentCategory} parentCategory={parentCategory} />;
+  return (
+    <div>
+      <Breadcrumbs currentCategory={currentCategory} parentCategory={parentCategory} />
+      <SearchCategory />
+    </div>
+  );
 };
 
 /**
@@ -47,9 +50,7 @@ export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPagePr
 
   return (
     <div className="container">
-      <Suspense fallback={null}>
-        <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
-      </Suspense>
+      <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
       <SearchCategory />
     </div>
   );

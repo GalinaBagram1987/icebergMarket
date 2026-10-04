@@ -21,7 +21,13 @@ type SearchMapSubcategProps = {
 const MapSubcategContent = async ({ params }: SearchMapSubcategProps) => {
   const { categoryPath, subcategoryPath } = await params;
 
-  const fullSubPath = `${categoryPath}/${subcategoryPath.join('/')}`;
+  // map - показывает что это карта, но мешает путям. чистим его
+
+  const cleanCategoryPath = categoryPath === 'mapSearch' ? subcategoryPath[1] : categoryPath;
+  const cleanSubcategoryPath = categoryPath === 'mapSearch' ? subcategoryPath.slice(2) : subcategoryPath;
+
+  // Склеиваем чистый доменный путь для бэка (например: "avto-moto/zapchasti")
+  const fullSubPath = [cleanCategoryPath, ...cleanSubcategoryPath].join('/');
 
   const subcategoryData = await serverFethcAndCachedSubcategory(fullSubPath);
   if (!subcategoryData || !subcategoryData.category) return null;

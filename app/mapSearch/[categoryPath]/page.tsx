@@ -17,9 +17,10 @@ type MapSearchCategPageProps = {
  */
 const MapSearchCategContent = async ({ params }: MapSearchCategPageProps) => {
   const { categoryPath } = await params;
+  const cleanCategoryPath = categoryPath.replace('mapSearch', '').replace(/^\/+|\/+$|/g, ''); // убираем лишние слэши по краям
 
   // Запрашиваем данные первого уровня с сервера
-  const categoryData = await serverFetchAndCachedCategory(categoryPath);
+  const categoryData = await serverFetchAndCachedCategory(cleanCategoryPath);
   if (!categoryData || !categoryData.category) return null;
 
   return <SearchMapPage categoryPath={categoryPath} subcategoryPath={null} />;
