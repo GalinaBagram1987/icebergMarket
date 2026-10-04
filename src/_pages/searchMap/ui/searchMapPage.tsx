@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
-import { CategoryPageProps } from '@/_pages/category';
-import { SubCategoryPageProps } from '@/_pages/subCategory';
+import { serverFetchAndCachedCategory } from '@/entities/catalog';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { SearchCategory } from '@/widgets/SearchCategory';
 
@@ -12,6 +12,24 @@ import { SearchCategory } from '@/widgets/SearchCategory';
 export type SearchMapPageProps = {
   categoryPath: string;
   subcategoryPath: string[] | null;
+};
+
+/**
+ * Хлебные крошки принимают
+ * currentCategory: BackendCategoryItem;
+ * parentCategory: BackendCategoryItem;
+ * Асинхронный загрузчик для крошек,
+ * чтобы получить нужные категории
+ */
+
+const BreadcrumbsServerLoader = async ({ categoryPath, subcategoryPath }: SearchMapPageProps) => {
+  const fullSubPath = subcategoryPath ? `${categoryPath}/${subcategoryPath.join('/')}` : categoryPath;
+  // Параллельно запрашиваем объекты категорий из кэша
+  const [parentData, subData] = await Promise.all([serverFetchAndCachedCategory(categoryPath), subcategoryPath ? serverFethcAndCachedSubcategory(fullSubPath) : null]);
+
+  const currentCategory = subData?.category || parentData?.category || null;
+  const parentCategory = parentData?.category || null;
+  return <Breadcrumbs currentCategory={currentCategory} parentCategory={parentCategory} />;
 };
 
 /**
@@ -29,7 +47,9 @@ export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPagePr
 
   return (
     <div className="container">
-      <Breadcrumbs categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
+      <Suspense fallback={null}>
+        <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
+      </Suspense>
       <SearchCategory />
     </div>
   );
