@@ -20,19 +20,25 @@ type SearchMapSubcategProps = {
 
 const MapSubcategContent = async ({ params }: SearchMapSubcategProps) => {
   const { categoryPath, subcategoryPath } = await params;
-
   // map - показывает что это карта, но мешает путям. чистим его
+  const allSegments = [categoryPath, ...(Array.isArray(subcategoryPath) ? subcategoryPath : [subcategoryPath])];
+  console.log('[DEBUG MAP] Итоговый allSegments:', allSegments);
+  const cleanSegments = allSegments.filter((segment) => segment !== 'mapSearch');
+  console.log('[DEBUG MAP] Итоговый cleanSegments:', cleanSegments);
+  const fullSubPath = cleanSegments.join('/');
 
-  const cleanCategoryPath = categoryPath === 'mapSearch' ? subcategoryPath[1] : categoryPath;
-  const cleanSubcategoryPath = categoryPath === 'mapSearch' ? subcategoryPath.slice(2) : subcategoryPath;
+  console.log('[DEBUG MAP] Итоговый чистый путь для бэка:', fullSubPath);
 
-  // Склеиваем чистый доменный путь для бэка (например: "avto-moto/zapchasti")
-  const fullSubPath = [cleanCategoryPath, ...cleanSubcategoryPath].join('/');
+  if (!fullSubPath) return null;
 
   const subcategoryData = await serverFethcAndCachedSubcategory(fullSubPath);
   if (!subcategoryData || !subcategoryData.category) return null;
 
-  return <SearchMapPage categoryPath={categoryPath} subcategoryPath={subcategoryPath} />;
+  // Распределяем чистые доменные данные для страницы сборки
+  const cleanCategoryPath = cleanSegments[0]; // Первое слово (родитель)
+  const cleanSubcategoryPath = cleanSegments.slice(1); // Весь массив для правильной работы лоадера крошек
+
+  return <SearchMapPage categoryPath={cleanCategoryPath} subcategoryPath={cleanSubcategoryPath} />;
 };
 
 /**

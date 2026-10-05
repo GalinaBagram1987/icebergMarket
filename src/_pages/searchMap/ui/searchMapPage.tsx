@@ -1,56 +1,52 @@
+import { Suspense } from 'react';
 import { serverFetchAndCachedCategory } from '@/entities/catalog';
 import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { SearchCategory } from '@/widgets/SearchCategory';
-
-/**
- * Пропсы сборки страницы поиска
- */
 
 export type SearchMapPageProps = {
   categoryPath: string;
   subcategoryPath: string[] | null;
 };
 
-/**
- * Хлебные крошки принимают
- * currentCategory: BackendCategoryItem;
- * parentCategory: BackendCategoryItem;
- * Асинхронный загрузчик для крошек,
- * чтобы получить нужные категории
- */
-
 const BreadcrumbsServerLoader = async ({ categoryPath, subcategoryPath }: SearchMapPageProps) => {
-  const fullSubPath = subcategoryPath ? `${categoryPath}/${subcategoryPath.join('/')}` : categoryPath;
-  // Параллельно запрашиваем объекты категорий из кэша
-  const [parentData, subData] = await Promise.all([serverFetchAndCachedCategory(categoryPath), subcategoryPath ? serverFethcAndCachedSubcategory(fullSubPath) : null]);
+  let parentCategoryData = null;
+  let subCategoryData = null;
 
-  const currentCategory = subData?.category || parentData?.category || null;
-  const parentCategory = parentData?.category || null;
+  try {
+    parentCategoryData = await serverFetchAndCachedCategory(categoryPath);
+
+    if (subcategoryPath && subcategoryPath.length > 0) {
+      const fullSubPath = `${categoryPath}/${subcategoryPath.join('/')}`;
+      subCategoryData = await serverFethcAndCachedSubcategory(fullSubPath);
+    }
+  } catch (error) {
+    console.error('[MAP BREADCRUMBS ERROR] Ошибка при фоновой загрузке кэша:', error);
+    return null;
+  }
+
+  const currentCategory = subCategoryData?.category || parentCategoryData?.category || null;
+
+  const parentCategory = subCategoryData?.category ? parentCategoryData?.category || null : parentCategoryData?.category || null;
+
+  if (!currentCategory) {
+    return null;
+  }
+
   return (
     <div>
       <Breadcrumbs currentCategory={currentCategory} parentCategory={parentCategory} />
-      <SearchCategory />
     </div>
   );
 };
 
-/**
- * Сборка страницы поиска принимает пути
- * возвращает компнент
- *
- */
-
 export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPageProps) => {
-  // Выбор пути. Если subcategoryPath есть, склеиваем массив через слэш.
-  // Если нет — берем просто родительский путь.
-  // На выходе строка: "avto-moto" или "avto-moto/zapchasti/moto"
-
-  const fullPath = subcategoryPath ? `${categoryPath}/${subcategoryPath.join('/')}` : categoryPath;
-
   return (
     <div className="container">
-      <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
+      <Suspense fallback={null}>
+        <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
+      </Suspense>
+
       <SearchCategory />
     </div>
   );
