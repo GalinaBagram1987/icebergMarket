@@ -17,13 +17,13 @@ type MapSearchCategPageProps = {
  */
 const MapSearchCategContent = async ({ params }: MapSearchCategPageProps) => {
   const { categoryPath } = await params;
-  const cleanCategoryPath = categoryPath.replace('mapSearch', '').replace(/^\/+|\/+$|/g, ''); // убираем лишние слэши по краям
+  const cleanCategoryPath = categoryPath.replace('mapSearch', '');
 
   // Запрашиваем данные первого уровня с сервера
   const categoryData = await serverFetchAndCachedCategory(cleanCategoryPath);
   if (!categoryData || !categoryData.category) return null;
 
-  return <SearchMapPage categoryPath={categoryPath} subcategoryPath={null} />;
+  return <SearchMapPage categoryPath={cleanCategoryPath} subcategoryPath={null} />;
 };
 
 /**
@@ -31,9 +31,11 @@ const MapSearchCategContent = async ({ params }: MapSearchCategPageProps) => {
  */
 
 const MapSearchCategPage = ({ params }: MapSearchCategPageProps) => {
-  <Suspense>
-    <MapSearchCategContent params={params} />
-  </Suspense>;
+  return (
+    <Suspense>
+      <MapSearchCategContent params={params} />
+    </Suspense>
+  );
 };
 
 export default MapSearchCategPage;
