@@ -55,6 +55,16 @@
       "expensive": "Дороже",
       "cheaper": "Девешле"
     },
-    "showMap": "Показать на карте"
+    "showMap": "Показать на карте",
+    "filterPanel": {
+      "price": "Цена",
+      "priceFrom": "от",
+      "priceTo": "до",
+      "productState": "Состояние",
+      "productStateNew": "новое",
+      "productStateUsed": "б/у",
+      "onlyWithPhoto": "Только предложения с фото",
+      "applyFilters": "Применить фильтры"
+    }
   }
 }

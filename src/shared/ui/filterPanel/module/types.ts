@@ -2,8 +2,8 @@ export type FilterValues = {
   priceFrom: string;
   priceTo: string;
   isNew: boolean;
-  isOld: boolean;
-  onleByPhoto: boolean;
+  isUsed: boolean;
+  onlyWithPhoto: boolean;
 };
 
 export type FilterPanelProps = {
