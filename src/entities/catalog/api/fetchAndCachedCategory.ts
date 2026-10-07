@@ -2,7 +2,6 @@
 
 import 'server-only';
 
-import axios from 'axios';
 import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
 import type { CategoryResponse } from '@/shared/api/apiMethods/catalog';
