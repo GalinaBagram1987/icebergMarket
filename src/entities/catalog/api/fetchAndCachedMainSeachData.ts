@@ -12,15 +12,16 @@ import type { SearchPostsResponse, SearchPostsRequestBody } from '@/shared/api/a
  * получает данные с бэка и кэширует
  */
 
-export const fetchAndCachedMainCategory = async (body: SearchPostsRequestBody): Promise<SearchPostsResponse> => {
+export const serverFetchAndCachedMainSearch = async (body: SearchPostsRequestBody): Promise<SearchPostsResponse> => {
   cacheLife('minutes');
-  const normalizedPath = path.replace(/^\/+|\/+$/g, '');
-  cacheTag(`category-${normalizedPath}`);
+
+  cacheTag('category-main-search');
 
   try {
     const data = await catalogRequest.getMainSearchData(body);
     return data;
   } catch (error) {
     console.error('Ошибка получения данных search: ${error}');
+    throw error;
   }
 };

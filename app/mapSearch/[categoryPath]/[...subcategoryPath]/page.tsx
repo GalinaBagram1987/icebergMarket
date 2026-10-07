@@ -1,5 +1,5 @@
 import { SearchMapPage } from '@/_pages/searchMap';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
 import { Suspense } from 'react';
 /**
  * тип для страницы поиска  по карте для подкатегорий

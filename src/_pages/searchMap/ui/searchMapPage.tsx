@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { serverFetchAndCachedCategory } from '@/entities/catalog';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { SearchCategory } from '@/widgets/SearchCategory';
 import { SearchMapFilterWidget } from '@/widgets/searchMapFilterWidget';

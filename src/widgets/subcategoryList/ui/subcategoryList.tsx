@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './subcategoryList.module.css';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
 
 export const SubcategoryList = async ({ path }: { path: string }) => {
   const data = await serverFethcAndCachedSubcategory(path);

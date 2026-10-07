@@ -99,8 +99,6 @@ export type GetPostDetailRequestBody = {
 
 /**
  * Тип возвращаемых данных к поиску по ID
- * обращаемся к данным
- *
  */
 
 export type PostDetailResponse = {

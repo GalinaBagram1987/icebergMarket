@@ -3,7 +3,7 @@ import type { BackendCategoryItem } from '@/shared/api/apiMethods/catalog';
 import styles from './breadcrumbsItem.module.css';
 import { getTranslations } from 'next-intl/server';
 import { serverFetchAndCachedCategory } from '@/entities/catalog/api/fetchAndCachedCategory';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
+import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
 /**
  * Типы для комонента хлебных крошек
  */
