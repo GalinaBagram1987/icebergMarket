@@ -4,6 +4,7 @@ import { SubCategoryPageProps } from '../model/types';
 import { SearchCategory } from '@/widgets/SearchCategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
+import { CatalogFilterWidget } from '@/widgets/catalogFilterWidget';
 
 /**
  * Страница подкатегории типовая
@@ -20,6 +21,9 @@ export const SubcategoryPage = ({ path, subcategoryData }: SubCategoryPageProps)
         </Suspense>
         <SearchCategory />
         <MapLink path={path} />
+        <Suspense fallback={null}>
+          <CatalogFilterWidget />
+        </Suspense>
         <div>Здесь будет динамически сформированаая подкатегория {path}</div>
       </div>
     </main>

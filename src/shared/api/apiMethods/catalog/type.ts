@@ -1,3 +1,9 @@
+//==================================
+/**
+ * Типы экранизации каталога
+ */
+//=================================
+
 /**
  * Общий тип одной категории,
  * который приходит с бэкенда.
@@ -30,6 +36,89 @@ export type CategoryResponse = {
   categories: BackendCategoryItem[];
 };
 
+//==================================
+/**
+ * Основной поиск.
+ * Тип запроса и типы возвращаемых данных
+ * /
+ //=================================
+
+ /** 
+ * Тип который описывает тело запроса
+ * POST /api/v1/posts/search/[параметры запроса, каждый необязательный]
+ */
+export type SearchPostsRequestBody = {
+  page?: string;
+  limit?: number;
+  fil?: string;
+  q?: string;
+  sort?: string;
+};
+
+/**
+ * Параметры одного значения, которое приходит от бэка
+ * которое возвращет поиск
+ */
+
+export type BackendPostItem = {
+  id: string;
+  title: string;
+  price: number;
+  title_image: string;
+  category_id: number;
+  author_id: string;
+  author_name: string;
+  author_image: string;
+  attributes: any[];
+};
+
+/**
+ * Полный ответ поиска
+ */
+
+export type SearchPostsResponse = {
+  count: number;
+  posts: BackendPostItem[];
+};
+
+//==================================
+/**
+ * Поиск по ID.
+ * Тип запроса и типы возвращаемых данных
+ * /
+ //=================================
+
+/**
+ * Тип который описывает тело запроса
+ * POST /api/v1/posts/post/{post_id} — Поиск объявлени
+ */
+
+export type GetPostDetailRequestBody = {
+  post_id: string;
+};
+
+/**
+ * Тип возвращаемых данных к поиску по ID
+ * обращаемся к данным
+ *
+ */
+
+export type PostDetailResponse = {
+  post_id: string;
+  title: string;
+  author_id: string;
+  author: any; // Специфичный JSON автора
+  description: string;
+  images: string;
+  directory_name: string;
+  posted_at: string;
+  category_id: number;
+  price_list_name: string;
+  coordinates: string; // POINT гео-координаты
+  title_image: string;
+  is_favourite: boolean;
+};
+
 // ================================================
 
 /**
@@ -52,3 +141,4 @@ export type MainCatalog = {
   count?: number;
   categories: BackendCategory[];
 };
+//===========================================

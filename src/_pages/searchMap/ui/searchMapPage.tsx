@@ -3,6 +3,7 @@ import { serverFetchAndCachedCategory } from '@/entities/catalog';
 import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCashedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { SearchCategory } from '@/widgets/SearchCategory';
+import { SearchMapFilterWidget } from '@/widgets/searchMapFilterWidget';
 
 export type SearchMapPageProps = {
   categoryPath: string;
@@ -48,6 +49,9 @@ export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPagePr
       </Suspense>
 
       <SearchCategory />
+      <Suspense fallback={null}>
+        <SearchMapFilterWidget />
+      </Suspense>
     </div>
   );
 };

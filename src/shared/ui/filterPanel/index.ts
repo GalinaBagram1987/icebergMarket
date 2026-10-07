@@ -1,2 +1,2 @@
 export { FilterPanel } from './ui/filterPanel';
-export type { FilterPanelProps } from './module/types';
+export type { FilterPanelProps, FilterValues } from './module/types';

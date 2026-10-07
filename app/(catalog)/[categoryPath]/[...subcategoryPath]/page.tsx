@@ -17,13 +17,14 @@ type SubCategoryPageAppProps = {
     categoryPath: string;
     subcategoryPath: string[];
   }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 /**
  * Динамические метаданные страницы категории первого уровня.
  */
 
-export const generateMetadata = async ({ params }: SubCategoryPageAppProps): Promise<Metadata> => {
+export const generateMetadata = async ({ params, searchParams }: SubCategoryPageAppProps): Promise<Metadata> => {
   console.log('[PAGE] before await params');
   const resolvedParams = await params;
   const fullPath = buildFullPath(resolvedParams);
