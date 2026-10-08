@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SubcategoryPage } from '@/_pages/subCategory';
-import { serverFetchAndCachedCategory } from '@/entities/catalog';
+import { serverFetchAndCachedCategory, serverFetchAndCachedMainSearch } from '@/entities/catalog';
 import { buildFullPath } from '@/entities/lib';
 import { isCategoryResponse } from '@/entities/lib';
 
@@ -17,11 +17,29 @@ type SubCategoryPageAppProps = {
     categoryPath: string;
     subcategoryPath: string[];
   }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  // Все query-параметры из URL-строки всегда являются строками!
+  searchParams: Promise<{
+    // Фича Полнотекстового поиска
+    q?: string;
+    searchMode?: 'section' | 'global';
+
+    // Фича Фильтрации
+    priceFrom?: string;
+    priceTo?: string;
+    isNew?: string; // Прилетит строка "true" или "false"
+    isUsed?: string; // Прилетит строка "true" или "false"
+    onlyWithPhoto?: string; // Прилетит строка "true" или "false"
+
+    // Фича Сортировки
+    sort?: string;
+
+    // Пагинация
+    page?: string;
+  }>;
 };
 
 /**
- * Динамические метаданные страницы категории первого уровня.
+ * Динамические метаданные страницы подкатегории .
  */
 
 export const generateMetadata = async ({ params, searchParams }: SubCategoryPageAppProps): Promise<Metadata> => {
@@ -51,16 +69,38 @@ export const generateMetadata = async ({ params, searchParams }: SubCategoryPage
  * Для некс переносим асинхронную логику отдельно, чтобы потом обвернуть все в suspense
  */
 
-const SubCategoryPageContent = async ({ params }: SubCategoryPageAppProps) => {
-  const resolvedParams = await params;
+const SubCategoryPageContent = async ({ params, searchParams }: SubCategoryPageAppProps) => {
+  const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
 
   const fullPath = buildFullPath(resolvedParams);
+  const filterSegments: string[] = [];
+  // проверяем какие условия есть в fill
+  if (resolvedSearchParams.searchMode !== 'global' && fullPath) {
+    filterSegments.push(`category_path:${fullPath}`);
+  }
+  // Добавляем фильтры цены и состояния из URL адресной строки, если они выбраны
+  if (resolvedSearchParams.priceFrom) filterSegments.push(`price_from:${resolvedSearchParams.priceFrom}`);
+  if (resolvedSearchParams.priceTo) filterSegments.push(`price_to:${resolvedSearchParams.priceTo}`);
+  if (resolvedSearchParams.isNew === 'true') filterSegments.push('status:new');
+  if (resolvedSearchParams.isUsed === 'true') filterSegments.push('status:used');
+  if (resolvedSearchParams.onlyWithPhoto === 'true') filterSegments.push('with_photo:true');
 
-  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
-  console.log('[SubCategoryPage] API response:', subcategoryData);
+  const filterString = filterSegments.length > 0 ? filterSegments.join(';') : undefined;
+
+  const [subcategoryData, searchPostsResponse] = await Promise.all([
+    serverFetchAndCachedCategory(fullPath),
+    serverFetchAndCachedMainSearch({
+      q: resolvedSearchParams.q || '',
+      fil: filterString,
+      sort: resolvedSearchParams.sort || undefined,
+      page: resolvedSearchParams.page || '1',
+      limit: 20,
+    }),
+  ]);
+
   const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
 
-  return <SubcategoryPage path={fullPath} subcategoryData={safeSubcategoryData} />;
+  return <SubcategoryPage path={fullPath} subcategoryData={safeSubcategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 
 /**
@@ -73,10 +113,10 @@ const SubCategoryPageContent = async ({ params }: SubCategoryPageAppProps) => {
  * Вносить изменения в бизнесс-логику в компонент /написать тут
  */
 
-const SubCategoryPageApp = ({ params }: SubCategoryPageAppProps) => {
+const SubCategoryPageApp = ({ params, searchParams }: SubCategoryPageAppProps) => {
   return (
     <Suspense fallback={null}>
-      <SubCategoryPageContent params={params} />
+      <SubCategoryPageContent params={params} searchParams={searchParams} />
     </Suspense>
   );
 };

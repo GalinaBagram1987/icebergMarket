@@ -11,20 +11,39 @@ import { CatalogFilterWidget } from '@/widgets/catalogFilterWidget';
  * Сборка страницы подкатегорий
  */
 
-export const SubcategoryPage = ({ path, subcategoryData }: SubCategoryPageProps) => {
+export const SubcategoryPage = ({ path, subcategoryData, postsData }: SubCategoryPageProps) => {
   if (!subcategoryData || !subcategoryData.category) return null;
   return (
     <main className="container">
       <div className="containerContent">
+        <Breadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
         <Suspense fallback={null}>
-          <Breadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
+          <SearchCategory
+          // initialQuery={searchParams.q || ''}
+          // initialMode={searchParams.searchMode || 'section'}
+          />
         </Suspense>
-        <SearchCategory />
+
         <MapLink path={path} />
-        <Suspense fallback={null}>
-          <CatalogFilterWidget />
+
+        <CatalogFilterWidget
+        // initialFilters={searchParams}
+        />
+
+        <Suspense>
+          {postsData?.posts && postsData.posts.length > 0 ? (
+            <div>
+              <p className="mb-2 text-sm text-neutral-500">Найдено объявлений: {postsData.count}</p>
+              <div>Здесь будет динамически сформированаая подкатегория {path}</div>
+              {/* <Post posts={postsData.posts} /> */}
+            </div>
+          ) : (
+            <div className="py-10 text-center text-neutral-500">
+              <p>В этой категории пока нет объявлений.</p>
+              <p className="mt-1 text-xs">Попробуйте сбросить фильтры или изменить поисковый запрос.</p>
+            </div>
+          )}
         </Suspense>
-        <div>Здесь будет динамически сформированаая подкатегория {path}</div>
       </div>
     </main>
   );
