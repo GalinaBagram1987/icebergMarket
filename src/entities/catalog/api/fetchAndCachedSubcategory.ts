@@ -6,7 +6,7 @@ import { cacheLife, cacheTag } from 'next/cache';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
 import type { CategoryResponse } from '@/shared/api/apiMethods/catalog';
 
-export const serverFethcAndCachedSubcategory = async (path: string): Promise<CategoryResponse> => {
+export async function serverFethcAndCachedSubcategory(path: string): Promise<CategoryResponse> {
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
 
@@ -19,4 +19,4 @@ export const serverFethcAndCachedSubcategory = async (path: string): Promise<Cat
     console.error(`Ошибка получения subcategories каталога: ${error}`);
     throw error;
   }
-};
+}

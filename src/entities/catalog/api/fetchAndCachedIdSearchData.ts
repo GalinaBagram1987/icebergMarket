@@ -12,7 +12,7 @@ import type { GetPostDetailRequestBody, PostDetailResponse } from '@/shared/api/
  * получает данные с бэка и кэширует
  */
 
-export const serverFetchAndCachedSearchId = async (body: GetPostDetailRequestBody): Promise<PostDetailResponse> => {
+export async function serverFetchAndCachedSearchId(body: GetPostDetailRequestBody): Promise<PostDetailResponse> {
   cacheLife('minutes');
   cacheTag('id-search');
 
@@ -20,7 +20,21 @@ export const serverFetchAndCachedSearchId = async (body: GetPostDetailRequestBod
     const data = await catalogRequest.getIdData(body);
     return data;
   } catch (error) {
-    console.error('Ошибка получения данных searchID: ${error}');
-    throw error;
+    console.log(`Ошибка получения данных searchID: ${error}`);
+    return {
+      post_id: '',
+      title: '',
+      author_id: '',
+      author: '',
+      description: '',
+      images: '',
+      directory_name: '',
+      posted_at: '',
+      category_id: 0,
+      price_list_name: '',
+      coordinates: '',
+      title_image: '',
+      is_favourite: false,
+    };
   }
-};
+}

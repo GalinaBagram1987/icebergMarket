@@ -12,7 +12,7 @@ import type { CategoryResponse } from '@/shared/api/apiMethods/catalog';
  * получает данные с бэка и кеширует на указанное в конфиге некст времени
  */
 
-export const serverFetchAndCachedCategory = async (path: string): Promise<CategoryResponse> => {
+export async function serverFetchAndCachedCategory(path: string): Promise<CategoryResponse> {
   cacheLife('minutes');
   const normalizedPath = path.replace(/^\/+|\/+$/g, '');
   cacheTag(`category-${normalizedPath}`);
@@ -24,4 +24,4 @@ export const serverFetchAndCachedCategory = async (path: string): Promise<Catego
     console.error(`Ошибка получения categories каталога: ${error}`);
     throw error;
   }
-};
+}
