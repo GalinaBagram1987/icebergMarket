@@ -29,18 +29,17 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData }: SubCategor
         <CatalogFilterWidget
         // initialFilters={searchParams}
         />
-
-        <Suspense>
+        <Suspense fallback={<div>Обновление списка объявлений...</div>}>
           {postsData?.posts && postsData.posts.length > 0 ? (
             <div>
-              <p className="mb-2 text-sm text-neutral-500">Найдено объявлений: {postsData.count}</p>
-              <div>Здесь будет динамически сформированаая подкатегория {path}</div>
+              <p>Найдено объявлений: {postsData.count}</p>
+              <div>Здесь будет динамически сформированный объявления категории {path}</div>
               {/* <Post posts={postsData.posts} /> */}
             </div>
           ) : (
-            <div className="py-10 text-center text-neutral-500">
+            <div>
               <p>В этой категории пока нет объявлений.</p>
-              <p className="mt-1 text-xs">Попробуйте сбросить фильтры или изменить поисковый запрос.</p>
+              <p>Попробуйте сбросить фильтры или изменить поисковый запрос.</p>
             </div>
           )}
         </Suspense>

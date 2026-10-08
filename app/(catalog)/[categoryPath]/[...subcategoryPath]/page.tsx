@@ -38,11 +38,13 @@ type SubCategoryPageAppProps = {
   }>;
 };
 
+type MetadataSubCatProps = Pick<SubCategoryPageAppProps, 'params'>;
+
 /**
  * Динамические метаданные страницы подкатегории .
  */
 
-export const generateMetadata = async ({ params, searchParams }: SubCategoryPageAppProps): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: MetadataSubCatProps): Promise<Metadata> => {
   console.log('[PAGE] before await params');
   const resolvedParams = await params;
   const fullPath = buildFullPath(resolvedParams);
