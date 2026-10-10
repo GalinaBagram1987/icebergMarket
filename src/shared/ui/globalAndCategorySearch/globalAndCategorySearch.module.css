@@ -75,18 +75,6 @@
   cursor: pointer; */
 }
 
-/* .btn:hover,
-.btn:active {
-  background: transparent;
-  box-shadow: none;
-  transform: none;
-} */
-
-/* .btn:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-} */
-
 .btnLeft {
   background-color: var(--bg-searchCategButLeft);
 }
@@ -95,10 +83,10 @@
   background-color: var(--bg-searchCategoryButRight);
 }
 
-.btnLeft:hover {
+.btnLeftActive {
   background-color: var(--bg-searchCategButLeftHover);
 }
 
-.btnRight:hover {
+.btnRightActive {
   background-color: var(--bg-searchCategoryButRightHover);
 }
