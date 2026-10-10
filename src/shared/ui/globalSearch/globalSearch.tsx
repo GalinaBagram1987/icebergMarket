@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
  * @returns Форма ввода и отправки поискового запроса.
  */
 
-export const SearchMain = () => {
+export const GlobalSearch = () => {
   const t = useTranslations('icebergMarket'); // Хук для клиента
   return (
     <form action="/search" method="GET" className={styles.searchForm}>

@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { ConfirmDialog } from '@/shared/ui/confirmDialog';
 import { RejectDialog } from '@/shared/ui/rejectDialog';
 import { DelDialog } from '@/shared/ui/deleteDialog';
-import { SearchCategory } from '@/widgets/SearchCategory/ui/SearchCategory';
+
 import { LoadingRender } from '@/shared/ui/LoadingRender';
 import { ErrorRender } from '@/shared/ui/errorRender';
 import { NextErrorProps } from '@/shared/ui/errorRender';
@@ -60,9 +60,7 @@ const TestPage = () => {
           />
         </div>
         {/*Проверка как выглядит окно диалога удалить*/}
-        <div style={{ marginTop: '20px' }}>
-          <SearchCategory />
-        </div>
+        <div style={{ marginTop: '20px' }}></div>
       </div>
       <LoadingRender />
       {/* Только для визуальной проверки — моковые пропсы */}

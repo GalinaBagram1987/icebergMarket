@@ -1,1 +1,1 @@
-export { RejectDialog } from './ui/rejectDialog';
+export { RejectDialog } from './rejectDialog';

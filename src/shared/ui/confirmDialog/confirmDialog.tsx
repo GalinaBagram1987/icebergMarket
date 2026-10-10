@@ -2,7 +2,7 @@
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './confirmDialog.module.css';
-import { ConfirmDialogProps } from '../module/types';
+import { ConfirmDialogProps } from './confirmDialog.types';
 
 /**
  * Компонент диалог согласия

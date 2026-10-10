@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 
 import { SubCategoryPageProps } from '../model/types';
-import { SearchCategory } from '@/widgets/SearchCategory';
+
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
-import { CatalogFilterWidget } from '@/widgets/catalogFilterWidget';
 
 /**
  * Страница подкатегории типовая
@@ -18,17 +17,14 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData }: SubCategor
       <div className="containerContent">
         <Breadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
         <Suspense fallback={null}>
-          <SearchCategory
-          // initialQuery={searchParams.q || ''}
-          // initialMode={searchParams.searchMode || 'section'}
-          />
+          {/** Здесь будет поиск initialQuery={searchParams.q || ''}
+          initialMode={searchParams.searchMode || 'section'}*/}
         </Suspense>
 
         <MapLink path={path} />
+        {/**Здесь будет фильтр CatalogFilterWidget
+        initialFilters={searchParams}*/}
 
-        <CatalogFilterWidget
-        // initialFilters={searchParams}
-        />
         <Suspense fallback={<div>Обновление списка объявлений...</div>}>
           {postsData?.posts && postsData.posts.length > 0 ? (
             <div>

@@ -1,0 +1,1 @@
+export { GlobalAndCategorySearch } from './globalAndCategorySearch';

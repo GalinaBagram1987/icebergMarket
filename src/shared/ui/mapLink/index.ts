@@ -1,1 +1,1 @@
-export { MapLink } from './ui/mapLink';
+export { MapLink } from './mapLink';

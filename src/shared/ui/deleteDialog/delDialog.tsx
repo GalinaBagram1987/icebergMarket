@@ -2,7 +2,7 @@
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './delDialog.module.css';
-import { DelDialogProps } from '../module/types';
+import { DelDialogProps } from './delDialog.types';
 
 /**
  * Компонент модальное окно удалить

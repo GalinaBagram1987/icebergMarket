@@ -6,6 +6,6 @@ import { FilterPanel } from '@/shared/ui/filterPanel';
  * Фильтр для страницы подкатегорий
  */
 
-export const CatalogFilterWidget = () => {
+export const CatalogFilter = () => {
   return <div></div>;
 };

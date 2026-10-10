@@ -2,7 +2,7 @@
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './rejectDialog.module.css';
-import { RejectDialogProps } from '../module/types';
+import { RejectDialogProps } from './rejectDialog.types';
 
 /**
  * Компонент диалог отказа

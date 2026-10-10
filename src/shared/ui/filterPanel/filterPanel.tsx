@@ -1,5 +1,5 @@
 import styles from './filterPanel.module.css';
-import type { FilterPanelProps, FilterValues } from '../module/types';
+import type { FilterPanelProps, FilterValues } from './filterPanel.types';
 import type { FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/shared/lib';

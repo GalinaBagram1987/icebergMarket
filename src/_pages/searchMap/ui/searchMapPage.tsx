@@ -2,8 +2,7 @@ import { Suspense } from 'react';
 import { serverFetchAndCachedCategory } from '@/entities/catalog';
 import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
-import { SearchCategory } from '@/widgets/SearchCategory';
-import { SearchMapFilterWidget } from '@/widgets/searchMapFilterWidget';
+import { SearchMapFilter } from '@/features/searchMapFilter';
 
 export type SearchMapPageProps = {
   categoryPath: string;
@@ -48,9 +47,8 @@ export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPagePr
         <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
       </Suspense>
 
-      <SearchCategory />
       <Suspense fallback={null}>
-        <SearchMapFilterWidget />
+        <SearchMapFilter />
       </Suspense>
     </div>
   );

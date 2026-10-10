@@ -1,4 +1,3 @@
-import { SearchMain } from '@/widgets/SearchMainPage';
 import { CookieConsent } from '@/features/CoockieConsent';
 import { MainCatalog } from '@/widgets/mainCatalog';
 
@@ -9,7 +8,7 @@ import { MainCatalog } from '@/widgets/mainCatalog';
 export const MainPage = async () => {
   return (
     <main className="container">
-      <SearchMain />
+      {/* Здесь будет поиск*/}
       <MainCatalog />
       <CookieConsent />
     </main>

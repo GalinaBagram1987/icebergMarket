@@ -2,6 +2,6 @@
  * Фильтр для страницы поиска по карте
  */
 
-export const SearchMapFilterWidget = () => {
+export const SearchMapFilter = () => {
   return <div></div>;
 };
