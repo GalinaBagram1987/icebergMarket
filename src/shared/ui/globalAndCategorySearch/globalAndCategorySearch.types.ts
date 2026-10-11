@@ -4,4 +4,11 @@ export type GlobalAndCategorySearchProps = {
   onChange: (text: string) => void;
   onModeChange: (mode: 'section' | 'global') => void;
   onSubmit: () => void;
+  //
+  placeholder?: string;
+  isLoading?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  className?: string;
+  disabled?: boolean;
 };

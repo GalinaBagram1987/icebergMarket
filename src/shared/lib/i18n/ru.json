@@ -15,6 +15,7 @@
     },
     "mainPage": {
       "searchButton": "Найти",
+      "loading": "Загрузка данных",
       "ok": "OK",
       "cookieText": "Сайт использует файлы cookie.\nПодробнее",
       "cookieLink": " здесь"
