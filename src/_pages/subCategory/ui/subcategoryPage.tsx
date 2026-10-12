@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { SubCategoryPageProps } from '../model/types';
-
+import { GlobalAndCategorySearchCatalog } from '@/features/globalAndCategorySearchCatalog';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 
@@ -10,15 +10,18 @@ import { MapLink } from '@/shared/ui/mapLink';
  * Сборка страницы подкатегорий
  */
 
-export const SubcategoryPage = ({ path, subcategoryData, postsData }: SubCategoryPageProps) => {
+export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams }: SubCategoryPageProps) => {
   if (!subcategoryData || !subcategoryData.category) return null;
+  const queryKey = searchParams?.q || '';
+  const modeKey = searchParams?.searchMode || 'global';
+  const compositeSearchKey = `${queryKey}_${modeKey}`;
+
   return (
     <main className="container">
       <div className="containerContent">
         <Breadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
         <Suspense fallback={null}>
-          {/** Здесь будет поиск initialQuery={searchParams.q || ''}
-          initialMode={searchParams.searchMode || 'section'}*/}
+          <GlobalAndCategorySearchCatalog key={compositeSearchKey} />
         </Suspense>
 
         <MapLink path={path} />

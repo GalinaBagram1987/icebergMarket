@@ -18,10 +18,7 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams }: Ca
     <main className="container">
       <div className="containerContent">
         <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
-        <Suspense>
-          {/** Здесь будет поиск  initialQuery={searchParams.q || ''}
-          // initialMode={searchParams.searchMode || 'section'} */}
-        </Suspense>
+        <Suspense>{/** Здесь будет поиск  initialQuery={searchParams.q || ''*/}</Suspense>
         <Suspense fallback={null}>
           <SubcategoryList path={path} />
         </Suspense>
