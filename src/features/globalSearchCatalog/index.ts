@@ -1,0 +1,1 @@
+export { GlobalSearchCatalog } from './globalSearchCatalog';

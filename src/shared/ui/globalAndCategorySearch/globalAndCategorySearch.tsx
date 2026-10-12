@@ -1,7 +1,7 @@
 'use client';
 import { type FormEvent } from 'react';
 
-import styles from './SearchCategory.module.css';
+import styles from './globalAndCategorySearch.module.css';
 import { GlobalAndCategorySearchProps } from './globalAndCategorySearch.types';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/shared/lib';

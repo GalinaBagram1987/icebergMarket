@@ -77,7 +77,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
 
   const filterSegments: string[] = [];
   // проверяем какие условия есть в fill
-  if (resolvedSearchParams.searchMode !== 'global' && categoryPath) {
+  if (categoryPath) {
     filterSegments.push(`category_path:${categoryPath}`);
   }
   // Добавляем фильтры цены и состояния из URL адресной строки, если они выбраны
@@ -89,7 +89,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
 
   const filterString = filterSegments.length > 0 ? filterSegments.join(';') : undefined;
 
-  const [subcategoryData, searchPostsResponse] = await Promise.all([
+  const [categoryData, searchPostsResponse] = await Promise.all([
     serverFetchAndCachedCategory(categoryPath),
     serverFetchAndCachedMainSearch({
       q: resolvedSearchParams.q || '',
@@ -100,7 +100,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
     }),
   ]);
 
-  const safeCategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
+  const safeCategoryData = isCategoryResponse(categoryData) ? categoryData : null;
   return <CategoryPage path={categoryPath} categoryData={safeCategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 

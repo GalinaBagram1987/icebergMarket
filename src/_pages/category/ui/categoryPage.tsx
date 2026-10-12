@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { CategoryPageProps } from '../model/types';
-
+import { GlobalSearchCatalog } from '@/features/globalSearchCatalog';
 import { SubcategoryList } from '@/widgets/subcategoryList';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
@@ -13,12 +13,15 @@ import { MapLink } from '@/shared/ui/mapLink';
 
 export const CategoryPage = ({ path, categoryData, postsData, searchParams }: CategoryPageProps) => {
   if (!categoryData || !categoryData.category) return null;
+  const queryKey = searchParams?.q || '';
 
   return (
     <main className="container">
       <div className="containerContent">
         <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
-        <Suspense>{/** Здесь будет поиск  initialQuery={searchParams.q || ''*/}</Suspense>
+        <Suspense fallback={null}>
+          <GlobalSearchCatalog key={queryKey} />
+        </Suspense>
         <Suspense fallback={null}>
           <SubcategoryList path={path} />
         </Suspense>

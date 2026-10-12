@@ -1,9 +1,8 @@
 'use client';
 import { type FormEvent } from 'react';
 import type { GlobalSearchProps } from './globalSearch.types';
-import styles from './SearchMainPage.module.css';
+import styles from './globalSearch.module.css';
 import { useTranslations } from 'next-intl';
-import MainPage from '@/_pages/main';
 
 /**
  * Отображает форму поиска объявлений на главной странице.
