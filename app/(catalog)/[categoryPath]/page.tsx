@@ -1,3 +1,5 @@
+import { connection } from 'next/server';
+
 import type { Metadata } from 'next';
 import { CategoryPage } from '@/_pages/category';
 import { serverFetchAndCachedCategory, serverFetchAndCachedMainSearch } from '@/entities/catalog';
@@ -71,9 +73,18 @@ export const generateMetadata = async ({ params }: MetadataCatProps): Promise<Me
  */
 
 const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProps) => {
-  const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
+  // живое соединение, чтобы Next.js сразу переключил роут в динамический режим
+  await connection();
+
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+
+  // const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
 
   const { categoryPath } = resolvedParams;
+
+  // Это заставит Next.js выполнять эту страницу строго при живом запросе POST
+  await connection();
 
   const filterSegments: string[] = [];
   // проверяем какие условия есть в fill

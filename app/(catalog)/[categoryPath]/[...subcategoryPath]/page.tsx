@@ -1,3 +1,5 @@
+import { connection } from 'next/server';
+
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SubcategoryPage } from '@/_pages/subCategory';
@@ -72,6 +74,9 @@ export const generateMetadata = async ({ params }: MetadataSubCatProps): Promise
  */
 
 const SubCategoryPageContent = async ({ params, searchParams }: SubCategoryPageAppProps) => {
+  // Это заставит Next.js выполнять эту страницу строго при живом запросе POST
+  await connection();
+
   const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
 
   const fullPath = buildFullPath(resolvedParams);
@@ -88,17 +93,25 @@ const SubCategoryPageContent = async ({ params, searchParams }: SubCategoryPageA
   if (resolvedSearchParams.onlyWithPhoto === 'true') filterSegments.push('with_photo:true');
 
   const filterString = filterSegments.length > 0 ? filterSegments.join(';') : undefined;
+  // const [subcategoryData, searchPostsResponse] = await Promise.all([
+  //   serverFetchAndCachedCategory(fullPath),
+  //   serverFetchAndCachedMainSearch({
+  //     q: resolvedSearchParams.q || '',
+  //     fil: filterString,
+  //     sort: resolvedSearchParams.sort || undefined,
+  //     page: resolvedSearchParams.page || '1',
+  //     limit: 20,
+  //   }),
+  // ]);
 
-  const [subcategoryData, searchPostsResponse] = await Promise.all([
-    serverFetchAndCachedCategory(fullPath),
-    serverFetchAndCachedMainSearch({
-      q: resolvedSearchParams.q || '',
-      fil: filterString,
-      sort: resolvedSearchParams.sort || undefined,
-      page: resolvedSearchParams.page || '1',
-      limit: 20,
-    }),
-  ]);
+  const subcategoryData = await serverFetchAndCachedCategory(fullPath);
+  const searchPostsResponse = await serverFetchAndCachedMainSearch({
+    q: resolvedSearchParams.q || '',
+    fil: filterString,
+    sort: resolvedSearchParams.sort || undefined,
+    page: resolvedSearchParams.page || '1',
+    limit: 20,
+  });
 
   const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
 
