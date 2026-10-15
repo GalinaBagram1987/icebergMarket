@@ -20,4 +20,5 @@ export type SubCategoryPageProps = {
     sort?: string;
     page?: string;
   };
+  t: (key: string) => string;
 };

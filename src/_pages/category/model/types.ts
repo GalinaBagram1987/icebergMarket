@@ -34,4 +34,5 @@ export type CategoryPageProps = {
     sort?: string;
     page?: string;
   };
+  t: (key: string) => string;
 };

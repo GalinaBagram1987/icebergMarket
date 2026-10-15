@@ -5,6 +5,7 @@ import { CategoryPage } from '@/_pages/category';
 import { serverFetchAndCachedCategory, serverFetchAndCachedMainSearch } from '@/entities/catalog';
 import { Suspense } from 'react';
 import { isCategoryResponse } from '@/entities/lib';
+import { getTranslations } from 'next-intl/server';
 
 /**
  * Тип для страницы категорий
@@ -78,7 +79,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
 
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
-
+  const t = await getTranslations('icebergMarket');
   // const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
 
   const { categoryPath } = resolvedParams;
@@ -112,7 +113,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
   ]);
 
   const safeCategoryData = isCategoryResponse(categoryData) ? categoryData : null;
-  return <CategoryPage path={categoryPath} categoryData={safeCategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
+  return <CategoryPage t={t} path={categoryPath} categoryData={safeCategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 
 /**

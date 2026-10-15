@@ -6,6 +6,7 @@ import { SubcategoryPage } from '@/_pages/subCategory';
 import { serverFetchAndCachedCategory, serverFetchAndCachedMainSearch } from '@/entities/catalog';
 import { buildFullPath } from '@/entities/lib';
 import { isCategoryResponse } from '@/entities/lib';
+import { getTranslations } from 'next-intl/server';
 
 /**
  * Тип для страницы покатегорий
@@ -78,6 +79,7 @@ const SubCategoryPageContent = async ({ params, searchParams }: SubCategoryPageA
   await connection();
 
   const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
+  const t = await getTranslations('icebergMarket');
 
   const fullPath = buildFullPath(resolvedParams);
   const filterSegments: string[] = [];
@@ -115,7 +117,7 @@ const SubCategoryPageContent = async ({ params, searchParams }: SubCategoryPageA
 
   const safeSubcategoryData = isCategoryResponse(subcategoryData) ? subcategoryData : null;
 
-  return <SubcategoryPage path={fullPath} subcategoryData={safeSubcategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
+  return <SubcategoryPage t={t} path={fullPath} subcategoryData={safeSubcategoryData} postsData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 
 /**

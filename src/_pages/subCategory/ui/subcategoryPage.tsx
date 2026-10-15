@@ -4,13 +4,13 @@ import { SubCategoryPageProps } from '../model/types';
 import { GlobalAndCategorySearchCatalog } from '@/features/globalAndCategorySearchCatalog';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
-
+import { PostList } from '@/entities/posts';
 /**
  * Страница подкатегории типовая
  * Сборка страницы подкатегорий
  */
 
-export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams }: SubCategoryPageProps) => {
+export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams, t }: SubCategoryPageProps) => {
   if (!subcategoryData || !subcategoryData.category) return null;
   const queryKey = searchParams?.q || '';
   const modeKey = searchParams?.searchMode || 'global';
@@ -30,15 +30,16 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
 
         <Suspense fallback={<div>Обновление списка объявлений...</div>}>
           {postsData?.posts && postsData.posts.length > 0 ? (
-            <div>
-              <p>Найдено объявлений: {postsData.count}</p>
-              <div>Здесь будет динамически сформированный объявления категории {path}</div>
-              {/* <Post posts={postsData.posts} /> */}
-            </div>
+            <PostList
+              postsData={{
+                count: postsData.count || 0,
+                postList: postsData.posts,
+              }}
+            />
           ) : (
             <div>
-              <p>В этой категории пока нет объявлений.</p>
-              <p>Попробуйте сбросить фильтры или изменить поисковый запрос.</p>
+              <p>{t('postsList.textWarOne')}</p>
+              <p>{t('postsList.textWarTwo')}</p>
             </div>
           )}
         </Suspense>

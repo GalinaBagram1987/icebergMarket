@@ -69,7 +69,10 @@ export type BackendPostItem = {
   author_id: string;
   author_name: string;
   author_image: string;
-  attributes: any[];
+  attributes: Record<string, string | number | boolean>;
+  date: number;
+  views: number | string;
+  description: string;
 };
 
 /**
