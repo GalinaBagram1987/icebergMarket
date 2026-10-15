@@ -95,7 +95,7 @@ export const catalogRequest = {
 
   /**
    * Основной поисковой запрос
-   * (POST /api/v1/posts/search)
+   * (POST /api/v1/get/search)
    * @param {SearchPostsRequestBody} body - Объект с фильтрами (q, fil, sort, page, limit)
    * @returns {Promise<SearchPostsResponse>} Объект с количеством и массивом постов
    *@example
@@ -129,11 +129,16 @@ export const catalogRequest = {
     console.log(
       '[SEARCH] full URL:',
       apiWithInterceptors.getUri({
-        method: 'POST',
+        method: 'GET',
         url: requestPath,
+        params: body,
       }),
     );
-    const { data } = await apiWithInterceptors.post<SearchPostsResponse>(requestPath, body);
+    const queryString = `q=${encodeURIComponent(body.q || '')}&fil=${body.fil || ''}&page=${body.page || '1'}&limit=${body.limit || '20'}`;
+    // Передаем параметры через объект { params: body }
+    // Axios сам автоматически превратит объект в строку вида ?q=...&fil=...
+    const { data } = await apiWithInterceptors.get<SearchPostsResponse>(`${requestPath}?${queryString}`);
+
     return data;
   },
 
