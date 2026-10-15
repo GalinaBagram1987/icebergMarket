@@ -9,11 +9,11 @@ const config = {
   // Использовать пробелы вместо табуляции
   useTabs: false,
   // Запятая в конце последней строки в объектах и массивах (удобно для гит-диффов)
-  trailingComma: "all",
+  trailingComma: 'all',
   // Длина строки, после которой код будет переноситься (200 символов — стандарт для десктопа)
-  printWidth: 200,
+  printWidth: 300,
   // Подключаем автоматическую сортировку классов Tailwind
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ['prettier-plugin-tailwindcss'],
 };
 
 export default config;

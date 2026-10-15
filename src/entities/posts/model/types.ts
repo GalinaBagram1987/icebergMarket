@@ -7,11 +7,13 @@ export type PostItemProps = {
   author_id: string;
   author_name: string;
   author_image: string;
-  attributes: string[];
-  status?: 'new' | 'used';
+  attributes: Record<string, string | number | boolean>;
+  date: number;
+  views: number | string;
+  description: string;
 };
 
 export type PostsListProps = {
   count: number;
-  posts: PostItemProps[];
+  postList: PostItemProps[];
 };

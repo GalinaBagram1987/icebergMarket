@@ -1,0 +1,94 @@
+.postGrid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 160px;
+  align-items: start;
+  column-gap: 24px;
+
+  width: 1050px;
+  height: 155px;
+
+  background-color: var(--bg-search-results);
+
+  padding: 12px 131px 16px 0px;
+  column-gap: 32px;
+}
+
+.postImg {
+  display: block;
+  height: 100%;
+  width: auto;
+  min-width: 100px;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+.prodDescriptionBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postTitle {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+
+.postText {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  /* ВКЛЮЧАЕМ АВТОМАТИЧЕСКОЕ ОБРЕЗАНИЕ ТЕКСТА */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+
+  /* Прячем всё, что не поместилось */
+  overflow: hidden;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.price {
+  font-family: var(--font-price);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+}
+
+.authorName {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+
+.date {
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+.views {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}

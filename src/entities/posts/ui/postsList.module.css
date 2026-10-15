@@ -1,0 +1,10 @@
+.ulStyle {
+  margin-top: 15px;
+  margin-bottom: 54px;
+  list-style: none; /* убирает маркеры */
+  list-style-type: none; /* на случай, если list-style не сработал */
+}
+
+.liStyle {
+  margin-bottom: 20px;
+}
