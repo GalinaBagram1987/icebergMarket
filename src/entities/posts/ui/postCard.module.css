@@ -74,8 +74,8 @@
   font-size: 16px;
   line-height: 1;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 9px;
+  font-weight: 400;
+  margin-bottom: 15px;
 }
 
 .date {
@@ -83,7 +83,7 @@
   font-size: 14px;
   line-height: 1;
   letter-spacing: 0.05em;
-  margin-bottom: 15px;
+  margin-bottom: 23px;
 }
 
 .views {

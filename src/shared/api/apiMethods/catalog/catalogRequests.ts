@@ -218,7 +218,7 @@ export const catalogRequest = {
           author_name: 'АвтоРазбор НСК',
           author_image: '/images/avatar-placeholder.jpg',
           attributes: {}, // Соответствует Record<string, string | number | boolean>
-          date: 1718234800, // Числовой Timestamp, как требует ваш тип date: number
+          date: 1792195200, // Числовой Timestamp, как требует ваш тип date: number
           views: 45, // Число или строка
           description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.',
           path: 'avto-moto', // Служебное поле для фильтрации заглушки
