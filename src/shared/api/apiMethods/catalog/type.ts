@@ -60,7 +60,7 @@ export type SearchPostsRequestBody = {
  * которое возвращет поиск
  */
 
-export type BackendPostItem = {
+export type BackendGetItem = {
   id: string;
   title: string;
   price: number;
@@ -79,9 +79,9 @@ export type BackendPostItem = {
  * Полный ответ поиска
  */
 
-export type SearchPostsResponse = {
+export type SearchGetResponse = {
   count: number;
-  posts: BackendPostItem[];
+  posts: BackendGetItem[];
 };
 
 //==================================
@@ -93,7 +93,7 @@ export type SearchPostsResponse = {
 
 /**
  * Тип который описывает тело запроса
- * POST /api/v1/posts/post/{post_id} — Поиск объявлени
+ * GET /api/v1/posts/post/{post_id} — Поиск объявлени
  */
 
 export type GetPostDetailRequestBody = {
