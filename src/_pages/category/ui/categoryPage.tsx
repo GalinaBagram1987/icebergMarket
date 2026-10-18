@@ -6,6 +6,8 @@ import { SubcategoryList } from '@/widgets/subcategoryList';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
+import { SortPost } from '@/features/sortPosts';
+import styles from './categoryPage.module.css';
 
 /**
  * Страница категории типовая
@@ -26,9 +28,11 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
         <Suspense fallback={null}>
           <SubcategoryList path={path} />
         </Suspense>
-        <MapLink path={path} />
-        {/** Здесь будет фильтр 
-        initialFilters={searchParams}*/}
+        <div className={styles.sortAndMapWrapper}>
+          <SortPost />
+          <MapLink path={path} />
+        </div>
+
         <Suspense fallback={<div>{t('postsList.fallback')}</div>}>
           {postsData?.posts && postsData.posts.length > 0 ? (
             <PostList

@@ -34,16 +34,13 @@ export const catalogRequest = {
         categories: [], // Пустой массив, чтобы дочерний .map() не падал на клиенте
       };
     }
-
     // =========================================================================
-    // ВРЕМЕННАЯ ЗАГЛУШКА ДЛЯ КАТЕГОРИЙ — удалить, когда бэкенд заработает
+    // ВРЕМЕННАЯ ЗАГЛУШКА ДЛЯ КАТЕГОРИЙ — ИСПРАВЛЕНО
     // =========================================================================
     const useStub = true;
 
     if (useStub) {
-      console.log('[MOCK GET CATEGORY] Возвращаем заглушку для пути:', path);
-
-      // Имитируем, что мы зашли в корень "avto-moto"
+      console.log('[MOCK GET CATEGORY] Возвращаем структуру категории для пути:', path);
       return {
         category: {
           id: 40,
@@ -51,10 +48,9 @@ export const catalogRequest = {
           name: 'Авто-мото',
           slug: 'avto-moto',
           path: 'avto-moto',
-          is_leaf: false, // не лист, значит есть подкатегории
+          is_leaf: false,
           attributes: [],
         },
-        // Массив детей, который рендерится в меню или фильтрах на странице
         categories: [
           {
             id: 41,
@@ -69,7 +65,6 @@ export const catalogRequest = {
       };
     }
     // =========================================================================
-
     const requestPath = `posts/${path}`;
 
     console.log('[GET CATEGORY] path:', path);
@@ -205,24 +200,21 @@ export const catalogRequest = {
     const useStub = true;
 
     if (useStub) {
-      // Список моков, полностью соответствующий вашему типу BackendGetItem
       const ALL_MOCK_POSTS = [
-        // 1. Категория: /avto-moto/ (2 объявления)
         {
           id: 'mock_avto_1',
           title: 'Дверь передняя правая',
           price: 15000,
-          title_image: '',
+          title_image: '/mockImg/1(1).png',
           category_id: 40,
           author_id: 'user_1',
           author_name: 'АвтоРазбор НСК',
           author_image: '/images/avatar-placeholder.jpg',
-          attributes: {}, // Соответствует Record<string, string | number | boolean>
-          date: 1792195200, // Числовой Timestamp, как требует ваш тип date: number
-          views: 45, // Число или строка
-          description:
-            'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов. Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.',
-          path: 'avto-moto', // Служебное поле для фильтрации заглушки
+          attributes: {},
+          date: 1718234800,
+          views: 45,
+          description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.',
+          path: 'avto-moto',
         },
         {
           id: 'mock_avto_2',
@@ -235,11 +227,10 @@ export const catalogRequest = {
           author_image: '/images/avatar-placeholder.jpg',
           attributes: {},
           date: 1718321200,
-          views: '112', // Проверяем, что строка тоже принимается (views: number | string)
+          views: 112,
           description: 'Передний бампер, под покраску. Все крепления целые, трещин нет. Небольшие потертости по нижней кромке.',
           path: 'avto-moto',
         },
-        // 2. Подкатегория: /avto-moto/shiny-i-diski/ (2 объявления)
         {
           id: 'mock_shiny_1',
           title: 'Летние шины Michelin Primacy 4',
@@ -249,55 +240,50 @@ export const catalogRequest = {
           author_id: 'user_3',
           author_name: 'Шинный Центр',
           author_image: '/images/avatar-placeholder.jpg',
-          attributes: { size: 'R17', season: 'summer' }, // Пример заполненных атрибутов
+          attributes: { size: 'R17' },
           date: 1718407600,
           views: 250,
           description: 'Комплект премиальных летних шин. Износ минимальный (один сезон). Отличное сцепление как на сухом, так и на мокром асфальте.',
           path: 'avto-moto/shiny-i-diski',
         },
-        {
-          id: 'mock_shiny_2',
-          title: 'Литые диски BBS R17',
-          price: 45000,
-          title_image: '/mockImg/1(4).png',
-          category_id: 41,
-          author_id: 'user_4',
-          author_name: 'Алексей Диски',
-          author_image: '/images/avatar-placeholder.jpg',
-          attributes: { width: 7.5, bolt_pattern: '5x114.3' },
-          date: 1718494000,
-          views: 189,
-          description: 'Оригинальные немецкие литые диски BBS. Ровная геометрия, проверены на стенде. Присутствует легкая бордюрка.',
-          path: 'avto-moto/shiny-i-diski',
-        },
-        // 3. Глубокая подкатегория: /avto-moto/shiny-i-diski/kolpaki (1 объявление)
-        {
-          id: 'mock_kolpaki_1',
-          title: 'Колпаки на диски оригинальные R16',
-          price: 2500,
-          title_image: '/mockImg/1(5).png',
-          category_id: 42,
-          author_id: 'user_1',
-          author_name: 'АвтоРазбор НСК',
-          author_image: '/images/avatar-placeholder.jpg',
-          attributes: { radius: 16 },
-          date: 1718580400,
-          views: '34',
-          description: 'Комплект из 4-х оригинальных колпаков. Все крепления и защелки целые, сидят плотно. Есть незначительные царапины.',
-          path: 'avto-moto/shiny-i-diski/kolpaki',
-        },
       ];
 
-      // Извлекаем значение пути из body.fil (например, "avto-moto/shiny-i-diski")
+      // =========================================================================
+      // ИСПРАВЛЕННЫЙ УЗЕЛ ПАРСИНГА СТРОКИ С ДЕЛИМИТЕЛОМ СЕГМЕНТОВ ";"
+      // =========================================================================
       const filParam = body.fil || '';
-      const [, currentPath] = filParam.split('=');
+      let currentPath = '';
 
-      // Фильтруем массив моков по совпадению с переданным путем
-      const filteredPosts = currentPath ? ALL_MOCK_POSTS.filter((post) => post.path === currentPath) : ALL_MOCK_POSTS;
+      if (filParam) {
+        // Разрезаем общую строку фильтров по точке с запятой ";"
+        // "category_path=avto-moto;price_from=10" -> ["category_path=avto-moto", "price_from=10"]
+        const segments = filParam.split(';');
+
+        // Ищем сегмент, который начинается со строки "category_path="
+        const pathSegment = segments.find((seg) => seg.startsWith('category_path='));
+
+        if (pathSegment) {
+          // Вытаскиваем чистый путь после знака "="
+          currentPath = pathSegment.split('=')[1] || '';
+        }
+      }
+
+      // Фильтруем массив моков по чистому пути
+      let filteredPosts = currentPath ? ALL_MOCK_POSTS.filter((post) => post.path === currentPath) : ALL_MOCK_POSTS;
+
+      // Логика сортировки — КЛЮЧИ ТЕПЕРЬ СТРОГО СОВПАДАЮТ С ВАШИМ СЕЛЕКТОРОМ SortPost
+      const currentSort = body.sort || 'date:asc';
+
+      if (currentSort === 'price:asc') {
+        filteredPosts.sort((a, b) => a.price - b.price); // Дешевле
+      } else if (currentSort === 'price:desc') {
+        filteredPosts.sort((a, b) => b.price - a.price); // Дороже
+      } else if (currentSort === 'date:asc') {
+        filteredPosts.sort((a, b) => a.date - b.date); // По дате
+      }
 
       return {
         count: filteredPosts.length,
-        // Очищаем служебное поле path перед возвратом, чтобы объект стал чистым BackendGetItem
         posts: filteredPosts.map(({ path, ...postData }) => postData as BackendGetItem),
       };
     }

@@ -1,8 +1,10 @@
 .wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  margin: 30px 64px 17px 16px;
+  display: inline-flex; /* Элементы внутри обертки (иконка, текст, стрелка) встанут в линию */
+  align-items: center;
+  position: relative; /* ЖЕСТКИЙ ЯКОРЬ:  меню будет падать строго под эту кнопку */
+
+  margin-left: 17px;
+  margin-right: 64px;
   font-family: var(--font-main);
   font-size: 16px;
   color: var(--text-black);
@@ -12,8 +14,13 @@
   background: none; /* Полностью убирает стандартный серый фон кнопки */
   border: none; /* Убирает системную черную рамку */
   padding: 8px 0; /* Оставляем только нужные нам отступы */
-  font: inherit; /* Кнопка послушно берет шрифт и размер вашего макета */
+  font: inherit; /* Кнопка послушно берет шрифт и размер макета */
   cursor: pointer; /*  Важно: при наведении мышки курсор превратится в «пальчик» */
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
 }
 
 .icon {
@@ -36,19 +43,44 @@
 }
 
 .menuList {
+  position: absolute; /* Вырываем меню из флекс-линии, чтобы оно не толкало кнопку вбок */
+  top: 100%; /* Опускаем ровно под нижний край кнопки */
+  left: 0; /* Выравниваем по левому краю */
+  z-index: 100; /* Гарантирует, что меню всплывет поверх картинок и карты */
+  margin-top: 8px; /* Небольшой аккуратный зазор */
+
   width: 144px;
-  height: 68px;
-  border: 1 px solid var(--bg-dark);
+  min-height: 68px;
+  border: 1px solid var(--bg-dark);
   border-radius: var(--radius-sm);
   background-color: var(--bd-netural);
   line-height: 1.2;
+
+  padding: 0;
+  margin: 0;
+  overflow: hidden; /*скругляет углы фона активной ссылки по радиусу меню */
+}
+
+.menuList li {
+  width: 100%;
 }
 
 .menuLink {
+  display: block; /* Растягивает ссылку на всю ширину родителя */
+  width: 100%; /* Занимает все 144px пространства */
+  padding: 8px 0; /* Задаем аккуратные вертикальные отступы для кликабельности */
   text-decoration: none;
   color: var(--text-black);
+  text-align: center; /* ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ТЕКСТА */
+  box-sizing: border-box; /* Защита от вылезания размеров */
+}
+
+.menuLink:hover {
+  background-color: var(--bg-light);
+  text-decoration: none;
 }
 
 .activeLink {
   background-color: var(--bg-light);
+  width: 144px;
 }
