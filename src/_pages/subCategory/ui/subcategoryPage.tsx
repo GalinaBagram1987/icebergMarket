@@ -7,6 +7,7 @@ import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import styles from './subcategoryPage.module.css';
 import { SortPost } from '@/features/sortPosts';
+import { FilterPanel } from '@/features/filterPanel';
 
 /**
  * Страница подкатегории типовая
@@ -26,6 +27,8 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
         <Suspense fallback={null}>
           <GlobalAndCategorySearchCatalog key={compositeSearchKey} />
         </Suspense>
+
+        <FilterPanel />
 
         <div className={styles.sortAndMapWrapper}>
           <SortPost />
