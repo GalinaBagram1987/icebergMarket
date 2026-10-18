@@ -5,6 +5,9 @@ import { GlobalAndCategorySearchCatalog } from '@/features/globalAndCategorySear
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
+import styles from './subcategoryPage.module.css';
+import { SortPost } from '@/features/sortPosts';
+
 /**
  * Страница подкатегории типовая
  * Сборка страницы подкатегорий
@@ -24,9 +27,10 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
           <GlobalAndCategorySearchCatalog key={compositeSearchKey} />
         </Suspense>
 
-        <MapLink path={path} />
-        {/**Здесь будет фильтр CatalogFilterWidget
-        initialFilters={searchParams}*/}
+        <div className={styles.sortAndMapWrapper}>
+          <SortPost />
+          <MapLink path={path} />
+        </div>
 
         <Suspense fallback={<div>Обновление списка объявлений...</div>}>
           {postsData?.posts && postsData.posts.length > 0 ? (
