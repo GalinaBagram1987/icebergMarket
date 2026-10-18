@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import type { FilterValues } from '@/shared/ui/filterPanel';
-import { FilterPanel } from '@/shared/ui/filterPanel';
+import type { SortValues } from '@/shared/ui/sortPanel';
+import { FilterPanel } from '@/shared/ui/sortPanel';
 
 /**
  * Фильтр для страницы подкатегорий
