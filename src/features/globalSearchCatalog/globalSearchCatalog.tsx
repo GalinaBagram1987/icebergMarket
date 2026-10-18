@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { GlobalSearch } from '@/shared/ui/globalSearch';
 
@@ -10,6 +10,11 @@ export const GlobalSearchCatalog = () => {
   const pathname = usePathname();
 
   const [text, setText] = useState(searchParams.get('q') || '');
+
+  // Если изменился URL (например, нажали "Назад"), обновляем текст в инпуте
+  useEffect(() => {
+    setText(searchParams.get('q') || '');
+  }, [searchParams]);
 
   // при создании функции сохраняем предыдущие параметры
   const handleSubmit = () => {

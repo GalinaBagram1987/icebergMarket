@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { GlobalAndCategorySearch } from '@/shared/ui/globalAndCategorySearch/globalAndCategorySearch';
 import { parseMode, type SearchModeType } from './lib/parseMode';
@@ -12,6 +12,12 @@ export const GlobalAndCategorySearchCatalog = () => {
 
   const [text, setText] = useState(searchParams.get('q') || '');
   const [mode, setMode] = useState<'section' | 'global'>(parseMode(searchParams.get('searchMode')));
+
+  // Если изменился URL (например, нажали "Назад"), обновляем текст в инпуте
+  useEffect(() => {
+    setText(searchParams.get('q') || '');
+    setMode(parseMode(searchParams.get('searchMode')));
+  }, [searchParams]);
 
   // при создании функции сохраняем предыдущие параметры
   const handleSubmit = () => {
