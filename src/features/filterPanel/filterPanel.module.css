@@ -1,6 +1,6 @@
-.wrapper {
+.wrapperAll {
   width: 857px;
-  height: 34px;
+  height: 41px;
   display: flex;
   flex-direction: column;
 }
@@ -9,24 +9,24 @@
 .applyPanel {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   gap: 10px;
 
-  border: 1px solid var(--bg-search-field);
-  border-radius: var(--border-black40);
+  border: 1px solid var(--border-black40);
+  border-radius: var(--radius-md);
 }
 
-.filterPanel,
-.applyPanel {
+.filterPanel {
   width: 857px;
   height: 41px;
 }
 
-.filterPanel {
+.applyPanel {
   width: 189px;
   height: 34px;
-  padding-left: 9px;
+  margin-top: 5px;
+  margin-left: 668px;
 }
 
 .priceFilter,
@@ -67,15 +67,16 @@
 }
 
 .filterHeadPrice {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .filterHeadState {
-  margin-right: 24px;
+  margin-right: 20px;
 }
 
 .filterHeadPhoto {
-  margin-right: 21px;
+  margin-right: 10px;
+  white-space: nowrap;
 }
 
 .filterParamsText {
@@ -88,8 +89,9 @@
 .priceInputSecond {
   width: 82px;
   height: 24px;
-  background-color: var(--text-wight);
+  background-color: var(--text-white);
   border: 1px solid var(--border-black41);
+  border-radius: var(--radius-sm);
 }
 
 .priceInputFirstMargin {
@@ -105,7 +107,7 @@
 .squareInput {
   width: 20px;
   height: 20px;
-  background-color: var(--text-wight);
+  background-color: var(--text-white);
   border: 1px solid var(--border-black41);
 }
 
@@ -120,12 +122,12 @@
 }
 
 .thirdSquareMargin {
-  margin-left: 21px;
+  margin-left: 10px;
   margin-right: 23px;
 }
 
 .applyPanelIcon {
-  margin-right: 10px;
+  margin-left: 9px;
   height: 19px;
 }
 

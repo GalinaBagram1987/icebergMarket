@@ -58,10 +58,10 @@
     },
     "showMap": "Показать на карте",
     "filterPanel": {
-      "price": "Цена",
+      "price": "Цена:",
       "priceFrom": "от",
       "priceTo": "до",
-      "productState": "Состояние",
+      "productState": "Состояние:",
       "productStateNew": "новое",
       "productStateUsed": "б/у",
       "onlyWithPhoto": "Только предложения с фото",
