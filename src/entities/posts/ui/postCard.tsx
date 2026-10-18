@@ -4,10 +4,13 @@ import { formatPostDate } from '@/entities/lib';
 
 export const PostCard = ({ post }: { post: PostItemProps }) => {
   const curPostDate = formatPostDate(post.date);
+  const notImg = '/img/product-placeholder.jpg';
+
+  const imgPage = post.title_image?.trim() || notImg;
 
   return (
     <article className={styles.postGrid}>
-      <img src={post.title_image} loading="lazy" alt={`картинка для ${post.title}`} className={styles.postImg} />
+      <img src={imgPage} loading="lazy" alt={`картинка для ${post.title}`} className={styles.postImg} />
       <div className={styles.prodDescriptionBlock}>
         <h2 className={styles.postTitle}>{post.title}</h2>
         <p className={styles.postText}>{post.description}</p>

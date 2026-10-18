@@ -1,6 +1,6 @@
 .postGrid {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) 160px;
+  grid-template-columns: 210px minmax(0, 1fr) 160px;
   align-items: start;
   column-gap: 24px;
 
@@ -8,24 +8,25 @@
   height: 155px;
 
   background-color: var(--bg-search-results);
-
-  padding: 12px 131px 16px 0px;
   column-gap: 32px;
+  padding: 0px 131px 0px 0px;
 }
 
 .postImg {
   display: block;
-  height: 100%;
+  box-sizing: border-box;
+  height: 155px;
   width: auto;
-  min-width: 100px;
-  max-width: 210px;
+
   object-fit: contain;
+  justify-self: center;
 }
 
 .prodDescriptionBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 12px 0px 16px 0px;
 }
 
 .postTitle {
@@ -58,6 +59,8 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+
+  padding: 12px 0px 16px 0px;
 }
 
 .price {

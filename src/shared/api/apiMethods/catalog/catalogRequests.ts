@@ -212,7 +212,7 @@ export const catalogRequest = {
           id: 'mock_avto_1',
           title: 'Дверь передняя правая',
           price: 15000,
-          title_image: '/mockImg/1(1).png',
+          title_image: '',
           category_id: 40,
           author_id: 'user_1',
           author_name: 'АвтоРазбор НСК',

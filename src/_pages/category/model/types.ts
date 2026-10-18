@@ -1,5 +1,5 @@
 import { CategoryResponse } from '@/shared/api/apiMethods/catalog';
-import { SearchPostsResponse } from '@/shared/api/apiMethods/catalog';
+import { SearchGetResponse } from '@/shared/api/apiMethods/catalog';
 /**
  * Пропсы для основного компонента категории
  */
@@ -22,7 +22,7 @@ export type SubcategoryItem = {
 export type CategoryPageProps = {
   path: string;
   categoryData: CategoryResponse | null;
-  postsData: SearchPostsResponse | null;
+  postsData: SearchGetResponse | null;
   searchParams: {
     q?: string;
     searchMode?: 'section' | 'global';
