@@ -1,11 +1,14 @@
 import { Suspense } from 'react';
 
 import { GlobalSearchCatalog } from '@/features/globalSearchCatalog';
-import type { GlobalSearchProps } from '@/shared/ui/globalSearch/globalSearch.types';
+import type { SearchPageCollectorProps } from '../model/types';
 import { SortPost } from '@/features/sortPosts';
 import { MapLink } from '@/shared/ui/mapLink';
 
-export const SearchPage = () => {
+/**
+ * Сборка страницы поиска
+ */
+export const SearchPageCollector = ({ path, searchParams }: SearchPageCollectorProps) => {
   return (
     <main className="container">
       <div className="contaierContent">
@@ -15,7 +18,7 @@ export const SearchPage = () => {
 
         <div className="l-sortAndMapWrapper">
           <SortPost />
-          <MapLink />
+          <MapLink path={path} />
         </div>
       </div>
     </main>
