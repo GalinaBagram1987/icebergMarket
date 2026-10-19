@@ -5,7 +5,6 @@ import { GlobalAndCategorySearchCatalog } from '@/features/globalAndCategorySear
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
-import styles from './subcategoryPage.module.css';
 import { SortPost } from '@/features/sortPosts';
 import { FilterPanel } from '@/features/filterPanel';
 
@@ -30,7 +29,7 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
 
         <FilterPanel />
 
-        <div className={styles.sortAndMapWrapper}>
+        <div className="l-sortAndMapWrapper">
           <SortPost />
           <MapLink path={path} />
         </div>

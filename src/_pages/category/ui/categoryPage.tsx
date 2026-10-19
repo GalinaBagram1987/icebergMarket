@@ -7,7 +7,6 @@ import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
-import styles from './categoryPage.module.css';
 
 /**
  * Страница категории типовая
@@ -28,7 +27,7 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
         <Suspense fallback={null}>
           <SubcategoryList path={path} />
         </Suspense>
-        <div className={styles.sortAndMapWrapper}>
+        <div className="l-sortAndMapWrapper">
           <SortPost />
           <MapLink path={path} />
         </div>

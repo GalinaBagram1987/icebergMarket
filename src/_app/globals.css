@@ -252,3 +252,10 @@ button {
   margin: 0 auto;
   padding: 50px;
 }
+
+.l-sortAndMapWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+}
