@@ -21,8 +21,9 @@ export const GlobalSearchCatalog = () => {
     if (!text.trim()) return;
     const params = new URLSearchParams(searchParams.toString());
     params.set('q', text);
-    // router.replace(`${pathname}?${params.toString()}`); // при назад переходим на главную
-    router.push(`${pathname}?${params.toString()}`); // при назад переходим к прошлым результатам поиска
+    params.set('page', '1');
+
+    router.push(`/search?${params.toString()}`); // при назад переходим к прошлым результатам поиска
   };
 
   return <GlobalSearch value={text} onChange={setText} onSubmit={handleSubmit} />;

@@ -119,7 +119,7 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
  * примимает path, формирует путь в браузере, подгружает страницу
  * Метаданные (title, description) заданы динамически на основании названия раздела
  *
- * Вносить изменения в бизнесс-логику в компонент /написать тут
+ * Вносить изменения в бизнесс-логику в компонент CategoryPage
  */
 
 const CategoryPageApp = async ({ params, searchParams }: CategoryPageAppProps) => {

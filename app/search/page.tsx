@@ -4,13 +4,12 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { SearchPageCollector } from '@/_pages/searchPageCollector';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
-
 /**
  * Тип для страницы поиска
  * принимает парметры поиска
  */
 
-type SearchPageProps = {
+type SearchPageAppProps = {
   searchParams: Promise<{
     q?: string;
     priceFrom?: string;
@@ -23,11 +22,17 @@ type SearchPageProps = {
   }>;
 };
 
+// Внутренний тип для прослойки SearchPageContent
+type SearchPageContentProps = {
+  path: string;
+  searchParams: SearchPageAppProps['searchParams']; // Строго Promise!
+};
+
 /**
  * Динамические метаданные страницы поиска
  */
 
-export const generateMetadata = async ({ searchParams }: SearchPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({ searchParams }: SearchPageAppProps): Promise<Metadata> => {
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams.q || '';
 
@@ -51,7 +56,7 @@ export const generateMetadata = async ({ searchParams }: SearchPageProps): Promi
  * Для некс переносим асинхронную логику отдельно, чтобы потом обвернуть все в suspense
  */
 
-const SearchPageContent = async ({ searchParams }: SearchPageProps) => {
+const SearchPageContent = async ({ path, searchParams }: SearchPageContentProps) => {
   // живое соединение, чтобы Next.js сразу переключил роут в динамический режим
   await connection();
 
@@ -66,7 +71,7 @@ const SearchPageContent = async ({ searchParams }: SearchPageProps) => {
     fil: undefined, // Фильтров тут нет, бэк ищет по всей базе!
   });
 
-  return <SearchPageCollector searchParams={resolvedSearchParams} />;
+  return <SearchPageCollector path={path} initialSearchData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 
 /**
@@ -77,9 +82,11 @@ const SearchPageContent = async ({ searchParams }: SearchPageProps) => {
  * Вносить изменения в бизнесс-логику в компонент SearchPageCollector
  */
 
-const SearchPageApp = ({ searchParams }: SearchPageProps) => {
-  <Suspense fallback={null}>
-    <SearchPageContent searchParams={searchParams} />
-  </Suspense>;
+const SearchPageApp = ({ searchParams }: SearchPageAppProps) => {
+  return (
+    <Suspense fallback={null}>
+      <SearchPageContent path="search" searchParams={searchParams} />
+    </Suspense>
+  );
 };
 export default SearchPageApp;

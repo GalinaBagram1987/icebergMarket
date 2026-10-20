@@ -44,23 +44,21 @@ export type CategoryResponse = {
  //=================================
 
  /** 
- * Тип который описывает тело запроса
- * POST /api/v1/posts/search/[параметры запроса, каждый необязательный]
+ * Тип, который описывает тело запроса
+ * POST /api/v1/posts/search/
  */
 export type SearchPostsRequestBody = {
   page?: string;
   limit?: number;
-  fil?: string;
-  q?: string;
-  sort?: string;
+  fil?: string; // Формат: "category_path=avto-moto;price_from=1000"
+  q?: string; // Строка полнотекстового поиска
+  sort?: string; // Направление сортировки, например "date:asc"
 };
 
 /**
- * Параметры одного значения, которое приходит от бэка
- * которое возвращет поиск
+ * Параметры одного поста, которые возвращает бэк
  */
-
-export type BackendGetItem = {
+export type BackendGetPost = {
   id: string;
   title: string;
   price: number;
@@ -70,18 +68,28 @@ export type BackendGetItem = {
   author_name: string;
   author_image: string;
   attributes: Record<string, string | number | boolean>;
-  date: number;
+  date: number; // Unix Timestamp
   views: number | string;
   description: string;
 };
 
 /**
- * Полный ответ поиска
+ * Параметры одной категории с количеством совпадений, которые возвращает бэк
  */
+export type CategoryBackendRequest = {
+  id: string;
+  name: string;
+  slug: string;
+  count: number; // Каунтер для серых плашек над выдачей
+};
 
+/**
+ * Полный ответ поиска (200 OK)
+ */
 export type SearchGetResponse = {
-  count: number;
-  posts: BackendGetItem[];
+  count?: number;
+  categories: CategoryBackendRequest[]; // Приходит массив категорий
+  posts: BackendGetPost[]; // Приходит массив постов
 };
 
 //==================================

@@ -23,5 +23,6 @@ export type SearchPageCollectorRawSearchParams = {
 
 export type SearchPageCollectorProps = {
   path: string;
-  searchParams: Promise<SearchPageCollectorRawSearchParams>;
+  searchParams: SearchPageCollectorRawSearchParams; // сырые парметры
+  initialSearchData: SearchGetResponse; // ответ бэка
 };

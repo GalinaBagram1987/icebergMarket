@@ -14,6 +14,6 @@ export type PostItemProps = {
 };
 
 export type PostsListProps = {
-  count: number;
+  count?: number;
   postList: PostItemProps[];
 };
