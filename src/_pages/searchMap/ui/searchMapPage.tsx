@@ -42,7 +42,7 @@ const BreadcrumbsServerLoader = async ({ categoryPath, subcategoryPath }: Search
 
 export const SearchMapPage = ({ categoryPath, subcategoryPath }: SearchMapPageProps) => {
   return (
-    <div className="container">
+    <div className="containerContent">
       <Suspense fallback={null}>
         <BreadcrumbsServerLoader categoryPath={categoryPath} subcategoryPath={subcategoryPath} />
       </Suspense>

@@ -19,7 +19,7 @@ const { categories }: MainCatalogData = composeMainCatalog(mainCatalogDataFront,
 
 export const MainCatalog: React.FC = () => {
   return (
-    <div className={cn('containerContent', styles.margin)}>
+    <div className={cn('containerMain', styles.margin)}>
       <div className="flexAdaptive">
         <div className={styles.grid}>
           {categories.map((item) => (

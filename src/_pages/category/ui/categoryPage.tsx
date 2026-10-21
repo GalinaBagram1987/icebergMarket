@@ -18,36 +18,34 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
   const queryKey = searchParams?.q || '';
 
   return (
-    <main className="container">
-      <div className="containerContent">
-        <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
-        <Suspense fallback={null}>
-          <GlobalSearchCatalog key={queryKey} />
-        </Suspense>
-        <Suspense fallback={null}>
-          <SubcategoryList path={path} />
-        </Suspense>
-        <div className="l-sortAndMapWrapper">
-          <SortPost />
-          <MapLink path={path} />
-        </div>
-
-        <Suspense fallback={<div>{t('postsList.fallback')}</div>}>
-          {postsData?.posts && postsData.posts.length > 0 ? (
-            <PostList
-              postsData={{
-                count: postsData.count || 0,
-                postList: postsData.posts,
-              }}
-            />
-          ) : (
-            <div>
-              <p>{t('postsList.textWarOne')}</p>
-              <p>{t('postsList.textWarTwo')}</p>
-            </div>
-          )}
-        </Suspense>
+    <div className="containerContent">
+      <Breadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
+      <Suspense fallback={null}>
+        <GlobalSearchCatalog key={queryKey} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <SubcategoryList path={path} />
+      </Suspense>
+      <div className="l-sortAndMapWrapper">
+        <SortPost />
+        <MapLink path={path} />
       </div>
-    </main>
+
+      <Suspense fallback={<div>{t('postsList.fallback')}</div>}>
+        {postsData?.posts && postsData.posts.length > 0 ? (
+          <PostList
+            postsData={{
+              count: postsData.count || 0,
+              postList: postsData.posts,
+            }}
+          />
+        ) : (
+          <div>
+            <p>{t('postsList.textWarOne')}</p>
+            <p>{t('postsList.textWarTwo')}</p>
+          </div>
+        )}
+      </Suspense>
+    </div>
   );
 };

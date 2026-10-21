@@ -1,7 +1,3 @@
 export const AuthPage = () => {
-  return (
-    <main>
-      <div className=""></div>
-    </main>
-  );
+  return <div className="containerContent"></div>;
 };

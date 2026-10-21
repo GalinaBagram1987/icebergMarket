@@ -7,7 +7,7 @@ export const PrivacyPage = async () => {
   const t = await getTranslations('privacy');
 
   return (
-    <main className="container">
+    <div className="containerContent">
       <div className={styles.pageWrapper}>
         <div className={styles.designBlock}>&nbsp;</div>
         <div className={styles.textContainer}>
@@ -20,6 +20,6 @@ export const PrivacyPage = async () => {
           <p className={styles.textPageP}>{t('textFour')}</p>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
