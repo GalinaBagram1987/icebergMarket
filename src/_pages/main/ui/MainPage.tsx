@@ -9,13 +9,13 @@ import { MainCatalog } from '@/widgets/mainCatalog';
 
 export const MainPage = async () => {
   return (
-    <main className="container">
+    <div className="containerContent">
       <Suspense fallback="null">
         <GlobalSearchCatalog />
       </Suspense>
 
       <MainCatalog />
       <CookieConsent />
-    </main>
+    </div>
   );
 };

@@ -243,7 +243,8 @@ button {
 .containerContent {
   width: 100%;
   max-width: var(--content-max-width);
-  margin: 0 auto;
+  margin: 0;
+  padding-right: 50px;
 }
 
 .containerTest {

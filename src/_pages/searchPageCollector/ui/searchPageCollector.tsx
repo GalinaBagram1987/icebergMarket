@@ -11,20 +11,17 @@ import { PostList } from '@/entities/posts';
  */
 export const SearchPageCollector = ({ path, searchParams, initialSearchData }: SearchPageCollectorProps) => {
   return (
-    <main className="container">
-      <div className="contaierContent">
-        <Suspense fallback={null}>
-          <GlobalSearchCatalog />
-        </Suspense>
-
-        <div className="l-sortAndMapWrapper">
-          <SortPost />
-          <MapLink path={path} />
-        </div>
-        <Suspense fallback={null}>
-          <PostList postsData={{ postList: initialSearchData.posts }} />
-        </Suspense>
+    <div className="containerContent">
+      <Suspense fallback={null}>
+        <GlobalSearchCatalog />
+      </Suspense>
+      <div className="l-sortAndMapWrapper">
+        <SortPost />
+        <MapLink path={path} />
       </div>
-    </main>
+      <Suspense fallback={null}>
+        <PostList postsData={{ postList: initialSearchData.posts }} />
+      </Suspense>
+    </div>
   );
 };

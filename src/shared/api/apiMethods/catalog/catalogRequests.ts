@@ -333,7 +333,7 @@ export const catalogRequest = {
     const queryString = `q=${encodeURIComponent(body.q || '')}&fil=${body.fil || ''}&page=${body.page || '1'}&limit=${body.limit || '20'}`;
 
     // Передаем параметры, типизированные под обновленный SearchGetResponse
-    const { data } = await apiWithInterceptors.get<SearchGetResponse>(`${requestPath}?${queryString}`);
+    const { data } = await apiWithInterceptors.get<SearchGetResponse>(`/search?${queryString}`);
 
     return data;
   },
