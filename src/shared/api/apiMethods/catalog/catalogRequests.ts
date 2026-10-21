@@ -2,7 +2,8 @@ import { apiWithInterceptors } from '../../configApi';
 import type { BackendCategory, MainCatalog, CategoryResponse } from './type';
 import type { SearchPostsRequestBody, SearchGetResponse } from './type';
 import type { GetPostDetailRequestBody, PostDetailResponse } from './type';
-import type { BackendGetItem } from './type';
+import type { BackendGetPost } from './type';
+import type { CategoryBackendRequest } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку
@@ -248,72 +249,90 @@ export const catalogRequest = {
         },
       ];
 
-      // =========================================================================
-      // ИСПРАВЛЕННЫЙ УЗЕЛ ПАРСИНГА СТРОКИ С ДЕЛИМИТЕЛОМ СЕГМЕНТОВ ";"
-      // =========================================================================
+      // 1. ИСПРАВЛЕННЫЙ УЗЕЛ ПАРСИНГА СТРОКИ С ДЕЛИМИТЕЛОМ СЕГМЕНТОВ ";"
       const filParam = body.fil || '';
       let currentPath = '';
 
       if (filParam) {
-        // Разрезаем общую строку фильтров по точке с запятой ";"
-        // "category_path=avto-moto;price_from=10" -> ["category_path=avto-moto", "price_from=10"]
         const segments = filParam.split(';');
-
-        // Ищем сегмент, который начинается со строки "category_path="
         const pathSegment = segments.find((seg) => seg.startsWith('category_path='));
-
         if (pathSegment) {
-          // Вытаскиваем чистый путь после знака "="
           currentPath = pathSegment.split('=')[1] || '';
         }
       }
 
-      // Фильтруем массив моков по чистому пути
-      let filteredPosts = currentPath ? ALL_MOCK_POSTS.filter((post) => post.path === currentPath) : ALL_MOCK_POSTS;
+      // Фильтруем по тексту поиска q, если он передан (имитация полнотекстового поиска)
+      const searchQuery = (body.q || '').trim().toLowerCase();
+      let searchedPosts = ALL_MOCK_POSTS;
+
+      if (searchQuery) {
+        searchedPosts = ALL_MOCK_POSTS.filter((post) => post.title.toLowerCase().includes(searchQuery) || post.description.toLowerCase().includes(searchQuery));
+      }
+
+      // 2. ДИНАМИЧЕСКИЙ РАСЧЕТ КАТЕГОРИЙ для плашек до фильтрации по самой категории
+      // Это позволяет видеть, сколько всего совпадений по тексту q есть в других разделах
+      const categoryMap: Record<number, { name: string; slug: string; count: number }> = {
+        40: { name: 'Авто-мото', slug: 'avto-moto', count: 0 },
+        41: { name: 'Шины и диски', slug: 'avto-moto/shiny-i-diski', count: 0 },
+      };
+
+      searchedPosts.forEach((post) => {
+        if (categoryMap[post.category_id]) {
+          categoryMap[post.category_id].count += 1;
+        }
+      });
+
+      const mockCategories: CategoryBackendRequest[] = Object.entries(categoryMap)
+        .filter(([_, value]) => value.count > 0) // Выводим только те, где что-то нашлось
+        .map(([id, value]) => ({
+          id: id,
+          name: value.name,
+          slug: value.slug,
+          count: value.count,
+        }));
+
+      // Фильтруем массив моков по выбранному пути категории
+      let filteredPosts = currentPath ? searchedPosts.filter((post) => post.path === currentPath) : searchedPosts;
 
       // Логика сортировки — КЛЮЧИ ТЕПЕРЬ СТРОГО СОВПАДАЮТ С ВАШИМ СЕЛЕКТОРОМ SortPost
       const currentSort = body.sort || 'date:asc';
 
       if (currentSort === 'price:asc') {
-        filteredPosts.sort((a, b) => a.price - b.price); // Дешевле
+        filteredPosts.sort((a, b) => a.price - b.price);
       } else if (currentSort === 'price:desc') {
-        filteredPosts.sort((a, b) => b.price - a.price); // Дороже
+        filteredPosts.sort((a, b) => b.price - a.price);
       } else if (currentSort === 'date:asc') {
-        filteredPosts.sort((a, b) => a.date - b.date); // По дате
+        filteredPosts.sort((a, b) => a.date - b.date);
       }
 
+      // Возвращаем итоговый полный контракт SearchGetResponse
       return {
         count: filteredPosts.length,
-        posts: filteredPosts.map(({ path, ...postData }) => postData as BackendGetItem),
+        categories: mockCategories, // Передаем сформированные категории для плашек
+        posts: filteredPosts.map(({ path, ...postData }) => postData as BackendGetPost),
       };
     }
     // =========================================================================
     // THE END MOCK
     // =========================================================================
 
-    // Предохранитель от системных запросов (возвращает пустую структуру по спецификации)
+    // Предохранитель от системных запросов (возвращает пустую структуру по новой спецификации)
     const checkString = JSON.stringify(body);
     if (checkString.includes('favicon') || checkString.includes('.well-known')) {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', body);
       return {
         count: 0,
+        categories: [],
         posts: [],
       };
     }
+
     const requestPath = `posts/search`;
     console.log('[SEARCH] Request Body:', body);
-    console.log('[SEARCH] baseURL:', apiWithInterceptors.defaults.baseURL);
-    console.log(
-      '[SEARCH] full URL:',
-      apiWithInterceptors.getUri({
-        method: 'GET',
-        url: requestPath,
-        params: body,
-      }),
-    );
+
     const queryString = `q=${encodeURIComponent(body.q || '')}&fil=${body.fil || ''}&page=${body.page || '1'}&limit=${body.limit || '20'}`;
-    // Передаем параметры через объект { params: body }
-    // Axios сам автоматически превратит объект в строку вида ?q=...&fil=...
+
+    // Передаем параметры, типизированные под обновленный SearchGetResponse
     const { data } = await apiWithInterceptors.get<SearchGetResponse>(`${requestPath}?${queryString}`);
 
     return data;
