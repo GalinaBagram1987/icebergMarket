@@ -15,6 +15,7 @@ export type SearchPageCollectorRawSearchParams = {
   onlyWithPhoto?: string;
   sort?: string;
   page?: string;
+  categoryPath?: string;
 };
 
 /**
