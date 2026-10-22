@@ -6,7 +6,6 @@ import { SortPost } from '@/features/sortPosts';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { CategoryFilterBadges } from '@/widgets/categoryFilterBadges';
-import styles from './searchPageCollector.module.css';
 
 /**
  * Сборка страницы поиска
@@ -30,17 +29,16 @@ export const SearchPageCollector = ({ path, searchParams, initialSearchData, t }
             <SortPost />
             <MapLink path={path} />
           </div>
-          <Suspense fallback={null}>
+          <Suspense fallback={<div className="noDataP">{t('postsList.fallback')}</div>}>
             <PostList postsData={{ postList: initialSearchData.posts }} />
           </Suspense>
         </>
       ) : (
         /* Информационная заглушка, если товаров нет */
         <div className="emptySearchState">
-          <h2 className="noDataH2">
+          <p className="noDataP">
             {t('emptySearch.textPartOne')} «{searchQuery}» {t('emptySearch.textPartTwo')}
-          </h2>
-          <p className="noDataP">{t('emptySearch.textPartThree')}</p>
+          </p>
         </div>
       )}
     </div>

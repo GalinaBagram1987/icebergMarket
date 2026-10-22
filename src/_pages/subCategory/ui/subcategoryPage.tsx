@@ -33,7 +33,7 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
         <MapLink path={path} />
       </div>
 
-      <Suspense fallback={<div>Обновление списка объявлений...</div>}>
+      <Suspense fallback={<div className="noDataP">{t('postsList.fallback')}</div>}>
         {postsData?.posts && postsData.posts.length > 0 ? (
           <PostList
             postsData={{
@@ -43,8 +43,7 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
           />
         ) : (
           <div>
-            <p>{t('postsList.textWarOne')}</p>
-            <p>{t('postsList.textWarTwo')}</p>
+            <p className="noDataP">{t('postsList.textWarOne')}</p>
           </div>
         )}
       </Suspense>

@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { GlobalSearch } from '@/shared/ui/globalSearch';
 
 export const GlobalSearchCatalog = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pathname = usePathname();
 
   const [text, setText] = useState(searchParams.get('q') || '');
 

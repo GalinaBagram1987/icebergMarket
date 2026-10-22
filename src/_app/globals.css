@@ -273,12 +273,9 @@ button {
   margin-bottom: 16px;
 }
 
-.noDataH2 {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
 .noDataP {
+  font-family: var(--font-mono);
   font-size: 16px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }

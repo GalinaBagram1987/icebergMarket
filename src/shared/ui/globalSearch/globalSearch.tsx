@@ -27,6 +27,7 @@ export const GlobalSearch = ({ value, onChange, onSubmit, placeholder = '', isLo
         <input
           type="text"
           name="q" // для Next.js, чтобы query-параметр попал в URL (?q=...)
+          value={value}
           required
           placeholder={placeholder}
           className={styles.searchInput}
