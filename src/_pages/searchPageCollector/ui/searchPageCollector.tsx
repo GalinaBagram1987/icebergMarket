@@ -6,11 +6,12 @@ import { SortPost } from '@/features/sortPosts';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { CategoryFilterBadges } from '@/widgets/categoryFilterBadges';
+import styles from './searchPageCollector.module.css';
 
 /**
  * Сборка страницы поиска
  */
-export const SearchPageCollector = ({ path, searchParams, initialSearchData }: SearchPageCollectorProps) => {
+export const SearchPageCollector = ({ path, searchParams, initialSearchData, t }: SearchPageCollectorProps) => {
   // Проверяем, есть ли товары в ответе бэкенда
   const hasPosts = initialSearchData && initialSearchData.posts.length > 0;
   const searchQuery = searchParams.q || '';
@@ -21,10 +22,7 @@ export const SearchPageCollector = ({ path, searchParams, initialSearchData }: S
         {/* Плашки категорий показываем только если бэк вернул хоть какие-то смежные категории */}
         {initialSearchData.categories.length > 0 && <CategoryFilterBadges categories={initialSearchData.categories} />}
       </Suspense>
-      <div className="l-sortAndMapWrapper">
-        <SortPost />
-        <MapLink path={path} />
-      </div>
+
       {hasPosts ? (
         <>
           {/* Сетка с товарами и сортировкой */}
@@ -39,8 +37,10 @@ export const SearchPageCollector = ({ path, searchParams, initialSearchData }: S
       ) : (
         /* Информационная заглушка, если товаров нет */
         <div className="emptySearchState">
-          <h2>По запросу «{searchQuery}» ничего не найдено</h2>
-          <p>Попробуйте проверить орфографию или сформулировать запрос иначе</p>
+          <h2 className="noDataH2">
+            {t('emptySearch.textPartOne')} «{searchQuery}» {t('emptySearch.textPartTwo')}
+          </h2>
+          <p className="noDataP">{t('emptySearch.textPartThree')}</p>
         </div>
       )}
     </div>

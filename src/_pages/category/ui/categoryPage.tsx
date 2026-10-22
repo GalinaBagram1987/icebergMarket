@@ -41,8 +41,8 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
           />
         ) : (
           <div>
-            <p>{t('postsList.textWarOne')}</p>
-            <p>{t('postsList.textWarTwo')}</p>
+            <h2 className="noDataH2">{t('postsList.textWarOne')}</h2>
+            <p className="noDataP">{t('postsList.textWarTwo')}</p>
           </div>
         )}
       </Suspense>

@@ -26,4 +26,5 @@ export type SearchPageCollectorProps = {
   path: string;
   searchParams: SearchPageCollectorRawSearchParams; // сырые парметры
   initialSearchData: SearchGetResponse; // ответ бэка
+  t: (key: string) => string;
 };

@@ -4,6 +4,8 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { SearchPageCollector } from '@/_pages/searchPageCollector';
 import { catalogRequest } from '@/shared/api/apiMethods/catalog';
+import { getTranslations } from 'next-intl/server';
+
 /**
  * Тип для страницы поиска
  * принимает парметры поиска
@@ -62,6 +64,8 @@ const SearchPageContent = async ({ path, searchParams }: SearchPageContentProps)
 
   const resolvedSearchParams = await searchParams;
 
+  const t = await getTranslations('icebergMarket');
+
   // Запрашиваем данные у бэка строго по вашей спецификации API
   const searchPostsResponse = await catalogRequest.getMainSearchData({
     q: resolvedSearchParams.q || '', // Текст поиска ("дверь", "машина"...)
@@ -71,7 +75,7 @@ const SearchPageContent = async ({ path, searchParams }: SearchPageContentProps)
     fil: undefined, // Фильтров тут нет, бэк ищет по всей базе!
   });
 
-  return <SearchPageCollector path={path} initialSearchData={searchPostsResponse} searchParams={resolvedSearchParams} />;
+  return <SearchPageCollector t={t} path={path} initialSearchData={searchPostsResponse} searchParams={resolvedSearchParams} />;
 };
 
 /**

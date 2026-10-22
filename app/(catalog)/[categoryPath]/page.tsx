@@ -81,7 +81,6 @@ const CategoryPageContent = async ({ params, searchParams }: CategoryPageAppProp
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations('icebergMarket');
-  // const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
 
   const { categoryPath } = resolvedParams;
 
