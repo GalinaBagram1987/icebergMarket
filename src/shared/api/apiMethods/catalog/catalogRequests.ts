@@ -287,10 +287,10 @@ export const catalogRequest = {
         .map(([id, value]) => ({
           id: id,
           name: value.name,
-          slug: value.slug,
+          slug: value.slug.split('/').pop() || '', // Хвостик (например, "shiny-i-diski")
+          path: value.slug, // Полный путь для роутинга (например, "avto-moto/shiny-i-diski")
           count: value.count,
         }));
-
       // Фильтруем массив моков по выбранному пути категории
       let filteredPosts = currentPath ? searchedPosts.filter((post) => post.path === currentPath) : searchedPosts;
 

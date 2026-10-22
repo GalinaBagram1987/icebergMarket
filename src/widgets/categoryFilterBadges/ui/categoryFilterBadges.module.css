@@ -1,0 +1,52 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 33px;
+  align-items: center;
+  margin-top: 22px;
+  margin-bottom: 17px;
+}
+
+.ulResert {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liBlock {
+  padding: 8px 20px 8px 20px;
+  background-color: var(--text-white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.liBlock:hover {
+  background-color: var(--bg-mainCatalog);
+}
+
+.link,
+.link:hover {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.categoryName {
+  font-family: var(--font-headings);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--primary-color);
+  margin-right: 20px;
+}
+
+.categoryCount {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--text-black);
+}

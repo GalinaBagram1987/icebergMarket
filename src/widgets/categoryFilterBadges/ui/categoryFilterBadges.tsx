@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { CategoryFilterBadgesProps } from '../model/type';
@@ -13,8 +12,8 @@ export const CategoryFilterBadges = ({ categories }: CategoryFilterBadgesProps) 
 
   if (!categories || categories.length === 0) return;
   return (
-    <div className={}>
-      <ul>
+    <div className={styles.wrapper}>
+      <ul className={styles.ulResert}>
         {categories.map((category) => {
           const queryParams = new URLSearchParams();
           if (currentQuery) {
@@ -22,9 +21,8 @@ export const CategoryFilterBadges = ({ categories }: CategoryFilterBadgesProps) 
           }
           queryParams.set('page', '1');
           return (
-            <li key={category.id}>
-              {/* Прямая ссылка без языковых префиксов */}
-              <Link href={`/catalog/${category.slug}?${queryParams.toString()}`} className={styles.badgeLink}>
+            <li className={styles.liBlock} key={category.id}>
+              <Link className={styles.link} href={`/${category.path}?${queryParams.toString()}`}>
                 <span className={styles.categoryName}>{category.name}</span>
                 <span className={styles.categoryCount}>{new Intl.NumberFormat('ru-RU').format(category.count)}</span>
               </Link>
