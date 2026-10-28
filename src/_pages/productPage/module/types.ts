@@ -6,15 +6,33 @@ export type ProductPageCollectorProps = {
 };
 
 // post_id: string;
+//   views: number;
+//   price: number;
 //   title: string;
 //   author_id: string;
-//   author: any; // Специфичный JSON автора
+//   author: {
+//     id: string;
+//     name: string;
+//     email: string;
+//     image: string;
+//     date_created: string;
+//     full_name: string;
+//     telephone: string;
+//     description: string;
+//     delivery_description: string;
+//   } | null;
+//   attributes: any[];
 //   description: string;
-//   images: string;
+//   breadcrumbs: {
+//     id: number;
+//     name: string;
+//     slug: string;
+//   }[];
+//   images: string[];
 //   directory_name: string;
 //   posted_at: string;
 //   category_id: number;
 //   price_list_name: string;
-//   coordinates: string; // POINT гео-координаты
+//   coordinates: [number, number] | null;
 //   title_image: string;
-//   is_favourite: boolean;
+//   is_favourite: string;

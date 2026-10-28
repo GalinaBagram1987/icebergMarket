@@ -28,3 +28,29 @@ export type SearchPageCollectorProps = {
   initialSearchData: SearchGetResponse; // ответ бэка
   t: (key: string) => string;
 };
+
+// SearchGetResponse
+// count: number;
+//   categories: {
+//     [key: string]: {
+//       id: number;
+//       name: string;
+//       slug: string;
+//       path: string;
+//       count: number;
+//     };
+//   };
+//   posts: {
+//     id: string;
+//     title: string;
+//     price: number;
+//     date: string;
+//     title_image: string;
+//     category_id: number;
+//     description: string;
+//     author_id: string;
+//     author_name: string;
+//     author_image: string;
+//     attributes: any[];
+//     views: number;
+//   }[];

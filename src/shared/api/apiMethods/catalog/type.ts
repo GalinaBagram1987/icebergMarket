@@ -56,41 +56,33 @@ export type SearchPostsRequestBody = {
 };
 
 /**
- * Параметры одного поста, которые возвращает бэк
- */
-export type BackendGetPost = {
-  id: string;
-  title: string;
-  price: number;
-  title_image: string;
-  category_id: number;
-  author_id: string;
-  author_name: string;
-  author_image: string;
-  attributes: Record<string, string | number | boolean>;
-  date: number; // Unix Timestamp
-  views: number | string;
-  description: string;
-};
-
-/**
- * Параметры одной категории с количеством совпадений, которые возвращает бэк
- */
-export type CategoryBackendRequest = {
-  id: string;
-  name: string;
-  slug: string;
-  count: number; // Каунтер для серых плашек над выдачей
-  path: string; // добавила для подкатегорий
-};
-
-/**
  * Полный ответ поиска (200 OK)
  */
 export type SearchGetResponse = {
-  count?: number;
-  categories: CategoryBackendRequest[]; // Приходит массив категорий
-  posts: BackendGetPost[]; // Приходит массив постов
+  count: number;
+  categories: {
+    [key: string]: {
+      id: number;
+      name: string;
+      slug: string;
+      path: string;
+      count: number;
+    };
+  };
+  posts: {
+    id: string;
+    title: string;
+    price: number;
+    date: string;
+    title_image: string;
+    category_id: number;
+    description: string;
+    author_id: string;
+    author_name: string;
+    author_image: string;
+    attributes: any[];
+    views: number;
+  }[];
 };
 
 //==================================
@@ -111,23 +103,41 @@ export type GetPostDetailRequestBody = {
 };
 
 /**
- * Тип возвращаемых данных к поиску по ID
+ * Общий тип возвращаемых данных к поиску по ID
  */
 
 export type PostDetailResponse = {
   post_id: string;
+  views: number;
+  price: number;
   title: string;
   author_id: string;
-  author: any; // Специфичный JSON автора
+  author: {
+    id: string;
+    name: string;
+    email: string;
+    image: string;
+    date_created: string;
+    full_name: string;
+    telephone: string;
+    description: string;
+    delivery_description: string;
+  } | null;
+  attributes: any[];
   description: string;
-  images: string;
+  breadcrumbs: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  images: string[];
   directory_name: string;
   posted_at: string;
   category_id: number;
   price_list_name: string;
-  coordinates: string; // POINT гео-координаты
+  coordinates: [number, number] | null;
   title_image: string;
-  is_favourite: boolean;
+  is_favourite: string;
 };
 
 // ================================================
