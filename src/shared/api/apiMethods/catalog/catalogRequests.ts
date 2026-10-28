@@ -2,8 +2,6 @@ import { apiWithInterceptors } from '../../configApi';
 import type { BackendCategory, MainCatalog, CategoryResponse } from './type';
 import type { SearchPostsRequestBody, SearchGetResponse } from './type';
 import type { GetPostDetailRequestBody, PostDetailResponse } from './type';
-import type { BackendGetPost } from './type';
-import type { CategoryBackendRequest } from './type';
 
 /**
  * Объект в котором написаны функции запросов к бэку
@@ -322,7 +320,7 @@ export const catalogRequest = {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', body);
       return {
         count: 0,
-        categories: [],
+        categories: {},
         posts: [],
       };
     }
@@ -333,7 +331,7 @@ export const catalogRequest = {
     const queryString = `q=${encodeURIComponent(body.q || '')}&fil=${body.fil || ''}&page=${body.page || '1'}&limit=${body.limit || '20'}`;
 
     // Передаем параметры, типизированные под обновленный SearchGetResponse
-    const { data } = await apiWithInterceptors.get<SearchGetResponse>(`/search?${queryString}`);
+    const { data } = await apiWithInterceptors.get<SearchGetResponse>(`${requestPath}?${queryString}`);
 
     return data;
   },
@@ -362,18 +360,22 @@ export const catalogRequest = {
       console.log('[AXIOS PREVENT] Заблокирован системный запрос к бэкенду:', body.post_id);
       return {
         post_id: '',
+        views: 0,
+        price: 0,
         title: '',
         author_id: '',
         author: null,
+        attributes: [],
         description: '',
-        images: '',
+        breadcrumbs: [],
+        images: [],
         directory_name: '',
         posted_at: '',
         category_id: 0,
         price_list_name: '',
-        coordinates: '',
+        coordinates: null,
         title_image: '',
-        is_favourite: false,
+        is_favourite: 'false', // Строка, так как в типе указан тип string
       };
     }
 
