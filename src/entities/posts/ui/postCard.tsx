@@ -6,7 +6,10 @@ export const PostCard = ({ post }: { post: PostItemProps }) => {
   const curPostDate = formatPostDate(post.date);
   const notImg = '/img/product-placeholder.jpg';
 
-  const imgPage = post.title_image?.trim() || notImg;
+  const baseUrl = process.env.API_ORIGIN || 'https://testback.ru';
+  const imageFolder = process.env.NEXT_PUBLIC_BACKEND_IMAGE_FOLDER || '';
+
+  const imgPage = post.title_image?.trim() ? `${baseUrl}${imageFolder}/${post.title_image.replace(/^\//, '')}` : notImg;
 
   return (
     <article className={styles.postGrid}>
