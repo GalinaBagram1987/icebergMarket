@@ -53,6 +53,10 @@ export type SearchPostsRequestBody = {
   fil?: string; // Формат: "category_path=avto-moto;price_from=1000"
   q?: string; // Строка полнотекстового поиска
   sort?: string; // Направление сортировки, например "date:asc"
+  category?: {
+    slug: string;
+    path: string;
+  };
 };
 
 /**

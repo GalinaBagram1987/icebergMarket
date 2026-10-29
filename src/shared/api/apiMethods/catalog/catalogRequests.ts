@@ -328,7 +328,43 @@ export const catalogRequest = {
     const requestPath = `posts/search`;
     console.log('[SEARCH] Request Body:', body);
 
-    const queryString = `q=${encodeURIComponent(body.q || '')}&fil=${body.fil || ''}&page=${body.page || '1'}&limit=${body.limit || '20'}`;
+    const params = new URLSearchParams();
+
+    if (body.q && body.q.trim() !== '') {
+      params.append('q', body.q);
+    }
+
+    // Локальные переменные для очистки данных
+    let finalCategoryPath = body.category?.path || '';
+    let finalFil = body.fil || '';
+
+    //  если в fil по ошибке пришла категория
+    if (finalFil.includes('category_path=')) {
+      // Вытаскиваем значение категории из строки вида "category_path=avto-moto;other=1" или "category_path=avto-moto"
+      const match = finalFil.match(/category_path=([^;&]+)/);
+      if (match && match[1]) {
+        finalCategoryPath = decodeURIComponent(match[1]);
+      }
+      // Удаляем category_path из строки fil, чтобы не ломать бэкенд знаком "="
+      finalFil = finalFil.replace(/category_path=[^;&]+(;?)/, '').replace(/^;|;$/, ''); // убираем лишние точки с запятой
+    }
+
+    // Добавляем категорию в выделенный параметр category
+    if (finalCategoryPath) {
+      params.append('category', finalCategoryPath);
+    }
+
+    //  Добавляем остальные фильтры в fil, если они остались и не пустые
+    if (finalFil && finalFil.trim() !== '') {
+      params.append('fil', finalFil);
+    }
+
+    // Пагинация
+    params.append('page', body.page || '1');
+    params.append('limit', String(body.limit || '20'));
+
+    const queryString = params.toString();
+    console.log('[AXIOS SUCCESSFUL URL]:', `${requestPath}?${queryString}`);
 
     // Передаем параметры, типизированные под обновленный SearchGetResponse
     const { data } = await apiWithInterceptors.get<SearchGetResponse>(`${requestPath}?${queryString}`);
