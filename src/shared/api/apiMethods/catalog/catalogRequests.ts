@@ -331,7 +331,7 @@ export const catalogRequest = {
     const params = new URLSearchParams();
 
     if (body.q && body.q.trim() !== '') {
-      params.append('q', body.q);
+      params.append('q', body.q.trim());
     }
 
     // Локальные переменные для очистки данных
@@ -346,7 +346,7 @@ export const catalogRequest = {
         finalCategoryPath = decodeURIComponent(match[1]);
       }
       // Удаляем category_path из строки fil, чтобы не ломать бэкенд знаком "="
-      finalFil = finalFil.replace(/category_path=[^;&]+(;?)/, '').replace(/^;|;$/, ''); // убираем лишние точки с запятой
+      finalFil = finalFil.replace(/category_path=[^;&]+(;?)/g, '').replace(/^;|;$/, ''); // убираем лишние точки с запятой
     }
 
     // Добавляем категорию в выделенный параметр category
@@ -417,16 +417,16 @@ export const catalogRequest = {
 
     const requestPath = `/posts/post/${body.post_id}`;
 
-    console.log('[POST DETAIL] ID:', body.post_id);
-    console.log('[POST DETAIL] baseURL:', apiWithInterceptors.defaults.baseURL);
+    console.log('[GET DETAIL] ID:', body.post_id);
+    console.log('[GET DETAIL] baseURL:', apiWithInterceptors.defaults.baseURL);
     console.log(
-      '[POST DETAIL] full URL:',
+      '[GET DETAIL] full URL:',
       apiWithInterceptors.getUri({
-        method: 'POST',
+        method: 'GET',
         url: requestPath,
       }),
     );
-    const { data } = await apiWithInterceptors.post<PostDetailResponse>(requestPath, body);
+    const { data } = await apiWithInterceptors.get<PostDetailResponse>(requestPath);
 
     return data;
   },

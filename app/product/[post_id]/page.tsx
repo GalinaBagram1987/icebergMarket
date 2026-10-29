@@ -5,9 +5,6 @@ import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { ProductPageCollector } from '@/_pages/productPage';
 import { serverFetchAndCachedProduct } from '@/entities/catalog';
-import { useSearchParams } from 'next/navigation';
-
-import type { PostDetailResponse } from '@/shared/api/apiMethods/catalog';
 
 /* Тип для страницы продукта
  * примимает ID. грузит метатеги и данные

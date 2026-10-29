@@ -7,4 +7,24 @@
 
 .liStyle {
   margin-bottom: 20px;
+  list-style: none;
+  display: flex;
+}
+
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 1050px;
+  height: 155px;
+  text-decoration: none;
+  color: inherit;
+
+  outline: 2px solid transparent;
+}
+
+.linkWrapper:hover {
+  text-decoration: none;
+  color: inherit;
+  outline: 2px solid var(--bg-border-hover);
+  cursor: pointer;
 }

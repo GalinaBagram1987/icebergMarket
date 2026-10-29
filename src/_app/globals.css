@@ -112,6 +112,7 @@
   --bg-searchCategoryButRight: #d0d0d080; /* Фоны кнопок поиска */
   --bg-searchCategButLeftHover: #8c8989; /* Фоны кнопок поиска */
   --bg-searchCategoryButRightHover: #c0c0c0; /* Фоны кнопок поиска */
+  --bg-border-hover: #2298f1;
 
   /* Системные и специфические статусы */
   --bg-delete: #ffbc57; /* Кнопка удалить, кол-во уведомлений, отклонить */
