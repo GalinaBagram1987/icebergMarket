@@ -174,7 +174,7 @@ export const catalogRequest = {
 
   /**
    * Основной поисковой запрос
-   * (GET /api/v1/get/search)
+   * (GET /api/v1/posts/search)
    * @param {SearchPostsRequestBody} body - Объект с фильтрами (q, fil, sort, page, limit)
    * @returns {Promise<SearchPostsResponse>} Объект с количеством и массивом постов
    *@example

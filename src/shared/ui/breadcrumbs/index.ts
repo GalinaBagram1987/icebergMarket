@@ -1,0 +1,1 @@
+export { BreadcrumbsUi } from './breadcrumbsItem';

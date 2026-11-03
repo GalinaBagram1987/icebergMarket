@@ -1,24 +1,28 @@
-import Link from 'next/link';
 import type { BackendCategoryItem } from '@/shared/api/apiMethods/catalog';
-import styles from './breadcrumbsItem.module.css';
 import { getTranslations } from 'next-intl/server';
-import { serverFetchAndCachedCategory } from '@/entities/catalog/api/fetchAndCachedCategory';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
+import { serverFetchAndCachedCategory } from '../api/fetchAndCachedCategory';
+import { serverFethcAndCachedSubcategory } from '../api/fetchAndCachedSubcategory';
+import { BreadcrumbsUi } from '@/shared/ui/breadcrumbs';
+
 /**
  * Типы для комонента хлебных крошек
+ * категорий и подкатегорий
  */
 
-export type BreadcrumbsProps = {
+export type catAndSubcatBreadcrumbsProps = {
   currentCategory: BackendCategoryItem;
   parentCategory: BackendCategoryItem;
 };
 
 /**
- * Визуальное отображение хлебных крошек
+ *
+ * @param param0
+ * @returns
  */
 
-export const Breadcrumbs = async ({ currentCategory, parentCategory }: BreadcrumbsProps) => {
+export const CatAndSubcatBreadcrumbs = async ({ currentCategory, parentCategory }: catAndSubcatBreadcrumbsProps) => {
   const t = await getTranslations('icebergMarket');
+
   if (!currentCategory || !parentCategory) return null;
 
   const pathSegments = currentCategory.path.split('/');
@@ -59,36 +63,8 @@ export const Breadcrumbs = async ({ currentCategory, parentCategory }: Breadcrum
       }
     }
   }
-  return (
-    <nav className={styles.breadcrumbs} aria-label="Хлебные крошки">
-      <ul className={styles.list}>
-        {/* Главная страница (есть всегда) */}
-        <li className={styles.item}>
-          <Link href="/" className={styles.link}>
-            {t('breadcrumbs.main')}
-          </Link>
-          <span aria-hidden="true" className={styles.separator}>
-            {'>'}
-          </span>
-        </li>
+  // Добавляем последний активный элемент
+  resolvedSegments.push({ name: currentCategory.name, path: '' });
 
-        {/* ВСЕ РОДИТЕЛИ И СЕРЕДИНА (Выводятся динамически строго по порядку) */}
-        {resolvedSegments.map((segment) => (
-          <li key={segment.path} className={styles.item}>
-            <Link className={styles.link} href={`/${segment.path}`}>
-              {segment.name}
-            </Link>
-            <span aria-hidden="true" className={styles.separator}>
-              {'>'}
-            </span>
-          </li>
-        ))}
-
-        {/* Текущая активная подкатегория (Последний элемент, без ссылки) */}
-        <li aria-current="page" className={styles.item}>
-          <span className={styles.current}>{currentCategory.name}</span>
-        </li>
-      </ul>
-    </nav>
-  );
+  return <BreadcrumbsUi items={resolvedSegments} mainLabel={t('breadcrumbs.main')} />;
 };
