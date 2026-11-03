@@ -38,6 +38,25 @@ export type CategoryResponse = {
 
 //==================================
 /**
+ * Типы атрибутов в ответе бэка разные
+ * в поиск по id массив
+ * в просто поиск объект с ключами
+ * Формируем типы для атрибутов
+ */
+
+export type AttributeItem = {
+  key: string;
+  value: string | number | boolean;
+};
+// общий поиск
+export type AttributesObject = Record<string, string | number | boolean>;
+// поиск по id
+export type AttributesArray = AttributeItem[];
+// Union-тип, который принимает оба варианта
+export type BackendAttributes = AttributesObject | AttributesArray;
+//==================================
+
+/**
  * Основной поиск.
  * Тип запроса и типы возвращаемых данных
  * /
@@ -76,7 +95,7 @@ export type SearchGetResponse = {
   posts: {
     id: string;
     title: string;
-    price: number;
+    price: string | number;
     date: string;
     title_image: string;
     category_id: number;
@@ -84,8 +103,8 @@ export type SearchGetResponse = {
     author_id: string;
     author_name: string;
     author_image: string;
-    attributes: any[];
-    views: number;
+    attributes: BackendAttributes;
+    views: number | string;
   }[];
 };
 

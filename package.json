@@ -33,5 +33,9 @@
     "start": "next start",
     "lint": "next lint --config eslint.config.mjs",
     "postbuild": "next-sitemap"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.21": true
   }
 }

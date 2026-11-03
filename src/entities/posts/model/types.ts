@@ -1,3 +1,5 @@
+import type { AttributeItem } from '@/shared/api/apiMethods/catalog/type';
+
 export type PostItemProps = {
   id: string;
   title: string;
@@ -7,7 +9,7 @@ export type PostItemProps = {
   author_id: string;
   author_name: string;
   author_image: string;
-  attributes: Record<string, string | number | boolean>;
+  attributes: AttributeItem[];
   date: number;
   views: number | string;
   description: string;
@@ -15,5 +17,5 @@ export type PostItemProps = {
 
 export type PostsListProps = {
   count?: number;
-  postList: PostItemProps[];
+  posts: PostItemProps[];
 };

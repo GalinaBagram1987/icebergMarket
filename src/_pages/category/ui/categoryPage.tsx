@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
-
+import { normalizeAttributes } from '@/shared/lib';
 /**
  * Страница категории типовая
  * Сборка страницы категорий
@@ -16,6 +16,15 @@ import { SortPost } from '@/features/sortPosts';
 export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }: CategoryPageProps) => {
   if (!categoryData || !categoryData.category) return null;
   const queryKey = searchParams?.q || '';
+
+  // 1. Создаем нормализованный массив постов прямо в компоненте страницы
+  const normalizedPosts =
+    postsData?.posts?.map((post) => ({
+      ...post,
+      attributes: normalizeAttributes(post.attributes),
+      price: Number(post.price),
+      date: Number(post.date),
+    })) || [];
 
   return (
     <div className="containerContent">
@@ -32,11 +41,11 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
       </div>
 
       <Suspense fallback={<div>{t('postsList.fallback')}</div>}>
-        {postsData?.posts && postsData.posts.length > 0 ? (
+        {postsData && normalizedPosts.length > 0 ? (
           <PostList
             postsData={{
               count: postsData.count || 0,
-              postList: postsData.posts,
+              posts: normalizedPosts,
             }}
           />
         ) : (

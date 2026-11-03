@@ -1,5 +1,6 @@
 import { CategoryResponse } from '@/shared/api/apiMethods/catalog';
 import { SearchGetResponse } from '@/shared/api/apiMethods/catalog';
+import type { BackendAttributes } from '@/shared/api/apiMethods/catalog/type';
 /**
  * Пропсы для основного компонента категории
  */
@@ -11,7 +12,7 @@ export type SubcategoryItem = {
   slug: string;
   path: string;
   is_leaf: boolean;
-  attributes?: string[];
+  attributes?: BackendAttributes;
   count?: number;
 };
 
