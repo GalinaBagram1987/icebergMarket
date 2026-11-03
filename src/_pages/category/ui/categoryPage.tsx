@@ -7,7 +7,8 @@ import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
-import { normalizeAttributes } from '@/shared/lib';
+import { normalizedPostItem } from '@/shared/lib';
+
 /**
  * Страница категории типовая
  * Сборка страницы категорий
@@ -17,14 +18,8 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
   if (!categoryData || !categoryData.category) return null;
   const queryKey = searchParams?.q || '';
 
-  // 1. Создаем нормализованный массив постов прямо в компоненте страницы
-  const normalizedPosts =
-    postsData?.posts?.map((post) => ({
-      ...post,
-      attributes: normalizeAttributes(post.attributes),
-      price: Number(post.price),
-      date: Number(post.date),
-    })) || [];
+  // Создаем нормализованный массив постов прямо в компоненте страницы
+  const normalizedPosts = postsData?.posts?.map((post) => normalizedPostItem(post)) || [];
 
   return (
     <div className="containerContent">

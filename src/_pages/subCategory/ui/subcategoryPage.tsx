@@ -7,6 +7,7 @@ import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
 import { FilterPanel } from '@/features/filterPanel';
+import { normalizedPostItem } from '@/shared/lib';
 
 /**
  * Страница подкатегории типовая
@@ -18,6 +19,9 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
   const queryKey = searchParams?.q || '';
   const modeKey = searchParams?.searchMode || 'global';
   const compositeSearchKey = `${queryKey}_${modeKey}`;
+
+  // Создаем нормализованный массив постов прямо в компоненте страницы
+  const normalizedPosts = postsData?.posts?.map((post) => normalizedPostItem(post)) || [];
 
   return (
     <div className="containerContent">
@@ -34,11 +38,11 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
       </div>
 
       <Suspense fallback={<div className="noDataP">{t('postsList.fallback')}</div>}>
-        {postsData?.posts && postsData.posts.length > 0 ? (
+        {postsData && normalizedPosts.length > 0 ? (
           <PostList
             postsData={{
               count: postsData.count || 0,
-              postList: postsData.posts,
+              posts: normalizedPosts,
             }}
           />
         ) : (

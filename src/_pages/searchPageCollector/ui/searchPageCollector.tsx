@@ -6,20 +6,23 @@ import { SortPost } from '@/features/sortPosts';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { CategoryFilterBadges } from '@/widgets/categoryFilterBadges';
+import { normalizedPostItem } from '@/shared/lib';
 
 /**
  * Сборка страницы поиска
  */
 export const SearchPageCollector = ({ path, searchParams, initialSearchData, t }: SearchPageCollectorProps) => {
+  // нормализуем ответ бэка
+  const normalizedPosts = initialSearchData?.posts?.map((post) => normalizedPostItem(post)) || [];
   // Проверяем, есть ли товары в ответе бэкенда
-  const hasPosts = initialSearchData && initialSearchData.posts.length > 0;
+  const hasPosts = normalizedPosts && normalizedPosts.length > 0;
   const searchQuery = searchParams.q || '';
   return (
     <div className="containerContent">
       <Suspense fallback={null}>
         <GlobalSearchCatalog />
         {/* Плашки категорий показываем только если бэк вернул хоть какие-то смежные категории */}
-        {initialSearchData.categories.length > 0 && <CategoryFilterBadges categories={initialSearchData.categories} />}
+        {initialSearchData?.categories && Object.keys(initialSearchData.categories).length > 0 && <CategoryFilterBadges categories={initialSearchData.categories} />}
       </Suspense>
 
       {hasPosts ? (
@@ -30,7 +33,7 @@ export const SearchPageCollector = ({ path, searchParams, initialSearchData, t }
             <MapLink path={path} />
           </div>
           <Suspense fallback={<div className="noDataP">{t('postsList.fallback')}</div>}>
-            <PostList postsData={{ postList: initialSearchData.posts }} />
+            <PostList postsData={{ posts: normalizedPosts }} />
           </Suspense>
         </>
       ) : (
