@@ -4,7 +4,7 @@ import { PostCard } from './postCard';
 import Link from 'next/link';
 
 export const PostList = ({ postsData }: { postsData: PostsListProps }) => {
-  const actualPosts = postsData.postList;
+  const actualPosts = postsData.posts;
   return (
     <ul className={styles.ulStyle}>
       {actualPosts.map((postItem: PostItemProps) => (

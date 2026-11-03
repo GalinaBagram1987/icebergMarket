@@ -10,11 +10,14 @@ export const CategoryFilterBadges = ({ categories }: CategoryFilterBadgesProps) 
   // Сохраняем текущий поисковый запрос
   const currentQuery = searchParams.get('q') || '';
 
-  if (!categories || categories.length === 0) return;
+  const categoriesList = categories ? Object.values(categories) : [];
+
+  if (categoriesList.length === 0) return null;
+
   return (
     <div className={styles.wrapper}>
       <ul className={styles.ulResert}>
-        {categories.map((category) => {
+        {categoriesList.map((category) => {
           const queryParams = new URLSearchParams();
           if (currentQuery) {
             queryParams.set('q', currentQuery);

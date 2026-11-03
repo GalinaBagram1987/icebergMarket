@@ -4,10 +4,11 @@ export type CategoryFilterBadgesProps = {
   categories: SearchGetResponse['categories'];
 };
 
-// export type CategoryBackendRequest = {
-//   id: string;
-//   name: string;
-//   slug: string;
-//   count: number; // Каунтер для серых плашек над выдачей
-//   path: string;
-// };
+// categories: {
+//     [key: string]: {
+//       id: number;
+//       name: string;
+//       slug: string;
+//       path: string;
+//       count: number;
+//     };
