@@ -1,5 +1,5 @@
 import { SearchMapPage } from '@/_pages/searchMap';
-import { serverFethcAndCachedSubcategory } from '@/entities/catalog/api/fetchAndCachedSubcategory';
+import { catalogRequest } from '@/shared/api/apiMethods/catalog';
 import { Suspense } from 'react';
 /**
  * тип для страницы поиска  по карте для подкатегорий
@@ -10,6 +10,7 @@ type SearchMapSubcategProps = {
     categoryPath: string;
     subcategoryPath: string[];
   }>;
+  searchParams: Promise<{ query?: string; categoryId?: string }>;
 };
 
 /**
@@ -18,37 +19,50 @@ type SearchMapSubcategProps = {
  * Выносим отдельно асинхронную логику запроса данных, формир страницы
  */
 
-const MapSubcategContent = async ({ params }: SearchMapSubcategProps) => {
+const MapSubcategContent = async ({ params, searchParams }: SearchMapSubcategProps) => {
   const { categoryPath, subcategoryPath } = await params;
-  // map - показывает что это карта, но мешает путям. чистим его
-  const allSegments = [categoryPath, ...(Array.isArray(subcategoryPath) ? subcategoryPath : [subcategoryPath])];
-  console.log('[DEBUG MAP] Итоговый allSegments:', allSegments);
-  const cleanSegments = allSegments.filter((segment) => segment !== 'mapSearch');
-  console.log('[DEBUG MAP] Итоговый cleanSegments:', cleanSegments);
-  const fullSubPath = cleanSegments.join('/');
+  const { query, categoryId } = await searchParams;
 
-  console.log('[DEBUG MAP] Итоговый чистый путь для бэка:', fullSubPath);
+  // Собираем все сегменты в один массив и очищаем от технического префикса 'mapSearch'
+  const allSegments = [categoryPath, ...(Array.isArray(subcategoryPath) ? subcategoryPath : [subcategoryPath])];
+  const cleanSegments = allSegments.filter((segment) => segment !== 'mapSearch');
+
+  // Полный путь для бэкенда (например, "cars/legkovye/sedany")
+  const fullSubPath = cleanSegments.join('/');
 
   if (!fullSubPath) return null;
 
-  const subcategoryData = await serverFethcAndCachedSubcategory(fullSubPath);
-  if (!subcategoryData || !subcategoryData.category) return null;
+  // Последний сегмент — это текущий активный слаг подкатегории (например, "sedany")
+  const currentSlug: string = cleanSegments[cleanSegments.length - 1] || '';
 
-  // Распределяем чистые доменные данные для страницы сборки
-  const cleanCategoryPath = cleanSegments[0]; // Первое слово (родитель)
-  const cleanSubcategoryPath = cleanSegments.slice(1); // Весь массив для правильной работы лоадера крошек
+  // ДЕЛАЕМ ОДИН ГЛАВНЫЙ ЗАПРОС ПОИСКА
+  const searchResponse = await catalogRequest.getMainSearchData({
+    category: {
+      slug: currentSlug,
+      path: fullSubPath,
+    },
+    q: query || undefined, // Используем 'q' в соответствии с типом бэкенда
+  });
 
-  return <SearchMapPage categoryPath={cleanCategoryPath} subcategoryPath={cleanSubcategoryPath} />;
+  if (!searchResponse) return null;
+
+  // Ищем совпадение подкатегории по слагу в ответе бэкенда
+  const matchedCategory = Object.values(searchResponse.categories).find((cat) => cat.slug === currentSlug);
+
+  // Определяем ID активной категории (приоритет: URL -> найденный слаг -> первый ключ словаря)
+  const activeCategoryId = categoryId || (matchedCategory ? String(matchedCategory.id) : undefined) || Object.keys(searchResponse.categories)[0];
+
+  return <SearchMapPage searchResponse={searchResponse} activeCategoryId={activeCategoryId} searchQuery={query} />;
 };
 
 /**
- * тип страницы поиска по карте для подкатегорий
+ * страницa поиска по карте для подкатегорий
  */
 
-const mapSearchSubcategoryPage = ({ params }: SearchMapSubcategProps) => {
+const mapSearchSubcategoryPage = ({ params, searchParams }: SearchMapSubcategProps) => {
   return (
     <Suspense fallback={null}>
-      <MapSubcategContent params={params} />
+      <MapSubcategContent params={params} searchParams={searchParams} />
     </Suspense>
   );
 };

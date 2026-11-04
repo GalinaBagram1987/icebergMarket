@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import styles from './productPageCollector.module.css';
 
-import { Breadcrumbs } from '@/widgets/breadcrumbs';
+import { PostBreadcrumbs } from '@/entities/catalog';
 import type { ProductPageCollectorProps } from '../module/types';
 
 /**
@@ -19,5 +19,8 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
     posted_at, // Дата публикации
     post_id, // ID/Артикул
   } = productData;
+
+  <PostBreadcrumbs post={productData} />;
+
   return <div> Здесь будет страница продукта</div>;
 };
