@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 
 import { SubCategoryPageProps } from '../model/types';
 import { GlobalAndCategorySearchCatalog } from '@/features/globalAndCategorySearchCatalog';
-import { CatAndSubcatBreadcrumbs } from '@/entities/catalog';
+import { SubcategoryBreadcrumbs } from '@/entities/catalog';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
@@ -25,7 +25,7 @@ export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams
 
   return (
     <div className="containerContent">
-      <CatAndSubcatBreadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
+      <SubcategoryBreadcrumbs currentCategory={subcategoryData.category} parentCategory={subcategoryData.category} />
       <Suspense fallback={null}>
         <GlobalAndCategorySearchCatalog key={compositeSearchKey} />
       </Suspense>

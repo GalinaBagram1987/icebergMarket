@@ -5,22 +5,19 @@ import { serverFethcAndCachedSubcategory } from '../api/fetchAndCachedSubcategor
 import { BreadcrumbsUi } from '@/shared/ui/breadcrumbs';
 
 /**
- * Типы для комонента хлебных крошек
- * категорий и подкатегорий
+ * Типы для комонента хлебных крошек категорий
  */
 
-export type catAndSubcatBreadcrumbsProps = {
+export type CategoryBreadcrumbsProps = {
   currentCategory: BackendCategoryItem;
   parentCategory: BackendCategoryItem;
 };
 
 /**
- *
- * @param param0
- * @returns
+ * Компонент хлебных крошек для категорий
  */
 
-export const CatAndSubcatBreadcrumbs = async ({ currentCategory, parentCategory }: catAndSubcatBreadcrumbsProps) => {
+export const CategoryBreadcrumbs = async ({ currentCategory, parentCategory }: CategoryBreadcrumbsProps) => {
   const t = await getTranslations('icebergMarket');
 
   if (!currentCategory || !parentCategory) return null;

@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { CategoryPageProps } from '../model/types';
 import { GlobalSearchCatalog } from '@/features/globalSearchCatalog';
 import { SubcategoryList } from '@/widgets/subcategoryList';
-import { CatAndSubcatBreadcrumbs } from '@/entities/catalog';
+import { CategoryBreadcrumbs } from '@/entities/catalog';
 import { MapLink } from '@/shared/ui/mapLink';
 import { PostList } from '@/entities/posts';
 import { SortPost } from '@/features/sortPosts';
@@ -23,7 +23,7 @@ export const CategoryPage = ({ path, categoryData, postsData, searchParams, t }:
 
   return (
     <div className="containerContent">
-      <CatAndSubcatBreadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
+      <CategoryBreadcrumbs currentCategory={categoryData.category} parentCategory={categoryData.category} />
       <Suspense fallback={null}>
         <GlobalSearchCatalog key={queryKey} />
       </Suspense>
