@@ -11,3 +11,5 @@ export { normalizePostDetail } from './normalizePostDetail';
 export type { ClientPostDetail } from './normalizePostDetail';
 
 export { CoordinateConvector } from './coordinateConvector';
+
+export { formatToHumanDate } from './formatDateToHuman';

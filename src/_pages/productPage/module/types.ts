@@ -1,7 +1,7 @@
 import type { PostDetailResponse } from '@/shared/api/apiMethods/catalog';
 
 export type ProductPageCollectorProps = {
-  t: (key: string) => string;
+  t: (key: string, options?: Record<string, any>) => string;
   productData: PostDetailResponse;
 };
 
@@ -36,3 +36,5 @@ export type ProductPageCollectorProps = {
 //   coordinates: [number, number] | null;
 //   title_image: string;
 //   is_favourite: string;
+//   count?: number;
+//   adress?: string;

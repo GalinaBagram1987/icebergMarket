@@ -4,6 +4,7 @@ import styles from './productPageCollector.module.css';
 import { PostBreadcrumbs } from '@/entities/catalog';
 import type { ProductPageCollectorProps } from '../module/types';
 import { cn } from '@/shared/lib';
+import { ProductMetaBar } from './parts/productMetaBar';
 
 /**
  * Страница товара типовая
@@ -12,19 +13,16 @@ import { cn } from '@/shared/lib';
 
 export const ProductPageCollector = ({ productData, t }: ProductPageCollectorProps) => {
   if (!productData) return null;
-  const {
-    title,
-    price_list_name, // По макету это цена, например "47 237р."
-    description,
-    images, // Строка с картинками
-    posted_at, // Дата публикации
-    post_id, // ID/Артикул
-  } = productData;
+  const { post_id, views, price_list_name, title, attributes, description, images, posted_at, coordinates, adress } = productData;
 
   return (
     <div>
       <PostBreadcrumbs post={productData} />
-      <div className={cn('containerContent', styles.bgColor)}></div>
+      <div className={cn('containerContent', styles.bgColor)}>
+        <div>
+          <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,32 @@
+/* метабар стили */
+
+.metabarWrapper {
+  margin-right: 95px;
+  margin-top: 29px;
+}
+
+.metabarUl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+
+  /* Сброс дефолтных стилей браузера */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  color: var(--text-black);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  font-family: var(--font-mono);
+}
+
+.metabarLi:not(:first-child)::before {
+  content: '•';
+  color: var(--text-black);
+  margin-right: 12px;
+  /* Гарантирует, что точка не съедет по вертикали относительно шрифта */
+  display: inline-block;
+}

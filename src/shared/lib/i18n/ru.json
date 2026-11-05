@@ -75,6 +75,16 @@
     "emptySearch": {
       "textPartOne": "По запросу",
       "textPartTwo": "ничего не найдено."
+    },
+    "productPage": {
+      "id": "ID:",
+      "views": "{count, plural, one {# просмотр} few {# просмотра} many {# просмотров} other {# просмотра}}",
+      "favorites": "☆ Добавить в избранное",
+      "copyLink": "Копировать ссылку",
+      "delete": "Удалить",
+      "complain": "Пожаловаться",
+      "showPhone": "Показать телефон",
+      "showMap": "на карте >"
     }
   }
 }

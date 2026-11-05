@@ -162,7 +162,6 @@ export type PostDetailResponse = {
   title_image: string;
   is_favourite: string;
   // is_favourite: boolean;
-  count?: number;
   adress?: string;
 };
 
