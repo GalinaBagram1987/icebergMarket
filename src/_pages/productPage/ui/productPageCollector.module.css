@@ -1,0 +1,33 @@
+.h1 {
+  font-family: var(--font-main);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-black);
+  letter-spacing: 0.05em;
+}
+
+.price {
+  font-family: var(--font-price);
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-black);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 50px 177px 60px;
+}
+
+.bgColor {
+  background-color: var(--bg-white);
+}
+
+.containerByFoto {
+  display: grid;
+  grid-template-columns: 296px 1fr;
+  gap: 72px;
+}
+
+.containerByMap {
+  display: grid;
+  grid-template-columns: 153px 1fr;
+  gap: 177px;
+}

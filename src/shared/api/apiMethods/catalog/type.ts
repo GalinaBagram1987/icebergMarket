@@ -158,9 +158,12 @@ export type PostDetailResponse = {
   posted_at: string;
   category_id: number;
   price_list_name: string;
-  coordinates: [number, number] | null;
+  coordinates: [number, number] | null; // бэк отдает долготаб широта
   title_image: string;
   is_favourite: string;
+  // is_favourite: boolean;
+  count?: number;
+  adress?: string;
 };
 
 // ================================================

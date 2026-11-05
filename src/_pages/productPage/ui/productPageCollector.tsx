@@ -3,6 +3,7 @@ import styles from './productPageCollector.module.css';
 
 import { PostBreadcrumbs } from '@/entities/catalog';
 import type { ProductPageCollectorProps } from '../module/types';
+import { cn } from '@/shared/lib';
 
 /**
  * Страница товара типовая
@@ -20,7 +21,10 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
     post_id, // ID/Артикул
   } = productData;
 
-  <PostBreadcrumbs post={productData} />;
-
-  return <div> Здесь будет страница продукта</div>;
+  return (
+    <div>
+      <PostBreadcrumbs post={productData} />
+      <div className={cn('containerContent', styles.bgColor)}></div>
+    </div>
+  );
 };

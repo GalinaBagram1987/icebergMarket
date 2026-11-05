@@ -9,3 +9,5 @@ export { normalizedPostItem } from './normalizePostItem';
 export { normalizePostDetail } from './normalizePostDetail';
 
 export type { ClientPostDetail } from './normalizePostDetail';
+
+export { CoordinateConvector } from './coordinateConvector';
