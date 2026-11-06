@@ -79,7 +79,8 @@
     "productPage": {
       "id": "ID:",
       "views": "{count, plural, one {# просмотр} few {# просмотра} many {# просмотров} other {# просмотра}}",
-      "favorites": "☆ Добавить в избранное",
+      "addFavorites": "Добавить в избранное",
+      "inFavorites": "Избранное",
       "copyLink": "Копировать ссылку",
       "delete": "Удалить",
       "complain": "Пожаловаться",

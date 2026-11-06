@@ -21,13 +21,26 @@ export const getCookie = (name: string): string | undefined => {
  * @param name Имя cookie.
  * @param value Значение cookie.
  * @param days Срок хранения cookie в днях.
+ * @param options объект с настройками.
+ * @param expires  количество дней
+ * @param path путь по кот открывается кука, обычно '/', если не передан принудительно
+ * @param [key: string]: any разрешает передавать другие параметры
+ * @param {} значение options по умолчанию
  */
 
-export const setCookie = (name: string, value: string, days = 365) => {
-  if (typeof document === 'undefined') return;
+export const setCookie = (name: string, value: string, options: { expires?: number; path?: string; [key: string]: any } = {}) => {
+  let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
 
-  const maxAge = days * 24 * 60 * 60;
-  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/; SameSite=Lax`;
+  if (options.expires) {
+    const d = new Date();
+    d.setTime(d.getTime() + options.expires * 24 * 60 * 60 * 1000);
+    updatedCookie += '; expires=' + d.toUTCString();
+  }
+
+  const path = options.path || '/';
+  updatedCookie += '; path=' + path;
+
+  document.cookie = updatedCookie;
 };
 
 /**
@@ -39,5 +52,5 @@ export const setCookie = (name: string, value: string, days = 365) => {
 export const deleteCookie = (name: string) => {
   if (typeof document === 'undefined') return;
   // Устанавливаем с отрицательным сроком -> cookie мгновенно удалится в браузере
-  setCookie(name, '', -1);
+  setCookie(name, '', { expires: -1, path: '/' });
 };

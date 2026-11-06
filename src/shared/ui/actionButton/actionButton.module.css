@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   padding: 5px 16px;
+  gap: 5px;
 
   background-color: var(--bg-white);
   border: 1px solid var(--border-black34);
@@ -21,6 +22,16 @@
 .button:hover {
   background-color: var(--bg-btn-state);
 }
+
+.button svg {
+  stroke: var(--bg-black);
+  width: 18px;
+  height: 18px;
+  transition:
+    stroke 0.15s ease,
+    fill 0.15s ease;
+}
+
 .active {
   background-color: var(--bg-delete);
 }
