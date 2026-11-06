@@ -18,7 +18,8 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
   return (
     <div>
       <PostBreadcrumbs post={productData} />
-      <div className={cn('containerContent', styles.bgColor)}>
+      <div className={cn('containerContent', styles.bgColorAndMargin)}>
+        <h1 className={styles.titleStyle}>{title}</h1>
         <div>
           <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
         </div>

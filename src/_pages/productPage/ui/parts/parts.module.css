@@ -1,7 +1,19 @@
+/* заголовок стили */
+
+.titleStyle {
+  margin: 12px, 0px, 24px, 55px;
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--text-black);
+}
+
 /* метабар стили */
 
 .metabarWrapper {
-  margin-right: 95px;
+  margin-left: 95px;
   margin-top: 29px;
 }
 

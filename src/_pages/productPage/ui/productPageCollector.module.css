@@ -16,8 +16,9 @@
   margin: 50px 177px 60px;
 }
 
-.bgColor {
+.bgColorAndMargin {
   background-color: var(--bg-white);
+  margin-top: 26px;
 }
 
 .containerByFoto {
