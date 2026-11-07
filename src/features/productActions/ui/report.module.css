@@ -1,0 +1,162 @@
+.reportWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.reportModalCard {
+  position: absolute;
+  top: calc(100% + 8px); /* Окно появится строго на 8px ниже кнопки */
+  left: 0;
+  z-index: 10; /* Чтобы окно всплывало поверх других элементов страницы */
+
+  width: 517px;
+  height: 187px;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 50px 31px 33px;
+  box-sizing: border-box;
+}
+
+.formFont {
+  font-family: var(--font-main);
+  font-size: 18px;
+}
+
+.formStyles {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+
+  width: 434px;
+}
+
+.buttonFont {
+  font-family: var(--font-mono);
+  font-size: 18px;
+}
+
+.fontBlack {
+  color: var(--text-black);
+}
+
+.fontWhite {
+  color: var(--text-white);
+}
+
+.headerMargin {
+  margin-bottom: 12px;
+}
+
+.selectContainer {
+  position: relative;
+  margin-bottom: 34px;
+}
+
+.selectField {
+  width: 434px;
+  height: 30px;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-dark);
+  box-sizing: border-box;
+  padding-right: 35px;
+  overflow: hidden; /* обрезать что вылазит */
+}
+
+.arrowBox {
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+  right: 0;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.dropdownList {
+  width: 434px;
+  height: 119px;
+
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-dark);
+  box-sizing: border-box;
+
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  padding: 12px 200px 17px 28px;
+
+  gap: 16px;
+
+  list-style: none; /* Убирает точки/маркеры */
+  margin: 0; /* Убирает внешний отступ браузера */
+
+  top: 100%;
+  left: 0;
+}
+
+.actionRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 195px;
+
+  width: 239px;
+  height: 30px;
+
+  gap: 20px;
+}
+
+.submitBtn {
+  width: 110px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-star);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancelBtn {
+  width: 109px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-inter);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownList button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-align: left;
+}

@@ -87,11 +87,17 @@
       "deleteProcess": "Подождите. Товар удаляется",
       "deleteReport": "Товар успешно удален",
       "deleteError": "Ошибка при удалении товара",
-      "complain": "Пожаловаться",
+      "report": "Пожаловаться",
       "reportSending": "Подождите. Идет отправка отчета",
       "reportSuccessPartOne": "Отравлена жалоба на товар: ",
       "reportSuccessPartTwo": ". Причина ",
       "reportError": "Ошибка отправки жалобы",
+      "reportReasonHeader": "Что не так с объявлением?",
+      "reportReasonIllegal": "Нарушает закон",
+      "reportReasonRules": "Нарушает правила сайта",
+      "reportReasonOther": "Другое",
+      "reportCancel": "Отменить",
+      "reportSend": "Отправить",
       "showPhone": "Показать телефон",
       "showMap": "на карте >"
     }
