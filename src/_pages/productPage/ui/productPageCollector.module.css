@@ -1,9 +1,38 @@
-.h1 {
+/*Общая обвертка контента*/
+.bgColorAndMargin {
+  background-color: var(--bg-white);
+  margin-top: 26px;
+  padding-top: 12px;
+
+  width: 1050px;
+  max-width: var(--content-max-width);
+}
+/*Заголовок*/
+.titleStyle {
   font-family: var(--font-main);
   font-size: 22px;
   font-weight: 400;
   color: var(--text-black);
   letter-spacing: 0.05em;
+  margin-top: 12px;
+  margin-left: 55px;
+  margin-bottom: 24px;
+}
+
+/*обвертка верхняя группа*/
+.upperBtnGroup {
+  width: 1050px;
+  height: 28px;
+  padding: 24px 32px 28px 40px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 10px;
+
+  box-sizing: border-box;
 }
 
 .price {
@@ -14,11 +43,6 @@
   letter-spacing: 0.05em;
   line-height: 1;
   margin: 50px 177px 60px;
-}
-
-.bgColorAndMargin {
-  background-color: var(--bg-white);
-  margin-top: 26px;
 }
 
 .containerByFoto {

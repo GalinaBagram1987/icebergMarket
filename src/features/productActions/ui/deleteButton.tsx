@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
 import { DelDialog } from '@/shared/ui/deleteDialog';
 import { useDeleteProduct } from '../model/useDeleteProduct';
@@ -10,14 +11,14 @@ import { useDeleteProduct } from '../model/useDeleteProduct';
 
 export type DeleteButtonProps = {
   productId: string;
-  t: (key: string, options?: Record<string, any>) => string;
 };
 
 /**
  * кнопка удалить товар
  */
 
-export const DeleteButton = ({ productId, t }: DeleteButtonProps) => {
+export const DeleteButton = ({ productId }: DeleteButtonProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
   const { isOpen, isDeleting, openDialog, closeDialog, confirmDelete } = useDeleteProduct({ productId, t });
   return (
     <>

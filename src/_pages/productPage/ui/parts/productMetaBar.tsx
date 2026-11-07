@@ -22,7 +22,7 @@ export const ProductMetaBar = ({ productData, t }: ProductMetaBarProps) => {
   if (!hasAnyData) return null;
 
   return (
-    <div className={styles.metabarWrapper}>
+    <>
       <ul className={styles.metabarUl}>
         {post_id != null && (
           <li className={styles.metabarLi}>
@@ -43,6 +43,6 @@ export const ProductMetaBar = ({ productData, t }: ProductMetaBarProps) => {
           </li>
         )}
       </ul>
-    </div>
+    </>
   );
 };

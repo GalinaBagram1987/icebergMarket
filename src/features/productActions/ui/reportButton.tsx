@@ -1,9 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
 import { useReportProduct } from '../model/useReport';
 import { FaChevronDown } from 'react-icons/fa'; // Стрелочка для селекта
-import { styles } from './report.module.css';
+import styles from './report.module.css';
 import { cn } from '@/shared/lib';
 
 /**
@@ -12,15 +13,15 @@ import { cn } from '@/shared/lib';
 
 export type ReportButtonProps = {
   productId: string;
-  t: (key: string, options?: Record<string, any>) => string;
 };
 
 /**
  * кнопка отправить отчет
  */
 
-export const ReportButton = ({ productId, t }: ReportButtonProps) => {
-  const { isOpen, isDropdownOpen, isSending, reason, openDialog, closeDialog, toggleDropdown, selectReason, sendReport } = useReportProduct({ productId, t });
+export const ReportButton = ({ productId }: ReportButtonProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
+  const { isOpen, isDropdownOpen, isSending, reason, openDialog, closeDialog, toggleDropdown, selectReason, sendReport } = useReportProduct({ productId });
 
   const options = [
     { value: 'illegal', label: t('productPage.reportReasonIllegal') }, // Нарушает закон

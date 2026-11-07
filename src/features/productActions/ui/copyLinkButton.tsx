@@ -1,20 +1,14 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
-
-/**
- * Тип для кнопки copyLink
- */
-
-export type CopyLinkProps = {
-  t: (key: string, options?: Record<string, any>) => string;
-};
 
 /**
  * кнопка коприровать ссылку
  */
 
-export const copyLink = ({ t }: CopyLinkProps) => {
+export const CopyLinkButton = () => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
   const handleCopy = async () => {
     const currentUrl = window.location.href;
     try {

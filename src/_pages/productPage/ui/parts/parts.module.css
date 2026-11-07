@@ -1,27 +1,25 @@
-/* заголовок стили */
+/*Свойства экшион бара*/
 
-.titleStyle {
-  margin: 12px, 0px, 24px, 55px;
-  font-family: var(--font-main);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  color: var(--text-black);
+.actionBarBtnGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  flex-wrap: nowrap;
 }
 
-/* метабар стили */
-
-.metabarWrapper {
-  margin-left: 95px;
-  margin-top: 29px;
-}
+/*Свойства метабара*/
 
 .metabarUl {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 25px;
+
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-shrink: 0;
 
   /* Сброс дефолтных стилей браузера */
   list-style: none;

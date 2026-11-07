@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 /**
  * Типы хука удаления
@@ -15,7 +16,8 @@ export type useDeleteProductProps = {
  * Кнопка удалить расположена на странице товара
  */
 
-export const useDeleteProduct = ({ productId, t }: useDeleteProductProps) => {
+export const useDeleteProduct = ({ productId }: useDeleteProductProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);

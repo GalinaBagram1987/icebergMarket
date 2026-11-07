@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 /**
  * Пропсы для отправки отчета
@@ -6,13 +7,13 @@ import { useState } from 'react';
 
 export type UseReportProductProps = {
   productId: string;
-  t: (key: string, options?: Record<string, any>) => string;
 };
 
 /**
  * Хук для отправки отчета на странице товара
  */
-export const useReportProduct = ({ productId, t }: UseReportProductProps) => {
+export const useReportProduct = ({ productId }: UseReportProductProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
   const [isOpen, setIsOpen] = useState<boolean>(false); // Показ всего блока жалобы
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false); // Показ выпадашки причин
   const [isSending, setIsSending] = useState<boolean>(false); // Процесс отправки

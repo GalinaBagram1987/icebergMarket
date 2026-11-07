@@ -5,6 +5,7 @@ import { PostBreadcrumbs } from '@/entities/catalog';
 import type { ProductPageCollectorProps } from '../module/types';
 import { cn } from '@/shared/lib';
 import { ProductMetaBar } from './parts/productMetaBar';
+import { ActionBar } from './parts/actionsBar';
 
 /**
  * Страница товара типовая
@@ -18,9 +19,10 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
   return (
     <div>
       <PostBreadcrumbs post={productData} />
-      <div className={cn('containerContent', styles.bgColorAndMargin)}>
+      <div className={cn(styles.bgColorAndMargin)}>
         <h1 className={styles.titleStyle}>{title}</h1>
-        <div>
+        <div className={styles.upperBtnGroup}>
+          <ActionBar productId={post_id} />
           <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
         </div>
       </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
 import { useFavorite } from '../model/useFavorite';
 import { FaRegStar } from 'react-icons/fa';
@@ -9,14 +10,14 @@ import { FaRegStar } from 'react-icons/fa';
 
 export type FavoriteButtonProps = {
   productId: string;
-  t: (key: string, options?: Record<string, any>) => string;
 };
 
 /**
  * кнопка добавить и удалить избранное в карточке товара
  */
 
-export const FavoriteButton = ({ productId, t }: FavoriteButtonProps) => {
+export const FavoriteButton = ({ productId }: FavoriteButtonProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
   const { isFavorite, toggleFavorite } = useFavorite(productId);
 
   return (
