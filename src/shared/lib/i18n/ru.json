@@ -88,6 +88,10 @@
       "deleteReport": "Товар успешно удален",
       "deleteError": "Ошибка при удалении товара",
       "complain": "Пожаловаться",
+      "reportSending": "Подождите. Идет отправка отчета",
+      "reportSuccessPartOne": "Отравлена жалоба на товар: ",
+      "reportSuccessPartTwo": ". Причина ",
+      "reportError": "Ошибка отправки жалобы",
       "showPhone": "Показать телефон",
       "showMap": "на карте >"
     }
