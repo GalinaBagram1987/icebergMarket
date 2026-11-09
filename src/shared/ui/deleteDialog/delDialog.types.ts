@@ -8,4 +8,5 @@ export type DelDialogProps = {
   isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+  className?: string;
 };

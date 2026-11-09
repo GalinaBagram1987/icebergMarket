@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dialogDropdown {
+  position: absolute;
+
+  /* Позиционируем строго под кнопкой: */
+  top: 100%; /* Сдвиг вниз на всю высоту кнопки */
+  left: 0; /* Выравнивание по левому краю кнопки */
+  margin-top: 8px; /* Деликатный отступ от нижней границы кнопки */
+
+  z-index: 100; /* Поверх любого контента страницы */
+
+  /* Гарантируем, что контент внутри окна не сожмется */
+  white-space: normal;
+
+  background-color: var(--bg-white) !important;
+}
+
+.dialogBackground {
+  background-color: var(--bg-white) !important;
+}
