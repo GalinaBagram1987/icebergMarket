@@ -51,7 +51,7 @@ export const ReportButton = ({ productId }: ReportButtonProps) => {
             <div className={styles.selectContainer}>
               {/* Поле, по которому кликают */}
               <button type="button" className={styles.selectField} onClick={toggleDropdown} disabled={isSending}>
-                <span className={cn(styles.selectedValue, styles.formFont, styles.fontBlack)}>{currentLabel}</span>
+                <span className={cn(styles.formFont, styles.fontBlack)}>{currentLabel}</span>
                 <span className={cn(styles.arrowBox, isDropdownOpen && styles.arrowUp)}>
                   <FaChevronDown />
                 </span>
@@ -72,7 +72,7 @@ export const ReportButton = ({ productId }: ReportButtonProps) => {
               {/* Блок управляющих кнопок: Отправить Отменить */}
               <div className={styles.actionRow}>
                 <button type="submit" className={cn(styles.submitBtn, styles.buttonFont, styles.fontBlack)} disabled={isSending || !reason}>
-                  {isSending ? t('productPage.reportSend') : t('productPage.send')}
+                  {t('productPage.reportSend')}
                 </button>
 
                 <button type="button" className={cn(styles.cancelBtn, styles.buttonFont, styles.fontWhite)} onClick={closeDialog} disabled={isSending}>

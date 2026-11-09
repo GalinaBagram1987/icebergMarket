@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   padding: 32px 50px 31px 33px;
   box-sizing: border-box;
@@ -58,6 +58,10 @@
 .selectContainer {
   position: relative;
   margin-bottom: 34px;
+
+  display: flex;
+  flex-direction: column;
+  width: 434px;
 }
 
 .selectField {
@@ -67,7 +71,15 @@
   border: 1px solid var(--border-dark);
   box-sizing: border-box;
   padding-right: 35px;
-  overflow: hidden; /* обрезать что вылазит */
+  padding-left: 5px;
+  overflow: visible;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
 }
 
 .arrowBox {
@@ -77,17 +89,17 @@
   position: absolute;
   right: 0;
 
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Отключаем влияние на клики, чтобы клик по стрелке пролетал в само поле */
+  pointer-events: none;
 }
 
 .arrowUp {
   transform: rotate(180deg);
-  transition: transform 0.2s ease;
 }
 
 .dropdownList {
@@ -102,18 +114,19 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 
-  padding: 12px 200px 17px 28px;
+  padding: 12px 28px 17px 28px;
 
   gap: 16px;
 
   list-style: none; /* Убирает точки/маркеры */
   margin: 0; /* Убирает внешний отступ браузера */
 
-  top: 100%;
+  top: 30;
   left: 0;
+  z-index: 9999 !important;
 }
 
 .actionRow {
@@ -122,6 +135,7 @@
   justify-content: center;
   align-items: center;
   margin-left: 195px;
+  margin-top: 34px;
 
   width: 239px;
   height: 30px;
@@ -134,6 +148,7 @@
   height: 30px;
   border-radius: var(--radius-md);
   background-color: var(--bg-star);
+  border: none;
 
   display: flex;
   justify-content: center;
@@ -145,6 +160,7 @@
   height: 30px;
   border-radius: var(--radius-md);
   background-color: var(--bg-inter);
+  border: none;
 
   display: flex;
   justify-content: center;
