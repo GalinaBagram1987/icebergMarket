@@ -13,3 +13,5 @@ export type { ClientPostDetail } from './normalizePostDetail';
 export { CoordinateConvector } from './coordinateConvector';
 
 export { formatToHumanDate } from './formatDateToHuman';
+
+export { useClickOutside } from './useClickOutside';

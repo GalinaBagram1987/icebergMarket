@@ -1,11 +1,12 @@
 'use client';
-
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
 import { useReportProduct } from '../model/useReport';
 import { FaChevronDown } from 'react-icons/fa'; // Стрелочка для селекта
 import styles from './report.module.css';
 import { cn } from '@/shared/lib';
+import { useClickOutside } from '@/shared/lib';
 
 /**
  * Тип для кнопки отправить отчет
@@ -23,6 +24,11 @@ export const ReportButton = ({ productId }: ReportButtonProps) => {
   const t = useTranslations('icebergMarket'); // клиентский перевод
   const { isOpen, isDropdownOpen, isSending, reason, openDialog, closeDialog, toggleDropdown, selectReason, sendReport } = useReportProduct({ productId });
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // отслеживание клика вне элемента
+  useClickOutside(containerRef, closeDialog, isOpen);
+
   const options = [
     { value: 'illegal', label: t('productPage.reportReasonIllegal') }, // Нарушает закон
     { value: 'rules', label: t('productPage.reportReasonRules') }, // Нарушает правила сайта
@@ -32,8 +38,8 @@ export const ReportButton = ({ productId }: ReportButtonProps) => {
   const currentLabel = options.find((opt) => opt.value === reason)?.label || '';
 
   return (
-    <div className={styles.reportWrapper}>
-      <ActionButton disabled={isSending} type="button" onClick={openDialog}>
+    <div className={styles.reportWrapper} ref={containerRef}>
+      <ActionButton disabled={isSending} type="button" onClick={isOpen ? closeDialog : openDialog}>
         {t('productPage.report')}
       </ActionButton>
       {/* Блок согласия*/}
