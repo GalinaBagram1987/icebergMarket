@@ -21,10 +21,8 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
       <PostBreadcrumbs post={productData} />
       <div className={cn(styles.bgColorAndMargin)}>
         <h1 className={styles.titleStyle}>{title}</h1>
-        <div className={styles.upperBtnGroup}>
-          <ActionBar productId={post_id} />
-          <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
-        </div>
+        <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
+        <ActionBar productId={post_id} />
       </div>
     </div>
   );

@@ -8,6 +8,8 @@
   gap: 12px;
 
   flex-wrap: nowrap;
+
+  margin: 24px 0px 24px 40px;
 }
 
 /*Свойства метабара*/
@@ -24,7 +26,7 @@
   /* Сброс дефолтных стилей браузера */
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0px 0px 0px 40px;
 
   color: var(--text-black);
   font-size: 14px;
