@@ -1,0 +1,30 @@
+.toastRoot {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  width: 431px;
+  min-height: 90px;
+  padding: 12px 24px;
+  background-color: var(--bg-white);
+  border: 1px solid var(--bg-dark);
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-main);
+  font-size: 18px;
+
+  /* Исключаем влияние дефолтных стилей библиотеки */
+  margin: 0;
+
+  gap: 12px;
+}
+
+.ToastSuccess {
+  border-left: var(--btn-accent-bg);
+}
+
+.ToastError {
+  border-left: var(--bg-delete);
+}

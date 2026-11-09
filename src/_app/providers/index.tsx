@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { icebergToastConfig } from '@/shared/ui/toast';
+
 import { ReduxProvider } from './ReduxProvider';
 import { QueryProvider } from './QueryProvider';
 
@@ -10,14 +13,20 @@ interface AppProvidersProps {
 /**
  * Объединяет глобальные провайдеры приложения.
  *
- * Подключает Redux-хранилище и React Query
+ * Подключает Redux-хранилище и React Query и toast
  * ко всем вложенным компонентам.
  */
 
 export const AppProviders = ({ children }: AppProvidersProps) => {
   return (
     <ReduxProvider>
-      <QueryProvider>{children}</QueryProvider>
+      <QueryProvider>
+        {children}
+        <Toaster
+          position="top-center" // Выравнивание вашей плашки 431px строго по центру экрана
+          toastOptions={icebergToastConfig}
+        />
+      </QueryProvider>
     </ReduxProvider>
   );
 };
