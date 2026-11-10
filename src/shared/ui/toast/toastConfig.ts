@@ -6,7 +6,7 @@ import styles from './toast.module.css';
  */
 
 export const icebergToastConfig: DefaultToastOptions = {
-  duration: 4000,
+  duration: 1000,
   className: styles.toastRoot,
   success: {
     className: `${styles.toastRoot} ${styles.toastSuccess}`,

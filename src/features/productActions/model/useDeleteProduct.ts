@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { toast } from 'react-hot-toast';
 
 /**
  * Типы хука удаления
@@ -31,20 +32,36 @@ export const useDeleteProduct = ({ productId }: useDeleteProductProps) => {
 
   const confirmDelete = async () => {
     setIsDeleting(true);
-    alert(t('productPage.deleteProcess'));
     try {
-      // Имитация запроса к бэкенду
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Передаем fetch-запрос напрямую в toast.promise как первый аргумент
+      await toast.promise(
+        // запрос к бэку
+        (async () => {
+          // ПОка имитация. потом поставить реальный запрос
+          await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      console.log(`${productId} ${t('productPage.deleteReport')}`);
-      alert(`${productId} ${t('productPage.deleteReport')}`);
+          /* 
+        // Когда появится реальный бэкенд, код будет таким:
+        const res = await fetch(`/api/v1/posts/${productId}`, { method: 'DELETE' });
+        if (!res.ok) {
+          throw new Error(t('productPage.deleteError'));
+        }
+        */
+        })(), // здесь возвращаем чистый Promise, который слушает библиотека
 
-      setIsOpen(false);
+        // Настройки отображения тоста
+        {
+          loading: t('productPage.deleteProcess'),
+          success: t('productPage.deleteReport'),
+          error: (err) => err.message || t('productPage.deleteError'),
+        },
+      );
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      console.log(`${t('productPage.deleteReport')} ${productId}`);
+      closeDialog();
       router.push('/');
-      // router.push('/profile'); редирект профиль
     } catch (error) {
       console.error(t('productPage.deleteError'), error);
-      alert(t('productPage.deleteError') + error);
     } finally {
       setIsDeleting(false);
     }

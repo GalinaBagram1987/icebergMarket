@@ -23,8 +23,15 @@ export const AppProviders = ({ children }: AppProvidersProps) => {
       <QueryProvider>
         {children}
         <Toaster
-          position="top-center" // Выравнивание вашей плашки 431px строго по центру экрана
+          //position="top-center" // Выравнивание вашей плашки 431px строго по центру экрана гориз
           toastOptions={icebergToastConfig}
+          /*  по центру экрана вертикаль, горизонт*/
+          containerStyle={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            position: 'fixed',
+          }}
         />
       </QueryProvider>
     </ReduxProvider>

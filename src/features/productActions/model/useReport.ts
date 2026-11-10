@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { toast } from 'react-hot-toast';
 
 /**
  * Пропсы для отправки отчета
@@ -43,14 +44,33 @@ export const useReportProduct = ({ productId }: UseReportProductProps) => {
     if (!reason) return;
 
     setIsSending(true);
-    alert(t('productPage.reportSending'));
 
     try {
-      // Здесь будет реальный запрос: await api.post('/report', { productId, reason })
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Передаем fetch-запрос напрямую в toast.promise как первый аргумент
+      await toast.promise(
+        // запрос к бэку
+        (async () => {
+          // ПОка имитация. потом поставить реальный запрос
+          await new Promise((resolve) => setTimeout(resolve, 2000));
 
+          /* 
+        // Когда появится реальный бэкенд, код будет таким:
+        const res = await fetch(`/api/v1/posts/report-post`, { method: 'POST' });
+        if (!res.ok) {
+          throw new Error(t('productPage.reportError'));
+        }
+        */
+        })(), // здесь возвращаем чистый Promise, который слушает библиотека
+
+        // Настройки отображения тоста
+        {
+          loading: t('productPage.reportSending'),
+          success: t('productPage.reportSuccessPartOne'),
+          error: (err) => err.message || t('productPage.reportError'),
+        },
+      );
+      await new Promise((resolve) => setTimeout(resolve, 800));
       console.log(`${t('productPage.reportSuccessPartOne')} ${productId} ${t('productPage.reportSuccessPartTwo')} ${reason}`);
-      alert(`${t('productPage.reportSuccessPartOne')} ${productId} ${t('productPage.reportSuccessPartTwo')} ${reason}`);
       closeDialog();
     } catch (error) {
       console.error(error);
