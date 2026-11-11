@@ -1,0 +1,32 @@
+'use client';
+import { useState } from 'react';
+import styles from './showPhoneButton.module.css';
+import { useTranslations } from 'next-intl';
+import { cn } from '@/shared/lib';
+
+/**
+ * Пропсы для кнопки показа телефона
+ */
+export type ShowButtonPhoneProps = {
+  phone: string;
+};
+
+/**
+ * Кнопка "Показать телефон".
+ * При клике скрывает текст заглушки и отображает реальный номер.
+ */
+
+export const ShowButtonPhone = ({ phone }: ShowButtonPhoneProps) => {
+  const t = useTranslations('icebergMarket'); // клиентский перевод
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsClicked((prev) => !prev);
+  };
+
+  return (
+    <button type="button" onClick={handleClick} className={cn(styles.phoneBtn, isClicked ? styles.clicked : '')}>
+      {isClicked ? phone : t('productPage.showPhone')}
+    </button>
+  );
+};
