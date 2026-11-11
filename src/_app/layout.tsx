@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
 import { AppProviders } from './providers';
@@ -70,6 +71,8 @@ const RootLayout = async ({ children }: RootLayoutProvider) => {
             </AppProviders>
           </NextIntlClientProvider>
         </div>
+        {/* Подключает скрипт яндекс-карт */}
+        <Script src={`https://yandex.ru{yandexKey}`} strategy="beforeInteractive" />
       </body>
     </html>
   );
