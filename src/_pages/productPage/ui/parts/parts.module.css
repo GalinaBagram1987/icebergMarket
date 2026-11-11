@@ -42,3 +42,19 @@
   /* Гарантирует, что точка не съедет по вертикали относительно шрифта */
   display: inline-block;
 }
+
+/*Стили для контейнера карты*/
+
+.mapContainer {
+  width: 580px;
+  height: 295px;
+  border-bottom-right-radius: var(--radius-max);
+  border-top-right-radius: var(--radius-max);
+
+  overflow: hidden;
+}
+
+.mapCanvas {
+  width: 100%;
+  height: 100%;
+}

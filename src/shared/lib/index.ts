@@ -10,8 +10,9 @@ export { normalizePostDetail } from './normalizePostDetail';
 
 export type { ClientPostDetail } from './normalizePostDetail';
 
-export { CoordinateConvector } from './coordinateConvector';
-
 export { formatToHumanDate } from './formatDateToHuman';
 
 export { useClickOutside } from './useClickOutside';
+
+export { getCoordinatesByAddress } from './coordinateConvector/coordinateByAdress';
+export { buildAddressForMap } from './coordinateConvector/buildAdressForMap';

@@ -5,7 +5,8 @@ export type ProductPageCollectorProps = {
   productData: PostDetailResponse;
 };
 
-// post_id: string;
+// export type PostDetailResponse = {
+//   post_id: string;
 //   views: number;
 //   price: number;
 //   title: string;
@@ -20,7 +21,12 @@ export type ProductPageCollectorProps = {
 //     telephone: string;
 //     description: string;
 //     delivery_description: string;
-//   } | null;
+//     adress: {
+//       city: string;
+//       street: string;
+//       house: string;
+//     };
+//   };
 //   attributes: any[];
 //   description: string;
 //   breadcrumbs: {
@@ -33,8 +39,11 @@ export type ProductPageCollectorProps = {
 //   posted_at: string;
 //   category_id: number;
 //   price_list_name: string;
-//   coordinates: [number, number] | null;
 //   title_image: string;
-//   is_favourite: string;
-//   count?: number;
-//   adress?: string;
+//   is_favourite: boolean;
+//   adress: {
+//     city: string;
+//     street: string;
+//     house: string;
+//   };
+// };
