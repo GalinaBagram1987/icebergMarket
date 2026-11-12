@@ -9,6 +9,7 @@ import { cn } from '@/shared/lib';
  */
 export type ShowButtonPhoneProps = {
   phone: string;
+  className?: string;
 };
 
 /**

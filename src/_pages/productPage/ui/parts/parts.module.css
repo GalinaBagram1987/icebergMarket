@@ -23,7 +23,6 @@
   white-space: nowrap;
   flex-shrink: 0;
 
-  /* Сброс дефолтных стилей браузера */
   list-style: none;
   padding: 0;
   margin: 0px 0px 0px 40px;
@@ -39,7 +38,6 @@
   content: '•';
   color: var(--text-black);
   margin-right: 12px;
-  /* Гарантирует, что точка не съедет по вертикали относительно шрифта */
   display: inline-block;
 }
 

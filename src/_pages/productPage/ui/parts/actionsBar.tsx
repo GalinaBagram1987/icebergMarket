@@ -1,3 +1,4 @@
+'use client';
 import { DeleteButton } from '@/features/productActions';
 import { ReportButton } from '@/features/productActions';
 import { FavoriteButton } from '@/features/productActions';
