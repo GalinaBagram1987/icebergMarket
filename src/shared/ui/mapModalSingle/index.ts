@@ -1,0 +1,1 @@
+export { MapModalSingle } from './mapModalSingle';

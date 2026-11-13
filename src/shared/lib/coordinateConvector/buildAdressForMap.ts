@@ -3,9 +3,9 @@
  */
 
 export type BuildAddressType = {
-  city: string;
-  street: string;
-  house: string;
+  city?: string;
+  street?: string;
+  house?: string;
 };
 
 /**

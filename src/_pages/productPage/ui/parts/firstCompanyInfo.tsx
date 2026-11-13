@@ -4,9 +4,9 @@ import { useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from 'react';
 import { ShowButtonPhone } from '@/features/showPhoneButton';
 import styles from './parts.module.css';
-import { FaTimes } from 'react-icons/fa';
 import { buildAddressForMap } from '@/shared/lib';
 import { getCoordinatesByAddress } from '@/shared/lib';
+import { MapModalSingle } from '@/shared/lib';
 
 /**
  * Типы к первому инфо-блоку о компании на странице товара
@@ -33,29 +33,23 @@ export const FirstCompanyInfo = ({ productSeller, address, telephone, onMapClick
   const city = address?.city || '';
   const street = [address?.street, address?.house].filter(Boolean).join(' ');
   const phone = telephone;
-  const oneObjString = {
-    city: address?.city ?? '',
-    street: address?.street ?? '',
-    house: address?.house ?? '',
-  };
 
-  const fullAddress = buildAddressForMap(oneObjString);
+  const fullAddress = buildAddressForMap(address);
 
   const [openMap, setIsOpenMap] = useState<boolean>(false);
   const [coords, setCoords] = useState<[number, number] | null>(null);
-  const [isLoadingCoords, setIsLoadingCoords] = useState<boolean>(false);
+  const [mapError, setMapError] = useState<string | null>(null);
 
   const handleOpenMap = async () => {
     setIsOpenMap(true);
-    if (!fullAddress) return;
+    if (coords || !fullAddress) return;
     try {
-      setIsLoadingCoords(true);
+      setMapError(null);
       const yandexCoords = await getCoordinatesByAddress(fullAddress);
       setCoords(yandexCoords);
     } catch (error) {
       console.error('Ошибка геокодирования:', error);
-    } finally {
-      setIsLoadingCoords(false);
+      setMapError('Не удалось определить координаты по адресу');
     }
   };
   const handleCloseMap = () => setIsOpenMap(false);
@@ -78,7 +72,12 @@ export const FirstCompanyInfo = ({ productSeller, address, telephone, onMapClick
         </span>
       </div>
       <ShowButtonPhone className={styles.fcompShowButton} phone={phone} />
-      {openMap && <div className={styles.backgroundMap} onClick={handleCloseMap}></div>}
+      <div className={styles.divider}></div>
+
+      {/* 
+        Рендерим модалку ТОЛЬКО когда openMap === true.
+      */}
+      {openMap && <MapModalSingle isOpen={openMap} onClose={handleCloseMap} coordinates={coords} error={mapError} />}
     </div>
   );
 };
