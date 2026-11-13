@@ -16,3 +16,5 @@ export { useClickOutside } from './useClickOutside';
 
 export { getCoordinatesByAddress } from './coordinateConvector/coordinateByAdress';
 export { buildAddressForMap } from './coordinateConvector/buildAdressForMap';
+
+export { useYandexMap } from './useYandexMap';

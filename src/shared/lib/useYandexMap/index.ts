@@ -2,71 +2,85 @@
 
 import { useEffect, useRef } from 'react';
 
-/**
- * Тип хука инициализации карты
- */
-
 type UseYandexMapProps = {
   coordinates?: [number, number] | null;
   zoom?: number;
+  controls?: string[];
 };
 
-/**
- * Хук инициализации карты. Нужен для использования во всех компонентах, где есть карта
- * @param coordinates, zoom
- * @returns  mapRef
- */
+const DEFAULT_CONTROLS = ['zoomControl', 'fullscreenControl', 'typeSelector', 'geolocationControl'];
 
-export const useYandexMap = ({ coordinates, zoom = 15 }: UseYandexMapProps) => {
+export const useYandexMap = ({ coordinates, zoom = 15, controls = DEFAULT_CONTROLS }: UseYandexMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
   const placemarkRef = useRef<any>(null);
 
+  // Инициализация карты
   useEffect(() => {
     const ymaps = (window as any).ymaps;
+    if (!ymaps || !mapRef.current || !coordinates || mapInstanceRef.current) {
+      return;
+    }
 
-    if (!ymaps || !mapRef.current || !coordinates) return;
+    let cancelled = false;
 
     const initMap = () => {
-      // Если карта уже создана — плавно обновляем центр и позицию метки
-      if (mapInstanceRef.current) {
-        mapInstanceRef.current.setCenter(coordinates, zoom);
-        if (placemarkRef.current) {
-          placemarkRef.current.geometry.setCoordinates(coordinates);
-        }
-        return;
+      if (cancelled || !mapRef.current || mapInstanceRef.current) return;
+
+      try {
+        mapInstanceRef.current = new ymaps.Map(mapRef.current, {
+          center: coordinates,
+          zoom,
+          controls,
+        });
+
+        placemarkRef.current = new ymaps.Placemark(coordinates, {}, { preset: 'islands#redDotIcon' });
+
+        mapInstanceRef.current.geoObjects.add(placemarkRef.current);
+      } catch (error) {
+        console.error('Ошибка при инициализации Яндекс.Карты:', error);
       }
-
-      // Создаём новый экземпляр карты
-      mapInstanceRef.current = new ymaps.Map(mapRef.current, {
-        center: coordinates,
-        zoom,
-        controls: ['zoomControl', 'fullscreenControl', 'typeSelector', 'geolocationControl'],
-      });
-
-      // Создаём и сохраняем ссылку на метку
-      placemarkRef.current = new ymaps.Placemark(
-        coordinates,
-        {},
-        {
-          preset: 'islands#redDotIcon',
-        },
-      );
-
-      mapInstanceRef.current.geoObjects.add(placemarkRef.current);
     };
 
-    ymaps.ready(initMap);
+    try {
+      ymaps.ready(initMap);
+    } catch (error) {
+      console.error('Ошибка ожидания ymaps.ready:', error);
+    }
 
-    // Очистка при размонтировании компонента
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coordinates]);
+
+  // Обновление центра и метки
+  useEffect(() => {
+    if (!mapInstanceRef.current || !coordinates) return;
+
+    try {
+      mapInstanceRef.current.setCenter(coordinates, zoom);
+      placemarkRef.current?.geometry.setCoordinates(coordinates);
+    } catch (error) {
+      console.error('Ошибка при обновлении координат карты:', error);
+    }
+  }, [coordinates, zoom]);
+
+  // Безопасная очистка при размонтировании
+  useEffect(() => {
     return () => {
       if (mapInstanceRef.current) {
-        mapInstanceRef.current.destroy();
-        mapInstanceRef.current = null;
-        placemarkRef.current = null;
+        try {
+          mapInstanceRef.current.destroy();
+        } catch (error) {
+          console.error('Ошибка при удалении инстанса карты:', error);
+        } finally {
+          mapInstanceRef.current = null;
+          placemarkRef.current = null;
+        }
       }
     };
-  }, [coordinates, zoom]);
+  }, []);
 
   return { mapRef };
 };
