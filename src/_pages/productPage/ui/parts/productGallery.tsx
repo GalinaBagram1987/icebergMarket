@@ -1,7 +1,9 @@
+'use client';
 import { useState } from 'react';
 import styles from './productGallery.module.css';
 import { cn } from '@/shared/lib';
 import { FaTimes } from 'react-icons/fa';
+import { createPortal } from 'react-dom';
 
 /**
  * Типы к галее в продукте
@@ -42,14 +44,19 @@ export const ProductGallery = ({ title, images }: ProductGalleryProps) => {
       )}
 
       {/* Полноэкранный режим, если выбран индекс фото */}
-      {selectedIndex !== null && (
-        <div className={styles.fullScreenPhoto} onClick={handleClose}>
-          <img src={displayImages[selectedIndex]} alt={title} className={styles.fullscreenImage} onClick={(e) => e.stopPropagation()} />
-          <button type="button" className={styles.closeBtn} onClick={handleClose} aria-label="Закрыть">
-            <FaTimes />
-          </button>
-        </div>
-      )}
+      {selectedIndex !== null &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div className={styles.fullScreenPhoto} onClick={handleClose}>
+            <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+              <img src={displayImages[selectedIndex]} alt={title} className={styles.fullscreenImage} />
+              <button type="button" className={styles.closeBtn} onClick={handleClose} aria-label="Закрыть">
+                <FaTimes />
+              </button>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 };

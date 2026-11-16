@@ -55,50 +55,59 @@
   transform: scale(1.03);
 }
 
+/* Полупрозрачный фон поверх всей страницы */
 .fullScreenPhoto {
   position: fixed;
-  inset: 0; /* top/right/bottom/left = 0 */
-  z-index: 1000;
-  background: var(--bg-mainCatalog);
-
+  inset: 0;
+  z-index: 9999;
+  background-color: var(--bg-gray-50);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px; /* отступы, чтобы фото не прилипало к краям */
-  box-sizing: border-box;
+  padding: 40px;
+}
 
-  cursor: zoom-out; /* подсказка: клик по фону закроет */
+/* Тёмный контейнер с пропорциями как на скриншоте */
+.modalBox {
+  position: relative;
+  width: 90vw;
+  max-width: 960px;
+  height: 80vh;
+  max-height: 700px;
+  background-color: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 .fullscreenImage {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* вписываем целиком, без обрезки */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-
-  cursor: default; /* клик по фото не закрывает (у вас stopPropagation) */
 }
-
+/* Белый квадратный крестик в правом верхнем углу */
 .closeBtn {
   position: absolute;
-  top: 33px;
-  right: 34px;
-  z-index: 1001;
-
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--bg-dark);
-  background: var(--text-white);
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  background-color: var(--bg-white);
   color: var(--text-black);
-  font-size: 20px;
+  border: none;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.closeBtn:hover {
+  opacity: 0.85;
 }

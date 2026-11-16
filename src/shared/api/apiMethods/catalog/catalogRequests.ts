@@ -404,7 +404,22 @@ export const catalogRequest = {
         price: 0,
         title: '',
         author_id: '',
-        author: null,
+        author: {
+          id: '',
+          name: '',
+          email: '',
+          image: '',
+          date_created: '',
+          full_name: '',
+          telephone: '',
+          description: '',
+          delivery_description: '',
+          address: {
+            city: '',
+            street: '',
+            house: '',
+          },
+        },
         attributes: [],
         description: '',
         breadcrumbs: [],
@@ -413,9 +428,13 @@ export const catalogRequest = {
         posted_at: '',
         category_id: 0,
         price_list_name: '',
-        coordinates: null,
         title_image: '',
-        is_favourite: 'false', // Строка, так как в типе указан тип string
+        is_favourite: false,
+        address: {
+          city: '',
+          street: '',
+          house: '',
+        },
       };
     }
 
@@ -429,7 +448,7 @@ export const catalogRequest = {
 
       // Мок-данные строго по типу PostDetailResponse
       const mockPostDetail: PostDetailResponse = {
-        post_id: body.post_id, // используем переданный ID
+        post_id: body.post_id,
         views: 125,
         price: 15000,
         title: 'Дверь передняя правая (оригинал)',
@@ -444,6 +463,11 @@ export const catalogRequest = {
           telephone: '+79991234567',
           description: 'Официальный разбор автомобилей',
           delivery_description: 'Доставка по городу и области',
+          address: {
+            city: 'Новосибирск',
+            street: 'ул. Станционная',
+            house: '30А',
+          },
         },
         attributes: [
           { key: 'Состояние', value: 'Б/у' },
@@ -461,9 +485,13 @@ export const catalogRequest = {
         posted_at: '2026-10-27T09:31:35.809029+00:00',
         category_id: 40,
         price_list_name: 'test_price_list',
-        coordinates: [55.7558, 37.6173], // Москва
         title_image: '/mockImg/1(1).png',
-        is_favourite: 'False',
+        is_favourite: false,
+        address: {
+          city: 'Новосибирск',
+          street: 'ул. Станционная',
+          house: '30А',
+        },
       };
 
       return mockPostDetail;

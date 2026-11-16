@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FaTimes } from 'react-icons/fa';
 import { useYandexMap } from '@/shared/lib';
-import styles from './mapModal.module.css';
+import styles from './mapModalSingle.module.css';
+import { Spinner } from '../LoadingRender/spinner';
 
 type MapModalProps = {
   isOpen: boolean;
@@ -63,7 +64,11 @@ export const MapModalSingle = ({ isOpen, onClose, coordinates, error }: MapModal
 
         {/* Лоадер или ошибка поверх контейнера */}
         {error && <div className={styles.loader}>{error}</div>}
-        {!error && !coordinates && <div className={styles.loader}>Загрузка координат...</div>}
+        {!error && !coordinates && (
+          <div className={styles.loader}>
+            <Spinner />
+          </div>
+        )}
       </div>
     </div>,
     document.body,

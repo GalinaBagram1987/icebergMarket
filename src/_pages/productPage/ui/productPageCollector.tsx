@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import styles from './productPageCollector.module.css';
 
 import { PostBreadcrumbs } from '@/entities/catalog';
@@ -11,6 +10,7 @@ import { ProductAttributes } from './parts/fromAttributesBlock';
 import { ProductDescription } from './parts/descriptionProduct';
 import { SecondCompanyInfo } from './parts/secondCompanyInfo';
 import { ProductMap } from './parts/productMap';
+import { ProductGallery } from './parts/productGallery';
 
 /**
  * Страница товара типовая
@@ -31,9 +31,10 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
         {/**Первая сетка. цена, инфо, фото */}
         <div className={styles.gridOne}>
           <h1 className={styles.price}>{price} p.</h1>
+          <FirstCompanyInfo productSeller={author.name} address={address} telephone={author.telephone} />
+          <ProductGallery title={title} images={images} />
         </div>
-        <FirstCompanyInfo productSeller={author.name} address={address} telephone={author.telephone} />
-        <ProductAttributes attributes={attributes} />
+
         <ProductDescription description={description} />
         <div className={styles.companyInfoWrapper}>
           <SecondCompanyInfo image={author.image} productSeller={author.name} date_created={author.date_created} address={address ?? author.address} telephone={author.telephone} />

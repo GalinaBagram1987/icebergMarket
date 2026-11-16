@@ -21,7 +21,7 @@
 
 .gridOne {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 320px minmax(0, 1fr);
   gap: 72px;
   margin-left: 60px;
   margin-right: 10px;
