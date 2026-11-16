@@ -61,16 +61,16 @@
 
 .attributesSection {
   width: 320px;
-  height: 328px;
+  min-height: 328px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
   font-family: var(--pt-main);
-  font-family: 16px;
+  font-size: 16px;
   color: var(--text-black);
-  letter-spacing: 0.05;
+  letter-spacing: 0.05em;
   line-height: 1;
 }
 
@@ -97,4 +97,71 @@
 .attributeValue {
   overflow-wrap: break-word;
   margin: 0;
+}
+
+/* Стили для блока description */
+
+.descriptionWrapper {
+  width: 916px;
+  padding: 32px 32px 32px 0;
+}
+
+.descriptionLine {
+  font-family: var(--pt-main);
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: var(--text-black);
+}
+
+/* Блок о компании с логотипом*/
+
+.secondCompanyWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 153px;
+}
+
+.logoSecondComp {
+  margin-left: 10px;
+  margin-bottom: 23px;
+}
+
+.nameSecondComp {
+  font-family: var(--font-main);
+  color: var(--primary-color);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.dateCreate {
+  font-family: var(--font-mono);
+  color: var(--text-black);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.citySecondComp {
+  font-family: var(--font-main);
+  color: var(--text-black);
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.addressSecondComp {
+  font-family: var(--font-main);
+  color: var(--text-black);
+  letter-spacing: 0.05em;
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 21px;
 }

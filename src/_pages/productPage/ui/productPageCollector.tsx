@@ -8,6 +8,9 @@ import { ProductMetaBar } from './parts/productMetaBar';
 import { ActionBar } from './parts/actionsBar';
 import { FirstCompanyInfo } from './parts/firstCompanyInfo';
 import { ProductAttributes } from './parts/fromAttributesBlock';
+import { ProductDescription } from './parts/descriptionProduct';
+import { SecondCompanyInfo } from './parts/secondCompanyInfo';
+import { ProductMap } from './parts/productMap';
 
 /**
  * Страница товара типовая
@@ -29,8 +32,13 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
         <div className={styles.gridOne}>
           <h1 className={styles.price}>{price} p.</h1>
         </div>
-        <FirstCompanyInfo productSeller={author.name} address={author.address} telephone={author.telephone} />
+        <FirstCompanyInfo productSeller={author.name} address={address} telephone={author.telephone} />
         <ProductAttributes attributes={attributes} />
+        <ProductDescription description={description} />
+        <div className={styles.companyInfoWrapper}>
+          <SecondCompanyInfo image={author.image} productSeller={author.name} date_created={author.date_created} address={address ?? author.address} telephone={author.telephone} />
+          <ProductMap address={address} />
+        </div>
       </div>
     </div>
   );

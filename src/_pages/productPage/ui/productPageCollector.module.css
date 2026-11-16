@@ -56,3 +56,15 @@
   grid-template-columns: 153px 1fr;
   gap: 177px;
 }
+
+.companyInfoWrapper {
+  width: 916px;
+  height: 325px;
+  padding: 27px 0 59px 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 177px;
+}
