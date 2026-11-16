@@ -3,6 +3,7 @@ import type { PostDetailResponse } from '@/shared/api/apiMethods/catalog';
 export type ProductPageCollectorProps = {
   t: (key: string, options?: Record<string, any>) => string;
   productData: PostDetailResponse;
+  onClick?: () => void;
 };
 
 // export type PostDetailResponse = {
@@ -21,7 +22,7 @@ export type ProductPageCollectorProps = {
 //     telephone: string;
 //     description: string;
 //     delivery_description: string;
-//     adress: {
+//     address: {
 //       city: string;
 //       street: string;
 //       house: string;
@@ -41,7 +42,7 @@ export type ProductPageCollectorProps = {
 //   price_list_name: string;
 //   title_image: string;
 //   is_favourite: boolean;
-//   adress: {
+//   address: {
 //     city: string;
 //     street: string;
 //     house: string;

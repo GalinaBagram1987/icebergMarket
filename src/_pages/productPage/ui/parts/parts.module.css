@@ -56,3 +56,45 @@
   width: 100%;
   height: 100%;
 }
+
+/* Стили для блока fromAttributes */
+
+.attributesSection {
+  width: 320px;
+  height: 328px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  font-family: var(--pt-main);
+  font-family: 16px;
+  color: var(--text-black);
+  letter-spacing: 0.05;
+  line-height: 1;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-black48);
+}
+
+.attributeList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 100%;
+  height: 100%;
+  padding: 30px 0;
+}
+
+.attributeLabel {
+  overflow-wrap: break-word; /*перенос слов*/
+  margin: 0;
+}
+
+.attributeValue {
+  overflow-wrap: break-word;
+  margin: 0;
+}

@@ -72,7 +72,6 @@ export const FirstCompanyInfo = ({ productSeller, address, telephone, onMapClick
         </span>
       </div>
       <ShowButtonPhone className={styles.fcompShowButton} phone={phone} />
-      <div className={styles.divider}></div>
 
       {/* 
         Рендерим модалку ТОЛЬКО когда openMap === true.

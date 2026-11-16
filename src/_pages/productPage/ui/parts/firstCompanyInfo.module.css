@@ -44,10 +44,3 @@
 .fcompShowButton {
   margin-bottom: 25px;
 }
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: var(--border-black48);
-  margin-bottom: 30px;
-}

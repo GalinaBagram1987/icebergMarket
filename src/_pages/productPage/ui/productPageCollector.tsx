@@ -6,6 +6,8 @@ import type { ProductPageCollectorProps } from '../module/types';
 import { cn } from '@/shared/lib';
 import { ProductMetaBar } from './parts/productMetaBar';
 import { ActionBar } from './parts/actionsBar';
+import { FirstCompanyInfo } from './parts/firstCompanyInfo';
+import { ProductAttributes } from './parts/fromAttributesBlock';
 
 /**
  * Страница товара типовая
@@ -14,7 +16,7 @@ import { ActionBar } from './parts/actionsBar';
 
 export const ProductPageCollector = ({ productData, t }: ProductPageCollectorProps) => {
   if (!productData) return null;
-  const { post_id, views, price, title, attributes, description, images, posted_at, coordinates, adress } = productData;
+  const { post_id, views, price, title, author_id, author, attributes, description, images, posted_at, category_id, price_list_name, title_image, is_favourite, address } = productData;
 
   return (
     <div>
@@ -27,6 +29,8 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
         <div className={styles.gridOne}>
           <h1 className={styles.price}>{price} p.</h1>
         </div>
+        <FirstCompanyInfo productSeller={author.name} address={author.address} telephone={author.telephone} />
+        <ProductAttributes attributes={attributes} />
       </div>
     </div>
   );

@@ -145,7 +145,7 @@ export type PostDetailResponse = {
     telephone: string;
     description: string;
     delivery_description: string;
-    adress: {
+    address: {
       city: string;
       street: string;
       house: string;
@@ -165,7 +165,7 @@ export type PostDetailResponse = {
   price_list_name: string;
   title_image: string;
   is_favourite: boolean;
-  adress: {
+  address: {
     city: string;
     street: string;
     house: string;

@@ -16,7 +16,7 @@ export type ProductGalleryProps = {
  * Галерея товара  на странице продукта
  */
 
-const PLACEHOLDER_IMAGE = '/img/noPhoto.jpg';
+const PLACEHOLDER_IMAGE = '/img/product-placeholder.jpg';
 
 export const ProductGallery = ({ title, images }: ProductGalleryProps) => {
   const displayImages = images.slice(0, 4);
