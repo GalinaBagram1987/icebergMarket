@@ -1,5 +1,6 @@
 import styles from './parts.module.css';
 import { ShowButtonPhone } from '@/features/showPhoneButton';
+import { formatToYear } from '@/shared/lib';
 
 /**
  * Тип для информации про компнанию
@@ -28,7 +29,7 @@ export const SecondCompanyInfo = ({ image, productSeller, date_created, address,
     <div className={styles.secondCompanyWrapper}>
       <img src={image} alt={`'логотип компании' ${productSeller}`} className={styles.logoSecondComp} />
       <p className={styles.nameSecondComp}>{productSeller}</p>
-      <p className={styles.dateCreate}>{date_created}</p>
+      <p className={styles.dateCreate}>На сайте с {formatToYear(date_created)}</p>
       <p className={styles.citySecondComp}>{address.city}</p>
       <p className={styles.addressSecondComp}>{streetLine}</p>
       <ShowButtonPhone phone={telephone} />

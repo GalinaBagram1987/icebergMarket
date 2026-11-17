@@ -20,3 +20,5 @@ export { buildAddressForMap } from './coordinateConvector/buildAdressForMap';
 export { useYandexMap } from './mapHooks/useYandexMapSingle';
 
 export { MapModalSingle } from '../ui/mapModalSingle';
+
+export { formatToYear } from './formatDateToYear';

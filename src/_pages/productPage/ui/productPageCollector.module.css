@@ -2,6 +2,7 @@
 .bgColorAndMargin {
   background-color: var(--bg-white);
   margin-top: 26px;
+  margin-bottom: 35px;
   padding-top: 12px;
 
   width: 1050px;
@@ -53,20 +54,12 @@
   gap: 72px;
 }
 
-.containerByMap {
-  display: grid;
-  grid-template-columns: 153px 1fr;
-  gap: 177px;
-}
+/* Нижний блок*/
 
 .companyInfoWrapper {
-  width: 916px;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 160px;
+  padding: 0px 70px 40px 70px;
   height: 325px;
-  padding: 27px 0 59px 10px;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 177px;
 }
