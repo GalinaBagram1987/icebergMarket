@@ -1,4 +1,5 @@
 import styles from './parts.module.css';
+import { cn } from '@/shared/lib';
 
 /**
  * Типы к полю описание
@@ -18,7 +19,7 @@ export const ProductDescription = ({ description }: ProductDescriptionProps) => 
   }
 
   const lines = description
-    .split('\n')
+    .split('.')
     .map((line) => line.trim())
     .filter(Boolean);
 
@@ -29,7 +30,7 @@ export const ProductDescription = ({ description }: ProductDescriptionProps) => 
           {line}
         </p>
       ))}
-      <div className={styles.divider}></div>
+      <div className={cn(styles.divider, styles.marginClass)}></div>
     </div>
   );
 };
