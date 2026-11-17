@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from 'react';
 import { ShowButtonPhone } from '@/features/showPhoneButton';
-import styles from './parts.module.css';
+import styles from './firstCompanyInfo.module.css';
 import { buildAddressForMap } from '@/shared/lib';
 import { getCoordinatesByAddress } from '@/shared/lib';
 import { MapModalSingle } from '@/shared/lib';
@@ -20,6 +20,7 @@ export type FirstCompanyInfoProps = {
   };
   telephone: string;
   onMapClick?: () => void;
+  className?: string;
 };
 
 /**

@@ -28,11 +28,16 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
         <h1 className={styles.titleStyle}>{title}</h1>
         <ProductMetaBar productData={{ post_id, views, posted_at }} t={t} />
         <ActionBar productId={post_id} />
+
         {/**Первая сетка. цена, инфо, фото */}
         <div className={styles.gridOne}>
-          <h1 className={styles.price}>{price} p.</h1>
-          <FirstCompanyInfo productSeller={author.name} address={address} telephone={author.telephone} />
-          <ProductGallery title={title} images={images} />
+          <div className={styles.leftPartGridOne}>
+            <span className={styles.price}>{price} p.</span>
+            <FirstCompanyInfo productSeller={author.name} address={address} telephone={author.telephone} />
+            <ProductAttributes attributes={attributes} />
+          </div>
+
+          <ProductGallery className={styles.containerByFoto} title={title} images={images} />
         </div>
 
         <ProductDescription description={description} />

@@ -28,13 +28,15 @@
 }
 
 .leftPartGridOne {
+  width: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .price {
+  align-self: center;
   font-family: var(--font-price);
   font-size: 24px;
   font-weight: bold;

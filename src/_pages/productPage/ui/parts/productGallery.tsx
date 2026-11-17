@@ -12,6 +12,7 @@ import { createPortal } from 'react-dom';
 export type ProductGalleryProps = {
   title: string;
   images: string[];
+  className?: string;
 };
 
 /**
