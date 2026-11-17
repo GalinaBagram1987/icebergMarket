@@ -59,7 +59,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const RootLayout = async ({ children }: RootLayoutProvider) => {
   const messages = await getMessages();
-  const yandexKey = process.env.NEXT_PUBLIC_YANDEX_MAP_KEY || '';
   return (
     <html lang="ru" className="notranslate">
       <body>
@@ -73,7 +72,7 @@ const RootLayout = async ({ children }: RootLayoutProvider) => {
           </NextIntlClientProvider>
         </div>
         {/* Подключает скрипт яндекс-карт */}
-        <Script src={`https://yandex.ru{yandexKey}`} strategy="beforeInteractive" />
+        <Script src={`https://api-maps.yandex.ru/2.1/?apikey=${process.env.NEXT_PUBLIC_YANDEX_MAP_KEY}&lang=ru_RU`} strategy="beforeInteractive" />
       </body>
     </html>
   );
