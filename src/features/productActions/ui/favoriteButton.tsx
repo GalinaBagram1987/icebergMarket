@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import { ActionButton } from '@/shared/ui/actionButton';
 import { useFavorite } from '../model/useFavorite';
 import { FaRegStar } from 'react-icons/fa';
+import styles from './favoriteButton.module.css';
+
 /**
  * Тип для кнопки favorite
  */
@@ -24,7 +26,7 @@ export const FavoriteButton = ({ productId }: FavoriteButtonProps) => {
     <ActionButton isActive={isFavorite} onClick={toggleFavorite} type="button">
       {isFavorite ? (
         <>
-          <FaRegStar />
+          <FaRegStar className={styles.starColorInFavorite} />
           {t('productPage.inFavorites')}
         </>
       ) : (
