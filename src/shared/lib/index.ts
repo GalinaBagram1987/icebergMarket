@@ -22,3 +22,5 @@ export { useYandexMap } from './mapHooks/useYandexMapSingle';
 export { MapModalSingle } from '../ui/mapModalSingle';
 
 export { formatToYear } from './formatDateToYear';
+
+export { useYandexMapList } from './mapHooks/useYandexMapList';
