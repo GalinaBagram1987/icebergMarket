@@ -44,7 +44,7 @@
 /*Стили для контейнера карты*/
 
 .mapContainer {
-  width: 580px;
+  width: 810px;
   height: 295px;
   border-bottom-right-radius: var(--radius-max);
   border-top-right-radius: var(--radius-max);
@@ -69,7 +69,7 @@
 
 .attributesSection {
   width: 320px;
-  min-height: 335px;
+  min-height: 266px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

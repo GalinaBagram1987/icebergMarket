@@ -4,9 +4,9 @@
   margin-top: 26px;
   margin-bottom: 35px;
   padding-top: 12px;
+  padding-right: 10px;
 
-  width: 1050px;
-  max-width: var(--content-max-width);
+  width: 1230px;
 }
 /*Заголовок*/
 .titleStyle {
