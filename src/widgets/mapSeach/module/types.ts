@@ -1,3 +1,6 @@
+import type { PostDetailResponse } from '@/shared/api/apiMethods/catalog';
+import type { SearchGetResponse } from '@/shared/api/apiMethods/catalog';
+
 /**
  * Состояния показа карты
  *
@@ -9,7 +12,42 @@
 export type MapDrawerState = { mode: 'map' } | { mode: 'list' } | { mode: 'product'; productId: string | number };
 
 /**
- * Входящие пропсы компонента
+ * Входящие типы поиска по карте
  */
 
-export type MapSearchCollectorProps = {};
+export type MapSearchWidgetProps = {
+  // Принимаем весь ответ бэка
+  initialSearchData: SearchGetResponse;
+
+  // Колбэк для закрытия (возврат на страницу)
+  onCloseMap?: () => void;
+
+  className?: string;
+};
+
+// export type SearchGetResponse = {
+//   count: number;
+//   categories: {
+//     [key: string]: {
+//       id: number;
+//       name: string;
+//       slug: string;
+//       path: string;
+//       count: number;
+//     };
+//   };
+//   posts: {
+//     id: string;
+//     title: string;
+//     price: string | number;
+//     date: string;
+//     title_image: string;
+//     category_id: number;
+//     description: string;
+//     author_id: string;
+//     author_name: string;
+//     author_image: string;
+//     attributes: BackendAttributes;
+//     views: number | string;
+//   }[];
+// };

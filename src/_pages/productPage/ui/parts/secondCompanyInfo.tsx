@@ -22,12 +22,17 @@ export type SecondCompanyInfoProps = {
  * Информация про компанию
  */
 
+const PLACEHOLDER_IMAGE = '/img/noPhoto.jpg';
+
 export const SecondCompanyInfo = ({ image, productSeller, date_created, address, telephone }: SecondCompanyInfoProps) => {
   const streetLine = `${address.street} ${address.house} `;
 
+  // const trimmedImage = image?.trim();
+
   return (
     <div className={styles.secondCompanyWrapper}>
-      <img src={image} alt={`'логотип компании' ${productSeller}`} className={styles.logoSecondComp} />
+      <img src={image} alt={`Логотип ${productSeller}`} className={styles.logoSecondComp} />
+
       <p className={styles.nameSecondComp}>{productSeller}</p>
       <p className={styles.dateCreate}>На сайте с {formatToYear(date_created)}</p>
       <p className={styles.citySecondComp}>{address.city}</p>

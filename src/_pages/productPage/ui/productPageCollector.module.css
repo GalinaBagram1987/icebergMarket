@@ -60,6 +60,6 @@
   display: grid;
   grid-template-columns: 170px 1fr;
   gap: 160px;
-  padding: 0px 70px 40px 70px;
-  height: 325px;
+  padding: 0px 10px 40px 70px;
+  /* height: 325px; */
 }

@@ -36,33 +36,35 @@ export const catalogRequest = {
     // =========================================================================
     // ВРЕМЕННАЯ ЗАГЛУШКА ДЛЯ КАТЕГОРИЙ — ИСПРАВЛЕНО
     // =========================================================================
-    const useStub = true;
+    // const useStub = true;
 
-    if (useStub) {
-      console.log('[MOCK GET CATEGORY] Возвращаем структуру категории для пути:', path);
-      return {
-        category: {
-          id: 40,
-          parent_id: null,
-          name: 'Авто-мото',
-          slug: 'avto-moto',
-          path: 'avto-moto',
-          is_leaf: false,
-          attributes: [],
-        },
-        categories: [
-          {
-            id: 41,
-            parent_id: 40,
-            name: 'Шины и диски',
-            slug: 'shiny-i-diski',
-            path: 'avto-moto/shiny-i-diski',
-            is_leaf: false,
-            attributes: [],
-          },
-        ],
-      };
-    }
+    // if (useStub) {
+    //   console.log('[MOCK GET CATEGORY] Возвращаем структуру категории для пути:', path);
+    //   return {
+    //     category: {
+    //       id: 40,
+    //       parent_id: null,
+    //       name: 'Авто-мото',
+    //       slug: 'avto-moto',
+    //       path: 'avto-moto',
+    //       is_leaf: false,
+    //       attributes: [],
+    //     },
+    //     categories: [
+    //       {
+    //         id: 41,
+    //         parent_id: 40,
+    //         name: 'Шины и диски',
+    //         slug: 'shiny-i-diski',
+    //         path: 'avto-moto/shiny-i-diski',
+    //         is_leaf: false,
+    //         attributes: [],
+    //       },
+    //     ],
+    //   };
+    // }
+    // =========================================================================
+    // THE END MOCK
     // =========================================================================
     const requestPath = `posts/${path}`;
 
@@ -109,51 +111,53 @@ export const catalogRequest = {
     // =========================================================================
     // ВРЕМЕННАЯ ЗАГЛУШКА ДЛЯ ПОДКАТЕГОРИЙ — удалить, когда бэкенд заработает
     // =========================================================================
-    const useStub = true;
+    // const useStub = true;
 
-    if (useStub) {
-      console.log('[MOCK GET SUB-CATEGORY] Возвращаем заглушку для пути:', path);
+    // if (useStub) {
+    //   console.log('[MOCK GET SUB-CATEGORY] Возвращаем заглушку для пути:', path);
 
-      // Проверяем, насколько глубоко зашел пользователь
-      if (path.includes('kolpaki')) {
-        return {
-          category: {
-            id: 42,
-            parent_id: 41,
-            name: 'Колпаки',
-            slug: 'kolpaki',
-            path: 'avto-moto/shiny-i-diski/kolpaki',
-            is_leaf: true, // это самый глубокий уровень
-            attributes: [],
-          },
-          categories: [], // детей больше нет
-        };
-      }
+    //   // Проверяем, насколько глубоко зашел пользователь
+    //   if (path.includes('kolpaki')) {
+    //     return {
+    //       category: {
+    //         id: 42,
+    //         parent_id: 41,
+    //         name: 'Колпаки',
+    //         slug: 'kolpaki',
+    //         path: 'avto-moto/shiny-i-diski/kolpaki',
+    //         is_leaf: true, // это самый глубокий уровень
+    //         attributes: [],
+    //       },
+    //       categories: [], // детей больше нет
+    //     };
+    //   }
 
-      // По умолчанию считаем, что мы на уровне "avto-moto/shiny-i-diski"
-      return {
-        category: {
-          id: 41,
-          parent_id: 40,
-          name: 'Шины и диски',
-          slug: 'shiny-i-diski',
-          path: 'avto-moto/shiny-i-diski',
-          is_leaf: false,
-          attributes: [],
-        },
-        categories: [
-          {
-            id: 42,
-            parent_id: 41,
-            name: 'Колпаки',
-            slug: 'kolpaki',
-            path: 'avto-moto/shiny-i-diski/kolpaki',
-            is_leaf: true,
-            attributes: [],
-          },
-        ],
-      };
-    }
+    //   // По умолчанию считаем, что мы на уровне "avto-moto/shiny-i-diski"
+    //   return {
+    //     category: {
+    //       id: 41,
+    //       parent_id: 40,
+    //       name: 'Шины и диски',
+    //       slug: 'shiny-i-diski',
+    //       path: 'avto-moto/shiny-i-diski',
+    //       is_leaf: false,
+    //       attributes: [],
+    //     },
+    //     categories: [
+    //       {
+    //         id: 42,
+    //         parent_id: 41,
+    //         name: 'Колпаки',
+    //         slug: 'kolpaki',
+    //         path: 'avto-moto/shiny-i-diski/kolpaki',
+    //         is_leaf: true,
+    //         attributes: [],
+    //       },
+    //     ],
+    //   };
+    // }
+    // =========================================================================
+    // THE END MOCK
     // =========================================================================
 
     const requestPath = `posts/${path}`;
@@ -196,124 +200,124 @@ export const catalogRequest = {
     // =========================================================================
     // ВРЕМЕННАЯ ЗАГЛУШКА(MOCK) — удалить этот блок, когда бэкенд заработает.
     // =========================================================================
-    const useStub = true;
+    // const useStub = true;
 
-    if (useStub) {
-      // 1. Моки строго по типу SearchGetResponse['posts']
-      const ALL_MOCK_POSTS: SearchGetResponse['posts'] = [
-        {
-          id: 'mock_avto_1',
-          title: 'Дверь передняя правая',
-          price: 15000,
-          title_image: '/mockImg/1(1).png',
-          category_id: 40,
-          author_id: 'user_1',
-          author_name: 'АвтоРазбор НСК',
-          author_image: '/images/avatar-placeholder.jpg',
-          attributes: {},
-          date: '1718234800', // строка
-          views: 45,
-          description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.',
-        },
-        {
-          id: 'mock_avto_2',
-          title: 'Бампер передний',
-          price: 8500,
-          title_image: '/mockImg/1(2).png',
-          category_id: 40,
-          author_id: 'user_2',
-          author_name: 'Дмитрий В.',
-          author_image: '/images/avatar-placeholder.jpg',
-          attributes: {},
-          date: '1718321200',
-          views: 112,
-          description: 'Передний бампер, под покраску. Все крепления целые, трещин нет. Небольшие потертости по нижней кромке.',
-        },
-        {
-          id: 'mock_shiny_1',
-          title: 'Летние шины Michelin Primacy 4',
-          price: 32000,
-          title_image: '/mockImg/1(3).png',
-          category_id: 41,
-          author_id: 'user_3',
-          author_name: 'Шинный Центр',
-          author_image: '/images/avatar-placeholder.jpg',
-          attributes: { size: 'R17' },
-          date: '1718407600',
-          views: 250,
-          description: 'Комплект премиальных летних шин. Износ минимальный (один сезон). Отличное сцепление как на сухом, так и на мокром асфальте.',
-        },
-      ];
+    // if (useStub) {
+    //   // 1. Моки строго по типу SearchGetResponse['posts']
+    //   const ALL_MOCK_POSTS: SearchGetResponse['posts'] = [
+    //     {
+    //       id: 'mock_avto_1',
+    //       title: 'Дверь передняя правая',
+    //       price: 15000,
+    //       title_image: '/mockImg/1(1).png',
+    //       category_id: 40,
+    //       author_id: 'user_1',
+    //       author_name: 'АвтоРазбор НСК',
+    //       author_image: '/images/avatar-placeholder.jpg',
+    //       attributes: {},
+    //       date: '1718234800', // строка
+    //       views: 45,
+    //       description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов.',
+    //     },
+    //     {
+    //       id: 'mock_avto_2',
+    //       title: 'Бампер передний',
+    //       price: 8500,
+    //       title_image: '/mockImg/1(2).png',
+    //       category_id: 40,
+    //       author_id: 'user_2',
+    //       author_name: 'Дмитрий В.',
+    //       author_image: '/images/avatar-placeholder.jpg',
+    //       attributes: {},
+    //       date: '1718321200',
+    //       views: 112,
+    //       description: 'Передний бампер, под покраску. Все крепления целые, трещин нет. Небольшие потертости по нижней кромке.',
+    //     },
+    //     {
+    //       id: 'mock_shiny_1',
+    //       title: 'Летние шины Michelin Primacy 4',
+    //       price: 32000,
+    //       title_image: '/mockImg/1(3).png',
+    //       category_id: 41,
+    //       author_id: 'user_3',
+    //       author_name: 'Шинный Центр',
+    //       author_image: '/images/avatar-placeholder.jpg',
+    //       attributes: { size: 'R17' },
+    //       date: '1718407600',
+    //       views: 250,
+    //       description: 'Комплект премиальных летних шин. Износ минимальный (один сезон). Отличное сцепление как на сухом, так и на мокром асфальте.',
+    //     },
+    //   ];
 
-      // 2. Парсинг фильтров
-      const filParam = body.fil || '';
-      let currentPath = '';
+    //   // 2. Парсинг фильтров
+    //   const filParam = body.fil || '';
+    //   let currentPath = '';
 
-      if (filParam) {
-        const segments = filParam.split(';');
-        const pathSegment = segments.find((seg) => seg.startsWith('category_path='));
-        if (pathSegment) {
-          currentPath = pathSegment.split('=')[1] || '';
-        }
-      }
+    //   if (filParam) {
+    //     const segments = filParam.split(';');
+    //     const pathSegment = segments.find((seg) => seg.startsWith('category_path='));
+    //     if (pathSegment) {
+    //       currentPath = pathSegment.split('=')[1] || '';
+    //     }
+    //   }
 
-      const searchQuery = (body.q || '').trim().toLowerCase();
-      let searchedPosts = ALL_MOCK_POSTS;
+    //   const searchQuery = (body.q || '').trim().toLowerCase();
+    //   let searchedPosts = ALL_MOCK_POSTS;
 
-      if (searchQuery) {
-        searchedPosts = ALL_MOCK_POSTS.filter((post) => post.title.toLowerCase().includes(searchQuery) || post.description.toLowerCase().includes(searchQuery));
-      }
+    //   if (searchQuery) {
+    //     searchedPosts = ALL_MOCK_POSTS.filter((post) => post.title.toLowerCase().includes(searchQuery) || post.description.toLowerCase().includes(searchQuery));
+    //   }
 
-      // 3. Расчет категорий
-      const categoryMap: Record<number, { name: string; slug: string; count: number }> = {
-        40: { name: 'Авто-мото', slug: 'avto-moto', count: 0 },
-        41: { name: 'Шины и диски', slug: 'avto-moto/shiny-i-diski', count: 0 },
-      };
+    //   // 3. Расчет категорий
+    //   const categoryMap: Record<number, { name: string; slug: string; count: number }> = {
+    //     40: { name: 'Авто-мото', slug: 'avto-moto', count: 0 },
+    //     41: { name: 'Шины и диски', slug: 'avto-moto/shiny-i-diski', count: 0 },
+    //   };
 
-      searchedPosts.forEach((post) => {
-        if (categoryMap[post.category_id]) {
-          categoryMap[post.category_id].count += 1;
-        }
-      });
+    //   searchedPosts.forEach((post) => {
+    //     if (categoryMap[post.category_id]) {
+    //       categoryMap[post.category_id].count += 1;
+    //     }
+    //   });
 
-      // 4. Формируем categories как объект (согласно SearchGetResponse)
-      const categoriesObject: SearchGetResponse['categories'] = {};
-      Object.entries(categoryMap)
-        .filter(([_, value]) => value.count > 0)
-        .forEach(([id, value]) => {
-          categoriesObject[id] = {
-            id: Number(id),
-            name: value.name,
-            slug: value.slug.split('/').pop() || '',
-            path: value.slug,
-            count: value.count,
-          };
-        });
+    //   // 4. Формируем categories как объект (согласно SearchGetResponse)
+    //   const categoriesObject: SearchGetResponse['categories'] = {};
+    //   Object.entries(categoryMap)
+    //     .filter(([_, value]) => value.count > 0)
+    //     .forEach(([id, value]) => {
+    //       categoriesObject[id] = {
+    //         id: Number(id),
+    //         name: value.name,
+    //         slug: value.slug.split('/').pop() || '',
+    //         path: value.slug,
+    //         count: value.count,
+    //       };
+    //     });
 
-      // 5. Фильтрация по категории (используем category_id вместо отсутствующего path)
-      let filteredPosts = searchedPosts;
-      if (currentPath === 'avto-moto') {
-        filteredPosts = searchedPosts.filter((p) => p.category_id === 40);
-      } else if (currentPath === 'avto-moto/shiny-i-diski') {
-        filteredPosts = searchedPosts.filter((p) => p.category_id === 41);
-      }
+    //   // 5. Фильтрация по категории (используем category_id вместо отсутствующего path)
+    //   let filteredPosts = searchedPosts;
+    //   if (currentPath === 'avto-moto') {
+    //     filteredPosts = searchedPosts.filter((p) => p.category_id === 40);
+    //   } else if (currentPath === 'avto-moto/shiny-i-diski') {
+    //     filteredPosts = searchedPosts.filter((p) => p.category_id === 41);
+    //   }
 
-      // 6. Сортировка
-      const currentSort = body.sort || 'date:asc';
-      if (currentSort === 'price:asc') {
-        filteredPosts.sort((a, b) => Number(a.price) - Number(b.price));
-      } else if (currentSort === 'price:desc') {
-        filteredPosts.sort((a, b) => Number(b.price) - Number(a.price));
-      } else if (currentSort === 'date:asc') {
-        filteredPosts.sort((a, b) => Number(a.date) - Number(b.date));
-      }
+    //   // 6. Сортировка
+    //   const currentSort = body.sort || 'date:asc';
+    //   if (currentSort === 'price:asc') {
+    //     filteredPosts.sort((a, b) => Number(a.price) - Number(b.price));
+    //   } else if (currentSort === 'price:desc') {
+    //     filteredPosts.sort((a, b) => Number(b.price) - Number(a.price));
+    //   } else if (currentSort === 'date:asc') {
+    //     filteredPosts.sort((a, b) => Number(a.date) - Number(b.date));
+    //   }
 
-      return {
-        count: filteredPosts.length,
-        categories: categoriesObject,
-        posts: filteredPosts,
-      };
-    }
+    //   return {
+    //     count: filteredPosts.length,
+    //     categories: categoriesObject,
+    //     posts: filteredPosts,
+    //   };
+    // }
     // =========================================================================
     // THE END MOCK
     // =========================================================================
@@ -441,61 +445,61 @@ export const catalogRequest = {
     // =========================================================================
     // ВРЕМЕННАЯ ЗАГЛУШКА (MOCK) — удалить, когда бэкенд заработает
     // =========================================================================
-    const useStub = true;
+    // const useStub = true;
 
-    if (useStub) {
-      console.log('[MOCK GET DETAIL] Возвращаем карточку товара для ID:', body.post_id);
+    // if (useStub) {
+    //   console.log('[MOCK GET DETAIL] Возвращаем карточку товара для ID:', body.post_id);
 
-      // Мок-данные строго по типу PostDetailResponse
-      const mockPostDetail: PostDetailResponse = {
-        post_id: body.post_id,
-        views: 125,
-        price: 15000,
-        title: 'Дверь передняя правая (оригинал)',
-        author_id: 'user_1',
-        author: {
-          id: 'user_1',
-          name: 'АвтоРазбор НСК',
-          email: 'test@example.com',
-          image: '/images/avatar-placeholder.jpg',
-          date_created: '2024-01-15T10:30:00Z',
-          full_name: 'Иванов Иван Иванович',
-          telephone: '+79991234567',
-          description: 'Официальный разбор автомобилей',
-          delivery_description: 'Доставка по городу и области',
-          address: {
-            city: 'Новосибирск',
-            street: 'ул. Станционная',
-            house: '30А',
-          },
-        },
-        attributes: [
-          { key: 'Состояние', value: 'Б/у' },
-          { key: 'Производитель', value: 'Оригинал' },
-          { key: 'Цвет', value: 'Серебристый' },
-        ],
-        description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов. Все крепления целые.',
-        breadcrumbs: [
-          { id: 1, name: 'Авто-мото', slug: 'avto-moto' },
-          { id: 2, name: 'Запчасти', slug: 'zapchasti' },
-          { id: 3, name: 'Кузовные детали', slug: 'kuzovnye-detali' },
-        ],
-        images: ['/mockImg/1(1).png', '/mockImg/1(2).png', '/mockImg/1(3).png'],
-        directory_name: 'mock-directory',
-        posted_at: '2026-10-27T09:31:35.809029+00:00',
-        category_id: 40,
-        price_list_name: 'test_price_list',
-        title_image: '/mockImg/1(1).png',
-        is_favourite: false,
-        address: {
-          city: 'Новосибирск',
-          street: 'ул. Станционная',
-          house: '30А',
-        },
-      };
+    //   // Мок-данные строго по типу PostDetailResponse
+    //   const mockPostDetail: PostDetailResponse = {
+    //     post_id: body.post_id,
+    //     views: 125,
+    //     price: 15000,
+    //     title: 'Дверь передняя правая (оригинал)',
+    //     author_id: 'user_1',
+    //     author: {
+    //       id: 'user_1',
+    //       name: 'АвтоРазбор НСК',
+    //       email: 'test@example.com',
+    //       image: '/images/avatar-placeholder.jpg',
+    //       date_created: '2024-01-15T10:30:00Z',
+    //       full_name: 'Иванов Иван Иванович',
+    //       telephone: '+79991234567',
+    //       description: 'Официальный разбор автомобилей',
+    //       delivery_description: 'Доставка по городу и области',
+    //       address: {
+    //         city: 'Новосибирск',
+    //         street: 'ул. Станционная',
+    //         house: '30А',
+    //       },
+    //     },
+    //     attributes: [
+    //       { key: 'Состояние', value: 'Б/у' },
+    //       { key: 'Производитель', value: 'Оригинал' },
+    //       { key: 'Цвет', value: 'Серебристый' },
+    //     ],
+    //     description: 'Оригинальная передняя правая дверь в отличном состоянии. Без вмятин и глубоких царапин. Подходит для моделей 2019-2023 годов. Все крепления целые.',
+    //     breadcrumbs: [
+    //       { id: 1, name: 'Авто-мото', slug: 'avto-moto' },
+    //       { id: 2, name: 'Запчасти', slug: 'zapchasti' },
+    //       { id: 3, name: 'Кузовные детали', slug: 'kuzovnye-detali' },
+    //     ],
+    //     images: ['/mockImg/1(1).png', '/mockImg/1(2).png', '/mockImg/1(3).png'],
+    //     directory_name: 'mock-directory',
+    //     posted_at: '2026-10-27T09:31:35.809029+00:00',
+    //     category_id: 40,
+    //     price_list_name: 'test_price_list',
+    //     title_image: '/mockImg/1(1).png',
+    //     is_favourite: false,
+    //     address: {
+    //       city: 'Новосибирск',
+    //       street: 'ул. Станционная',
+    //       house: '30А',
+    //     },
+    //   };
 
-      return mockPostDetail;
-    }
+    //   return mockPostDetail;
+    // }
     // =========================================================================
     // THE END MOCK
     // =========================================================================

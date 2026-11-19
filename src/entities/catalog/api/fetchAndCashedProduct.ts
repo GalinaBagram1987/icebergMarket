@@ -12,9 +12,15 @@ import type { PostDetailResponse } from '@/shared/api/apiMethods/catalog';
  * получает данные с бэка и кеширует на указанное в конфиге некст
  */
 
-export async function serverFetchAndCachedProduct(id: string): Promise<PostDetailResponse> {
+export async function serverFetchAndCachedProduct(id: string): Promise<PostDetailResponse | null> {
+  const normalizedId = id?.replace(/^\/+|\/+$/g, '') || '';
+
+  // Не делаем запрос на бэк и не засоряем кеш, если пришло имя файла (.jpeg, .ico) или пустота
+  if (!normalizedId || normalizedId.includes('.')) {
+    return null;
+  }
+
   cacheLife('minutes');
-  const normalizedId = id.replace(/^\/+|\/+$/g, '');
   cacheTag(`productId-${normalizedId}`);
 
   try {
