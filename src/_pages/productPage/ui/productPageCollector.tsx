@@ -11,6 +11,7 @@ import { ProductDescription } from './parts/descriptionProduct';
 import { SecondCompanyInfo } from './parts/secondCompanyInfo';
 import { ProductMap } from './parts/productMap';
 import { ProductGallery } from './parts/productGallery';
+import { getMediaUrl } from '@/shared/lib';
 
 /**
  * Страница товара типовая
@@ -20,6 +21,8 @@ import { ProductGallery } from './parts/productGallery';
 export const ProductPageCollector = ({ productData, t }: ProductPageCollectorProps) => {
   if (!productData) return null;
   const { post_id, views, price, title, author_id, author, attributes, description, images, posted_at, category_id, price_list_name, title_image, is_favourite, address } = productData;
+  const pathImages = images.map((img) => getMediaUrl(img));
+  const titleLogo = getMediaUrl(title_image);
 
   return (
     <div>
@@ -37,12 +40,12 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
             <ProductAttributes attributes={attributes} />
           </div>
 
-          <ProductGallery className={styles.containerByFoto} title={title} images={images} />
+          <ProductGallery className={styles.containerByFoto} title={title} images={pathImages} />
         </div>
 
         <ProductDescription description={description} />
         <div className={styles.companyInfoWrapper}>
-          <SecondCompanyInfo image={author.image} productSeller={author.name} date_created={author.date_created} address={address ?? author.address} telephone={author.telephone} />
+          <SecondCompanyInfo image={titleLogo} productSeller={author.name} date_created={author.date_created} address={address ?? author.address} telephone={author.telephone} />
           <ProductMap address={address} />
         </div>
       </div>
