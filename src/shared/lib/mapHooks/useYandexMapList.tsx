@@ -15,7 +15,7 @@ export type MapPointItem = {
  * Тип для списка точек
  */
 
-type UseYandexMapListProps = {
+export type UseYandexMapListProps = {
   points: MapPointItem[];
   activePointId?: string | number | null;
   defaultCenter?: [number, number];

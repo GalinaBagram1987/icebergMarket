@@ -79,7 +79,7 @@ export type SearchPostsRequestBody = {
 };
 
 /**
- * Полный ответ поиска (200 OK)
+ * Полный ответ общего поиска (200 OK)
  */
 export type SearchGetResponse = {
   count: number;
@@ -105,6 +105,8 @@ export type SearchGetResponse = {
     author_image: string;
     attributes: BackendAttributes;
     views: number | string;
+    address: `${string}/${string}/${string}` | string | null; // in this string back return "city/street/house"
+    coordinates: [number, number]; // back returns long / lat
   }[];
 };
 
@@ -150,6 +152,7 @@ export type PostDetailResponse = {
       street: string;
       house: string;
     };
+    coordinates: [number, number]; // back returns long / lat
   };
   attributes: any[];
   description: string;
@@ -170,6 +173,7 @@ export type PostDetailResponse = {
     street: string;
     house: string;
   };
+  coordinates: [number, number]; // back returns long / lat
 };
 
 // ================================================

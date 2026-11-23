@@ -16,7 +16,7 @@ export const CategoryFilterBadges = ({ categories }: CategoryFilterBadgesProps) 
 
   return (
     <div className={styles.wrapper}>
-      <ul className={styles.ulResert}>
+      <ul className={styles.ulResertAndFlex}>
         {categoriesList.map((category) => {
           const queryParams = new URLSearchParams();
           if (currentQuery) {
