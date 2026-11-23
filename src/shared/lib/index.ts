@@ -26,3 +26,5 @@ export { formatToYear } from './formatDateToYear';
 export { useYandexMapList } from './mapHooks/useYandexMapList';
 
 export type { UseYandexMapListProps, MapPointItem } from './mapHooks/useYandexMapList';
+
+export { getMediaUrl } from './getMediaUrl';
