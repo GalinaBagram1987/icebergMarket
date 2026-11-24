@@ -11,8 +11,9 @@ export const PostBreadcrumbs = async ({ post }: { post: PostDetailResponse }) =>
 
   const items: { name: string; path: string }[] = [];
   let accumulatedPath = '';
-
-  post.breadcrumbs.forEach((crumb) => {
+  console.log('[POST BREADCRUMBS]:', post.breadcrumbs);
+  const breadcrumbsForPost = [...post.breadcrumbs].reverse();
+  breadcrumbsForPost.forEach((crumb) => {
     accumulatedPath = accumulatedPath ? `${accumulatedPath}/${crumb.slug}` : crumb.slug;
     items.push({
       name: crumb.name,

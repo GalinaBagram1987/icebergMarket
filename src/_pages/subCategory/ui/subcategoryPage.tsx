@@ -15,6 +15,9 @@ import { normalizedPostItem } from '@/shared/lib';
  */
 
 export const SubcategoryPage = ({ path, subcategoryData, postsData, searchParams, t }: SubCategoryPageProps) => {
+  console.log('[DEBUG SUBCATEGORY RAW]:', subcategoryData);
+  console.log('[DEBUG POST DATA RAW]:', postsData);
+
   if (!subcategoryData || !subcategoryData.category) return null;
   const queryKey = searchParams?.q || '';
   const modeKey = searchParams?.searchMode || 'global';
