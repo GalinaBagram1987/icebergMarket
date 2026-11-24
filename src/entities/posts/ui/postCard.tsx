@@ -1,6 +1,7 @@
 import styles from './postCard.module.css';
 import type { PostItemProps } from '../model/types';
 import { formatPostDate } from '@/entities/lib';
+import { getMediaUrl } from '@/shared/lib';
 
 export const PostCard = ({ post }: { post: PostItemProps }) => {
   const curPostDate = formatPostDate(post.date);
@@ -10,10 +11,10 @@ export const PostCard = ({ post }: { post: PostItemProps }) => {
   const imageFolder = process.env.NEXT_PUBLIC_BACKEND_IMAGE_FOLDER || '';
 
   const imgPage = post.title_image?.trim() ? `${baseUrl}${imageFolder}/${post.title_image.replace(/^\//, '')}` : notImg;
-
+  const imgLink = getMediaUrl(imgPage);
   return (
     <article className={styles.postGrid}>
-      <img src={imgPage} loading="lazy" alt={`картинка для ${post.title}`} className={styles.postImg} />
+      <img src={imgLink} loading="lazy" alt={`картинка для ${post.title}`} className={styles.postImg} />
       <div className={styles.prodDescriptionBlock}>
         <h2 className={styles.postTitle}>{post.title}</h2>
         <p className={styles.postText}>{post.description}</p>
