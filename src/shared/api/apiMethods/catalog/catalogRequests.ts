@@ -371,6 +371,11 @@ export const catalogRequest = {
     params.append('page', body.page || '1');
     params.append('limit', String(body.limit || '20'));
 
+    // сортировка
+    if (body.sort && body.sort.trim() !== '') {
+      params.append('sort', body.sort.trim());
+    }
+
     const queryString = params.toString();
     console.log('[AXIOS SUCCESSFUL URL]:', `${requestPath}?${queryString}`);
 
@@ -423,6 +428,7 @@ export const catalogRequest = {
             street: '',
             house: '',
           },
+          coordinates: [0, 0],
         },
         attributes: [],
         description: '',
@@ -439,6 +445,7 @@ export const catalogRequest = {
           street: '',
           house: '',
         },
+        coordinates: [0, 0],
       };
     }
 

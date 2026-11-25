@@ -28,3 +28,7 @@ export { useYandexMapList } from './mapHooks/useYandexMapList';
 export type { UseYandexMapListProps, MapPointItem } from './mapHooks/useYandexMapList';
 
 export { getMediaUrl } from './getMediaUrl';
+
+export type { BackendMapPoint, MapPoint } from './coordinateConvector/coordinateConvector';
+
+export { coordinateConvector } from './coordinateConvector/coordinateConvector';
