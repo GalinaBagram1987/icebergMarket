@@ -4,15 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import type * as MapLibre from 'maplibre-gl';
 import { UseOpenFreeMapSingleParams } from './types';
 
-const SOCHI_CENTER: [number, number] = [39.720278, 43.585278];
+const SOCHI_CENTER: [number, number] = [39.720278, 43.585278]; // long , lat
 const MARKER_COLOR = '#1E88E5';
 const STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 
-export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapSingleParams) => {
+export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapSingleParams) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<MapLibre.Map | null>(null);
   const markerRef = useRef<MapLibre.Marker | null>(null);
   const maplibreRef = useRef<typeof MapLibre | null>(null);
+  const observerRef = useRef<ResizeObserver | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
 
   const upsertMarker = (maplibregl: typeof MapLibre, map: MapLibre.Map, coords: [number, number]) => {
@@ -23,16 +24,17 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapS
     }
   };
 
-  // Инициализация + cleanup в одном эффекте
+  // 1. Инициализация карты: перезапускается при появлении coordinates (когда модалка уже открыта)
   useEffect(() => {
-    if (!mapRef.current || mapInstanceRef.current) return;
+    if (!mapRef.current || !coordinates || mapInstanceRef.current) return;
 
     let cancelled = false;
-    let observer: ResizeObserver | null = null;
 
     const initMap = async () => {
       try {
         const maplibregl = await import('maplibre-gl');
+        // const maplibregl = await import('maplibre-gl');
+        maplibregl.setWorkerUrl('/maplibre/maplibre-gl-worker.mjs');
         if (cancelled || !mapRef.current || mapInstanceRef.current) return;
 
         maplibreRef.current = maplibregl;
@@ -47,7 +49,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapS
         map.addControl(new maplibregl.NavigationControl(), 'top-right');
         mapInstanceRef.current = map;
 
-        observer = new ResizeObserver(() => {
+        const observer = new ResizeObserver(() => {
           try {
             map.resize();
           } catch (error) {
@@ -55,6 +57,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapS
           }
         });
         observer.observe(mapRef.current);
+        observerRef.current = observer;
 
         setIsMapReady(true);
       } catch (error) {
@@ -66,28 +69,11 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapS
 
     return () => {
       cancelled = true;
-      observer?.disconnect();
-      try {
-        markerRef.current?.remove();
-      } catch (error) {
-        console.error('Ошибка при удалении маркера:', error);
-      } finally {
-        markerRef.current = null;
-      }
-      try {
-        mapInstanceRef.current?.remove();
-      } catch (error) {
-        console.error('Ошибка при удалении инстанса карты:', error);
-      } finally {
-        mapInstanceRef.current = null;
-        maplibreRef.current = null;
-        setIsMapReady(false);
-      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [coordinates?.[0], coordinates?.[1]]);
 
-  // Обновление — срабатывает и когда карта готова, и когда меняются координаты
+  // 2. Обновление центра и метки
   useEffect(() => {
     const maplibregl = maplibreRef.current;
     const map = mapInstanceRef.current;
@@ -101,6 +87,25 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 12 }: UseOpenFreeMapS
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMapReady, coordinates?.[0], coordinates?.[1], zoom]);
+
+  // 3. Очистка строго при размонтировании компонента (как в useYandexMap)
+  useEffect(() => {
+    return () => {
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+      try {
+        markerRef.current?.remove();
+      } finally {
+        markerRef.current = null;
+      }
+      try {
+        mapInstanceRef.current?.remove();
+      } finally {
+        mapInstanceRef.current = null;
+        maplibreRef.current = null;
+      }
+    };
+  }, []);
 
   return { mapRef };
 };
