@@ -6,7 +6,6 @@ import { UseOpenFreeMapSingleParams } from './types';
 
 const SOCHI_CENTER: [number, number] = [39.7257, 43.5855]; // long , lat
 const MARKER_COLOR = '#1E88E5';
-// const STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 const STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 
 export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapSingleParams) => {
