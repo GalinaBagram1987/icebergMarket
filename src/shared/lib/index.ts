@@ -1,3 +1,5 @@
+import { exportArrayBufferView } from 'node:ffi';
+
 //  прямой реэкспорт. всё в одну строку
 export { cn } from './classNames';
 export { default as loadYandexMetrika } from './traking/yandexMetrika';
@@ -32,3 +34,7 @@ export { getMediaUrl } from './getMediaUrl';
 export type { BackendMapPoint, MapPoint } from './coordinateConvector/coordinateConvector';
 
 export { coordinateConvector } from './coordinateConvector/coordinateConvector';
+
+export { useOpenFreeMapSingle } from './mapHooks/useOpenFreeMapSingle';
+
+export type { UseOpenFreeMapListParams, UseOpenFreeMapSingleParams, MapPointOpenFreeMap } from './mapHooks/types';

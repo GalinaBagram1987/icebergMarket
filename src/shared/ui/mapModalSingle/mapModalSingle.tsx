@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FaTimes } from 'react-icons/fa';
-import { useYandexMap } from '@/shared/lib';
+import { useOpenFreeMapSingle } from '@/shared/lib';
 import styles from './mapModalSingle.module.css';
 import { Spinner } from '../LoadingRender/spinner';
 
@@ -18,7 +18,7 @@ export const MapModalSingle = ({ isOpen, onClose, coordinates, error }: MapModal
   const [mounted, setMounted] = useState(false);
 
   // Хук вызывается всегда на верхнем уровне
-  const { mapRef } = useYandexMap({ coordinates });
+  const { mapRef } = useOpenFreeMapSingle({ coordinates });
 
   // Защита для createPortal (SSR/гидратация)
   useEffect(() => {
