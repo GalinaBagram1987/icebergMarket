@@ -14,11 +14,39 @@ type MapModalProps = {
   error?: string | null;
 };
 
+/**
+ * Карта внутри модалки.
+ * монтируется при открытии. Удаляется при закрытии модалки
+ */
+
+const MapModalInner = ({ onClose, coordinates, error }: Omit<MapModalProps, 'isOpen'>) => {
+  const { mapRef } = useOpenFreeMapSingle({ coordinates });
+  return (
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Закрыть">
+          <FaTimes />
+        </button>
+
+        <div ref={mapRef} className={styles.mapContainer} style={{ visibility: coordinates && !error ? 'visible' : 'hidden' }} />
+
+        {error && <div className={styles.loader}>{error}</div>}
+        {!error && !coordinates && (
+          <div className={styles.loader}>
+            <Spinner />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Модальное окно для одного компонента
+ */
+
 export const MapModalSingle = ({ isOpen, onClose, coordinates, error }: MapModalProps) => {
   const [mounted, setMounted] = useState(false);
-
-  // Хук вызывается всегда на верхнем уровне
-  const { mapRef } = useOpenFreeMapSingle({ coordinates });
 
   // Защита для createPortal (SSR/гидратация)
   useEffect(() => {
@@ -49,28 +77,5 @@ export const MapModalSingle = ({ isOpen, onClose, coordinates, error }: MapModal
   // Если модалка закрыта или еще не смонтирована — ничего не рендерим
   if (!isOpen || !mounted) return null;
 
-  return createPortal(
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Закрыть">
-          <FaTimes />
-        </button>
-
-        {/* 
-          Контейнер карты ВСЕГДА в DOM. 
-          Скрываем его через display: none, пока нет координат или есть ошибка.
-        */}
-        <div ref={mapRef} className={styles.mapContainer} style={{ display: coordinates && !error ? 'block' : 'none' }} />
-
-        {/* Лоадер или ошибка поверх контейнера */}
-        {error && <div className={styles.loader}>{error}</div>}
-        {!error && !coordinates && (
-          <div className={styles.loader}>
-            <Spinner />
-          </div>
-        )}
-      </div>
-    </div>,
-    document.body,
-  );
+  return createPortal(<MapModalInner onClose={onClose} coordinates={coordinates} error={error} />, document.body);
 };
