@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { ProductPageCollector } from '@/_pages/productPage';
 import { serverFetchAndCachedProduct } from '@/entities/catalog';
+import { notFound } from 'next/navigation';
 
 /* Тип для страницы продукта
  * примимает ID. грузит метатеги и данные
@@ -27,9 +28,9 @@ export const generateMetadata = async ({ params }: MetadataProductProps): Promis
   console.log('[PAGE] before await params');
 
   const { post_id } = await params;
-  const { title } = await serverFetchAndCachedProduct(post_id);
+  const productData = await serverFetchAndCachedProduct(post_id);
 
-  if (!title) {
+  if (!productData?.title) {
     return {
       title: 'Товар не найден',
       description: 'Запрашиваемый товар не найден.',
@@ -58,7 +59,9 @@ const ProductPageContent = async ({ params }: ProductPageAppProps) => {
   const t = await getTranslations('icebergMarket');
 
   const productData = await serverFetchAndCachedProduct(post_id);
-
+  if (!productData) {
+    return notFound();
+  }
   return <ProductPageCollector t={t} productData={productData} />;
 };
 

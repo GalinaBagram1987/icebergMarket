@@ -21,7 +21,7 @@ import { useYandexMapList } from '@/shared/lib';
 
 export const MapSearchWidget = ({ initialSearchData, onCloseMap, className }: MapSearchWidgetProps) => {
   const [drawerState, setDrawerState] = useState<MapDrawerState>({ mode: 'map' });
-  const [mapPoint, setMapPoint] = useState<MapPointItem[]>([]);
+  const [mapPoint, setMapPoints] = useState<MapPointItem[]>([]);
 
   // Стейт для Состояния В (детальный товар по клику на точку)
   const [selecredProduct, setSelectedProduct] = useState<PostDetailResponse | null>(null);
