@@ -27,6 +27,7 @@ export type ProductPageCollectorProps = {
 //       street: string;
 //       house: string;
 //     };
+//     coordinates: [number, number]; // back returns long / lat
 //   };
 //   attributes: any[];
 //   description: string;
@@ -47,4 +48,5 @@ export type ProductPageCollectorProps = {
 //     street: string;
 //     house: string;
 //   };
+//   coordinates: [number, number]; // back returns long / lat
 // };

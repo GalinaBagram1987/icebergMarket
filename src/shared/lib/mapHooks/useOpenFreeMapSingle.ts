@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type * as MapLibre from 'maplibre-gl';
 import { UseOpenFreeMapSingleParams } from './types';
 
@@ -13,6 +13,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
   const mapInstanceRef = useRef<MapLibre.Map | null>(null);
   const markerRef = useRef<MapLibre.Marker | null>(null);
   const observerRef = useRef<ResizeObserver | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
@@ -32,7 +33,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
         const tilePath = ['rastertiles', 'voyager', '{z}', '{x}', '{y}.png'].join('/');
 
         const map = new maplibregl.Map({
-          center: SOCHI_CENTER,
+          center: targetCenter,
           zoom: 12,
           minZoom: 3,
           maxZoom: 19,
@@ -58,6 +59,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
 
         map.on('load', () => {
           map.resize();
+          setIsLoaded(true);
         });
 
         mapInstanceRef.current = map;
@@ -97,5 +99,5 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
     };
   }, []);
 
-  return { mapRef };
+  return { mapRef, isLoaded };
 };

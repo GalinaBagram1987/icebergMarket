@@ -20,7 +20,7 @@ import { getMediaUrl } from '@/shared/lib';
 
 export const ProductPageCollector = ({ productData, t }: ProductPageCollectorProps) => {
   if (!productData) return null;
-  const { post_id, views, price, title, author_id, author, attributes, description, images, posted_at, category_id, price_list_name, title_image, is_favourite, address } = productData;
+  const { post_id, views, price, title, author_id, author, attributes, description, images, posted_at, category_id, price_list_name, title_image, is_favourite, address, coordinates } = productData;
   const pathImages = images.map((img) => getMediaUrl(img));
   const titleLogo = getMediaUrl(title_image);
 
@@ -46,7 +46,7 @@ export const ProductPageCollector = ({ productData, t }: ProductPageCollectorPro
         <ProductDescription description={description} />
         <div className={styles.companyInfoWrapper}>
           <SecondCompanyInfo image={titleLogo} productSeller={author.name} date_created={author.date_created} address={address ?? author.address} telephone={author.telephone} />
-          <ProductMap address={address} />
+          <ProductMap coordinates={author.coordinates} />
         </div>
       </div>
     </div>

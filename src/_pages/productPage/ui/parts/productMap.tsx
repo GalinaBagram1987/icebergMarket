@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { buildAddressForMap } from '@/shared/lib';
-import { getCoordinatesByAddress } from '@/shared/lib';
+import { useState } from 'react';
 import { useOpenFreeMapSingle } from '@/shared/lib';
 import styles from './parts.module.css';
 import { Spinner } from '@/shared/ui/LoadingRender/spinner';
@@ -12,53 +10,20 @@ import { Spinner } from '@/shared/ui/LoadingRender/spinner';
  */
 
 export type ProductMapProps = {
-  address?: {
-    city?: string;
-    street?: string;
-    house?: string;
-  };
+  coordinates?: [number, number] | null; // [longitude, latitude] - for maplibre
 };
 
 /**
  * компонент карты на странице товара
  */
 
-export const ProductMap = ({ address }: ProductMapProps) => {
-  const [coords, setCoords] = useState<[number, number] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export const ProductMap = ({ coordinates }: ProductMapProps) => {
+  const { mapRef } = useOpenFreeMapSingle({ coordinates: coordinates });
 
-  const fullAddress = buildAddressForMap(address);
-  const { mapRef } = useOpenFreeMapSingle({ coordinates: coords });
-
-  useEffect(() => {
-    if (!fullAddress) {
-      setError('Адрес не указан');
-      return;
-    }
-
-    let isCancelled = false;
-
-    const fetchCoords = async () => {
-      try {
-        setError(null);
-        const yandexCoords = await getCoordinatesByAddress(fullAddress);
-        if (!isCancelled) {
-          setCoords(yandexCoords);
-        }
-      } catch (error) {
-        console.error('Ошибка геокодирования в ProductMap:', error);
-        if (!isCancelled) {
-          setError('Не удалось загрузить карту по указанному адресу');
-        }
-      }
-    };
-
-    fetchCoords();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [fullAddress]);
+  if (!coordinates) {
+    setError('Кординаты не определены');
+    return;
+  }
 
   return (
     <div className={styles.mapContainer}>

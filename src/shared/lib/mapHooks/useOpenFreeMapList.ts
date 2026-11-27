@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type * as MapLibre from 'maplibre-gl';
 import type { UseOpenFreeMapListParams } from './types';
 import type { MapPointOpenFreeMap } from './types';
@@ -44,6 +44,7 @@ export const useOpenFreeMapList = ({ points, activePointId = null, defaultCenter
   const mapInstanceRef = useRef<MapLibre.Map | null>(null);
   const isLoadedRef = useRef(false);
   const observerRef = useRef<ResizeObserver | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const callbacksRef = useRef({ onPointClick, onMapClick });
   callbacksRef.current = { onPointClick, onMapClick };
@@ -142,6 +143,7 @@ export const useOpenFreeMapList = ({ points, activePointId = null, defaultCenter
 
           isLoadedRef.current = true;
           map.resize();
+          setIsLoaded(true);
 
           if (points.length > 1) {
             const bounds = new maplibregl.LngLatBounds();
@@ -205,5 +207,5 @@ export const useOpenFreeMapList = ({ points, activePointId = null, defaultCenter
     };
   }, []);
 
-  return { mapRef };
+  return { mapRef, isLoaded };
 };
