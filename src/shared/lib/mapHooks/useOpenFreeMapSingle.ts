@@ -33,7 +33,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
 
         const map = new maplibregl.Map({
           center: SOCHI_CENTER,
-          zoom: 10,
+          zoom: 12,
           minZoom: 3,
           maxZoom: 19,
           container: mapRef.current,

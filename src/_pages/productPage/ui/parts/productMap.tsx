@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { buildAddressForMap } from '@/shared/lib';
 import { getCoordinatesByAddress } from '@/shared/lib';
-import { useYandexMap } from '@/shared/lib';
+import { useOpenFreeMapSingle } from '@/shared/lib';
 import styles from './parts.module.css';
 import { Spinner } from '@/shared/ui/LoadingRender/spinner';
 
@@ -28,7 +28,7 @@ export const ProductMap = ({ address }: ProductMapProps) => {
   const [error, setError] = useState<string | null>(null);
 
   const fullAddress = buildAddressForMap(address);
-  const { mapRef } = useYandexMap({ coordinates: coords });
+  const { mapRef } = useOpenFreeMapSingle({ coordinates: coords });
 
   useEffect(() => {
     if (!fullAddress) {
