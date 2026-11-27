@@ -25,9 +25,9 @@ export type UseOpenFreeMapSingleParams = {
 export type UseOpenFreeMapListParams = {
   points: MapPointOpenFreeMap[];
   activePointId: string | null;
-  isSplitView: boolean;
+  isSplitView: boolean; // флаг режима разделенного экрана
   onPointClick: (id: string) => void;
   onMapClick?: () => void;
   defaultCenter?: [number, number]; // [long, lat], по умолчанию Сочи
-  defaultZoom?: number;
+  zoom?: number;
 };

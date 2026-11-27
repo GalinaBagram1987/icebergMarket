@@ -52,7 +52,7 @@ export const useOpenFreeMapSingle = ({ coordinates, zoom = 15 }: UseOpenFreeMapS
           },
         });
 
-        map.addControl(new maplibregl.NavigationControl(), 'top-right');
+        map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
 
         markerRef.current = new maplibregl.Marker({ color: MARKER_COLOR }).setLngLat(targetCenter).addTo(map);
 
