@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useOpenFreeMapSingle } from '@/shared/lib';
 import styles from './parts.module.css';
 import { Spinner } from '@/shared/ui/LoadingRender/spinner';
@@ -18,20 +17,13 @@ export type ProductMapProps = {
  */
 
 export const ProductMap = ({ coordinates }: ProductMapProps) => {
-  const { mapRef } = useOpenFreeMapSingle({ coordinates: coordinates });
-
-  if (!coordinates) {
-    setError('Кординаты не определены');
-    return;
-  }
-
+  const { mapRef, isLoaded } = useOpenFreeMapSingle({ coordinates: coordinates ?? null });
   return (
     <div className={styles.mapContainer}>
       {/* Контейнер карты всегда в DOM, чтобы mapRef.current существовал */}
-      <div ref={mapRef} className={styles.mapCanvas} style={{ display: coords && !error ? 'block' : 'none' }} />
+      <div ref={mapRef} className={styles.mapCanvas} style={{ visibility: isLoaded ? 'visible' : 'hidden' }} />
 
-      {error && <div className={styles.mapFallback}>{error}</div>}
-      {!error && !coords && (
+      {!isLoaded && (
         <div className={styles.mapFallback}>
           <Spinner />
         </div>
